@@ -1,0 +1,145 @@
+@extends('menu')
+
+
+@section('head')
+
+@stop
+
+
+@section('body')<BR><BR><BR>
+         <!-- script  plug in dataTable  -->
+  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
+  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+    <script>
+        $(document).ready(function(){
+            $('#price').on('keyup',function(){
+                
+                var total = 0;
+                var rate = $('#rate').val();
+                total=rate*$(this).val();
+                $('#cost').val(total);
+            });
+
+
+
+
+        });
+        function change_color(){
+            $('#save').attr('style','background-color:red');
+        }
+     
+    </script>
+<style> 
+    .center {
+        margin: auto;
+        width: 90%;
+        border: 3px solid #73AD21;
+        padding: 10px;
+    }
+    .btncenter{
+        width:10%;margin-left:45%;margin-right:45%;
+    }
+    .right {
+            text-align: right
+        }
+        .left{
+            text-align: left
+        }
+            
+</style>
+<div class="center">
+<h1 style="text-align:center">ระบบรับซื้อน้ำนมดิบ</h1><br>
+<input type ="hidden" name="row" id="row" value="0">
+
+<form action="/action_page.php">
+    <div class="form-group">
+            <div class="row">
+                <div class="col-2 right">
+               <h3> ข้อมูลสมาชิก</h3>
+                </div>
+            </div>
+        </div> 
+    <div class="form-group">
+            <div class="row">
+                <div class="col-2 right">
+                    รหัสสมาชิก:
+                </div>
+                <div class="col-4">
+                        <input type="text" class="form-control" name="memid" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+                <div class="row">
+                    <div class="col-2 right">
+                    ชื่อ:
+                    </div>
+                    <div class="col-4">
+                            <input type="text" class="form-control" name="memid" required>
+                    </div>
+                    <div class="col-2 right">
+                            นามสกุล:
+                            </div>
+                            <div class="col-4">
+                                    <input type="text" class="form-control" name="memid" required>
+                            </div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <div class="row">
+                        <div class="col-2 right">
+                       <h3> ข้อมูลน้ำนมดิบ</h3>
+                        </div>
+                    </div>
+                </div> 
+    <br>
+<br><br>
+<div class="panel-body">
+    <table id="datamilk" class="table table-striped table-bordered table-responsive-lg">
+        <thead class="bg-success">
+            <th>ลำดับ</th>
+            <th>เกรดน้ำนมดิบ</th>
+            <th>ราคา/หน่วย</th>
+            <th>จำนวน(กิโลกรัม)</th>
+            <th>ราคารับซื้อ</th>
+            <th> </th>
+        </thead>
+        <tbody id="milk">
+            <tr>
+                <td>1</td>
+                <td >เกรด A</td>
+                <td><input type="hidden" id="rate"value="20">20</td>
+                <td ><input id="price" type="text" name="price" ></td>
+                <td ><input  type="text" id="cost" value=""></td>
+                <td><a class='btn btn-warning ' id ="test"style="background:red" onclick='clear("")'>เคลียร์</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>เกรด B</td>
+                <td>19</td>
+                <td><input type="text" name="price"></td>
+                <td>19</td>
+                <td><a  class='btn btn-warning' onclick='$("#test").attr("style","background:black")'>เคลียร์5</a></td>
+            </tr>
+            
+        </tbody>
+                
+    </table>
+
+</div>
+<div style="width:100% "class="" >
+        <button  type="submit" id = "save"class="btn btn-success btncenter" >
+            <span class="fa fa-edit" >บันทึก</span>
+        </button>
+    </div>
+</form>
+</div>
+
+
+@stop
+
+
