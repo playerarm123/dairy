@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+// ทดสอบ clone git
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
 class Buymilk extends Model
