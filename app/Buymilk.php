@@ -2,6 +2,7 @@
 
 namespace App;
 // ทดสอบ clone git
+// ใช้ได้แล้ว
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
 class Buymilk extends Model
