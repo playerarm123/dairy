@@ -13,7 +13,8 @@ class equip extends Model
     "eq_name"=> $eq_name,
     "eq_cate"=> $eq_cate,
     "eq_unit"=> $eq_unit,
-    "eq_price"=> $eq_price
+    "eq_price"=> $eq_price,
+    "eq_status"=> "พร้อมใช้งาน"
 
           );
 
