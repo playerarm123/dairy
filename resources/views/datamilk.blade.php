@@ -118,7 +118,7 @@
                         จำนวน(กิโลกรัม):
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" name="milk_weight" required>
+                        <input type="double" class="form-control" name="milk_weight" required>
                 </div>
             </div>
         <div class="form-group">
@@ -127,13 +127,13 @@
                     ราคารับซื้อ:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="milk_pricein" required>
+                    <input type="number" class="form-control" name="milk_pricein" required>
                 </div>
                 <div class="col-2">
                         ราคาขาย:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" name="milk_priceout" required>
+                        <input type="number" class="form-control" name="milk_priceout" required>
                     </div>
             </div>
         </div>

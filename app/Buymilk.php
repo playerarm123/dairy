@@ -3,7 +3,7 @@
 namespace App;
 // ทดสอบ clone git
 // ใช้ได้แล้ว
-//  sdfsdfs;
+//  sdfsdfs;ddd
 //mmmmmm
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;

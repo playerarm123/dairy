@@ -15,7 +15,7 @@
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
     <script>
-           function confirm_delete(equ_id){
+           function confirm_delete(eq_id){
             swal({
                 title: "ลบข้อมูล?",
                 text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
@@ -33,7 +33,7 @@
                     
                     $.ajax({
                         type: "GET",
-                        url : "{{ url('deletepro')}}/"+equ_id,
+                        url : "{{ url('deletepro')}}/"+eq_id,
                         success:function(data){
                             
                             location.reload();
@@ -54,7 +54,7 @@
                             { "width": "5%" },
                             null,
                             null,
-                            null,
+                            {"width": "10%"},
                             {"width": "10%"},
                             {"width": "20%"},
                             
@@ -112,21 +112,27 @@
                     <input type="text" class="form-control" name="name" required >
                 </div>
                 <div class="col-2">
-                    จำนวน:
+                    ประเภท:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="number" required>
+                    <input type="text" class="form-control" name="cate" required>
                 </div> 
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                   ราคา:
+                   จำนวน:
                 </div>
                 <div class="col-4">
-                    <input type="number" class="form-control" name="price" required>
+                    <input type="number" class="form-control" name="number" required>
                 </div>
+                <div class="col-2">
+                        ราคา:
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" name="price" required >
+                    </div>
             </div>
         </div>
     <div style="width:100%">
@@ -140,14 +146,28 @@
 <div class="panel-body">
     <table id="equip" class="table table-striped table-bordered table-responsive-lg">
         <thead class="bg-success ">
+            <th>ลำดับ</th>
             <th> ชื่ออุปกรณ์</th>
-            <th> จำนวน </th>
+            <th>ประเภท</th>
+            <th> หน่วยนับ </th>
             <th> ราคา</th>
             <th>หมายเหตุ</th>
         </thead>
-        <tbody>  
-                
-        </tbody>           
+        <tbody>
+                @foreach ($equip as $key =>$item)
+                <tr>
+                <td>{{$item->eq_name}}</td>
+                <td>{{$item->eq_cate}}</td>
+                <td>{{$item->eq_unit}}</td>
+                <td>{{$item->eq_price}}</td>
+                <td>
+                    <a href="{{url('/editpro')}}/{{$item->eq_id}}" class='btn btn-warning'>แก้ไข</a>
+                    <button class='btn btn-danger' onclick='confirm_delete("{{$item->eq_id}}")'>ลบ</button>
+                    <a href ="{{url('/detailpro')}}/{{$item->eq_id}}" class='btn btn-info'>รายละเอียด</a>
+                </td>
+                </tr>
+                @endforeach
+        </tbody>          
                 
     </table>
 </div>
