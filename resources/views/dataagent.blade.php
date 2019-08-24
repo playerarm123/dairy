@@ -153,7 +153,7 @@
                 <td>{{$item->pn_phone}}</td>
                 <td>
                         <button class='btn btn-warning'>แก้ไข</button>
-                        <button class='btn btn-danger' onclick='confirm_delete("{{$item->Pn_id}}")'>ลบ</button>
+                        <button class='btn btn-danger' onclick='confirm_delete("{{$item->pn_id}}")'>ลบ</button>
                         <a href =''>รายละเอียด</button>
                 </td>
                 </tr>
