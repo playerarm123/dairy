@@ -112,7 +112,7 @@
                     เกรดน้ำนมดิบ:
                 </div>
                 <div class="col-4">
-                                <input type="text" class="form-control" name="milk_grede" required>
+                                <input type="text" class="form-control" name="milk_grade" required>
                         </div>
                 <div class="col-2">
                         จำนวน(กิโลกรัม):
@@ -127,13 +127,13 @@
                     ราคารับซื้อ:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="milk_in" required>
+                    <input type="text" class="form-control" name="milk_pricein" required>
                 </div>
                 <div class="col-2">
                         ราคาขาย:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" name="milk_out" required>
+                        <input type="text" class="form-control" name="milk_priceout" required>
                     </div>
             </div>
         </div>
@@ -160,10 +160,10 @@
         <tbody>
                 @foreach ($milk as $key =>$item)
                 <tr>
-                <td>{{$item->milk_grede}}</td>
+                <td>{{$item->milk_grade}}</td>
                 <td>{{$item->milk_weight}}</td>
-                <td>{{$item->milk_in}}</td>
-                <td>{{$item->milk_out}}</td>
+                <td>{{$item->milk_pricein}}</td>
+                <td>{{$item->milk_priceout}}</td>
                 <td>
                     <a href="{{url('/edit_datamilk')}}/{{$item->milk_id}}" class='btn btn-warning'>แก้ไข</a>
                     <button class='btn btn-danger' onclick='confirm_delete("{{$item->milk_id}}")'>ลบ</button>

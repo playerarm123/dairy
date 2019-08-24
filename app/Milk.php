@@ -21,7 +21,7 @@ class Milk extends Model
                 DB::table("milk")->insert($milk);
 
             }
-            public static function CalP_Price($milk_grde,$milk_weight){ //หน่วยต้องเป็นขีดเท่านั้น เป็นฟังชันที่เอาไว้หาราคาซื้อน้ำนม
+            public static function CalP_Price($milk_grade,$milk_weight){ //หน่วยต้องเป็นขีดเท่านั้น เป็นฟังชันที่เอาไว้หาราคาซื้อน้ำนม
                 $data=DB::table("milk")
                 ->where("Milk_grade","=",$milk_grade)
                 ->get();

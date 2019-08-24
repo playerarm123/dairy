@@ -30,7 +30,7 @@
 <h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานน้ำนมดิบ</h1><br>
 <form action="{{url('/updatemilk')}}" method="POST">
       @csrf
-      <input type = "hidden" name="Milk_id" value="{{$milk[0]->Milk_id}}">
+      <input type = "hidden" name="Milk_id" value="{{$milk[0]->milk_id}}">
 
         <div class="form-group">
             <div class="row">
@@ -38,13 +38,13 @@
                     เกรดน้ำนมดิบ:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="milk_grede" required value="{{$milk[0]->Milk_grede}}">
+                    <input type="text" class="form-control" name="milk_grade" required value="{{$milk[0]->milk_grade}}">
                 </div>
                 <div class="col-2">
                     จำนวน(กิโลกรัม):
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="milk_weight" value="{{$milk[0]->Milk_weight}}" required>
+                    <input type="text" class="form-control" name="milk_weight" value="{{$milk[0]->milk_weight}}" required>
                 </div>
             </div>
         </div>
@@ -54,13 +54,13 @@
                         ราคารับซื้อ:
                 </div>
                 <div class="col-4">
-                        <input type="text" class="form-control" name="milk_in"  value="{{$milk[0]->Milk_in}}" required>
+                        <input type="text" class="form-control" name="milk_pricein"  value="{{$milk[0]->milk_pricein}}" required>
                     </div>
                 <div class="col-2">
                     ราคาขาย:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="milk_out"  value="{{$milk[0]->Milk_out}}" required>
+                    <input type="text" class="form-control" name="milk_priceout"  value="{{$milk[0]->milk_priceout}}" required>
                 </div>
             </div>
         </div>

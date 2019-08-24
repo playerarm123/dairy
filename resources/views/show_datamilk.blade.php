@@ -37,15 +37,15 @@
 <h1 style="text-align:center">แสดงรายละเอียดข้อมูลน้ำนมดิบ</h1><br>
 <div class="row">
     <div class="col-3 right" >เกรดน้ำนมดิบ</div>
-    <div class="col-2">{{$milk[0]->Milk_grede}}</div>
+    <div class="col-2">{{$milk[0]->milk_grade}}</div>
     <div class="col-3 right" > น้ำหนัก(กิโลกรัม)</div>
-    <div class="col-2">{{$milk[0]->Milk_weight}}</div>
+    <div class="col-2">{{$milk[0]->milk_weight}}</div>
 </div>
 <div class="row">
         <div class="col-3 right" > ราคารับซื้อ</div>
-        <div class="col-2">{{$milk[0]->Milk_in}}</div>
+        <div class="col-2">{{$milk[0]->milk_pricein}}</div>
         <div class="col-3 right" > ราคาขาย</div>
-        <div class="col-2">{{$milk[0]->Milk_out}}</div>
+        <div class="col-2">{{$milk[0]->milk_priceout}}</div>
     </div>
     <br>
     <div class="btncenter" style="width:100%" >
