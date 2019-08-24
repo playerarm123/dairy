@@ -203,7 +203,6 @@ class Datamg extends Controller
         $eq_cate=$req->input('cate');
         $eq_unit=$req->input('unit');
         $eq_price=$req->input('price');
-        dd($eq_cate,$eq_unit);
         equip::insert_eq($eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect('datapro');
