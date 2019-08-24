@@ -38,8 +38,8 @@ class equip extends Model
             "eq_name"=> $eq_name,
             "eq_cate"=> $eq_cate,
             "eq_unit"=> $eq_unit,
-            "eq_price"=> $eq_price
-
+            "eq_price"=> $eq_price,
+            "eq_status"=> "พร้อมใช้งาน"
                 );
 
 
@@ -65,6 +65,16 @@ class equip extends Model
         return $AllEquip; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
 
        }
+       public static function Cancleeq($eq_id){
+        $eq_Cancel =array(
+            "bm_status"=> "ยกเลิก"
+        );
+            DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
 
+
+
+
+
+    }
 
 }
