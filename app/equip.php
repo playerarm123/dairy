@@ -67,7 +67,7 @@ class equip extends Model
        }
        public static function Cancleeq($eq_id){
         $eq_Cancel =array(
-            "bm_status"=> "ยกเลิก"
+            "eq_status"=> "ยกเลิก"
         );
             DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
 
