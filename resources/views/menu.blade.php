@@ -20,8 +20,8 @@
 
   <script src="{{  asset('js/sweetAlert.min.js') }}"></script>
   <script src="{{asset('/jquery/jquery.min.js')}}"></script>
-  
-  
+
+
 
 </head>
 {{-- alert box --}}
@@ -59,7 +59,7 @@
             <div class="top-header-content d-flex align-items-center justify-content-between">
               <!-- Top Header Content -->
               <div class="top-header-meta">
-                                  
+
               </div>
               <!-- Top Header Content -->
               <div class="top-header-meta text-right">
@@ -91,7 +91,7 @@
                 <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
               </div>
               <!-- Navbar Start -->
-              <div class="classynav"> 
+              <div class="classynav">
                 <ul>
                   <li><a href="{{url('#')}}">จัดการข้อมูลพื้นฐาน</a>
                     <ul class="dropdown">
@@ -101,12 +101,12 @@
                       <li><a href="{{url('datapro')}}">ข้อมูลอุปกรณ์</a></li>
                       <li><a href="{{url('dataagent')}}">ข้อมูลบริษัทคู่ค้า</a></li>
                       <li><a href="{{url('datacoop')}}">ข้อมูลสหกรณ์</a></li>
-                      
+
                     </ul>
                   </li>
-                  
-                  <li><a href="{{url('buymilk2')}}">รับซื้อน้ำนมดิบ</a></li>
-                  <li><a href="{{url('sellmilk2')}}">ขายน้ำนมดิบ</a></li>
+
+                  <li><a href="{{url('buymilk')}}">รับซื้อน้ำนมดิบ</a></li>
+                  <li><a href="{{url('sellmilk')}}">ขายน้ำนมดิบ</a></li>
                   <li><a href="{{url('oder')}}">สั่งซื้ออุปกรณ์</a></li>
                   <li><a href="{{url('#')}}">รับอุปกรณ์</a>
                     <ul class="dropdown">
@@ -138,8 +138,8 @@
   </header>
   <!-- ##### Header Area End ##### -->
 
- 
-  
+
+
 
   <!-- ##### All Javascript Files ##### -->
   <!-- jquery 2.2.4  -->

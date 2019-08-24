@@ -13,8 +13,8 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
-  <style> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+  <style>
         .center {
             margin: auto;
             width: 70%;
@@ -30,30 +30,30 @@
         .left{
             text-align: left
         }
-        
+
 </style>
 
 <div class="center">
 <h2 style="text-align:center">แสดงรายละเอียดข้อมูลสมากชิก</h2><br>
 <div class="row">
     <div class="col-3 right" > ชื่อ</div>
-    <div class="col-2">{{$member[0]->Mb_name}}</div>
+    <div class="col-2">{{$member[0]->mb_name}}</div>
     <div class="col-3 right" > นามสกุล</div>
-    <div class="col-2">{{$member[0]->Mb_lastname}}</div>
+    <div class="col-2">{{$member[0]->mb_lastname}}</div>
 </div>
 <div class="row">
         <div class="col-3 right" > เพศ</div>
-        <div class="col-2">{{$member[0]->Mb_gender}}</div>
+        <div class="col-2">{{$member[0]->mb_gender}}</div>
         <div class="col-3 right" > อายุ</div>
-        <div class="col-2">{{$member[0]->Mb_age}}</div>
+        <div class="col-2">{{$member[0]->mb_age}}</div>
     </div>
     <div class="row">
             <div class="col-3 right" > ที่อยู่</div>
-            <div class="col-2">{{$member[0]->Mb_address}}</div>
+            <div class="col-2">{{$member[0]->mb_address}}</div>
             <div class="col-3 right" > เบอร์โทร</div>
-            <div class="col-2">{{$member[0]->Mb_phone}}</div>
+            <div class="col-2">{{$member[0]->mb_phone}}</div>
         </div>
-   
+
     <br>
     <div class="btncenter" style="width:100%" >
     <a href={{url('/datamem')}} class="btn btn-danger " >

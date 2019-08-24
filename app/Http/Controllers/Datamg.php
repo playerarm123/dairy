@@ -52,6 +52,7 @@ class Datamg extends Controller
             'resultusername'=>$resultusername
         );
         return $data;
+        //fx;g
     }
     public function Savedataem(Request $req){ //บันทึกข้อมูลผุ้ใช้
         $name=$req->input('firstname');
@@ -59,16 +60,16 @@ class Datamg extends Controller
         $gender=$req->input('gender');
         $age=$req->input('old');
         $address=$req->input('address');
-        $tel=$req->input('number');
+        $phone=$req->input('number');
         $position=$req->input('position');
         $username=$req->input('username');
         $password=$req->input('password');
-        Employee::emp_insert($name,$lastname,$address,$tel,$position,$gender,$username,$password,$age);
+        Employee::emp_insert($name,$lastname,$gender,$age,$address,$phone,$position,$username,$password);
         Session::put('save','success');
         return redirect('dataem');
     }
     public function Deleteuser($id){ //ลบข้อมูลผู้ใช้
-        Employee::Delete_Emp($id);
+        Employee::emp_Delete($id);
         Session::put('delete','success');
         return redirect('dataem');
     }
@@ -77,19 +78,16 @@ class Datamg extends Controller
        return view ('show_dataem',$data);
     }
     public function Updateuser(Request $req){ //แสดงหน้าอัพเดตผู้ใช้
-        $Em_id=$req->input('Em_id');
+        $em_id=$req->input('Em_id');
         $em_name=$req->input('firstname');
         $em_lastname=$req->input('lastname');
         $em_address=$req->input('address');
         $em_phone=$req->input('number');
-        $em_position=$req->input('position');
-        $em_gender=$req->input('gender');
-        $em_user=$req->input('username');
         $em_password=$req->input('password');
         $em_age=$req->input('old');
-        Employee::Update_emp($Em_id,$em_name,$em_lastname,$em_address,$em_phone,$em_position,$em_gender,$em_user,$em_password,$em_age);
+        Employee::emp_Update($em_id,$em_name,$em_lastname,$em_address,$em_phone,$em_password,$em_age);
         Session::put('save','success');
-        return redirect ('detailuser/'.$Em_id);
+        return redirect ('detailuser/'.$em_id);
     }
     public function Editdataem($id){ //แก้ไขข้อมูลผู้ใช้
         $data['user']=Employee::loadDataEmp($id);
@@ -115,17 +113,17 @@ class Datamg extends Controller
         $mb_phone=$req->input('number');
         $mb_gender=$req->input('gender');
         $mb_age=$req->input('old');
-        Member::mb_insert($mb_name,$mb_address,$mb_phone,$mb_lastname,$mb_gender,$mb_age);
+        //Member::mb_insert($mb_name,$mb_lastname,$mb_address,$mb_phone,$mb_gender,$mb_age);
         Session::put('save','success');
         return redirect('datamem');
     }
     public function Deletemem($id){ //ลบสมาชิก
-        Member::Delete_mem($id);
+        Member::mb_Delete($id);
         Session::put('delete','success');
         return redirect('datamem');
     }
     public function Detailmem($id){ //แสดงรายละเอียดข้อมูลสมาชิก
-        $data['member']=Member::loadAllMember($id);
+        $data['member']=Member::loadAllmb($id);
        return view ('show_datamem',$data);
     }
     public function Updatemem(Request $req){ //แสดงหน้าอัพเดตสมาชิก
@@ -136,12 +134,12 @@ class Datamg extends Controller
         $mb_phone=$req->input('number');
         $mb_gender=$req->input('gender');
         $mb_age=$req->input('old');
-        Member::Update_mb($mb_id,$mb_name,$mb_address,$mb_phone,$mb_lastname,$mb_gender,$mb_age);
+        Member::mb_Update($mb_id,$mb_name,$mb_lastname,$mb_address,$mb_phone,$mb_gender,$mb_age);
         Session::put('save','success');
         return redirect ('detailmem/'.$mb_id);
     }
     public function Editdatamem($id){ //แก้ไขข้อมูลสมาชิก
-        $data['member']=Member::loadAllMember($id);
+        $data['member']=Member::loadAllmb($id);
         return view('edit_datamem',$data);
     }
 
@@ -152,8 +150,8 @@ class Datamg extends Controller
         return $AllMilk;
     }
     public function Checkmilk(Request $req){ //เช็คน้ำนม
-        $milk_gread=$req->input('milk');
-        $milk_gread=Milk::checkmilk_grede($milk_grede);
+        $milk_grede=$req->input('milk');
+        $milk_grede=Milk::checkmilk_grede($milk_grede);
         return $milk_grede;
     }
     public function Savemilk(Request $req){ //บันทึกข้อมูลน้ำนม
@@ -285,7 +283,7 @@ class Datamg extends Controller
         $agent_name=$req->input('name');
         $agent_address=$req->input('address');
         $agent_phone=$req->input('phone');
-        partners::pn_insert($pn_name,$pn_address,$pn_phone);
+        partners::pn_insert($agent_name,$agent_address,$agent_phone);
         Session::put('save','success');
         return redirect('dataagent');
     }
