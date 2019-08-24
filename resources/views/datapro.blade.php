@@ -125,7 +125,7 @@
                    จำนวน:
                 </div>
                 <div class="col-4">
-                    <input type="number" class="form-control" name="number" required>
+                    <input type="number" class="form-control" name="unit" required>
                 </div>
                 <div class="col-2">
                         ราคา:
