@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\DB;
 class equip extends Model
 {
     protected $table ='equip';
-    public static function insert_eq($eq_name,$eq_cate,$eq_unit,$equ_price){
+    public static function insert_eq($eq_name,$eq_cate,$eq_unit,$eq_price){
 
    $eq=array(
     "eq_name"=> $eq_name,
     "eq_cate"=> $eq_cate,
     "eq_unit"=> $eq_unit,
-    "eq_price"=> $equ_price,
+    "eq_price"=> $eq_price,
     "eq_status"=> "พร้อมใช้งาน"
 
           );
