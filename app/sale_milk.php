@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
-class Salemilk extends Model
+class Sale_milk extends Model
 {
-    protected $table='salemilk';
+    protected $table='sale_milk';
     public static function sm_insert($em_id,$pn_id,$sm_wiegh,$sm_price,$sm_date,$sm_pricetotal){
     $sm_insert=array (
 
@@ -21,7 +21,7 @@ class Salemilk extends Model
 
 
 
-    DB::table("salemilk")->insert($sm_insert );
+    DB::table("sale_milk")->insert($sm_insert );
 
 
     }
@@ -37,7 +37,7 @@ class Salemilk extends Model
             "sm_status"=>"พร้อมใช้งาน"
 
         );
-        DB::table("salemilk")->where("Sm_id","=",$sm_id)->update($update_sm);
+        DB::table("sale_milk")->where("sm_id","=",$sm_id)->update($update_sm);
 
 
 
