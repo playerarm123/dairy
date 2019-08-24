@@ -103,7 +103,7 @@
       @csrf
     <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2">  
                     ชื่อ:
                 </div>
                 <div class="col-4">
