@@ -58,7 +58,6 @@ class Employee extends Model
         $row=count($data);
        return $row;
 
-
     }
 
    public static function emp_Update($em_id,$em_name,$em_lastname,$em_address,$em_phone,$em_password,$em_age){

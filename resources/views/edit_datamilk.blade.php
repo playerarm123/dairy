@@ -13,8 +13,8 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
-    <style> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+    <style>
             .center {
                 margin: auto;
                 width: 90%;
@@ -24,7 +24,7 @@
             .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-            
+
 </style>
 <div class="center">
 <h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานน้ำนมดิบ</h1><br>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="milk_weight" value="{{$milk[0]->Milk_weight}}" required>
-                </div> 
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-       
+
     <div class="btncenter" style="width:100%" >
         <button  type="submit" class="btn btn-success" >
             <span class="fa fa-save" >บันทึก</span>
@@ -73,10 +73,10 @@
                 <span class="fa fa-edit" >ย้อนกลับ</span>
         </a>
     </div>
-</form> 
+</form>
 <br><br>
 <div class="panel-body">
-   
+
 </div>
 </div>
 @stop

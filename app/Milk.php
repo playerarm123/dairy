@@ -14,7 +14,7 @@ class Milk extends Model
             "Milk_grede"=> $milk_grede,
             "Milk_weight"=> $milk_weight,
             "Milk_in"=> $milk_in,
-            "Milk_out"=> $milk_out
+            "Milk_out"=> $milk_out,
                 );
                 DB::table("milk")->insert($milk);
 
@@ -38,9 +38,8 @@ class Milk extends Model
                 ->where("milk_grede","=",$milk_grede)
                 ->get();
                 $row=count($data);
-                dd($data);
             return $data;  //สร้างเพื่อเช็คข้อมูลว่าซ้ำในดาต้าเบสไหม ขั้นตอนการสมัคร
-            
+
             }
 
                 public static function Update_milk($milk_id,$milk_grede,$milk_weight,$milk_in,$milk_out){
@@ -49,13 +48,13 @@ class Milk extends Model
                     "Milk_weight"=>  $milk_weight,
                     "Milk_in"=>   $milk_in,
                     "Milk_out"=>   $milk_out,
-                    
+
                     );
                     DB::table("milk")->where("Milk_id","=",$milk_id)->update($update_milk);
-            
-                    
-            
-                        
+
+
+
+
             }
             public static function Delete_milk($milk_id){
 
@@ -64,12 +63,12 @@ class Milk extends Model
                 ->delete();
                 }
 
-                
+
             public static function loadAllMilk(){
                 $AllMilk=DB::table("milk")->orderBy("created_at","DESC")->get();
-        
+
                 return $AllMilk; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
-        
+
             }
 
 

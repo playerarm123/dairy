@@ -13,7 +13,7 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
            function confirm_delete(Mb_id){
             swal({
@@ -30,12 +30,12 @@
                 function(isConfirm) {
                 if (isConfirm) {
                     // ถ้ากด ใช่
-                    
+
                     $.ajax({
                         type: "GET",
                         url : "{{ url('deletemem')}}/"+Mb_id,
                         success:function(data){
-                            
+
                             location.reload();
                         }
                     });
@@ -44,8 +44,8 @@
                     swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
                 }
             });
-            
-        }  
+
+        }
         $(document).ready(function() {
             var table =$('#member').DataTable({
                         "paging": true,
@@ -57,9 +57,9 @@
                             null,
                             {"width": "10%"},
                             {"width": "20%"},
-                            
-                           
-                        ],  
+
+
+                        ],
                         "oLanguage": {
                                         "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
                                         "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
@@ -81,10 +81,10 @@
                      }
 
                      );
-            
+
         });
     </script>
-<style> 
+<style>
     .center {
         margin: auto;
         width: 90%;
@@ -94,7 +94,7 @@
     .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-            
+
 </style>
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานสมาชิก</h1><br>
@@ -140,8 +140,8 @@
                     <div class="col-4">
                         <input type="number" class="form-control" name=old required>
                     </div>
-                  
-                      
+
+
                 </div>
             </div>
         <div class="form-group">
@@ -158,10 +158,10 @@
         <div class="col-4">
             <input type="text" class="form-control" name="number" required>
         </div>
-                
+
             </div>
         </div>
-    
+
             <br>
     <br>
     <div style="width:100% "class="" >
@@ -181,22 +181,22 @@
             <th>หมายเหตุ</th>
         </thead>
 
-        <tbody>  <?php /*
+        <tbody>
                 @foreach ($member as $key =>$item)
                 <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$item->Mb_name}}</td>
-                <td>{{$item->Mb_lastname}}</td>
-                <td>{{$item->Mb_address}}</td>
-                <td>{{$item->Mb_phone}}</td>
+                <td>{{$item->mb_name}}</td>
+                <td>{{$item->mb_lastname}}</td>
+                <td>{{$item->mb_address}}</td>
+                <td>{{$item->mb_phone}}</td>
                 <td>
-                    <a href="{{url('/edit_datamem')}}/{{$item->Mb_id}}" class='btn btn-warning'>แก้ไข</a>
-                    <button class='btn btn-danger' onclick='confirm_delete("{{$item->Mb_id}}")'>ลบ</button>
-                    <a href ="{{url('/detailmem')}}/{{$item->Mb_id}}" class='btn btn-info'>รายละเอียด</a>
+                    <a href="{{url('/edit_datamem')}}/{{$item->mb_id}}" class='btn btn-warning'>แก้ไข</a>
+                    <button class='btn btn-danger' onclick='confirm_delete("{{$item->mb_id}}")'>ลบ</button>
+                    <a href ="{{url('/detailmem')}}/{{$item->mb_id}}" class='btn btn-info'>รายละเอียด</a>
                 </td>
                 </tr>
-                @endforeach */ ?>
-        </tbody>           
+                @endforeach
+        </tbody>
      </table>
 
 </div>

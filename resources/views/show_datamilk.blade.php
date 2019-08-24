@@ -13,8 +13,8 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
-  <style> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+  <style>
         .center {
             margin: auto;
             width: 70%;
@@ -30,7 +30,7 @@
         .left{
             text-align: left
         }
-        
+
 </style>
 
 <div class="center">

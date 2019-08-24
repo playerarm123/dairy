@@ -207,12 +207,12 @@
                 <div class="col-4">
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender" value="male" >ชาย
+                          <input type="radio" class="form-check-input" name="gender" value="ชาย" >ชาย
                         </label>
                       </div>
                       <div class="form-check-inline">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender"value="female" >หญิง
+                          <input type="radio" class="form-check-input" name="gender"value="หญิง" >หญิง
                         </label>
                     </div>
                 </div>
@@ -249,12 +249,12 @@
 
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="position" value="employee" >พนักงาน
+                            <input type="radio" class="form-check-input" name="position" value="พนักงาน" >พนักงาน
                             </label>
                             </div>
                             <div class="form-check-inline">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="position"value="committee" >กรรมการ
+                                <input type="radio" class="form-check-input" name="position"value="กรรมการ" >กรรมการ
                             </label>
                         </div>
                     </div>

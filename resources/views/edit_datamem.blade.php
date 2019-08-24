@@ -13,8 +13,8 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
-    <style> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+    <style>
             .center {
                 margin: auto;
                 width: 90%;
@@ -24,7 +24,7 @@
             .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-            
+
 </style>
 <div class="center">
 <h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานสมาชิก</h1><br>
@@ -32,7 +32,7 @@
 
 <form action="{{ url('/updatemem') }}" method="POST">
       @csrf
-      <input type = "hidden" name="Mb_id" value="{{$member[0]->Mb_id}}">
+      <input type = "hidden" name="Mb_id" value="{{$member[0]->mb_id}}">
 
         <div class="form-group">
             <div class="row">
@@ -40,14 +40,14 @@
                     ชื่อ:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="firstname" required value="{{$member[0]->Mb_name}}">
+                    <input type="text" class="form-control" name="firstname" required value="{{$member[0]->mb_name}}">
                 </div>
                 <div class="col-2">
                     นามสกุล:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="lastname" value="{{$member[0]->Mb_lastname}}" required>
-                </div> 
+                    <input type="text" class="form-control" name="lastname" value="{{$member[0]->mb_lastname}}" required>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -58,21 +58,21 @@
                 <div class="col-4">
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                          <input  {{($member[0]->Mb_gender == 'male')?'checked':''}} type="radio" class="form-check-input" name="gender" value="male" required>ชาย
+                          <input  {{($member[0]->mb_gender == 'male')?'checked':''}} type="radio" class="form-check-input" name="gender" value="male" required>ชาย
                         </label>
                       </div>
                       <div class="form-check-inline">
                         <label class="form-check-label">
-                          <input {{($member[0]->Mb_gender == 'female')?'checked':''}} type="radio" class="form-check-input" name="gender" value="female" required>หญิง
+                          <input {{($member[0]->mb_gender == 'female')?'checked':''}} type="radio" class="form-check-input" name="gender" value="female" required>หญิง
                         </label>
                     </div>
-                      
+
                 </div>
                 <div class="col-2">
                     อายุ:
                 </div>
                 <div class="col-4">
-                    <input type="number" class="form-control" name="old" value="{{$member[0]->Mb_age}}" required>
+                    <input type="number" class="form-control" name="old" value="{{$member[0]->mb_age}}" required>
                 </div>
             </div>
         </div>
@@ -82,13 +82,13 @@
                         ที่อยู่:
                 </div>
                 <div class="col-4">
-                        <textarea class="form-control" name="address" required > {{$member[0]->Mb_address}}</textarea>
+                        <textarea class="form-control" name="address" required > {{$member[0]->mb_address}}</textarea>
                 </div>
                 <div class="col-2">
                     เบอร์โทร:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="number"  value="{{$member[0]->Mb_phone}}" required>
+                    <input type="text" class="form-control" name="number"  value="{{$member[0]->mb_phone}}" required>
                 </div>
             </div>
         </div>
@@ -100,10 +100,10 @@
                 <span class="fa fa-edit" >ย้อนกลับ</span>
         </a>
     </div>
-</form> 
+</form>
 <br><br>
 <div class="panel-body">
-   
+
 </div>
 
 @stop
