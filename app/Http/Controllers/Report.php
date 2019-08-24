@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\equip;
+use App\partners;
 
 class Report extends Controller
 {
     public static function testmind (){
-        equip::insert_eq("kk","jk","ooo","90");
+        partners::insert_pn("mind","123/12","8769000");
 
     }
 }
