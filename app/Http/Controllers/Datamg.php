@@ -34,8 +34,7 @@ class Datamg extends Controller
         return view('dataagent',$data);
     }
     public function Datacoop(){ //หน้าข้อมูลสหกรณ์
-        $data['cooper']=cooper::loadAllCooper();
-        return view('datacoop',$data);
+        return view('datacoop');
     }
     public function Loaduser(){ //โหลดข้อมูลผู้ใช้
         $alldata=Employee::loadAllData();
@@ -52,7 +51,7 @@ class Datamg extends Controller
             'resultusername'=>$resultusername
         );
         return $data;
-        //fx;g
+
     }
     public function Savedataem(Request $req){ //บันทึกข้อมูลผุ้ใช้
         $name=$req->input('firstname');
@@ -157,8 +156,8 @@ class Datamg extends Controller
     public function Savemilk(Request $req){ //บันทึกข้อมูลน้ำนม
         $milk_grade=$req->input('milk_grade');
         $milk_weight=$req->input('milk_weight');
-        $milk_pricein=$req->input('milk_in');
-        $milk_priceout=$req->input('milk_out');
+        $milk_pricein=$req->input('milk_pricein');
+        $milk_priceout=$req->input('milk_priceout');
         Milk::milk_insert( $milk_grade,$milk_weight, $milk_pricein,$milk_priceout);
         Session::put('save','success');
         return redirect('datamilk');
@@ -195,21 +194,22 @@ class Datamg extends Controller
         return $Allpro;
     }
     public function Checkpro(Request $req){ //เช็คอุปกรณ์
-        $equ_name=$req->input('equip');
-        $equ_name=equip::checkpro($equ_name);
-        return $equ_name;
+        $eq_name=$req->input('equip');
+        $eq_name=equip::checkEq_name($eq_name);
+        return $eq_name;
     }
     public function Savepro(Request $req){ //บันทึกข้อมูลอุปกรณ์
-        $equ_id=$req->input('id');
-        $equ_name=$req->input('name');
-        $equ_number=$req->input('number');
-        $equ_price=$req->input('price');
-        equip::insert_equ($equ_id,$equ_name,$equ_number,$equ_price);
+        $eq_name=$req->input('name');
+        $eq_cate=$req->input('cate');
+        $eq_unit=$req->input('unit');
+        $eq_price=$req->input('price');
+        dd($eq_cate,$eq_unit);
+        equip::insert_eq($eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect('datapro');
     }
     public function Deletepro($id){ //ลบอุปกรณ์
-        equip::Delete_pro($id);
+        equip::Delete_eq($id);
         Session::put('delete','success');
         return redirect('datapro');
     }
@@ -218,11 +218,12 @@ class Datamg extends Controller
        return view ('show_datapro',$data);
     }
     public function Updatepro(Request $req){ //แสดงหน้าอัพเดตอุปกรณ์
-        $equ_id=$req->input('id');
-        $equ_name=$req->input('firstname');
-        $equ_cate=$req->input('amount');
-        $equ_price=$req->input('price');
-        equip::Update_equ($equ_id,$equ_name,$equ_cate,$equ_price);
+        $eq_id=$req->input('id');
+        $eq_name=$req->input('name');
+        $eq_cate=$req->input('cate');
+        $eq_unit=$req->input('unit');
+        $eq_price=$req->input('price');
+        equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect ('datapro');
     }
@@ -231,69 +232,25 @@ class Datamg extends Controller
         return view('editpro',$data);
     }
 
-
-    public function Loadcoop(){ //โหลดหน้าสหกรณ์
-        $Allcooper=cooper::loadAllCooper();
-        return $Allcooper;
-    }
-    public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
-        $coop_name=$req->input('name');
-        $coop_address=$req->input('address');
-        $coop_phone=$req->input('phone');
-        $coop_fax=$req->input('fax');
-        $coop_email=$req->input('email');
-        $coop_logo=$req->input('logo');
-        $coop_website=$req->input('web');
-        cooper::coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
-        Session::put('save','success');
-        return redirect('datacoop');
-    }
-
-    public function Detailcoop($id){ //แสดงรายละเอียดข้อมูลสหกรณ์
-        $data['coop']=cooper::loadAllCoop($id);
-       return view ('show_coop',$data);
-    }
-    public function Updatecoop(Request $req){ //แสดงหน้าอัพเดตสหกรณ์
-        $coop_id=$req->input('id');
-        $coop_name=$req->input('name');
-        $coop_address=$req->input('address');
-        $coop_phone=$req->input('phone');
-        $coop_fax=$req->input('fax');
-        $coop_email=$req->input('email');
-        $coop_website=$req->input('web');
-        $coop_logo=$req->file('');
-        cooper::coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
-        return redirect ('datacoop');
-    }
-    public function Editcoop($id){ //แก้ไขข้อมูลสหกรณ์
-        $data['coop']=cooper::loadAllCooper($id);
-        return view('editcoop',$data);
-    }
-
-    public function uploadlogo(){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
-
-    }
-
-
     public function Loadagent(){ //โหลดหน้าคู่ค้า
         $Allagent=partners::loadAllPartners();
         return $Allagent;
     }
     public function Checkagent(Request $req){ //เช็คคู่ค้า
-        $agent_name=$req->input('agent');
-        $agent_name=partners::checkagent($agent_name);
-        return $agent_name;
+        $pn_name=$req->input('agent');
+        $pn_name=partners::checkPn_name($pn_name);
+        return $pn_name;
     }
     public function Saveagent(Request $req){ //บันทึกข้อมูลคู่ค้า
-        $agent_name=$req->input('name');
-        $agent_address=$req->input('address');
-        $agent_phone=$req->input('phone');
-        partners::pn_insert($agent_name,$agent_address,$agent_phone);
+        $pn_name=$req->input('name');
+        $pn_address=$req->input('address');
+        $pn_phone=$req->input('phone');
+        partners::insert_pn($pn_name,$pn_address,$pn_phone);
         Session::put('save','success');
         return redirect('dataagent');
     }
     public function Deleteagent($id){ //ลบคู่ค้า
-        partners::Delete_agent($id);
+        partners::Delete_pn($id);
         Session::put('delete','success');
         return redirect('dataagent');
     }
@@ -314,6 +271,57 @@ class Datamg extends Controller
         $data['agent']=partners::loadAllPartners($id);
         return view('editagent',$data);
     }
+
+
+    public function Loadcoop(){ //โหลดหน้าสหกรณ์
+        return view ('datacoop');
+    }
+    public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
+        $coop_name=$req->input('name');
+        $coop_address=$req->input('address');
+        $coop_phone=$req->input('phone');
+        $coop_fax=$req->input('fax');
+        $coop_email=$req->input('email');
+        $coop_logo=$req->input('logo');
+        $coop_website=$req->input('web');
+        cooper::coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
+        Session::put('save','success');
+        return redirect('datacoop');
+    }
+
+        public function Updatecoop(Request $req){ //แสดงหน้าอัพเดตสหกรณ์
+        $coop_id=$req->input('id');
+        $coop_name=$req->input('name');
+        $coop_address=$req->input('address');
+        $coop_phone=$req->input('phone');
+        $coop_fax=$req->input('fax');
+        $coop_email=$req->input('email');
+        $coop_website=$req->input('web');
+        $coop_logo=$req->file('');
+        cooper::coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
+        return redirect ('datacoop');
+    }
+
+
+    public function uploadlogo($file,$file_name){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
+        if($file){
+            $mimetype = $file->getClientMimeType();
+            if($mimetype != "image/jpeg" && $mimetype != "image/png"){ //เช็คชนิดไฟล์ว่าตรงตามเงื่อนไขไหม
+                Session::put("alert","file_mismatch");
+                return false;
+            }else{
+                $file_extension = ($mimetype == "image/jpeg") ? ".jpg":".png"; //นามสกุลไฟล์
+                $filename = $file_name.$file_extension;
+                $file->move("img",$filename);
+                return $filename;
+            }
+        }else{
+            return false;
+        }
+    }
+
+
+
 
 }
 

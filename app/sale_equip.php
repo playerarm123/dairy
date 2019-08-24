@@ -7,33 +7,34 @@ use Illuminate\Support\facades\DB;
 class Sale_equip extends Model
 {
     protected $table='Sale_equip';
-    public static function insert_se($em_id,$mb_id){
-    $se_insert=array (
-
-    "em_id" =>  $em_id,
-    "mb_id"    =>  $mb_id
-
+    public static function se_insert($sq_id,$em_id,$mb_id,$sq_date){
+    $se=array (
+    "Sq_id"=>   $sq_id,
+    "Em_id" =>  $em_id,
+    "Mb_id"    =>  $mb_id,
+    "Sq_date"=>  $sq_date
     );
 
 
 
-    DB::table("Sale_equip")->insert($se_insert );
+    DB::table("Sale_equip")->insert($se );
 
 
     }
-
-    public static function Update_se($seq_id,$em_id,$mb_id){
+    
+    public static function Update_se($sq_id,$em_id,$mb_id,$sq_date){
         $update_se=array(
-            "seq_id"=>   $seq_id,
-            "em_id" =>  $em_id,
-            "mb_id"    =>  $mb_id
+            "Sq_id"=>   $sq_id,
+            "Em_id" =>  $em_id,
+            "Mb_id"    =>  $mb_id,
+            "Sq_date"=> $sq_date
             );
-
-        DB::table("Sale_equip")->where("seq_id","=",$seq_id)->update($update_se);
-
-
-
-
+        
+        DB::table("Sale_equip")->where("Sq_id","=",$sq_id)->update($update_se);
+ 
+          
+ 
+        
      }
      public static function Delete_se($sq_id){
 
