@@ -224,11 +224,11 @@ class Datamg extends Controller
         $eq_price=$req->input('price');
         equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
-        return redirect ('datapro');
+        return redirect ('datapro'.$eq_id);
     }
     public function Editpro($id){ //แก้ไขข้อมูลอุปกรณ์
         $data['equip']=equip::loadAllEquip($id);
-        return view('editpro',$data);
+        return view('edit_datapro',$data);
     }
 
     public function Loadagent(){ //โหลดหน้าคู่ค้า

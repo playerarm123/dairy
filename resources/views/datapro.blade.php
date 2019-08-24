@@ -13,9 +13,9 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
-           function confirm_delete(eq_id){
+        function confirm_delete(eq_id){
             swal({
                 title: "ลบข้อมูล?",
                 text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
@@ -30,12 +30,12 @@
                 function(isConfirm) {
                 if (isConfirm) {
                     // ถ้ากด ใช่
-                    
+
                     $.ajax({
                         type: "GET",
                         url : "{{ url('deletepro')}}/"+eq_id,
                         success:function(data){
-                            
+
                             location.reload();
                         }
                     });
@@ -44,22 +44,45 @@
                     swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
                 }
             });
-            
-        }  
-        $(document).ready(function() {
-            var table =$('#equip').DataTable({
+
+        }
+        // $(document).ready(function() {
+        //     //ใข้เช็คข้อมมูลก่อนกดปุ่ม บันทึก
+        //     $('#form-submit').on('submit',function (e) {
+        //         // หยุดการทำงานชั่วคราว
+        //         e.preventDefault();
+
+        //         //ใช้ในการส่งข้อมูลไปตรวจสอบที่ controller
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "{{ url('check')}}",
+        //             data: {
+        //                 eq_name: $('#name').val(),
+        //                 _token: "{{ csrf_token() }}"
+        //             },asyn:true,
+        //             success:function(data){
+        //                 console.log(data);
+        //                 if(data['resultname'] == 0) {
+        //                      //สั่งให้ทำการบันทึกข้อมูลต่อไป
+        //                     $('#form-submit').unbind('submit').submit();
+        //                  }
+        //             }
+        //         });
+        //     });
+
+            // ตารางข้อมูล
+            var table =$('#datapro').DataTable({
                         "paging": true,
                         "autoWidth": false,
                         "columns": [
                             { "width": "5%" },
                             null,
-                            null,
-                            {"width": "10%"},
-                            {"width": "10%"},
                             {"width": "20%"},
-                            
-                           
-                        ],  
+                            {"width": "10%"},
+                            {"width": "12%"},
+                            {"width": "25%"}
+
+                        ],
                         "oLanguage": {
                                         "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
                                         "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
@@ -76,25 +99,38 @@
                                         }
                         },
                         "pageLength": 10 ,
-                         searching:false,
+                         searching:true,
 
                      }
 
                      );
-            
-        });
     </script>
-<style> 
-    .center {
-        margin: auto;
-        width: 90%;
-        border: 3px solid #73AD21;
-        padding: 10px;
-    }
-    .btncenter{
+    <style>
+            .right {
+                text-align: right
+            }
+            .left{
+                text-align: left
+            }
+
+            .custom-textbox {
+                margin-bottom: -20px;
+            }
+            .msg {
+                color: red;
+                display: none;
+
+            }
+            .center {
+                margin: auto;
+                width: 90%;
+                border: 3px solid #73AD21;
+                padding: 10px;
+            }
+            .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-            
+
 </style>
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานอุปกรณ์</h1><br>
@@ -131,7 +167,7 @@
                         ราคา:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" name="price" required >
+                        <input type="number" class="form-control" name="price" required >
                     </div>
             </div>
         </div>
@@ -156,6 +192,7 @@
         <tbody>
                 @foreach ($equip as $key =>$item)
                 <tr>
+                <td>{{$key+1}}</td>
                 <td>{{$item->eq_name}}</td>
                 <td>{{$item->eq_cate}}</td>
                 <td>{{$item->eq_unit}}</td>

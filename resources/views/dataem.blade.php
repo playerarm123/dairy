@@ -236,7 +236,7 @@
                     เบอร์โทร:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="number" >
+                    <input type="tel" class="form-control" name="number" >
                 </div>
             </div>
         </div>
