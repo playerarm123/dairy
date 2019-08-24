@@ -270,8 +270,21 @@ class Datamg extends Controller
         return view('editcoop',$data);
     }
 
-    public function uploadlogo(){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
-
+    public function uploadlogo($file,$file_name){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
+        if($file){
+            $mimetype = $file->getClientMimeType();
+            if($mimetype != "image/jpeg" && $mimetype != "image/png"){ //เช็คชนิดไฟล์ว่าตรงตามเงื่อนไขไหม
+                Session::put("alert","file_mismatch");
+                return false;
+            }else{
+                $file_extension = ($mimetype == "image/jpeg") ? ".jpg":".png"; //นามสกุลไฟล์
+                $filename = $file_name.$file_extension;
+                $file->move("img",$filename);
+                return $filename;
+            }
+        }else{
+            return false;
+        }
     }
 
 
