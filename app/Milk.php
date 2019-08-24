@@ -7,21 +7,23 @@ use Illuminate\Support\Facades\DB;
 class Milk extends Model
 {
             protected $table = 'milk';
-            public static function milk_insert($milk_grede,$milk_weight,$milk_in,$milk_out)
+            public static function milk_insert($milk_grade,$milk_weight,$milk_pricein,$milk_priceout)
             {
 
         $milk=array(
-            "Milk_grede"=> $milk_grede,
-            "Milk_weight"=> $milk_weight,
-            "Milk_in"=> $milk_in,
-            "Milk_out"=> $milk_out,
+            "milk_grade"=> $milk_grade,
+            "milk_weight"=> $milk_weight,
+            "milk_pricein"=> $milk_pricein,
+            "milk_priceout"=> $milk_priceout,
+            "milk_status"=> "พร้อมใช้งาน"
+
                 );
                 DB::table("milk")->insert($milk);
 
             }
-            public static function CalP_Price($milk_grede,$milk_weight){ //หน่วยต้องเป็นขีดเท่านั้น เป็นฟังชันที่เอาไว้หาราคาซื้อน้ำนม
+            public static function CalP_Price($milk_grde,$milk_weight){ //หน่วยต้องเป็นขีดเท่านั้น เป็นฟังชันที่เอาไว้หาราคาซื้อน้ำนม
                 $data=DB::table("milk")
-                ->where("Milk_grede","=",$milk_grede)
+                ->where("Milk_grade","=",$milk_grade)
                 ->get();
                 if(count($data) == 1)  { //ดักข้อมูล
                     $price = $data[0]->Milk_in;
@@ -33,24 +35,25 @@ class Milk extends Model
                     return $msb;
                 } // ถ้านับแถวได้1จะคำนวนน และส่งราคา ถ้าไม่ใช่1จะส่งข้อความส่งกลับ
             }
-            public static function checkmilk_grede($milk_grede){
+            public static function checkmilk_grade($milk_grade){
                 $data=DB::table("milk")
-                ->where("milk_grede","=",$milk_grede)
+                ->where("milk_grade","=",$milk_grade)
                 ->get();
                 $row=count($data);
             return $data;  //สร้างเพื่อเช็คข้อมูลว่าซ้ำในดาต้าเบสไหม ขั้นตอนการสมัคร
 
             }
 
-                public static function Update_milk($milk_id,$milk_grede,$milk_weight,$milk_in,$milk_out){
+                public static function Update_milk($milk_id,$milk_grade,$milk_weight,$milk_pricein,$milk_priceout){
                     $update_milk=array(
-                    "Milk_grede"=>   $milk_grede,
-                    "Milk_weight"=>  $milk_weight,
-                    "Milk_in"=>   $milk_in,
-                    "Milk_out"=>   $milk_out,
+                    "milk_grade"=>   $milk_grade,
+                    "milk_weight"=>  $milk_weight,
+                    "milk_pricein"=>   $milk_pricein,
+                    "milk_priceout"=>   $milk_priceout,
+                    "milk_status"=> "พร้อมใช้งาน"
 
                     );
-                    DB::table("milk")->where("Milk_id","=",$milk_id)->update($update_milk);
+                    DB::table("milk")->where("milk_id","=",$milk_id)->update($update_milk);
 
 
 
@@ -59,7 +62,7 @@ class Milk extends Model
             public static function Delete_milk($milk_id){
 
                 DB::table("milk")
-                ->where("Milk_id","=",$milk_id)
+                ->where("milk_id","=",$milk_id)
                 ->delete();
                 }
 
@@ -71,5 +74,16 @@ class Milk extends Model
 
             }
 
+            public static function Canclemilk($milk_id){
+                $milk_Cancel =array(
+                    "bm_status"=> "ยกเลิก"
+                );
+                    DB::table('cooper')->where("milk_id","=",$milk_id)->update($milk_Cancel);
+
+
+
+
+
+            }
 
 }

@@ -20,7 +20,7 @@ class Employee extends Model
                 "em_username"=> $em_username,
                 "em_password"=>md5($em_password),
                 "em_age"=> $em_age,
-                "em_status"=>''
+                "em_status"=>'พร้อมใช้งาน'
             );
 
 

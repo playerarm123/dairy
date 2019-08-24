@@ -31,7 +31,7 @@ class Buymilk extends Model
     }
 
 
-    public static function Cancelbm($bm_id){
+    public static function Canclebm($bm_id){
         $bm_Cancel =array(
             "bm_status"=> "ยกเลิก"
         );

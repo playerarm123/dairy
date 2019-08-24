@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Buymilk;
+use App\Milk;
 
 class Report extends Controller
 {
     public static function testmind (){
-        Buymilk::Cancelbm("1");
-
-
-
-
+        Milk::Update_milk("11","b","56","90","90");
 
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\facades\DB;
 class cooper extends Model
 {
     protected $table ='coooper';
-    public static function coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$copp_logo,$coop_status){
+    public static function coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo){
 
         $coop=array(
             "coop_name"=> $coop_name,
@@ -17,8 +17,8 @@ class cooper extends Model
             "coop_email" => $coop_email,
             "coop_website"=> $coop_website,
             "coop_logo"=> $coop_logo,
-            "coop_status"=> $coop_status
-            
+            "coop_status"=> "พร้อมใช้งาน"
+
 
                     );
 
@@ -26,8 +26,8 @@ class cooper extends Model
 
 
     }
-    
-    public static function coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$copp_logo,$coop_status){
+
+    public static function coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo){
         $coop_up=array(
             "coop_name"=> $coop_name,
             "coop_address"=> $coop_address,
@@ -36,23 +36,27 @@ class cooper extends Model
             "coop_email" => $coop_email,
             "coop_website"=> $coop_website,
             "coop_logo"=> $coop_logo,
-            "coop_status"=> $coop_status
-            
+            "coop_status"=> "พร้อมใช้งาน"
 
-         
+
+
         );
          DB::table("cooper")->where("coop_id","=",$coop_id)->update($coop_up);
- 
-     }
-    
-     public static function coop_Delete($coop_id){
-
-        DB::table("cooper")
-        ->where("coop_id","=",$coop_id)
-        ->delete();
-
-
 
      }
-     
+
+     public static function Canclecp($coop_id){
+        $cp_Cancel =array(
+            "bm_status"=> "ยกเลิก"
+        );
+            DB::table('cooper')->where("coop_id","=",$coop_id)->update($cp_Cancel);
+
+
+
+
+
+    }
+
+
+
 }
