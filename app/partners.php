@@ -13,7 +13,8 @@ class partners extends Model
 
                 "pn_name"=> $pn_name,
                 "pn_address"=> $pn_address,
-                "pn_phone"=> $pn_phone
+                "pn_phone"=> $pn_phone,
+                "pn_status"=>"พร้อมใช้งาน"
                         );
                 DB::table("partners")->insert($pn);
 
@@ -37,7 +38,8 @@ class partners extends Model
                     "pn_id"=>$pn_id,
                     "pn_name"=> $pn_name,
                     "pn_address"=> $pn_address,
-                    "pn_phone"=> $pn_phone
+                    "pn_phone"=> $pn_phone,
+                    "pn_status"=>"พร้อมใช้งาน"
                             );
 
 
@@ -61,5 +63,16 @@ class partners extends Model
                 return $AllPartners; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
 
                }
+               public static function Canclepn($pn_id){
+                $pn_Cancel =array(
+                    "pn_status"=> "ยกเลิก"
+                );
+                    DB::table('Partners')->where("pn_id","=",$pn_id)->update($pn_Cancel);
+
+
+
+
+
+            }
 
 }
