@@ -123,7 +123,11 @@ Route::post('saveacceptpm','Acceptpm@Saveacceptpm');
 Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm');
 Route::get('search_acceptpm/{id}','Acceptpm@Searchacceptpm');
 
-Route::get('testmild','Acceptpm@Testmild');
+Route::get('testmind','Report@testmind');
+
+
+
+
 
 
 
