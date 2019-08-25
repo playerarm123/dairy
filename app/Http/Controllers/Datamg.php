@@ -209,7 +209,7 @@ class Datamg extends Controller
         return redirect('datapro');
     }
     public function Deletepro($id){ //ลบอุปกรณ์
-        equip::Delete_pro($id);
+        equip::Delete_eq($id);
         Session::put('delete','success');
         return redirect('datapro');
     }
@@ -218,17 +218,58 @@ class Datamg extends Controller
        return view ('show_datapro',$data);
     }
     public function Updatepro(Request $req){ //แสดงหน้าอัพเดตอุปกรณ์
-        $equ_id=$req->input('id');
-        $equ_name=$req->input('firstname');
-        $equ_cate=$req->input('amount');
-        $equ_price=$req->input('price');
-        equip::Update_equ($equ_id,$equ_name,$equ_cate,$equ_price);
+        $eq_id=$req->input('id');
+        $eq_name=$req->input('name');
+        $eq_cate=$req->input('cate');
+        $eq_unit=$req->input('unit');
+        $eq_price=$req->input('price');
+        equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect ('datapro');
     }
     public function Editpro($id){ //แก้ไขข้อมูลอุปกรณ์
         $data['equip']=equip::loadAllEquip($id);
         return view('editpro',$data);
+    }
+
+    public function Loadagent(){ //โหลดหน้าคู่ค้า
+        $Allagent=partners::loadAllPartners();
+        return $Allagent;
+    }
+    public function Checkagent(Request $req){ //เช็คคู่ค้า
+        $agent_name=$req->input('agent');
+        $agent_name=partners::checkagent($agent_name);
+        return $agent_name;
+    }
+    public function Saveagent(Request $req){ //บันทึกข้อมูลคู่ค้า
+        $agent_name=$req->input('name');
+        $agent_address=$req->input('address');
+        $agent_phone=$req->input('phone');
+        partners::pn_insert($agent_name,$agent_address,$agent_phone);
+        Session::put('save','success');
+        return redirect('dataagent');
+    }
+    public function Deleteagent($id){ //ลบคู่ค้า
+        partners::Delete_agent($id);
+        Session::put('delete','success');
+        return redirect('dataagent');
+    }
+    public function Detailagent($id){ //แสดงรายละเอียดข้อมูลคู่ค้า
+        $data['agent']=partners::loadAllPartners($id);
+       return view ('show_agent',$data);
+    }
+    public function Updateagent(Request $req){ //แสดงหน้าอัพเดตคู่ค้า
+        $pn_id=$req->input('id');
+        $pn_name=$req->input('');
+        $pn_address=$req->input('');
+        $pn_phone=$req->input('');
+        partners::Update_Pn($pn_id,$pn_name,$pn_address,$pn_phone);
+        Session::put('save','success');
+        return redirect ('dataagent');
+    }
+    public function Editagent($id){ //แก้ไขข้อมูลคู่ค้า
+        $data['agent']=partners::loadAllPartners($id);
+        return view('editagent',$data);
     }
 
 
@@ -275,45 +316,7 @@ class Datamg extends Controller
     }
 
 
-    public function Loadagent(){ //โหลดหน้าคู่ค้า
-        $Allagent=partners::loadAllPartners();
-        return $Allagent;
-    }
-    public function Checkagent(Request $req){ //เช็คคู่ค้า
-        $agent_name=$req->input('agent');
-        $agent_name=partners::checkagent($agent_name);
-        return $agent_name;
-    }
-    public function Saveagent(Request $req){ //บันทึกข้อมูลคู่ค้า
-        $agent_name=$req->input('name');
-        $agent_address=$req->input('address');
-        $agent_phone=$req->input('phone');
-        partners::pn_insert($agent_name,$agent_address,$agent_phone);
-        Session::put('save','success');
-        return redirect('dataagent');
-    }
-    public function Deleteagent($id){ //ลบคู่ค้า
-        partners::Delete_agent($id);
-        Session::put('delete','success');
-        return redirect('dataagent');
-    }
-    public function Detailagent($id){ //แสดงรายละเอียดข้อมูลคู่ค้า
-        $data['agent']=partners::loadAllPartners($id);
-       return view ('show_agent',$data);
-    }
-    public function Updateagent(Request $req){ //แสดงหน้าอัพเดตคู่ค้า
-        $pn_id=$req->input('id');
-        $pn_name=$req->input('');
-        $pn_address=$req->input('');
-        $pn_phone=$req->input('');
-        partners::Update_Pn($pn_id,$pn_name,$pn_address,$pn_phone);
-        Session::put('save','success');
-        return redirect ('dataagent');
-    }
-    public function Editagent($id){ //แก้ไขข้อมูลคู่ค้า
-        $data['agent']=partners::loadAllPartners($id);
-        return view('editagent',$data);
-    }
+
 
 }
 
