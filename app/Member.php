@@ -64,7 +64,7 @@ class Member extends Model
     }
 
 
-     public static function loadDataMb($mb_name){ //โหลดข้อมูลงาน
+     public static function loadDataMb($id){ //โหลดข้อมูลงาน
             $data=DB::table("member")
         ->where("mb_name","=",$mb_name)
         ->get();

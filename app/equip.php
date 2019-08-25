@@ -65,14 +65,16 @@ class equip extends Model
 
         return $AllEquip; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
 
-       }
+    }
 
-       public static function loadDataEquip($eq_name){ //โหลดข้อมูล
+    public static function loadDataEquip($eq_name){ //โหลดข้อมูล
+
         $data=DB::table("equip")
         ->where("eq_name","=", $eq_name)
         ->get();
 
-    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+         return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+
     }
 
        public static function Cancleeq($eq_id){
@@ -80,7 +82,6 @@ class equip extends Model
             "eq_status"=> "ยกเลิก"
         );
             DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
-
 
     }
 
