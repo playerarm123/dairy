@@ -76,13 +76,13 @@
                         ชื่อสหกรณ์:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" name="name" required id="name">
+                        <input type="text" class="form-control" name="name"  id="name" readonly>
                     </div>
                     <div class="col-2">
                             ที่อยู่:
                         </div>
                         <div class="col-4">
-                            <input type="text" class="form-control" name="address" id="address" required>
+                            <input type="text" class="form-control" name="address" id="address" readonly>
                         </div>
                     </div>
             </div>
@@ -92,13 +92,13 @@
                         เบอร์โทร:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control"id="tel" name="tel" required>
+                        <input type="text" class="form-control"id="tel" name="tel" readonly>
                     </div>
                     <div class="col-2">
                             เบอร์แฟกซ์ :
                     </div>
                         <div class="col-4">
-                                <input type="tel" class="form-control"id="fax" name="fax" required>
+                            <input type="tel" class="form-control"id="fax" name="fax" readonly>
                         </div>
                     </div>
                 </div>
@@ -108,13 +108,13 @@
                                 โลโก้:
                         </div>
                         <div class="col-4">
-                                <input type="file" class="form-control" name="logo" required>
+                                <input type="file" class="form-control" name="logo" readonly>
                         </div>
                         <div class="col-2">
                             เว็บไซต์:
                         </div>
                         <div class="col-4">
-                        <input type="url" class="form-control" id="website" name="website" required>
+                        <input type="url" class="form-control" id="website" name="website" readonly>
                         </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                                     อีเมล:
                             </div>
                             <div class="col-4">
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" readonly>
                             </div>
                     </div>
             </div>
@@ -133,6 +133,12 @@
 
         <br>
         <div style="width:100% "class="" >
+            <button  type="submit" class="btn btn-success btncenter" >
+                <span class="fa fa-edit" >แก้ไข</span>
+            </button>
+            <button  type="submit" class="btn btn-success btncenter" >
+                <span class="fa fa-edit" >บันทึก</span>
+            </button>
             <button  type="submit" class="btn btn-success btncenter" >
                 <span class="fa fa-edit" >บันทึก</span>
             </button>
