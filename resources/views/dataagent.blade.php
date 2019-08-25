@@ -33,11 +33,7 @@
 
                     $.ajax({
                         type: "GET",
-<<<<<<< HEAD
                         url : "{{ url('deleteagent')}}/"+pn_id,
-=======
-                        url : "{{ url('deletepro')}}/"+pn_id,
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                         success:function(data){
 
                             location.reload();
@@ -86,14 +82,7 @@
 
         });
     </script>
-<<<<<<< HEAD
     <style>
-=======
-    <style> 
-            .right {
-            text-align: right
-        }
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             .center {
                 margin: auto;
                 width: 90%;
