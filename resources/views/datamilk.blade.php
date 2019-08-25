@@ -150,6 +150,7 @@
 <div class="panel-body">
     <table id="milk" class="table table-striped table-bordered table-responsive-lg">
         <thead class="bg-success">
+            <th width ="10%">ลำดับ</th>
             <th> เกรดน้ำนมดิบ</th>
             <th> จำนวน(กิโลกรัม)</th>
             <th> ราคารับซื้อ</th>
@@ -160,6 +161,7 @@
         <tbody>
                 @foreach ($milk as $key =>$item)
                 <tr>
+                <td>{{$key+1}}</td>
                 <td>{{$item->milk_grade}}</td>
                 <td>{{$item->milk_weight}}</td>
                 <td>{{$item->milk_pricein}}</td>

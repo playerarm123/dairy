@@ -68,11 +68,13 @@ class partners extends Model
                     "pn_status"=> "ยกเลิก"
                 );
                     DB::table('Partners')->where("pn_id","=",$pn_id)->update($pn_Cancel);
+             }
 
+             public static function loadDataPartners($id){ //โหลดข้อมูล
+                $data=DB::table("Partners")
+                ->where("pn_id","=", $id)
+                ->get();
 
-
-
-
-            }
-
+            return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+        }
 }

@@ -66,13 +66,15 @@ class Milk extends Model
                 ->delete();
                 }
 
+                public static function loadAllMilk(){
+                    $AllMilk=DB::table("milk")->orderBy("created_at","DESC")->get();
 
-            public static function loadAllMilk(){
-                $AllMilk=DB::table("milk")->orderBy("created_at","DESC")->get();
+                    return $AllMilk; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
 
-                return $AllMilk; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
+                }
 
-            }
+
+
 
             public static function Canclemilk($milk_id){
                 $milk_Cancel =array(
@@ -80,10 +82,13 @@ class Milk extends Model
                 );
                     DB::table('cooper')->where("milk_id","=",$milk_id)->update($milk_Cancel);
 
-
-
-
-
             }
+            public static function loadDataMilk($id){ //โหลดข้อมูล
+                $data=DB::table("milk")
+            ->where("milk_id","=",$id)
+            ->get();
+
+            return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+        }
 
 }
