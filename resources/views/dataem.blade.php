@@ -186,7 +186,7 @@
                 </div>
                 <div class="col-4">
                     <div class="custom-textbox">
-                        <input type="text" class="form-control"id="firstname" name="firstname" value="test" >
+                        <input type="text" class="form-control"id="firstname" name="firstname" value="" >
                     </div>
                     <span id="alert_name" class="msg">ชื่อและนามสกุลนี้ถูกใช้งานแล้ว</span>
                 </div>
@@ -194,7 +194,7 @@
                     นามสกุล:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control"id="lastname" name="lastname" value = "test2" >
+                    <input type="text" class="form-control"id="lastname" name="lastname" value = "" >
                 </div>
             </div>
 
@@ -268,7 +268,7 @@
                 </div>
                 <div class="col-4 right">
                     <div class="custom-textbox">
-                        <input type="text" class="form-control"id="username" name="username" value="testu" >
+                        <input type="text" class="form-control"id="username" name="username" value="" >
                     </div>
                     <span id="alert_username" class="msg">Usernameถูกต้อง</span>
                 </div>
@@ -276,7 +276,7 @@
                         Password :
                     </div>
                     <div class="col-4 right">
-                        <input type="text" id="password" class="form-control" name="password"  >
+                        <input type="password" id="password" class="form-control" name="password"  >
                     </div>
             </div>
         </div>
@@ -286,7 +286,7 @@
                         ยืนยัน Password :
                     </div>
                     <div class="col-4">
-                        <input  type="text" id="confirm_password" class="form-control" name="s"  >
+                        <input  type="password" id="confirm_password" class="form-control" name="s"  >
                     </div>
                 </div>
             </div>
