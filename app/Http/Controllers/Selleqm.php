@@ -8,8 +8,8 @@ class Selleqm extends Controller
 {
 
     public function Selleqm(){
-        $data['selleqm']=Selleqm::loadsellmilk();
-        return view('selleqm',$data);
+        // $data['sellpro']=Selleqm::loadselleqm();
+        return view('sellpro');
     }
 
 }

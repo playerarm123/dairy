@@ -10,7 +10,7 @@ class Buymilk extends Controller
 {
 
     public function Buymilk(){
-        $data['buymilk']=buymilks::loadbuymilk();
+        $data['buymilk']=buymilks::loadAllBuymilk();
         return view('buymilk',$data);
     }
 

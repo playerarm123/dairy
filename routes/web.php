@@ -104,7 +104,7 @@ Route::get('receivetool','Receive@Tool');//หน้ารับอุปกร�
 Route::post('savetool','Receive@Savetool');//บันทึกข้อมูลอุปกรณ์
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
 
-Route::get('selleqm','Selleqm@Selleqm');//หน้าขายอุปกรณ์
+Route::get('sellpro','Selleqm@Selleqm');//หน้าขายอุปกรณ์
 
 
 
