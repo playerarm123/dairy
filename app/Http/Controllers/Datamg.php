@@ -113,7 +113,7 @@ class Datamg extends Controller
         $mb_phone=$req->input('number');
         $mb_gender=$req->input('gender');
         $mb_age=$req->input('old');
-        //Member::mb_insert($mb_name,$mb_lastname,$mb_address,$mb_phone,$mb_gender,$mb_age);
+        Member::mb_insert($mb_name,$mb_lastname,$mb_address,$mb_phone,$mb_gender,$mb_age);
         Session::put('save','success');
         return redirect('datamem');
     }
@@ -150,16 +150,16 @@ class Datamg extends Controller
         return $AllMilk;
     }
     public function Checkmilk(Request $req){ //เช็คน้ำนม
-        $milk_grede=$req->input('milk');
-        $milk_grede=Milk::checkmilk_grede($milk_grede);
-        return $milk_grede;
+        $milk_grade=$req->input('milk');
+        $milk_grade=Milk::checkmilk_grede($milk_grade);
+        return $milk_grade;
     }
     public function Savemilk(Request $req){ //บันทึกข้อมูลน้ำนม
-        $milk_grede=$req->input('milk_grede');
+        $milk_grade=$req->input('milk_grade');
         $milk_weight=$req->input('milk_weight');
-        $milk_in=$req->input('milk_in');
-        $milk_out=$req->input('milk_out');
-        Milk::milk_insert( $milk_grede,$milk_weight, $milk_in,$milk_out);
+        $milk_pricein=$req->input('milk_in');
+        $milk_priceout=$req->input('milk_out');
+        Milk::milk_insert( $milk_grade,$milk_weight, $milk_pricein,$milk_priceout);
         Session::put('save','success');
         return redirect('datamilk');
     }
@@ -174,12 +174,13 @@ class Datamg extends Controller
     }
     public function Updatemilk(Request $req){ //แสดงหน้าอัพเดตน้ำนม
         $milk_id=$req->input('Milk_id');
-        $milk_grede=$req->input('milk_grede');
+        $milk_grade=$req->input('milk_grade');
         $milk_weight=$req->input('milk_weight');
-        $milk_in=$req->input('milk_in');
-        $milk_out=$req->input('milk_out');
-        Milk::Update_milk($milk_id,$milk_grede,$milk_weight,$milk_in,$milk_out);
+        $milk_pricein=$req->input('milk_pricein');
+        $milk_priceout=$req->input('milk_priceout');
+        Milk::Update_milk($milk_id,$milk_grade,$milk_weight,$milk_pricein,$milk_priceout);
         Session::put('save','success');
+
         return redirect ('detailmilk/'.$milk_id);
     }
     public function Editmilk($id){ //แก้ไขข้อมูลน้ำนม
@@ -199,10 +200,11 @@ class Datamg extends Controller
         return $equ_name;
     }
     public function Savepro(Request $req){ //บันทึกข้อมูลอุปกรณ์
+        $equ_id=$req->input('id');
         $equ_name=$req->input('name');
         $equ_number=$req->input('number');
         $equ_price=$req->input('price');
-        equip::pro_insert( $equ_name,$equ_number,$equ_price);
+        equip::insert_equ($equ_id,$equ_name,$equ_number,$equ_price);
         Session::put('save','success');
         return redirect('datapro');
     }
@@ -220,7 +222,7 @@ class Datamg extends Controller
         $equ_name=$req->input('firstname');
         $equ_cate=$req->input('amount');
         $equ_price=$req->input('price');
-        equip::Update_equ($equ_id,$equ_name,$equ_price);
+        equip::Update_equ($equ_id,$equ_name,$equ_cate,$equ_price);
         Session::put('save','success');
         return redirect ('datapro');
     }
@@ -236,37 +238,40 @@ class Datamg extends Controller
     }
     public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
         $coop_name=$req->input('name');
-        $coop_phone=$req->input('phone');
         $coop_address=$req->input('address');
+        $coop_phone=$req->input('phone');
         $coop_fax=$req->input('fax');
-        $coop_logo=$req->input('logo');
-        $coop_web=$req->input('web');
         $coop_email=$req->input('email');
-        cooper::coop_insert();
+        $coop_logo=$req->input('logo');
+        $coop_website=$req->input('web');
+        cooper::coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
         Session::put('save','success');
         return redirect('datacoop');
     }
-    public function Deletecoop($id){ //ลบสหกรณ์
-        cooper::Delete_coop($id);
-        Session::put('delete','success');
-        return redirect('datacoop');
-    }
+
     public function Detailcoop($id){ //แสดงรายละเอียดข้อมูลสหกรณ์
         $data['coop']=cooper::loadAllCoop($id);
        return view ('show_coop',$data);
     }
     public function Updatecoop(Request $req){ //แสดงหน้าอัพเดตสหกรณ์
         $coop_id=$req->input('id');
-        $coop_name=$req->input('');
-        $coop_address=$req->input('');
-        $coop_phone=$req->input('');
-        cooper::coop_update($coop_id,$coop_name,$coop_address,$coop_phone);
-        Session::put('save','success');
+        $coop_name=$req->input('name');
+        $coop_address=$req->input('address');
+        $coop_phone=$req->input('phone');
+        $coop_fax=$req->input('fax');
+        $coop_email=$req->input('email');
+        $coop_website=$req->input('web');
+        $coop_logo=$req->file('');
+        cooper::coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
         return redirect ('datacoop');
     }
     public function Editcoop($id){ //แก้ไขข้อมูลสหกรณ์
         $data['coop']=cooper::loadAllCooper($id);
         return view('editcoop',$data);
+    }
+
+    public function uploadlogo(){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
+
     }
 
 

@@ -65,7 +65,6 @@ Route::get('editpro/{id}','Datamg@Editpro');//แก้ไขข้อมูล�
 Route::get('datacoop','Datamg@Datacoop');//หน้าข้อมูลสหกรณ์
 Route::get('loadcoop','Datamg@Loadcoop');//โหลดหน้าสหกรณ์
 Route::post('savecooper','Datamg@Savecooper');//บันทึกข้อมูลสหกรณ์
-Route::get('deletecoop/{id}','Datamg@Deletecoop');//ลบสหกรณ์
 Route::get('detailcoop/{id}','Datamg@Detailcoop');//แสดงรายละเอียดสหกรณ์
 Route::post('updatecoop','Datamg@Updatecoop');//อัพเดตข้อมูลสหกรณ์
 Route::get('editcoop/{id}','Datamg@Editcoop');//แก้ไขข้อมูลสหกรณ์
