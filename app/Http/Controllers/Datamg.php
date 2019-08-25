@@ -157,8 +157,8 @@ class Datamg extends Controller
     public function Savemilk(Request $req){ //บันทึกข้อมูลน้ำนม
         $milk_grade=$req->input('milk_grade');
         $milk_weight=$req->input('milk_weight');
-        $milk_pricein=$req->input('milk_in');
-        $milk_priceout=$req->input('milk_out');
+        $milk_pricein=$req->input('milk_pricein');
+        $milk_priceout=$req->input('milk_priceout');
         Milk::milk_insert( $milk_grade,$milk_weight, $milk_pricein,$milk_priceout);
         Session::put('save','success');
         return redirect('datamilk');
@@ -195,16 +195,16 @@ class Datamg extends Controller
         return $Allpro;
     }
     public function Checkpro(Request $req){ //เช็คอุปกรณ์
-        $equ_name=$req->input('equip');
-        $equ_name=equip::checkpro($equ_name);
-        return $equ_name;
+        $eq_name=$req->input('equip');
+        $eq_name=equip::checkEq_name($eq_name);
+        return $eq_name;
     }
     public function Savepro(Request $req){ //บันทึกข้อมูลอุปกรณ์
-        $equ_id=$req->input('id');
-        $equ_name=$req->input('name');
-        $equ_number=$req->input('number');
-        $equ_price=$req->input('price');
-        equip::insert_equ($equ_id,$equ_name,$equ_number,$equ_price);
+        $eq_name=$req->input('name');
+        $eq_cate=$req->input('cate');
+        $eq_unit=$req->input('unit');
+        $eq_price=$req->input('price');
+        equip::insert_eq($eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect('datapro');
     }
