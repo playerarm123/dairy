@@ -255,7 +255,7 @@ class Datamg extends Controller
     }
     public function Detailagent($id){ //แสดงรายละเอียดข้อมูลคู่ค้า
         $data['agent']=partners::loadAllPartners($id);
-       return view ('show_agent',$data);
+       return view ('show_dataagent',$data);
     }
     public function Updateagent(Request $req){ //แสดงหน้าอัพเดตคู่ค้า
         $pn_id=$req->input('id');
@@ -268,7 +268,7 @@ class Datamg extends Controller
     }
     public function Editagent($id){ //แก้ไขข้อมูลคู่ค้า
         $data['agent']=partners::loadAllPartners($id);
-        return view('editagent',$data);
+        return view('edit_dataagent',$data);
     }
 
 

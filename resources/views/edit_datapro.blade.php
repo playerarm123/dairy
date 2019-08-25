@@ -14,7 +14,10 @@
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
-    <style>
+    <style> 
+            .right{
+                text-align: right
+            }
             .center {
                 margin: auto;
                 width: 90%;
@@ -34,13 +37,13 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     ชื่อ:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="name" required value="{{$equip[0]->eq_name}}">
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     ประเภท:
                 </div>
                 <div class="col-4">
@@ -50,13 +53,13 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
-                    จำนวน:
+                <div class="col-2 right">
+                    หน่วยนับ:
                 </div>
                 <div class="col-4">
                     <input type="number" class="form-control" name="unit" value="{{$equip[0]->eq_unit}}" required>
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                         ราคา:
                 </div>
                 <div class="col-4">

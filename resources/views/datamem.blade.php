@@ -76,7 +76,7 @@
                                         }
                         },
                         "pageLength": 10 ,
-                         searching:false,
+                         searching:true,
 
                      }
 
@@ -85,6 +85,9 @@
         });
     </script>
 <style>
+    .right {
+        text-align: right
+    }
     .center {
         margin: auto;
         width: 90%;
@@ -103,13 +106,13 @@
       @csrf
     <div class="form-group">
             <div class="row">
-                <div class="col-2">  
+                <div class="col-2 right">  
                     ชื่อ:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="firstname" required >
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                         นามสกุล:
                     </div>
                     <div class="col-3">
@@ -119,7 +122,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     เพศ:
                 </div>
                 <div class="col-4">
@@ -134,7 +137,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                         อายุ:
                     </div>
                     <div class="col-4">
@@ -146,17 +149,17 @@
             </div>
         <div class="form-group">
             <div class="row">
-                    <div class="col-2">
+                    <div class="col-2 right">
                             ที่อยู่:
                     </div>
                     <div class="col-4">
                             <textarea class="form-control" name="address" required></textarea>
                     </div>
-                <div class="col-2">
+                <div class="col-2 right">
                         เบอร์โทร:
         </div>
         <div class="col-4">
-            <input type="text" class="form-control" name="number" required>
+            <input type="tel" class="form-control" name="number" required>
         </div>
 
             </div>

@@ -34,23 +34,20 @@
 </style>
 
 <div class="center">
-<h2 style="text-align:center">แสดงรายละเอียดข้อมูลอุปกรณ์</h2><br>
+<h2 style="text-align:center">แสดงรายละเอียดข้อมูลบริษัทคู่ค้า</h2><br>
 <div class="row">
     <div class="col-3 right" > ชื่อ</div>
-    <div class="col-2">{{$equip[0]->eq_name}}</div>
-    <div class="col-3 right" > ประเภท</div>
-    <div class="col-2">{{$equip[0]->eq_cate}}</div>
+    <div class="col-2">{{$agent[0]->pn_name}}</div>
+    <div class="col-3 right" > ที่อยู่</div>
+    <div class="col-2">{{$agent[0]->pn_address}}</div>
 </div>
 <div class="row">
-        <div class="col-3 right" > หน่วยนับ</div>
-        <div class="col-2">{{$equip[0]->eq_unit}}</div>
-        <div class="col-3 right" > ราคา</div>
-        <div class="col-2">{{$equip[0]->eq_price}}</div>
+        <div class="col-3 right" > เบอร์โทรศัพท์</div>
+        <div class="col-2">{{$agent[0]->pn_phone}}</div>
     </div>
-
     <br>
     <div class="btncenter" style="width:100%" >
-    <a href={{url('/datapro')}} class="btn btn-danger " >
+    <a href={{url('/dataagent')}} class="btn btn-danger " >
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>
 </div>

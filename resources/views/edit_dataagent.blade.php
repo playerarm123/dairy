@@ -15,7 +15,7 @@
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <style>
-            .right{
+            .right {
                 text-align: right
             }
             .center {
@@ -27,44 +27,38 @@
             .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-
 </style>
 <div class="center">
-<h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานน้ำนมดิบ</h1><br>
-<form action="{{url('/updatemilk')}}" method="POST">
+<h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานบริษัทคู่ค้า</h1><br>
+<form action="{{url('/updateagent')}}" method="POST">
       @csrf
-      <input type = "hidden" name="Milk_id" value="{{$milk[0]->milk_id}}">
+      <input type = "hidden" name="pn_id" value="{{$agent[0]->pn_id}}">
 
         <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
-                    เกรดน้ำนมดิบ:
+                    ชื่อ:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="milk_grade" required value="{{$milk[0]->milk_grade}}">
+                    <input type="text" class="form-control" name="name" required value="{{$agent[0]->pn_name}}">
                 </div>
                 <div class="col-2 right">
-                    จำนวน(กิโลกรัม):
+                    ที่อยู่:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="milk_weight" value="{{$milk[0]->milk_weight}}" required>
+                    <input type="text" class="form-control" name="address" value="{{$agent[0]->pn_address}}" required>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
-                        ราคารับซื้อ:
+                        เบอร์โทรศัพท์:
                 </div>
                 <div class="col-4">
-                        <input type="text" class="form-control" name="milk_pricein"  value="{{$milk[0]->milk_pricein}}" required>
+                        <input type="double" class="form-control" name="phone"  value="{{$agent[0]->pn_phone}}" required>
                     </div>
-                <div class="col-2 right">
-                    ราคาขาย:
-                </div>
-                <div class="col-4">
-                    <input type="text" class="form-control" name="milk_priceout"  value="{{$milk[0]->milk_priceout}}" required>
-                </div>
+                
             </div>
         </div>
 
@@ -72,7 +66,7 @@
         <button  type="submit" class="btn btn-success" >
             <span class="fa fa-save" >บันทึก</span>
         </button>
-        <a href='{{url("/datamilk")}}'class="btn btn-danger " >
+        <a href='{{url("/dataagent")}}'class="btn btn-danger " >
                 <span class="fa fa-edit" >ย้อนกลับ</span>
         </a>
     </div>

@@ -13,9 +13,9 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
     <script>
-        function confirm_delete(eq_id){
+           function confirm_delete(eq_id){
             swal({
                 title: "ลบข้อมูล?",
                 text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
@@ -30,65 +30,42 @@
                 function(isConfirm) {
                 if (isConfirm) {
                     // ถ้ากด ใช่
-
+                    
                     $.ajax({
                         type: "GET",
                         url : "{{ url('deletepro')}}/"+eq_id,
                         success:function(data){
-
+                            
                             location.reload();
                         }
                     });
                 } else {
                     // ถ้ากด ไม่ใช่
-                    swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
+                    swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว 🙂", "error");
                 }
             });
-
-        }
-        // $(document).ready(function() {
-        //     //ใข้เช็คข้อมมูลก่อนกดปุ่ม บันทึก
-        //     $('#form-submit').on('submit',function (e) {
-        //         // หยุดการทำงานชั่วคราว
-        //         e.preventDefault();
-
-        //         //ใช้ในการส่งข้อมูลไปตรวจสอบที่ controller
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "{{ url('check')}}",
-        //             data: {
-        //                 eq_name: $('#name').val(),
-        //                 _token: "{{ csrf_token() }}"
-        //             },asyn:true,
-        //             success:function(data){
-        //                 console.log(data);
-        //                 if(data['resultname'] == 0) {
-        //                      //สั่งให้ทำการบันทึกข้อมูลต่อไป
-        //                     $('#form-submit').unbind('submit').submit();
-        //                  }
-        //             }
-        //         });
-        //     });
-
-            // ตารางข้อมูล
-            var table =$('#datapro').DataTable({
+            
+        }  
+        $(document).ready(function() {
+            var table =$('#equip').DataTable({
                         "paging": true,
                         "autoWidth": false,
                         "columns": [
                             { "width": "5%" },
                             null,
-                            {"width": "20%"},
+                            null,
                             {"width": "10%"},
-                            {"width": "12%"},
-                            {"width": "25%"}
-
-                        ],
+                            {"width": "10%"},
+                            {"width": "20%"},
+                            
+                           
+                        ],  
                         "oLanguage": {
-                                        "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                                        "sLengthMenu": "แสดง MENU เร็คคอร์ด ต่อหน้า",
                                         "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                                        "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                                        "sInfo": "แสดง START ถึง END ของ TOTAL เร็คคอร์ด",
                                         "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                                        "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                                        "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด MAX เร็คคอร์ด)",
                                         "sSearch": "ค้นหา :",
                                         "sLoadingRecords": "Please wait - loading...",
                                         "oPaginate": {
@@ -104,33 +81,23 @@
                      }
 
                      );
+            
+        });
     </script>
-    <style>
-            .right {
-                text-align: right
-            }
-            .left{
-                text-align: left
-            }
-
-            .custom-textbox {
-                margin-bottom: -20px;
-            }
-            .msg {
-                color: red;
-                display: none;
-
-            }
-            .center {
-                margin: auto;
-                width: 90%;
-                border: 3px solid #73AD21;
-                padding: 10px;
-            }
-            .btncenter{
+<style> 
+    .right{
+        text-align: right
+    }
+    .center {
+        margin: auto;
+        width: 90%;
+        border: 3px solid #73AD21;
+        padding: 10px;
+    }
+    .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-
+            
 </style>
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานอุปกรณ์</h1><br>
@@ -141,33 +108,37 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     ชื่ออุปกรณ์:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="name" required >
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     ประเภท:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="cate" required>
+                        <select name="cate"  class="form-control" required>
+                                <option value="อาหารสัตว์"> อาหารสัตว์ </option>
+                                <option value="ยารักษาโรค"> ยารักษาโรค </option>
+                                <option value="อุปกรณ์รีดนม"> อุปกรณ์รีดนม </option>
+                        </select>
                 </div> 
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
-                   จำนวน:
+                <div class="col-2 right">
+                   หน่วยนับ:
                 </div>
                 <div class="col-4">
                     <input type="number" class="form-control" name="unit" required>
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                         ราคา:
                     </div>
                     <div class="col-4">
-                        <input type="number" class="form-control" name="price" required >
+                        <input type="text" class="form-control" name="price" required >
                     </div>
             </div>
         </div>
@@ -185,7 +156,7 @@
             <th>ลำดับ</th>
             <th> ชื่ออุปกรณ์</th>
             <th>ประเภท</th>
-            <th> หน่วยนับ </th>
+            <th> หน่วยนับ</th>
             <th> ราคา</th>
             <th>หมายเหตุ</th>
         </thead>
@@ -210,5 +181,3 @@
 </div>
 
 @stop
-
-

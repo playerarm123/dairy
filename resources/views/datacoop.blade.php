@@ -13,79 +13,85 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
-        function load_datacoop(){
-            $.ajax({
-                type:'get',
-                url:'{{url("/showdatacoop")}}',
-                success:function(data){
-                    var table =$('#datacoop').DataTable();
-                    data.forEach(item=>{
-                        table.rows.add([{
-                            0:[''],
-                            1:[''],
-                            2:[''],
-                            3:[''],
-                            4:[''],
-                            5:[''],
-                            6:[''],
-                            7:[''],
-                        }]);
+           function confirm_delete(Mb_id){
+            swal({
+                title: "ลบข้อมูล?",
+                text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "ใช่, ลบข้อมูล",
+                cancelButtonText: "ไม่, ยกเลิกการลบ",
+                closeOnConfirm: false,
+                closeOnCancel: false
+                },
+                function(isConfirm) {
+                if (isConfirm) {
+                    // ถ้ากด ใช่
+
+                    $.ajax({
+                        type: "GET",
+                        url : "{{ url('delete')}}/"+Mb_id,
+                        success:function(data){
+
+                            location.reload();
+                        }
                     });
+                } else {
+                    // ถ้ากด ไม่ใช่
+                    swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
                 }
             });
-            table.on( 'order.dt search.dt', function () {
-                        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                            cell.innerHTML = i+1;
-                        } );
-                    } ).draw();
-        }
-        function confirm_delete(){
-            swal({
-            title: "ลบข้อมูล?",
-            text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "ใช่, ลบข้อมูล",
-            cancelButtonText: "ไม่, ยกเลิกการลบ",
-            closeOnConfirm: false,
-            closeOnCancel: false
-            },
-            function(isConfirm) {
-            if (isConfirm) {
-                swal("ลบ!", "ข้อมูลของคุณถูกลบเรียบร้อยแล้ว", "success");
-            } else {
-                swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
-            }
-            });
+
         }
         $(document).ready(function() {
-            load_datacoop();
-                // $('#datamem').DataTable(
-                // {
-                //         "oLanguage": {
-                //             "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
-                //             "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                //             "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
-                //             "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                //             "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
-                //             "sSearch": "ค้นหา :",
-                //             "sLoadingRecords": "Please wait - loading...",
-                //             "oPaginate": {
-                //                 "sFirst": "หน้าแรก",
-                //                 "sLast": "หน้าสุดท้าย",
-                //                 "sPrevious": "ก่อน",
-                //                 "sNext":"ถัดไป"
-                //             }
-                //         }
-                        
-                //     }
-                // ); 
+            var table =$('#cooper').DataTable({
+                        "paging": true,
+                        "autoWidth": false,
+                        "columns": [
+                            { "width": "5%" },
+                            null,
+                            null,
+                            null,
+                            {"width": "10%"},
+                            {"width": "20%"},
+                            null,
+                            {"width": "10%"},
+                            {"width": "20%"},
+
+
+
+                        ],
+                        "oLanguage": {
+                                        "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                                        "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                                        "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                                        "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                                        "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                                        "sSearch": "ค้นหา :",
+                                        "sLoadingRecords": "Please wait - loading...",
+                                        "oPaginate": {
+                                            "sFirst": "หน้าแรก",
+                                            "sLast": "หน้าสุดท้าย",
+                                            "sPrevious": "ก่อน",
+                                            "sNext":"ถัดไป"
+                                        }
+                        },
+                        "pageLength": 10 ,
+                         searching:true,
+
+                     }
+
+                     );
+
         });
     </script>
-<style> 
+<style>
+    .right {
+        text-align: right
+    }
     .center {
         margin: auto;
         width: 90%;
@@ -95,7 +101,7 @@
     .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-            
+
 </style>
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานสหกรณ์</h1><br>

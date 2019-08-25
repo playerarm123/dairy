@@ -34,7 +34,7 @@
 </style>
 
 <div class="center">
-<h2 style="text-align:center">แสดงรายละเอียดข้อมูลสมากชิก</h2><br>
+<h2 style="text-align:center">แสดงรายละเอียดข้อมูลสมาชิก</h2><br>
 <div class="row">
     <div class="col-3 right" > ชื่อ</div>
     <div class="col-2">{{$member[0]->mb_name}}</div>
