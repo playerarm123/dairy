@@ -33,12 +33,8 @@
         }
 
     </script>
-<<<<<<< HEAD
 <style>
 
-=======
-<style>
->>>>>>> 093617c758928d748d83c1c4240272140199f964
     .center {
         margin: auto;
         width: 90%;
