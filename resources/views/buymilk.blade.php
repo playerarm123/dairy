@@ -155,16 +155,16 @@
                            เกรด:
                             </div>
                             <div class="col-4">
+                                @foreach ($grade as $item)
                                     <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                              <input type="radio" class="form-check-input" name="grade" value="น้ำนมเกรดดี" >น้ำนมเกรดดี
-                                            </label>
-                                          </div>
-                                          <div class="form-check-inline">
-                                            <label class="form-check-label">
-                                              <input type="radio" class="form-check-input" name="grade"value="น้ำนมเกรดต่ำ" >น้ำนมเกรดต่ำ
-                                            </label>
-                                        </div>
+                                        <label class="form-check-label">
+                                          <input type="radio" class="form-check-input" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
+                                        </label>
+                                    </div>
+                                    
+                                @endforeach
+                                    
+                                          
                             </div>
 
                             <div class="col-2 right">
@@ -228,8 +228,7 @@
                         <td>{{$item->bm_wiegh}}</td>
                         <td>{{$item->bm_pricein}}</td>
                         <td>
-                                <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-warning'>แก้ไข</a>
-                                <button class='btn btn-danger' onclick='confirm_delete("{{$item->bm_id}}")'>ลบ</button>
+                                <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-danger'>แก้ไข</a>
                                 <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
                         </td>
                     </tr>

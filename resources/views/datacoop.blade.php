@@ -46,6 +46,9 @@
         });
     </script>
 <style>
+    .right{
+        text-align: right
+    }
     .center {
         margin: auto;
         width: 90%;
@@ -72,29 +75,29 @@
 
             <div class="form-group">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-2 right">
                         ชื่อสหกรณ์:
                     </div>
                     <div class="col-4">
                         <input type="text" class="form-control" name="name"  id="name" readonly>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 right">
                             ที่อยู่:
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 ">
                             <input type="text" class="form-control" name="address" id="address" readonly>
                         </div>
                     </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-2 right">
                         เบอร์โทร:
                     </div>
                     <div class="col-4">
                         <input type="text" class="form-control"id="tel" name="tel" readonly>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 right">
                             เบอร์แฟกซ์ :
                     </div>
                         <div class="col-4">
@@ -104,13 +107,13 @@
                 </div>
             <div class="form-group">
                 <div class="row">
-                        <div class="col-2">
+                        <div class="col-2 right">
                                 โลโก้:
                         </div>
                         <div class="col-4">
                                 <input type="file" class="form-control" name="logo" readonly>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 right">
                             เว็บไซต์:
                         </div>
                         <div class="col-4">
@@ -119,8 +122,8 @@
                 </div>
             </div>
             <div class="form-group">
-                    <div class="row">
-                            <div class="col-2">
+                    <div class="row"> 
+                            <div class="col-2 right">
                                     อีเมล:
                             </div>
                             <div class="col-4">
@@ -129,17 +132,15 @@
                     </div>
             </div>
                 <br><br>
-
-
         <br>
-        <div style="width:100% "class="" >
-            <button  type="submit" class="btn btn-success btncenter" >
+        <div style="width:100% "class=" btncenter" >
+            <button  type="submit" class="btn btn-success " >
                 <span class="fa fa-edit" >บันทึก</span>
             </button>
-            <button  type="submit" class="btn btn-success btncenter" >
-                <span class="fa fa-edit" >แก้ไข5555</span>
+            <button  type="submit" class="btn btn-warning " >
+                <span class="fa fa-edit" >แก้ไข</span>
             </button>
-            <button  type="submit" class="btn btn-success btncenter" >
+            <button  type="submit" class="btn btn-danger " >
                 <span class="fa fa-edit" >ยกเลิก</span>
             </button>
         </div>
