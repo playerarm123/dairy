@@ -13,11 +13,11 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
         $(document).ready(function(){
             $('#price').on('keyup',function(){
-                
+
                 var total = 0;
                 var rate = $('#rate').val();
                 total=rate*$(this).val();
@@ -31,10 +31,10 @@
         function change_color(){
             $('#save').attr('style','background-color:red');
         }
-     
+
     </script>
-<style> 
-    
+<style>
+
     .center {
         margin: auto;
         width: 90%;
@@ -50,7 +50,7 @@
         .left{
             text-align: left
         }
-            
+
 </style>
 <div class="center">
 <h1 style="text-align:center">ระบบรับซื้อน้ำนมดิบ</h1><br>
@@ -63,7 +63,7 @@
                <h3> ข้อมูลสมาชิก</h3>
                 </div>
             </div>
-        </div> 
+        </div>
     <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
@@ -96,7 +96,7 @@
                        <h3> ข้อมูลน้ำนมดิบ</h3>
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div class="form-group">
                         <div class="row">
                             <div class="col-2 right">
@@ -114,7 +114,7 @@
                                             </label>
                                         </div>
                             </div>
-  
+
                             <div class="col-2 right">
                                     ช่วงเวลา:
                                     </div>
@@ -129,7 +129,7 @@
                                                       <input type="radio" class="form-check-input" name="ranger"value="ช่วงเย็น" >ช่วงเย็น
                                                     </label>
                                                 </div>
-                                            
+
                                     </div>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                                                 <input type="number" class="form-control" name="memid" required>
                                         </div>
                             </div>
-                        </div>
+                    </div>
     <br>
 <br><br>
 
