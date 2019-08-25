@@ -15,6 +15,19 @@
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
+
+        function search_member(){
+            $.ajax({
+                url:"{{url('searchmem')}}/"+$('#mb_id').val(),
+                type:"get",
+                success:function(data){
+                    $('#name').val(data['name']);
+                    $('lastname').val(data['lastname']);
+                }
+
+            })
+            
+        }
         $(document).ready(function(){
             $('#price').on('keyup',function(){
 
@@ -28,9 +41,42 @@
 
 
         });
-        function change_color(){
-            $('#save').attr('style','background-color:red');
-        }
+       
+        
+            // ตารางข้อมูล
+            var table =$('#buymilk').DataTable({
+                        "paging": true,
+                        "autoWidth": false,
+                        "columns": [
+                            { "width": "5%" },
+                            null,
+                            {"width": "20%"},
+                            {"width": "10%"},
+                            {"width": "12%"},
+                            {"width": "25%"}
+
+                        ],
+                        "oLanguage": {
+                                        "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                                        "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                                        "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                                        "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                                        "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                                        "sSearch": "ค้นหา :",
+                                        "sLoadingRecords": "Please wait - loading...",
+                                        "oPaginate": {
+                                            "sFirst": "หน้าแรก",
+                                            "sLast": "หน้าสุดท้าย",
+                                            "sPrevious": "ก่อน",
+                                            "sNext":"ถัดไป"
+                                        }
+                        },
+                        "pageLength": 10 ,
+                         searching:true,
+
+                     }
+
+                     );
 
     </script>
 <style>
@@ -70,7 +116,12 @@
                     รหัสสมาชิก:
                 </div>
                 <div class="col-4">
-                        <input type="text" class="form-control" name="memid" required>
+                        <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid">
+                                <div class="input-group-append">
+                                  <button class="input-group-text btn" onclick="search_member">ค้นหา</button>
+                                </div>
+                              </div>
                 </div>
             </div>
         </div>
@@ -80,13 +131,13 @@
                     ชื่อ:
                     </div>
                     <div class="col-4">
-                            <input type="text" class="form-control" name="memid" required>
+                            <input type="text" class="form-control" name="name" id="name" disabled="disabled">
                     </div>
                     <div class="col-2 right">
                             นามสกุล:
                             </div>
                             <div class="col-4">
-                                    <input type="text" class="form-control" name="memid" required>
+                                    <input type="text" class="form-control" name="lastname" id="lastname" disabled="disabled">
                             </div>
                 </div>
             </div>
@@ -137,13 +188,13 @@
                     <div class="form-group">
                             <div class="row">
                                 <div class="col-2 right">
-                                        น้ำหนัก(กิโลกรัม)::
+                                        น้ำหนักรับซื้อ(กิโลกรัม)::
                                 </div>
                                 <div class="col-4">
                                         <input type="number" class="form-control" name="memid" required>
                                 </div>
                                 <div class="col-2 right">
-                                        ราคารับซื้อ:
+                                        ราคารับซื้อสุทธิ:
                                 </div>
                                         <div class="col-4 ">
                                                 <input type="number" class="form-control" name="memid" required>
@@ -151,13 +202,42 @@
                             </div>
                     </div>
     <br>
-
-</div>
 <div style="width:100% "class="" >
         <button  type="submit" id = "save"class="btn btn-success btncenter" >
-            <span class="fa fa-edit" >บันทึก</span>
+            <span class="fa fa-edit">บันทึก</span>
         </button>
     </div>
+    <br>
+    <div class="panel-body">
+            <table id="buymilk" class="table table-striped table-bordered table-responsive-lg">
+                <thead class="bg-success ">
+                    <th>ลำดับ</th>
+                    <th>รหัสสมาชิก</th>
+                    <th>รหัสน้ำนมดิบ</th>
+                    <th>น้ำหนักรับซื้อ(กิโลกรัม)</th>
+                    <th>ราคารับซื้อสุทธิ</th>
+                    <th>หมายเหตุ</th>
+                </thead>
+                <tbody>
+                    @foreach ($buymilk as $key =>$item)
+                    <tr>
+                        <td>{{$key+1}}</td>
+                        <td>{{$item->mb_id}}</td>
+                        <td>{{$item->milk_id}}</td>
+                        <td>{{$item->bm_wiegh}}</td>
+                        <td>{{$item->bm_pricein}}</td>
+                        <td>
+                                <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-warning'>แก้ไข</a>
+                                <button class='btn btn-danger' onclick='confirm_delete("{{$item->bm_id}}")'>ลบ</button>
+                                <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
+                        </td>
+                    </tr>
+                    @endforeach
+        
+                </tbody>
+        
+            </table>
+        </div>
 </form>
 </div>
 
