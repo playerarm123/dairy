@@ -137,7 +137,7 @@
                 <span class="fa fa-edit" >บันทึก</span>
             </button>
             <button  type="submit" class="btn btn-success btncenter" >
-                <span class="fa fa-edit" >แก้ไข</span>
+                <span class="fa fa-edit" >แก้ไข5555</span>
             </button>
             <button  type="submit" class="btn btn-success btncenter" >
                 <span class="fa fa-edit" >ยกเลิก</span>
