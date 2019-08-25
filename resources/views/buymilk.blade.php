@@ -34,6 +34,7 @@
      
     </script>
 <style> 
+    
     .center {
         margin: auto;
         width: 90%;
@@ -96,41 +97,63 @@
                         </div>
                     </div>
                 </div> 
+                <div class="form-group">
+                        <div class="row">
+                            <div class="col-2 right">
+                           เกรด:
+                            </div>
+                            <div class="col-4">
+                                    <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input" name="grade" value="น้ำนมเกรดดี" >น้ำนมเกรดดี
+                                            </label>
+                                          </div>
+                                          <div class="form-check-inline">
+                                            <label class="form-check-label">
+                                              <input type="radio" class="form-check-input" name="grade"value="น้ำนมเกรดต่ำ" >น้ำนมเกรดต่ำ
+                                            </label>
+                                        </div>
+                            </div>
+  
+                            <div class="col-2 right">
+                                    ช่วงเวลา:
+                                    </div>
+                                    <div class="col-4">
+                                            <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                      <input type="radio" class="form-check-input" name="range" value="ช่วงเช้า" >ช่วงเช้า
+                                                    </label>
+                                                  </div>
+                                                  <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                      <input type="radio" class="form-check-input" name="ranger"value="ช่วงเย็น" >ช่วงเย็น
+                                                    </label>
+                                                </div>
+                                            
+                                    </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                            <div class="row">
+                                <div class="col-2 right">
+                                        น้ำหนัก(กิโลกรัม)::
+                                </div>
+                                <div class="col-4">
+                                        <input type="number" class="form-control" name="memid" required>
+                                </div>
+                                <div class="col-2 right">
+                                        ราคารับซื้อ:
+                                </div>
+                                        <div class="col-4 ">
+                                                <input type="number" class="form-control" name="memid" required>
+                                        </div>
+                            </div>
+                        </div>
     <br>
 <br><br>
-<div class="panel-body">
-    <table id="datamilk" class="table table-striped table-bordered table-responsive-lg">
-        <thead class="bg-success">
-            <th>ลำดับ</th>
-            <th>เกรดน้ำนมดิบ</th>
-            <th>ราคา/หน่วย</th>
-            <th>จำนวน(กิโลกรัม)</th>
-            <th>ราคารับซื้อ</th>
-            <th> </th>
-        </thead>
-        <tbody id="milk">
-            <tr>
-                <td>1</td>
-                <td >เกรด A</td>
-                <td><input type="hidden" id="rate"value="20">20</td>
-                <td ><input id="price" type="text" name="price" ></td>
-                <td ><input  type="text" id="cost" value=""></td>
-                <td><a class='btn btn-warning ' id ="test"style="background:red" onclick='clear("")'>เคลียร์</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>เกรด B</td>
-                <td>19</td>
-                <td><input type="text" name="price"></td>
-                <td>19</td>
-                <td><a  class='btn btn-warning' onclick='$("#test").attr("style","background:black")'>เคลียร์5</a></td>
-            </tr>
-            
-        </tbody>
-                
-    </table>
 
-</div>
+
 <div style="width:100% "class="" >
         <button  type="submit" id = "save"class="btn btn-success btncenter" >
             <span class="fa fa-edit" >บันทึก</span>
@@ -138,6 +161,7 @@
     </div>
 </form>
 </div>
+
 
 
 @stop
