@@ -61,9 +61,9 @@
 
                         ],
                         "oLanguage": {
-                                        "sLengthMenu": "แสดง MENU เร็คคอร์ด ต่อหน้า",
+                                        "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
                                         "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                                        "sInfo": "แสดง START ถึง END ของ TOTAL เร็คคอร์ด",
+                                        "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
                                         "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
                                         "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด MAX เร็คคอร์ด)",
                                         "sSearch": "ค้นหา :",
@@ -84,14 +84,7 @@
 
         });
     </script>
-<<<<<<< HEAD
 <style>
-=======
-<style> 
-    .right{
-        text-align: right
-    }
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
     .center {
         margin: auto;
         width: 90%;
@@ -122,26 +115,13 @@
                     ประเภท:
                 </div>
                 <div class="col-4">
-<<<<<<< HEAD
                     <input type="text" class="form-control" name="cate" required>
                 </div>
-=======
-                        <select name="cate"  class="form-control" required>
-                                <option value="อาหารสัตว์"> อาหารสัตว์ </option>
-                                <option value="ยารักษาโรค"> ยารักษาโรค </option>
-                                <option value="อุปกรณ์รีดนม"> อุปกรณ์รีดนม </option>
-                        </select>
-                </div> 
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-<<<<<<< HEAD
                 <div class="col-2">
-=======
-                <div class="col-2 right">
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                    หน่วยนับ:
                 </div>
                 <div class="col-4">
@@ -169,11 +149,7 @@
             <th>ลำดับ</th>
             <th> ชื่ออุปกรณ์</th>
             <th>ประเภท</th>
-<<<<<<< HEAD
             <th>หน่วยนับ</th>
-=======
-            <th> หน่วยนับ</th>
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             <th> ราคา</th>
             <th>หมายเหตุ</th>
         </thead>
