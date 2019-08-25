@@ -11,14 +11,14 @@ class cooper extends Model
     public static function coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo){
 
         $coop=array(
-            "coop_name"=> $coop_name,
-            "coop_address"=> $coop_address,
-            "coop_phone"=> $coop_phone,
-            "coop_fax"=> $coop_fax,
-            "coop_email" => $coop_email,
-            "coop_website"=> $coop_website,
-            "coop_logo"=> $coop_logo,
-            "coop_status"=> "พร้อมใช้งาน"
+            "coop_name"     => $coop_name,
+            "coop_address"  => $coop_address,
+            "coop_phone"    => $coop_phone,
+            "coop_fax"      => $coop_fax,
+            "coop_email"    => $coop_email,
+            "coop_website"  => $coop_website,
+            "coop_logo"     => $coop_logo,
+            "coop_status"   => "พร้อมใช้งาน"
 
 
                     );
@@ -30,14 +30,14 @@ class cooper extends Model
 
     public static function coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo){
         $coop_up=array(
-            "coop_name"=> $coop_name,
-            "coop_address"=> $coop_address,
-            "coop_phone"=> $coop_phone,
-            "coop_fax"=> $coop_fax,
-            "coop_email" => $coop_email,
-            "coop_website"=> $coop_website,
-            "coop_logo"=> $coop_logo,
-            "coop_status"=> "พร้อมใช้งาน"
+            "coop_name"     => $coop_name,
+            "coop_address"  => $coop_address,
+            "coop_phone"    => $coop_phone,
+            "coop_fax"      => $coop_fax,
+            "coop_email"    => $coop_email,
+            "coop_website"  => $coop_website,
+            "coop_logo"     => $coop_logo,
+            "coop_status"   => "พร้อมใช้งาน"
 
 
 
