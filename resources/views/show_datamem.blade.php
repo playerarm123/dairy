@@ -56,7 +56,7 @@
 
     <br>
     <div class="btncenter" style="width:100%" >
-    <a href={{url('/datamem')}} class="btn btn-danger " >
+    <a href={{url('datamem')}} class="btn btn-danger " >
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>
 </div>

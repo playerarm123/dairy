@@ -36,6 +36,7 @@ class Datamg extends Controller
     public function Datacoop(){ //หน้าข้อมูลสหกรณ์
         return view('datacoop');
     }
+
     public function Loaduser(){ //โหลดข้อมูลผู้ใช้
         $alldata=Employee::loadAllData();
         return $alldata;
@@ -122,11 +123,11 @@ class Datamg extends Controller
         return redirect('datamem');
     }
     public function Detailmem($id){ //แสดงรายละเอียดข้อมูลสมาชิก
-        $data['member']=Member::loadAllmb($id);
+        $data['member']=Member::loadDataMb($id);
        return view ('show_datamem',$data);
     }
     public function Updatemem(Request $req){ //แสดงหน้าอัพเดตสมาชิก
-        $mb_id=$req->input('Mb_id');
+        $mb_id=$req->input('mb_id');
         $mb_name=$req->input('firstname');
         $mb_lastname=$req->input('lastname');
         $mb_address=$req->input('address');
@@ -138,7 +139,7 @@ class Datamg extends Controller
         return redirect ('detailmem/'.$mb_id);
     }
     public function Editdatamem($id){ //แก้ไขข้อมูลสมาชิก
-        $data['member']=Member::loadAllmb($id);
+        $data['member']=Member::loadDataMb($id);
         return view('edit_datamem',$data);
     }
 
@@ -168,7 +169,7 @@ class Datamg extends Controller
         return redirect('datamilk');
     }
     public function Detailmilk($id){ //แสดงรายละเอียดข้อมูลน้ำนม
-        $data['milk']=Milk::loadAllMilk($id);
+        $data['milk']=Milk::loadDataMilk($id);
        return view ('show_datamilk',$data);
     }
     public function Updatemilk(Request $req){ //แสดงหน้าอัพเดตน้ำนม
@@ -179,11 +180,10 @@ class Datamg extends Controller
         $milk_priceout=$req->input('milk_priceout');
         Milk::Update_milk($milk_id,$milk_grade,$milk_weight,$milk_pricein,$milk_priceout);
         Session::put('save','success');
-
         return redirect ('detailmilk/'.$milk_id);
     }
     public function Editmilk($id){ //แก้ไขข้อมูลน้ำนม
-        $data['milk']=Milk::loadAllMilk($id);
+        $data['milk']=Milk::loadDataMilk($id);
         return view('edit_datamilk',$data);
     }
 
@@ -213,21 +213,21 @@ class Datamg extends Controller
         return redirect('datapro');
     }
     public function Detailpro($id){ //แสดงรายละเอียดข้อมูลอุปกรณ์
-        $data['equip']=equip::loadAllEquip($id);
+        $data['equip']=equip::loadDataEquip($id);
        return view ('show_datapro',$data);
     }
     public function Updatepro(Request $req){ //แสดงหน้าอัพเดตอุปกรณ์
-        $eq_id=$req->input('id');
+        $eq_id=$req->input('eq_id');
         $eq_name=$req->input('name');
         $eq_cate=$req->input('cate');
         $eq_unit=$req->input('unit');
         $eq_price=$req->input('price');
         equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
-        return redirect ('datapro'.$eq_id);
+        return redirect ('detailpro/'.$eq_id);
     }
     public function Editpro($id){ //แก้ไขข้อมูลอุปกรณ์
-        $data['equip']=equip::loadAllEquip($id);
+        $data['equip']=equip::loadDataEquip($id);
         return view('edit_datapro',$data);
     }
 
@@ -254,20 +254,20 @@ class Datamg extends Controller
         return redirect('dataagent');
     }
     public function Detailagent($id){ //แสดงรายละเอียดข้อมูลคู่ค้า
-        $data['agent']=partners::loadAllPartners($id);
+        $data['agent']=partners::loadDataPartners($id);
        return view ('show_dataagent',$data);
     }
     public function Updateagent(Request $req){ //แสดงหน้าอัพเดตคู่ค้า
-        $pn_id=$req->input('id');
-        $pn_name=$req->input('');
-        $pn_address=$req->input('');
-        $pn_phone=$req->input('');
+        $pn_id=$req->input('pn_id');
+        $pn_name=$req->input('name');
+        $pn_address=$req->input('address');
+        $pn_phone=$req->input('phone');
         partners::Update_Pn($pn_id,$pn_name,$pn_address,$pn_phone);
         Session::put('save','success');
-        return redirect ('dataagent');
+        return redirect ('detailagent/'.$pn_id);
     }
     public function Editagent($id){ //แก้ไขข้อมูลคู่ค้า
-        $data['agent']=partners::loadAllPartners($id);
+        $data['agent']=partners::loadDataPartners($id);
         return view('edit_dataagent',$data);
     }
 

@@ -156,7 +156,11 @@
 <div class="panel-body">
     <table id="milk" class="table table-striped table-bordered table-responsive-lg">
         <thead class="bg-success">
+<<<<<<< HEAD
+            <th width ="10%">ลำดับ</th>
+=======
             <th> ลำดับ</th>
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             <th> เกรดน้ำนมดิบ</th>
             <th> จำนวน(กิโลกรัม)</th>
             <th> ราคารับซื้อ</th>

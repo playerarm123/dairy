@@ -34,7 +34,7 @@
 
 <form action="{{ url('/updatemem') }}" method="POST">
       @csrf
-      <input type = "hidden" name="Mb_id" value="{{$member[0]->mb_id}}">
+      <input type = "hidden" name="mb_id" value="{{$member[0]->mb_id}}">
 
         <div class="form-group">
             <div class="row">

@@ -14,10 +14,14 @@
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+<<<<<<< HEAD
+    <style>
+=======
     <style> 
             .right{
                 text-align: right
             }
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             .center {
                 margin: auto;
                 width: 90%;
@@ -37,13 +41,21 @@
 
         <div class="form-group">
             <div class="row">
+<<<<<<< HEAD
+                <div class="col-2">
+=======
                 <div class="col-2 right">
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                     ชื่อ:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="name" required value="{{$equip[0]->eq_name}}">
                 </div>
+<<<<<<< HEAD
+                <div class="col-2">
+=======
                 <div class="col-2 right">
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                     ประเภท:
                 </div>
                 <div class="col-4">
@@ -53,13 +65,22 @@
         </div>
         <div class="form-group">
             <div class="row">
+<<<<<<< HEAD
+                <div class="col-2">
+                    จำนวน:
+=======
                 <div class="col-2 right">
                     หน่วยนับ:
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                 </div>
                 <div class="col-4">
                     <input type="number" class="form-control" name="unit" value="{{$equip[0]->eq_unit}}" required>
                 </div>
+<<<<<<< HEAD
+                <div class="col-2">
+=======
                 <div class="col-2 right">
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                         ราคา:
                 </div>
                 <div class="col-4">
@@ -82,5 +103,8 @@
 </div>
 
 @stop
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af

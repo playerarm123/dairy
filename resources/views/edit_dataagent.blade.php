@@ -15,9 +15,12 @@
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <style>
+<<<<<<< HEAD
+=======
             .right {
                 text-align: right
             }
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             .center {
                 margin: auto;
                 width: 90%;
@@ -27,6 +30,10 @@
             .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
 </style>
 <div class="center">
 <h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานบริษัทคู่ค้า</h1><br>
@@ -36,13 +43,21 @@
 
         <div class="form-group">
             <div class="row">
+<<<<<<< HEAD
+                <div class="col-2">
+=======
                 <div class="col-2 right">
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                     ชื่อ:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="name" required value="{{$agent[0]->pn_name}}">
                 </div>
+<<<<<<< HEAD
+                <div class="col-2">
+=======
                 <div class="col-2 right">
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                     ที่อยู่:
                 </div>
                 <div class="col-4">
@@ -52,6 +67,15 @@
         </div>
         <div class="form-group">
             <div class="row">
+<<<<<<< HEAD
+                <div class="col-2">
+                        เบอร์โทรศัพท์:
+                </div>
+                <div class="col-4">
+                        <input type="text" class="form-control" name="phone"  value="{{$agent[0]->pn_phone}}" required>
+                    </div>
+
+=======
                 <div class="col-2 right">
                         เบอร์โทรศัพท์:
                 </div>
@@ -59,6 +83,7 @@
                         <input type="double" class="form-control" name="phone"  value="{{$agent[0]->pn_phone}}" required>
                     </div>
                 
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             </div>
         </div>
 

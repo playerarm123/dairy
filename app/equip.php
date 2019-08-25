@@ -71,10 +71,13 @@ class equip extends Model
         );
             DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
 
-
-
-
-
     }
+    public static function loadDataEquip($id){ //โหลดข้อมูล
+        $data=DB::table("equip")
+        ->where("eq_id","=", $id)
+        ->get();
+
+    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+}
 
 }
