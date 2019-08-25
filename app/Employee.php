@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 class Employee extends Model
+//complete
 {
     protected $table = 'employee';
     public static function emp_insert($em_name,$em_lastname,$em_gender,$em_age,$em_address,$em_phone,$em_position,$em_username,$em_password)
@@ -67,7 +68,8 @@ class Employee extends Model
         "em_address"=> $em_address,
         "em_phone"=> $em_phone,
         "em_password"=>md5($em_password),
-        "em_age"=> $em_age
+        "em_age"=> $em_age,
+        "em_status"=>'พร้อมใช้งาน'
        );
 
         DB::table("employee")->where("em_id","=",$em_id)->update($update);
@@ -84,9 +86,9 @@ class Employee extends Model
     }
 
 
-    public static function loadDataEmp($id){ //โหลดข้อมูลผู้ใช้
+    public static function loadDataEmp($em_id){ //โหลดข้อมูลผู้ใช้
         $data=DB::table("employee")
-       ->where("em_id","=",$id)
+       ->where("em_id","=",$em_id)
        ->get();
 
         return $data; //ส่งข้อมูลผู้ใช้ให้คอนโทลเลอร์

@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 Use Illuminate\Support\Facades\DB;
 class Member extends Model
+
+//complete
 {
     protected $table = 'member';
     public static function mb_insert($mb_name,$mb_lastname,$mb_address,$mb_phone,$mb_gender,$mb_age)
@@ -17,7 +19,7 @@ class Member extends Model
         "mb_phone"=> $mb_phone,
         "mb_gender"=> $mb_gender,
         "mb_age"=> $mb_age,
-        "mb_status"=>''
+        "mb_status"=>'พร้อมใช้งาน'
 
               );
 
@@ -34,7 +36,7 @@ class Member extends Model
                 "mb_phone"=> $mb_phone,
                 "mb_gender"=> $mb_gender,
                 "mb_age"=> $mb_age,
-                "mb_status"=> ''
+                "mb_status"=> 'พร้อมใช้งาน'
 
 
             );
@@ -64,7 +66,7 @@ class Member extends Model
 
      public static function loadDataMb($mb_name){ //โหลดข้อมูลงาน
             $data=DB::table("member")
-        ->where("Mb_name","=",$mb_name)
+        ->where("mb_name","=",$mb_name)
         ->get();
 
         return $data; //ส่งข้อมูลพนักงานให้คอนโทลเลอร์
@@ -78,5 +80,15 @@ class Member extends Model
 
 
     }
+
+    public static function Canclemb($mb_id){
+        $mb_Cancel =array(
+            "mb_status"=> "ยกเลิก"
+        );
+            DB::table('member')->where("mb_id","=",$mb_id)->update($mb_Cancel);
+
+
+    }
+
 
 }

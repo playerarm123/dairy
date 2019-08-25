@@ -4,42 +4,44 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
-class Sale_equip extends Model
+class sale_equip extends Model
 {
-    protected $table='Sale_equip';
-    public static function se_insert($sq_id,$em_id,$mb_id,$sq_date){
-    $se=array (
-    "Sq_id"=>   $sq_id,
-    "Em_id" =>  $em_id,
-    "Mb_id"    =>  $mb_id,
-    "Sq_date"=>  $sq_date
+    protected $table='sale_equip';
+    public static function insert_se($em_id,$mb_id,$seq_date){
+    $insert_se=array (
+
+    "em_id" =>  $em_id,
+    "mb_id" =>  $mb_id,
+    "seq_date"=>  $seq_date,
+    "seq_status"=>"พร้อมใช้งาน"
     );
 
 
 
-    DB::table("Sale_equip")->insert($se );
+    DB::table("sale_equip")->insert($insert_se );
 
 
     }
-    
-    public static function Update_se($sq_id,$em_id,$mb_id,$sq_date){
-        $update_se=array(
-            "Sq_id"=>   $sq_id,
-            "Em_id" =>  $em_id,
-            "Mb_id"    =>  $mb_id,
-            "Sq_date"=> $sq_date
-            );
-        
-        DB::table("Sale_equip")->where("Sq_id","=",$sq_id)->update($update_se);
- 
-          
- 
-        
-     }
-     public static function Delete_se($sq_id){
 
-        DB::table("Sale_equip")
-        ->where("Sq_id","=",$sq_id)
+    public static function Update_se($seq_id,$em_id,$mb_id,$seq_date){
+        $update_se=array(
+            "seq_id"=>   $seq_id,
+            "em_id" =>  $em_id,
+            "mb_id"    =>  $mb_id,
+            "seq_date"=> $seq_date,
+            "seq_status"=>"พร้อมใช้งาน"
+            );
+
+        DB::table("sale_equip")->where("seq_id","=",$seq_id)->update($update_se);
+
+
+
+
+     }
+     public static function Delete_se($seq_id){
+
+        DB::table("sale_equip")
+        ->where("seq_id","=",$seq_id)
         ->delete();
 
 
@@ -47,9 +49,19 @@ class Sale_equip extends Model
     }
 
     public static function loadAllSale_equip(){
-        $AllSale_equip=DB::table("Sale_equip")->orderBy("created_at","DESC")->get();
+        $AllSale_equip=DB::table("sale_equip")->orderBy("created_at","DESC")->get();
 
         return $AllSale_equip; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
 
     }
+    public static function loadDataSale_equip($seq_id){ //โหลดข้อมูล
+        $data=DB::table("sale_equip")
+    ->where("seq_id","=",$seq_id)
+    ->get();
+
+    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+    }
+
+
+
 }
