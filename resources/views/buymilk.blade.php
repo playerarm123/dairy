@@ -18,11 +18,12 @@
 
         function search_member(){
             $.ajax({
-                url:"{{url('searchmem')}}/"+$('#mb_id').val(),
+                url:"{{url('searchmem')}}/"+$('#memberid').val(),
                 type:"get",
                 success:function(data){
+                    console.log(data);
                     $('#name').val(data['name']);
-                    $('lastname').val(data['lastname']);
+                    $('#lastname').val(data['lastname']);
                 }
 
             })
@@ -119,7 +120,7 @@
                         <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid">
                                 <div class="input-group-append">
-                                  <button class="input-group-text btn" onclick="search_member">ค้นหา</button>
+                                  <a class="input-group-text btn" onclick="search_member()">ค้นหา</a>
                                 </div>
                               </div>
                 </div>
@@ -212,7 +213,7 @@
             <table id="buymilk" class="table table-striped table-bordered table-responsive-lg">
                 <thead class="bg-success ">
                     <th>ลำดับ</th>
-                    <th>รหัสสมาชิก</th>
+                    <th>รหัสรับซื้อน้ำนมดิบ</th>
                     <th>รหัสน้ำนมดิบ</th>
                     <th>น้ำหนักรับซื้อ(กิโลกรัม)</th>
                     <th>ราคารับซื้อสุทธิ</th>
@@ -222,7 +223,7 @@
                     @foreach ($buymilk as $key =>$item)
                     <tr>
                         <td>{{$key+1}}</td>
-                        <td>{{$item->mb_id}}</td>
+                        <td>{{$item->bm_id}}</td>
                         <td>{{$item->milk_id}}</td>
                         <td>{{$item->bm_wiegh}}</td>
                         <td>{{$item->bm_pricein}}</td>
