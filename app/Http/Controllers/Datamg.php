@@ -34,8 +34,7 @@ class Datamg extends Controller
         return view('dataagent',$data);
     }
     public function Datacoop(){ //หน้าข้อมูลสหกรณ์
-        $data['cooper']=cooper::loadAllCooper();
-        return view('datacoop',$data);
+        return view('datacoop');
     }
     public function Loaduser(){ //โหลดข้อมูลผู้ใช้
         $alldata=Employee::loadAllData();
@@ -52,7 +51,7 @@ class Datamg extends Controller
             'resultusername'=>$resultusername
         );
         return $data;
-        //fx;g
+
     }
     public function Savedataem(Request $req){ //บันทึกข้อมูลผุ้ใช้
         $name=$req->input('firstname');
@@ -204,6 +203,7 @@ class Datamg extends Controller
         $eq_cate=$req->input('cate');
         $eq_unit=$req->input('unit');
         $eq_price=$req->input('price');
+        dd($eq_cate,$eq_unit);
         equip::insert_eq($eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect('datapro');
@@ -237,20 +237,20 @@ class Datamg extends Controller
         return $Allagent;
     }
     public function Checkagent(Request $req){ //เช็คคู่ค้า
-        $agent_name=$req->input('agent');
-        $agent_name=partners::checkagent($agent_name);
-        return $agent_name;
+        $pn_name=$req->input('agent');
+        $pn_name=partners::checkPn_name($pn_name);
+        return $pn_name;
     }
     public function Saveagent(Request $req){ //บันทึกข้อมูลคู่ค้า
-        $agent_name=$req->input('name');
-        $agent_address=$req->input('address');
-        $agent_phone=$req->input('phone');
-        partners::pn_insert($agent_name,$agent_address,$agent_phone);
+        $pn_name=$req->input('name');
+        $pn_address=$req->input('address');
+        $pn_phone=$req->input('phone');
+        partners::insert_pn($pn_name,$pn_address,$pn_phone);
         Session::put('save','success');
         return redirect('dataagent');
     }
     public function Deleteagent($id){ //ลบคู่ค้า
-        partners::Delete_agent($id);
+        partners::Delete_pn($id);
         Session::put('delete','success');
         return redirect('dataagent');
     }
@@ -274,8 +274,7 @@ class Datamg extends Controller
 
 
     public function Loadcoop(){ //โหลดหน้าสหกรณ์
-        $Allcooper=cooper::loadAllCooper();
-        return $Allcooper;
+        return view ('datacoop');
     }
     public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
         $coop_name=$req->input('name');
@@ -290,11 +289,7 @@ class Datamg extends Controller
         return redirect('datacoop');
     }
 
-    public function Detailcoop($id){ //แสดงรายละเอียดข้อมูลสหกรณ์
-        $data['coop']=cooper::loadAllCoop($id);
-       return view ('show_coop',$data);
-    }
-    public function Updatecoop(Request $req){ //แสดงหน้าอัพเดตสหกรณ์
+        public function Updatecoop(Request $req){ //แสดงหน้าอัพเดตสหกรณ์
         $coop_id=$req->input('id');
         $coop_name=$req->input('name');
         $coop_address=$req->input('address');
@@ -306,10 +301,7 @@ class Datamg extends Controller
         cooper::coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
         return redirect ('datacoop');
     }
-    public function Editcoop($id){ //แก้ไขข้อมูลสหกรณ์
-        $data['coop']=cooper::loadAllCooper($id);
-        return view('editcoop',$data);
-    }
+
 
     public function uploadlogo($file,$file_name){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
         if($file){
