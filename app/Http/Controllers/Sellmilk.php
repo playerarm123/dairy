@@ -7,10 +7,12 @@ use App\Salemilk;
 use App\partners;
 class Sellmilk extends Controller
 {
+
     public function Sellmilk(){
+        // $data['partners']=partners::searchpartners();
+        // $data['sellmilk']=Salemilk::loadAllSaleMilk();
         return view('sellmilk');
     }
-
 
     public function Savesellmilk(Request $req){ //บันทึกข้อการขายน้ำนม
         $sm_id=$req->input('');
