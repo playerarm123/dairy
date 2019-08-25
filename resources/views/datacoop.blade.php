@@ -13,56 +13,16 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
-        function load_datacoop(){
-            $.ajax({
-                type:'get',
-                url:'{{url("/showdatacoop")}}',
-                success:function(data){
-                    var table =$('#datacoop').DataTable();
-                    data.forEach(item=>{
-                        table.rows.add([{
-                            0:[''],
-                            1:[''],
-                            2:[''],
-                            3:[''],
-                            4:[''],
-                            5:[''],
-                            6:[''],
-                            7:[''],
-                        }]);
-                    });
-                }
-            });
-            table.on( 'order.dt search.dt', function () {
-                        table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-                            cell.innerHTML = i+1;
-                        } );
-                    } ).draw();
+        function edit(){
+            $('#name').removeAttr('disabled');
+
         }
-        function confirm_delete(){
-            swal({
-            title: "ลบข้อมูล?",
-            text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonClass: "btn-danger",
-            confirmButtonText: "ใช่, ลบข้อมูล",
-            cancelButtonText: "ไม่, ยกเลิกการลบ",
-            closeOnConfirm: false,
-            closeOnCancel: false
-            },
-            function(isConfirm) {
-            if (isConfirm) {
-                swal("ลบ!", "ข้อมูลของคุณถูกลบเรียบร้อยแล้ว", "success");
-            } else {
-                swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
-            }
-            });
+        function cancel_edit(){
+
         }
         $(document).ready(function() {
-            load_datacoop();
                 // $('#datamem').DataTable(
                 // {
                 //         "oLanguage": {
@@ -80,12 +40,12 @@
                 //                 "sNext":"ถัดไป"
                 //             }
                 //         }
-                        
+
                 //     }
-                // ); 
+                // );
         });
     </script>
-<style> 
+<style>
     .center {
         margin: auto;
         width: 90%;
@@ -95,113 +55,90 @@
     .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-            
+
 </style>
 <div class="center">
-<h1 style="text-align:center">จัดการข้อมูลพื้นฐานสหกรณ์</h1><br>
+    <h1 style="text-align:center">จัดการข้อมูลพื้นฐานสหกรณ์</h1><br>
 
-<form action="{{ url('/savecooper') }}" method="POST" id='form-submit'>
-      @csrf
+    <form action="{{ url('/savecooper') }}" method="POST" id='form-submit'>
+        @csrf
+        <input type="hidden" name="" id="name">
+        <input type="hidden" name="" id="address">
+        <input type="hidden" name="" id="tel">
+        <input type="hidden" name="" id="fax">
+        <input type="hidden" name="" id="website">
 
 
-    
-        <div class="form-group">
-            <div class="row">
-                <div class="col-2">
-                    ชื่อสหกรณ์:
-                </div>
-                <div class="col-4">
-                    <input type="text" class="form-control" name="firstname" required >
-                </div>
-                <div class="col-2">
-                        ที่อยู่:
-                    </div>
-                    <div class="col-4">
-                        <input type="text" class="form-control" name="lastname" required>
-                    </div>
-                </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-2">
-                    เบอร์โทร:
-                </div>
-                <div class="col-4">
-                    <input type="tel" class="form-control" name="tel" required>
-                </div>
-                <div class="col-2">
-                        เบอร์แฟกซ์ :
-                </div>
-                    <div class="col-4">
-                            <input type="tel" class="form-control" name="fax" required>
-                    </div>     
-                </div>
-            </div>
-        <div class="form-group">
-            <div class="row">
-                    <div class="col-2">
-                            โลโก้:
-                    </div>
-                    <div class="col-4">
-                            <input type="file" class="form-control" name="logo" required>
-                    </div>
-                    <div class="col-2">
-                        เว็บไซต์:
-                    </div>
-                    <div class="col-4">
-                    <input type="url" class="form-control" name="website" required>
-                    </div>
-            </div>
-        </div>
-        <div class="form-group">
+
+            <div class="form-group">
                 <div class="row">
-                        <div class="col-2">
-                                อีเมล:
+                    <div class="col-2">
+                        ชื่อสหกรณ์:
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="form-control" name="name" required id="name">
+                    </div>
+                    <div class="col-2">
+                            ที่อยู่:
                         </div>
                         <div class="col-4">
-                                <input type="email" class="form-control" name="logo" required>
+                            <input type="text" class="form-control" name="address" id="address" required>
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-2">
+                        เบอร์โทร:
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="form-control"id="tel" name="tel" required>
+                    </div>
+                    <div class="col-2">
+                            เบอร์แฟกซ์ :
+                    </div>
+                        <div class="col-4">
+                                <input type="tel" class="form-control"id="fax" name="fax" required>
+                        </div>
+                    </div>
+                </div>
+            <div class="form-group">
+                <div class="row">
+                        <div class="col-2">
+                                โลโก้:
+                        </div>
+                        <div class="col-4">
+                                <input type="file" class="form-control" name="logo" required>
+                        </div>
+                        <div class="col-2">
+                            เว็บไซต์:
+                        </div>
+                        <div class="col-4">
+                        <input type="url" class="form-control" id="website" name="website" required>
                         </div>
                 </div>
-        </div>
-            <br><br> 
-            
+            </div>
+            <div class="form-group">
+                    <div class="row">
+                            <div class="col-2">
+                                    อีเมล:
+                            </div>
+                            <div class="col-4">
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                    </div>
+            </div>
+                <br><br>
 
-    <br>
-    <div style="width:100% "class="" >
-        <button  type="submit" class="btn btn-success btncenter" >
-            <span class="fa fa-edit" >บันทึก</span>
-        </button>
-    </div>
-</form> 
-<br><br>
-<div class="panel-body">
-    <table id="datacoop" class="table table-striped table-bordered table-responsive-lg">
-        <thead class="bg-success">
-            <th> ลำดับ </th>
-            <th> ชื่อสหกรณ์</th>
-            <th> ที่อยู่</th>
-            <th> เบอร์โทร</th>
-            <th> เบอร์แฟกซ์</th>
-            <th> โลโก้</th>
-            <th> เว็บไซต์</th>
-            <th> อีเมล</th>  
-            <th>หมายเหตุ</th>
-        </thead>
-        <tbody>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><button class="btn btn-warning">แก้ไข</button>
-                <button class="btn btn-danger" onclick="confirm_delete()">ลบ</button>
-                <button class="btn btn-success">รายละเอียด</button></td>
-             </tbody>           
-    </table>
-</div>
+
+        <br>
+        <div style="width:100% "class="" >
+            <button  type="submit" class="btn btn-success btncenter" >
+                <span class="fa fa-edit" >บันทึก</span>
+            </button>
+        </div>
+    </form>
+
 </div>
 
 
