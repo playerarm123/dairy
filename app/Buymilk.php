@@ -4,16 +4,17 @@ namespace App;
 // เสร็จแล้ว
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\facades\Session;
 class Buymilk extends Model
 {
-    public static function bm_insert($em_id,$mb_id,$milk_id,$bm_wiegh,$bm_pricein,$bm_date,$bm_range){
+    public static function bm_insert($mb_id,$milk_id,$bm_wiegh,$bm_pricein,$bm_range){
         $Bm=array(
-            "em_id"=> $em_id,
+            "em_id"=> Session::get("em_id"),
             "mb_id"=> $mb_id,
             "milk_id"=> $milk_id,
             "bm_wiegh"=> $bm_wiegh,
             "bm_pricein"=> $bm_pricein,
-            "bm_date"=> $bm_date,
+            "bm_date"=> date("Y-m-d"),
             "bm_range"=>$bm_range,
             "bm_status"=> "พร้อมใช้งาน"
         );
