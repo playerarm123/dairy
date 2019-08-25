@@ -14,9 +14,7 @@
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
-    <style> .right{
-        text-align: right
-    }
+    <style>
             .center {
                 margin: auto;
                 width: 90%;
@@ -34,17 +32,17 @@
 
 <form action="{{ url('/updatemem') }}" method="POST">
       @csrf
-      <input type = "hidden" name="mb_id" value="{{$member[0]->mb_id}}">
+      <input type = "hidden" name="Mb_id" value="{{$member[0]->mb_id}}">
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2 right">
+                <div class="col-2">
                     ชื่อ:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="firstname" required value="{{$member[0]->mb_name}}">
                 </div>
-                <div class="col-2 right">
+                <div class="col-2">
                     นามสกุล:
                 </div>
                 <div class="col-4">
@@ -54,7 +52,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2 right">
+                <div class="col-2">
                     เพศ:
                 </div>
                 <div class="col-4">
@@ -70,7 +68,7 @@
                     </div>
 
                 </div>
-                <div class="col-2 right">
+                <div class="col-2">
                     อายุ:
                 </div>
                 <div class="col-4">
@@ -80,13 +78,13 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2 right">
+                <div class="col-2">
                         ที่อยู่:
                 </div>
                 <div class="col-4">
                         <textarea class="form-control" name="address" required > {{$member[0]->mb_address}}</textarea>
                 </div>
-                <div class="col-2 right">
+                <div class="col-2">
                     เบอร์โทร:
                 </div>
                 <div class="col-4">

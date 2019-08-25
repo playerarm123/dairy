@@ -186,7 +186,7 @@
                 </div>
                 <div class="col-4">
                     <div class="custom-textbox">
-                        <input type="text" class="form-control"id="firstname" name="firstname" value="" >
+                        <input type="text" class="form-control"id="firstname" name="firstname" value="test" >
                     </div>
                     <span id="alert_name" class="msg">ชื่อและนามสกุลนี้ถูกใช้งานแล้ว</span>
                 </div>
@@ -194,7 +194,7 @@
                     นามสกุล:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control"id="lastname" name="lastname" value = "" >
+                    <input type="text" class="form-control"id="lastname" name="lastname" value = "test2" >
                 </div>
             </div>
 
@@ -236,7 +236,7 @@
                     เบอร์โทร:
                 </div>
                 <div class="col-4">
-                    <input type="tel" class="form-control" name="number" >
+                    <input type="text" class="form-control" name="number" >
                 </div>
             </div>
         </div>
@@ -268,15 +268,15 @@
                 </div>
                 <div class="col-4 right">
                     <div class="custom-textbox">
-                        <input type="text" class="form-control"id="username" name="username" value="" >
+                        <input type="text" class="form-control"id="username" name="username" value="testu" >
                     </div>
                     <span id="alert_username" class="msg">Usernameถูกต้อง</span>
                 </div>
-                <div class="col-2 right">
+                <div class="col-2">
                         Password :
                     </div>
                     <div class="col-4 right">
-                        <input type="password" id="password" class="form-control" name="password"  >
+                        <input type="text" id="password" class="form-control" name="password"  >
                     </div>
             </div>
         </div>
@@ -286,7 +286,7 @@
                         ยืนยัน Password :
                     </div>
                     <div class="col-4">
-                        <input  type="password" id="confirm_password" class="form-control" name="s"  >
+                        <input  type="text" id="confirm_password" class="form-control" name="s"  >
                     </div>
                 </div>
             </div>

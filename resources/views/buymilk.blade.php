@@ -33,8 +33,12 @@
         }
 
     </script>
+<<<<<<< HEAD
 <style>
 
+=======
+<style>
+>>>>>>> 093617c758928d748d83c1c4240272140199f964
     .center {
         margin: auto;
         width: 90%;
@@ -151,9 +155,8 @@
                             </div>
                     </div>
     <br>
-<br><br>
 
-
+</div>
 <div style="width:100% "class="" >
         <button  type="submit" id = "save"class="btn btn-success btncenter" >
             <span class="fa fa-edit" >บันทึก</span>
@@ -161,7 +164,6 @@
     </div>
 </form>
 </div>
-
 
 
 @stop

@@ -87,24 +87,25 @@ Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงราย
 
 
 Route::get('sellmilk','Sellmilk@Sellmilk');//หน้าข้อมูลขายน้ำนม
-Route::post('savesellmilk','Sellmilk@Savesellmilk'); //บันทึกข้อมูลขายน้ำนม
-Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk'); //รายละเอียดขายน้ำนม
-Route::get('search_partners/{id}','Sellmilk@Searchpartners'); //ค้นหาคู่ค้า
+Route::post('savesellmilk','Sellmilk@Savesellmilk');
+Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk');
+Route::get('search_partners/{id}','Sellmilk@Searchpartners');
 
 
 
-Route::get('oder','Ordereqm@Ordereqm');//หน้าสั่งซื้ออุปกรณ
+Route::get('oder','Ordereqm@Ordereqm');//หน้าสั่งซื้ออุปกรณ์
 
+Route::get('receivedrug','Receive@Drug');//หน้ารับอุปกรณ์ยา
+Route::post('savedrug','Receive@Savedrug');//บันทึกข้อมูลยา
+Route::get('detaildrug/{id}','Receive@Detaildrug');//แสดงรายละเอียดยา
 
+Route::get('receivefood','Receive@Food');//หน้ารับอุปกรณ์อาหาร
+Route::post('savefood','Receive@Savefood');//บันทึกข้อมูลอาหาร
+Route::get('detailfood/{id}','Receive@Detailfood');//แสดงรายละเอียดอาหาร
 
-
-Route::get('receiveequip','Receive@Receiveequip');//หน้ารับอุปกรณ์
-Route::get('receivedrug','Receive@Receivedrug');
-Route::get('receivefood','Receive@Receivefood');
-Route::get('receivetool','Receive@Receivetool');
-Route::post('saveequip','Receive@Saveequip');//บันทึกข้อมูลอุปกรณ์
-Route::get('detailequip/{id}','Receive@Detailequip');//แสดงรายละเอียดยา
-
+Route::get('receivetool','Receive@Tool');//หน้ารับอุปกรณ์
+Route::post('savetool','Receive@Savetool');//บันทึกข้อมูลอุปกรณ์
+Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
 
 Route::get('sellpro','Selleqm@Selleqm');//หน้าขายอุปกรณ์
 

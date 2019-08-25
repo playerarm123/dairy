@@ -1,10 +1,10 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
 class partners extends Model
+//complete
 {
                 protected $table='partners';
                 public static function insert_pn($pn_name,$pn_address,$pn_phone) {
@@ -56,25 +56,27 @@ class partners extends Model
 
 
 
-           }
+              }
             public static function loadAllPartners(){
                 $AllPartners=DB::table("Partners")->orderBy("created_at","DESC")->get();
 
                 return $AllPartners; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
 
-               }
-               public static function Canclepn($pn_id){
-                $pn_Cancel =array(
-                    "pn_status"=> "ยกเลิก"
-                );
-                    DB::table('Partners')->where("pn_id","=",$pn_id)->update($pn_Cancel);
              }
 
-             public static function loadDataPartners($id){ //โหลดข้อมูล
+               public static function loadDatapartner($pn_id){ //โหลดข้อมูล
                 $data=DB::table("Partners")
-                ->where("pn_id","=", $id)
-                ->get();
+                    ->where("pn_id","=",$pn_id)
+                    ->get();
 
-            return $data; //ส่งข้อมูลให้คอนโทลเลอร์
-        }
+                    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+             }
+
+               public static function Canclepn($pn_id){
+                    $pn_Cancel =array(
+                    "pn_status"=> "ยกเลิก");
+                     DB::table('Partners')->where("pn_id","=",$pn_id)->update($pn_Cancel);
+
+              }
+
 }

@@ -77,7 +77,7 @@
                                         }
                         },
                         "pageLength": 10 ,
-                         searching:true,
+                         searching:false,
 
                      }
 
@@ -86,9 +86,6 @@
         });
     </script>
 <style>
-    .right{
-        text-align: right
-    }
     .center {
         margin: auto;
         width: 90%;
@@ -111,16 +108,13 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2 right">
+                <div class="col-2">
                     เกรดน้ำนมดิบ:
                 </div>
                 <div class="col-4">
-                        <select name="milk_grade"  class="form-control" required>
-                                <option value="น้ำนมเกรดดี"> น้ำนมเกรดดี</option>
-                                <option value="น้ำนมเกรดต่ำ"> น้ำนมเกรดต่ำ </option>
-                        </select>
+                                <input type="text" class="form-control" name="milk_grade" required>
                         </div>
-                <div class="col-2 right">
+                <div class="col-2">
                         จำนวน(กิโลกรัม):
                     </div>
                     <div class="col-4">
@@ -129,13 +123,13 @@
             </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2 right">
+                <div class="col-2">
                     ราคารับซื้อ:
                 </div>
                 <div class="col-4">
                     <input type="number" class="form-control" name="milk_pricein" required>
                 </div>
-                <div class="col-2 right">
+                <div class="col-2">
                         ราคาขาย:
                     </div>
                     <div class="col-4">
@@ -156,11 +150,6 @@
 <div class="panel-body">
     <table id="milk" class="table table-striped table-bordered table-responsive-lg">
         <thead class="bg-success">
-<<<<<<< HEAD
-            <th width ="10%">ลำดับ</th>
-=======
-            <th> ลำดับ</th>
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             <th> เกรดน้ำนมดิบ</th>
             <th> จำนวน(กิโลกรัม)</th>
             <th> ราคารับซื้อ</th>
@@ -171,7 +160,6 @@
         <tbody>
                 @foreach ($milk as $key =>$item)
                 <tr>
-                <td>{{$key+1}}</td>
                 <td>{{$item->milk_grade}}</td>
                 <td>{{$item->milk_weight}}</td>
                 <td>{{$item->milk_pricein}}</td>

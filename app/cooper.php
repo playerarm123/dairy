@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
 class cooper extends Model
+//complete
 {
     protected $table ='coooper';
     public static function coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo){
@@ -44,18 +45,16 @@ class cooper extends Model
          DB::table("cooper")->where("coop_id","=",$coop_id)->update($coop_up);
 
      }
+     public static function loadDatacoop($coop_id){ //โหลดข้อมูลสหกรณ์
+        $data=DB::table("cooper")
+       ->where("coop_id","=",$coop_id)
+       ->get();
 
-     public static function Canclecp($coop_id){
-        $cp_Cancel =array(
-            "bm_status"=> "ยกเลิก"
-        );
-            DB::table('cooper')->where("coop_id","=",$coop_id)->update($cp_Cancel);
-
-
-
-
-
+        return $data; //ส่งข้อมูลสหกรณ์ให้คอนโทลเลอร์
     }
+
+
+
 
 
 

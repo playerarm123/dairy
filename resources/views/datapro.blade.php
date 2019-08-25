@@ -13,7 +13,7 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
     <script>
            function confirm_delete(eq_id){
             swal({
@@ -30,22 +30,22 @@
                 function(isConfirm) {
                 if (isConfirm) {
                     // ถ้ากด ใช่
-
+                    
                     $.ajax({
                         type: "GET",
                         url : "{{ url('deletepro')}}/"+eq_id,
                         success:function(data){
-
+                            
                             location.reload();
                         }
                     });
                 } else {
                     // ถ้ากด ไม่ใช่
-                    swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว 🙂", "error");
+                    swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
                 }
             });
-
-        }
+            
+        }  
         $(document).ready(function() {
             var table =$('#equip').DataTable({
                         "paging": true,
@@ -57,15 +57,15 @@
                             {"width": "10%"},
                             {"width": "10%"},
                             {"width": "20%"},
-
-
-                        ],
+                            
+                           
+                        ],  
                         "oLanguage": {
                                         "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
                                         "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
                                         "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
                                         "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                                        "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด MAX เร็คคอร์ด)",
+                                        "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
                                         "sSearch": "ค้นหา :",
                                         "sLoadingRecords": "Please wait - loading...",
                                         "oPaginate": {
@@ -76,15 +76,15 @@
                                         }
                         },
                         "pageLength": 10 ,
-                         searching:true,
+                         searching:false,
 
                      }
 
                      );
-
+            
         });
     </script>
-<style>
+<style> 
     .center {
         margin: auto;
         width: 90%;
@@ -94,40 +94,40 @@
     .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-
+            
 </style>
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานอุปกรณ์</h1><br>
 
 <form action="{{ url('/savepro') }}" method="POST" id='form-submit'>
       @csrf
-
+      
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2 right">
+                <div class="col-2">
                     ชื่ออุปกรณ์:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="name" required >
                 </div>
-                <div class="col-2 right">
+                <div class="col-2">
                     ประเภท:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="cate" required>
-                </div>
+                </div> 
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-2">
-                   หน่วยนับ:
+                   จำนวน:
                 </div>
                 <div class="col-4">
                     <input type="number" class="form-control" name="unit" required>
                 </div>
-                <div class="col-2 right">
+                <div class="col-2">
                         ราคา:
                     </div>
                     <div class="col-4">
@@ -140,7 +140,7 @@
             <span class="fa fa-edit" >บันทึก</span>
         </button>
     </div>
-</form>
+</form> 
 <br><br>
 <br><br>
 <div class="panel-body">
@@ -149,14 +149,13 @@
             <th>ลำดับ</th>
             <th> ชื่ออุปกรณ์</th>
             <th>ประเภท</th>
-            <th>หน่วยนับ</th>
+            <th> หน่วยนับ </th>
             <th> ราคา</th>
             <th>หมายเหตุ</th>
         </thead>
         <tbody>
                 @foreach ($equip as $key =>$item)
                 <tr>
-                <td>{{$key+1}}</td>
                 <td>{{$item->eq_name}}</td>
                 <td>{{$item->eq_cate}}</td>
                 <td>{{$item->eq_unit}}</td>
@@ -168,9 +167,11 @@
                 </td>
                 </tr>
                 @endforeach
-        </tbody>
-
+        </tbody>          
+                
     </table>
 </div>
 
 @stop
+
+

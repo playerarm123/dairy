@@ -1,10 +1,7 @@
 <?php
 
 namespace App;
-// ทดสอบ clone git
-// ใช้ได้แล้ว
-//  sdfsdfs;ddd
-//mmmmmm
+// เสร็จแล้ว
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
 class Buymilk extends Model
@@ -20,14 +17,22 @@ class Buymilk extends Model
             "bm_range"=>$bm_range,
             "bm_status"=> "พร้อมใช้งาน"
         );
-        DB::table("buymilk")->insert($Bm);
+        DB::table("buy_milk")->insert($Bm);
 
     }
 
 
     public static function loadAllBuymilk(){
-        $AllBuymilk=DB::table("buymilk")->orderBy("created_at","DESC")->get();
+        $AllBuymilk=DB::table("buy_milk")->orderBy("created_at","DESC")->get();
         return $AllBuymilk; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
+    }
+
+    public static function loadDataBuymilk($bm_id){ //โหลดข้อมูล
+        $data=DB::table("buy_milk")
+    ->where("bm_id","=",$bm_id)
+    ->get();
+
+    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
     }
 
 
@@ -35,12 +40,7 @@ class Buymilk extends Model
         $bm_Cancel =array(
             "bm_status"=> "ยกเลิก"
         );
-            DB::table('buymilk')->where("bm_id","=",$bm_id)->update($bm_Cancel);
-
-
-
-
-
+            DB::table('buy_milk')->where("bm_id","=",$bm_id)->update($bm_Cancel);
     }
 
 }

@@ -1,10 +1,11 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 class Milk extends Model
+
+//complete
 {
             protected $table = 'milk';
             public static function milk_insert($milk_grade,$milk_weight,$milk_pricein,$milk_priceout)
@@ -76,12 +77,19 @@ class Milk extends Model
 
 
 
+            public static function loadDataMilk($milk_grade){ //โหลดข้อมูล
+                $data=DB::table("milk")
+            ->where("milk_grade","=",$milk_grade)
+            ->get();
+
+            return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+            }
+
             public static function Canclemilk($milk_id){
                 $milk_Cancel =array(
-                    "bm_status"=> "ยกเลิก"
+                    "milk_status"=> "ยกเลิก"
                 );
                     DB::table('cooper')->where("milk_id","=",$milk_id)->update($milk_Cancel);
-
             }
             public static function loadDataMilk($id){ //โหลดข้อมูล
                 $data=DB::table("milk")
