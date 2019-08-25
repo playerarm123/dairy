@@ -47,7 +47,11 @@
     </div>
     <br>
     <div class="btncenter" style="width:100%" >
+<<<<<<< HEAD
     <a href={{url('dataagent')}} class="btn btn-danger " >
+=======
+    <a href={{url('/dataagent')}} class="btn btn-danger " >
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>
 </div>

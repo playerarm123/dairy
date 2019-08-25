@@ -236,7 +236,7 @@
                     เบอร์โทร:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="number" >
+                    <input type="tel" class="form-control" name="number" >
                 </div>
             </div>
         </div>
@@ -272,7 +272,7 @@
                     </div>
                     <span id="alert_username" class="msg">Usernameถูกต้อง</span>
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                         Password :
                     </div>
                     <div class="col-4 right">

@@ -14,7 +14,9 @@
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
-    <style>
+    <style> .right{
+        text-align: right
+    }
             .center {
                 margin: auto;
                 width: 90%;
@@ -36,13 +38,13 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     ชื่อ:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="firstname" required value="{{$member[0]->mb_name}}">
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     นามสกุล:
                 </div>
                 <div class="col-4">
@@ -52,7 +54,7 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     เพศ:
                 </div>
                 <div class="col-4">
@@ -68,7 +70,7 @@
                     </div>
 
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     อายุ:
                 </div>
                 <div class="col-4">
@@ -78,13 +80,13 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                         ที่อยู่:
                 </div>
                 <div class="col-4">
                         <textarea class="form-control" name="address" required > {{$member[0]->mb_address}}</textarea>
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     เบอร์โทร:
                 </div>
                 <div class="col-4">

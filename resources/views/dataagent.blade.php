@@ -33,7 +33,11 @@
 
                     $.ajax({
                         type: "GET",
+<<<<<<< HEAD
                         url : "{{ url('deleteagent')}}/"+pn_id,
+=======
+                        url : "{{ url('deletepro')}}/"+pn_id,
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
                         success:function(data){
 
                             location.reload();
@@ -52,8 +56,6 @@
                         "autoWidth": false,
                         "columns": [
                             { "width": "5%" },
-                            null,
-                            null,
                             null,
                             {"width": "10%"},
                             {"width": "12%"},
@@ -76,7 +78,7 @@
                                         }
                         },
                         "pageLength": 10 ,
-                         searching:false,
+                         searching:true,
 
                      }
 
@@ -84,7 +86,14 @@
 
         });
     </script>
+<<<<<<< HEAD
     <style>
+=======
+    <style> 
+            .right {
+            text-align: right
+        }
+>>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
             .center {
                 margin: auto;
                 width: 90%;
@@ -103,13 +112,13 @@
       @csrf
     <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     ชื่อบริษัท:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="name" required >
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     ที่อยู่:
                 </div>
                 <div class="col-4">
@@ -119,11 +128,11 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                    เบอร์โทร:
                 </div>
                 <div class="col-4">
-                    <input type="tel" class="form-control" name="phone" required>
+                    <input type="double" class="form-control" name="phone" required>
                 </div>
             </div>
         </div>
