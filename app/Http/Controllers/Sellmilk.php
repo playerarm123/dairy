@@ -7,13 +7,11 @@ use App\Salemilk;
 use App\partners;
 class Sellmilk extends Controller
 {
-   
     public function Sellmilk(){
-        $data['partners']=partners::searchpartners();
-        $data['sellmilk']=Salemilk::loadAllSaleMilk();
-        return view('sellmilk',$data);
+        return view('sellmilk');
     }
-   
+
+
     public function Savesellmilk(Request $req){ //บันทึกข้อการขายน้ำนม
         $sm_id=$req->input('');
         $em_id=$req->input('');
@@ -25,11 +23,11 @@ class Sellmilk extends Controller
         Session ::put('save','success');
         return redirect('sellmilk');
     }
-    
+
     public function Detailsellmilk($id){ //แสดงรายละเอียดข้อมูลการขายน้ำนม
         $data['salemilk']=Salemilk::loadAllSaleMilk($id);
        return view ('show_datasellmilk',$data);
     }
-   
-  
+
+
 }
