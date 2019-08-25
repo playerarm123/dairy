@@ -224,17 +224,10 @@ class Datamg extends Controller
         $eq_price=$req->input('price');
         equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
-<<<<<<< HEAD
         return redirect ('detailpro/'.$eq_id);
     }
     public function Editpro($id){ //แก้ไขข้อมูลอุปกรณ์
         $data['equip']=equip::loadDataEquip($id);
-=======
-        return redirect ('datapro'.$eq_id);
-    }
-    public function Editpro($id){ //แก้ไขข้อมูลอุปกรณ์
-        $data['equip']=equip::loadAllEquip($id);
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
         return view('edit_datapro',$data);
     }
 
@@ -261,11 +254,7 @@ class Datamg extends Controller
         return redirect('dataagent');
     }
     public function Detailagent($id){ //แสดงรายละเอียดข้อมูลคู่ค้า
-<<<<<<< HEAD
         $data['agent']=partners::loadDataPartners($id);
-=======
-        $data['agent']=partners::loadAllPartners($id);
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
        return view ('show_dataagent',$data);
     }
     public function Updateagent(Request $req){ //แสดงหน้าอัพเดตคู่ค้า
@@ -278,11 +267,7 @@ class Datamg extends Controller
         return redirect ('detailagent/'.$pn_id);
     }
     public function Editagent($id){ //แก้ไขข้อมูลคู่ค้า
-<<<<<<< HEAD
         $data['agent']=partners::loadDataPartners($id);
-=======
-        $data['agent']=partners::loadAllPartners($id);
->>>>>>> d81889f7aefc0434cc3c5518d14f03bee542a2af
         return view('edit_dataagent',$data);
     }
 
