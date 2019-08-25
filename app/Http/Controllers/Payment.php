@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Member;
 class Payment extends Controller
 {
-   
+
     public function Payment(){
-        return view('paymilk');
+        $data['payment']=Payment::loadpayment();
+        return view('payment');
     }
-    // public function Savepayment(Request $req){ 
+    // public function Savepayment(Request $req){
     //     $sm_id=$req->input('');
     //     $em_id=$req->input('');
     //     $pn_id=$req->input('');
@@ -21,16 +22,16 @@ class Payment extends Controller
     //     Session ::put('save','success');
     //     return redirect('sellmilk');
     // }
-    
+
     // public function Detailpaymilk($id){ //แสดงรายละเอียดจ่ายเงินนมให้สมาชิก
     //     $data['']=Salemilk::($id);
     //    return view ('',$data);
     // }
-   
+
     public function Searchmem($id){ //ค้นหาสมาชิก
         $data=Member::searchMem($id);
        return $data;
     }
-  
-   
+
+
 }

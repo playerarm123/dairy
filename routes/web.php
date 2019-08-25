@@ -92,9 +92,6 @@ Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk');
 Route::get('search_partners/{id}','Sellmilk@Searchpartners');
 
 
-
-Route::get('oder','Ordereqm@Ordereqm');//หน้าสั่งซื้ออุปกรณ์
-
 Route::get('receivedrug','Receive@Drug');//หน้ารับอุปกรณ์ยา
 Route::post('savedrug','Receive@Savedrug');//บันทึกข้อมูลยา
 Route::get('detaildrug/{id}','Receive@Detaildrug');//แสดงรายละเอียดยา
@@ -107,7 +104,7 @@ Route::get('receivetool','Receive@Tool');//หน้ารับอุปกร�
 Route::post('savetool','Receive@Savetool');//บันทึกข้อมูลอุปกรณ์
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
 
-Route::get('sellpro','Selleqm@Selleqm');//หน้าขายอุปกรณ์
+Route::get('selleqm','Selleqm@Selleqm');//หน้าขายอุปกรณ์
 
 
 
@@ -117,7 +114,7 @@ Route::get('detailpayment/{id}','Payment@Detailpayment');
 Route::get('search_partners/{id}','Payment@Searchpartners');
 
 
-Route::get('receivemoney','Acceptpm@Acceptpm'); //หน้ารับชำระเงิน
+Route::get('receivemoney','Acceptpm@Receivemoney'); //หน้ารับชำระเงิน
 Route::post('saveacceptpm','Acceptpm@Saveacceptpm');
 Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm');
 Route::get('search_acceptpm/{id}','Acceptpm@Searchacceptpm');

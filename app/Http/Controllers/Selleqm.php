@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Employee;
 class Selleqm extends Controller
 {
-   
+
     public function Selleqm(){
-        return view('sellpro');
+        $data['selleqm']=Selleqm::loadsellmilk();
+        return view('selleqm',$data);
     }
-    
+
 }

@@ -10,7 +10,8 @@ class Buymilk extends Controller
 {
 
     public function Buymilk(){
-        return view('buymilk');
+        $data['buymilk']=buymilks::loadbuymilk();
+        return view('buymilk',$data);
     }
 
     public function Savebuymilk(Request $req){ //บันทึกข้อการซื้อน้ำนมมูลน้ำนม

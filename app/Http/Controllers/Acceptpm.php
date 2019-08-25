@@ -7,11 +7,11 @@ use App\Member;
 class Acceptpm extends Controller
 {
         public function Acceptpm(){
-            $data['partners']=partners::searchpartners();
-            return view('',$data);
+            $data['receivemoney']=Acceptpm::loadremoney();
+            return view('receivemoney',$data);
         }
-       
-        // public function Savepayment(Request $req){ 
+
+        // public function Savepayment(Request $req){
         //     $sm_id=$req->input('');
         //     $em_id=$req->input('');
         //     $pn_id=$req->input('');
@@ -22,17 +22,17 @@ class Acceptpm extends Controller
         //     Session ::put('save','success');
         //     return redirect('sellmilk');
         // }
-        
+
         // public function Detailpaymilk($id){ //แสดงรายละเอียดจ่ายเงินนมให้สมาชิก
         //     $data['']=Salemilk::($id);
         //    return view ('',$data);
         // }
-       
-      
-    
+
+
+
         public function Testmild(){
         dd(Member::searchMem("5"));
         //sss
         }
-}   
+}
 

@@ -273,7 +273,8 @@ class Datamg extends Controller
 
 
     public function Loadcoop(){ //โหลดหน้าสหกรณ์
-        return view ('datacoop');
+        $data['coop']=cooper::loadDatacoop(1);
+        return view ('datacoop',$data);
     }
     public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
         $coop_name=$req->input('name');
