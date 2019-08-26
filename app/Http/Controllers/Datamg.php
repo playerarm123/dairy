@@ -322,7 +322,13 @@ class Datamg extends Controller
 
     public function Searchmem($id){
         $data=Member::loadDataMb($id);
-        return $data;
+        foreach($data as $item){
+            $member=array(
+                'name'=>$item->mb_name,
+                'lastname'=>$item->mb_lastname,
+            );
+        }
+        return $member;
 
     }
 
