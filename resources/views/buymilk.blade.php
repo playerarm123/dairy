@@ -162,9 +162,7 @@
                                         </label>
                                     </div>
                                     
-                                @endforeach
-                                    
-                                          
+                                @endforeach          
                             </div>
 
                             <div class="col-2 right">
