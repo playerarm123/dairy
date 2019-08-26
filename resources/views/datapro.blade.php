@@ -76,7 +76,7 @@
                                         }
                         },
                         "pageLength": 10 ,
-                         searching:false,
+                         searching:true,
 
                      }
 
@@ -85,6 +85,9 @@
         });
     </script>
 <style>
+    .right{
+        text-align: right
+    }
     .center {
         margin: auto;
         width: 90%;
@@ -105,29 +108,33 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     ชื่ออุปกรณ์:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="name" required >
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     ประเภท:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="cate" required>
+                        <select name="cate" class="form-control" >
+                                <option value="อาหารสัตว์">อาหารสัตว์</option>
+                                <option value="ยารักษาโรค">ยารักษาโรค</option>
+                                <option value="อุปกรณ์รีดนม">อุปกรณ์รีดนม</option>
+                              </select>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                    จำนวน:
                 </div>
                 <div class="col-4">
                     <input type="number" class="form-control" name="unit" required>
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                         ราคา:
                     </div>
                     <div class="col-4">
@@ -156,11 +163,11 @@
         <tbody>
                 @foreach ($equip as $key =>$item)
                 <tr>
+                <td>{{$key+1}}</td>
                 <td>{{$item->eq_name}}</td>
                 <td>{{$item->eq_cate}}</td>
                 <td>{{$item->eq_unit}}</td>
                 <td>{{$item->eq_price}}</td>
-                <td></td>
                 <td>
                     <a href="{{url('/editpro')}}/{{$item->eq_id}}" class='btn btn-warning'>แก้ไข</a>
                     <button class='btn btn-danger' onclick='confirm_delete("{{$item->eq_id}}")'>ลบ</button>

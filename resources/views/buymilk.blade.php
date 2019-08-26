@@ -178,7 +178,7 @@
                                                   </div>
                                                   <div class="form-check-inline">
                                                     <label class="form-check-label">
-                                                      <input type="radio" class="form-check-input" name="ranger"value="ช่วงเย็น" >ช่วงเย็น
+                                                      <input type="radio" class="form-check-input" name="range"value="ช่วงเย็น" >ช่วงเย็น
                                                     </label>
                                                 </div>
 

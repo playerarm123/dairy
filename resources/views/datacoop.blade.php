@@ -20,6 +20,7 @@
 
         }
         function cancel_edit(){
+            $('#name').attr('disabled',"disabled");
 
         }
         $(document).ready(function() {
@@ -79,13 +80,13 @@
                         ชื่อสหกรณ์:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" name="name"  id="name" readonly>
+                        <input type="text" class="form-control" name="name"  id="name" disabled="disabled">
                     </div>
                     <div class="col-2 right">
                             ที่อยู่:
                         </div>
                         <div class="col-4 ">
-                            <input type="text" class="form-control" name="address" id="address" readonly>
+                            <input type="text" class="form-control" name="address" id="address" disabled="disabled">
                         </div>
                     </div>
             </div>
@@ -95,13 +96,13 @@
                         เบอร์โทร:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control"id="tel" name="tel" readonly>
+                        <input type="text" class="form-control"id="tel" name="tel" disabled="disabled">
                     </div>
                     <div class="col-2 right">
                             เบอร์แฟกซ์ :
                     </div>
                         <div class="col-4">
-                            <input type="tel" class="form-control"id="fax" name="fax" readonly>
+                            <input type="tel" class="form-control"id="fax" name="fax" disabled="disabled">
                         </div>
                     </div>
                 </div>
@@ -111,13 +112,13 @@
                                 โลโก้:
                         </div>
                         <div class="col-4">
-                                <input type="file" class="form-control" name="logo" readonly>
+                                <input type="file" class="form-control" name="logo" disabled="disabled">
                         </div>
                         <div class="col-2 right">
                             เว็บไซต์:
                         </div>
                         <div class="col-4">
-                        <input type="url" class="form-control" id="website" name="website" readonly>
+                        <input type="url" class="form-control" id="website" name="website" disabled="disabled">
                         </div>
                 </div>
             </div>
@@ -127,7 +128,7 @@
                                     อีเมล:
                             </div>
                             <div class="col-4">
-                                    <input type="email" class="form-control" id="email" name="email" readonly>
+                                    <input type="email" class="form-control" id="email" name="email" disabled="disabled">
                             </div>
                     </div>
             </div>
@@ -137,10 +138,10 @@
             <button  type="submit" class="btn btn-success " >
                 <span class="fa fa-edit" >บันทึก</span>
             </button>
-            <button  type="submit" class="btn btn-warning " >
+            <button  type="button" class="btn btn-warning " onclick=edit(); >
                 <span class="fa fa-edit" >แก้ไข</span>
             </button>
-            <button  type="submit" class="btn btn-danger " >
+            <button  type="button" class="btn btn-danger " onclick="cancle_edit()">
                 <span class="fa fa-edit" >ยกเลิก</span>
             </button>
         </div>

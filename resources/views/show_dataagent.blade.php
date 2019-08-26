@@ -13,8 +13,8 @@
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
-  <style> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+  <style>
         .center {
             margin: auto;
             width: 70%;
@@ -30,26 +30,24 @@
         .left{
             text-align: left
         }
-        
+
 </style>
 
 <div class="center">
-<h1 style="text-align:center">แสดงรายละเอียดข้อมูลอุปกรณ์</h1><br>
+<h1 style="text-align:center">แสดงรายละเอียดข้อมูลบริษัทคู่ค้า</h1><br>
 <div class="row">
-    <div class="col-3 right" >ชื่ออุปกรณ์</div>
-    <div class="col-2">{{$equip[0]->eq_name}}</div>
-    <div class="col-3 right" >ประเภท</div>
-    <div class="col-2">{{$equip[0]->eq_cate}}</div>
+    <div class="col-3 right" >ชื่อ</div>
+    <div class="col-2">{{$agent[0]->pn_name}}</div>
+    <div class="col-3 right" > ที่อยู่</div>
+    <div class="col-2">{{$agent[0]->pn_address}}</div>
 </div>
 <div class="row">
-        <div class="col-3 right" >หน่วยนับ</div>
-        <div class="col-2">{{$equip[0]->eq_unit}}</div>
-        <div class="col-3 right" >ราคาขาย</div>
-        <div class="col-2">{{$equip[0]->eq_price}}</div>
+        <div class="col-3 right" > เบอร์โทรศัพท์</div>
+        <div class="col-2">{{$agent[0]->pn_phone}}</div>
     </div>
     <br>
     <div class="btncenter" style="width:100%" >
-    <a href={{url('/datapro')}} class="btn btn-danger " >
+    <a href={{url('/dataagent')}} class="btn btn-danger " >
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>
 </div>

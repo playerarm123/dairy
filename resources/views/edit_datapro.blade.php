@@ -14,10 +14,9 @@
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
-    <style>
-            .right{
-                text-align: right
-            }
+    <style> .right{
+        text-align: right
+    }
             .center {
                 margin: auto;
                 width: 90%;
@@ -30,44 +29,53 @@
 
 </style>
 <div class="center">
-<h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานบริษัทคู่ค้า</h1><br>
-
-
-<form action="{{ url('/updateagent') }}" method="POST">
+<h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานอุปกรณ์</h1><br>
+<form action="{{url('/updateequip')}}" method="POST">
       @csrf
-      <input type = "hidden" name="pn_id" value="{{$agent[0]->pn_id}}">
+      <input type = "hidden" name="eq_id" value="{{$equip[0]->eq_id}}">
 
         <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
-                    ชื่อ:
+                    ชื่ออุปกรณ์:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="name" required value="{{$agent[0]->pn_name}}">
+                    <input type="text" class="form-control" name="name" required value="{{$equip[0]->eq_name}}">
                 </div>
                 <div class="col-2 right">
-                   ที่อยู่:
+                    ประเภท:
                 </div>
                 <div class="col-4">
-                        <textarea class="form-control" name="address" required > {{$agent[0]->pn_address}}</textarea>
+                        <select name="cate" class="form-control" >
+                                <option value="อาหารสัตว์">อาหารสัตว์</option>
+                                <option value="ยารักษาโรค">ยารักษาโรค</option>
+                                <option value="อุปกรณ์รีดนม">อุปกรณ์รีดนม</option>
+                              </select>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
-                    เบอร์โทร:
+                        หน่วยนับ:
                 </div>
                 <div class="col-4">
-                    <input type="tel" class="form-control" name="phone" required value="{{$agent[0]->pn_phone}}">
+                        <input type="text" class="form-control" name="unit"  value="{{$equip[0]->eq_unit}}" required>
+                    </div> 
+                <div class="col-2 right">
+                    ราคาขาย:
+                </div>
+                <div class="col-4">
+                    <input type="text" class="form-control" name="price"  value="{{$equip[0]->eq_price}}" required>
                 </div>
             </div>
         </div>
+
     <div class="btncenter" style="width:100%" >
         <button  type="submit" class="btn btn-success" >
             <span class="fa fa-save" >บันทึก</span>
         </button>
-        <a href='{{url("/dataagent")}}'class="btn btn-danger " >
+        <a href='{{url("/datapro")}}'class="btn btn-danger " >
                 <span class="fa fa-edit" >ย้อนกลับ</span>
         </a>
     </div>
@@ -76,5 +84,5 @@
 <div class="panel-body">
 
 </div>
-
+</div>
 @stop

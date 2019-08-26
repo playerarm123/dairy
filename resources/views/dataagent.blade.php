@@ -15,7 +15,7 @@
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
     <script>
-        function confirm_delete(Ag_id){
+        function confirm_delete(pn_id){
             swal({
                 title: "ลบข้อมูล?",
                 text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
@@ -33,7 +33,7 @@
                     
                     $.ajax({
                         type: "GET",
-                        url : "{{ url('deleteuser')}}/"+Em_id,
+                        url : "{{ url('deleteagent')}}/"+pn_id,
                         success:function(data){
                             
                             location.reload();
@@ -52,8 +52,6 @@
                         "autoWidth": false,
                         "columns": [
                             { "width": "5%" },
-                            null,
-                            null,
                             null,
                             {"width": "10%"},
                             {"width": "12%"},
@@ -76,7 +74,7 @@
                                         }
                         },
                         "pageLength": 10 ,
-                         searching:false,
+                         searching:true,
 
                      }
 
@@ -84,7 +82,9 @@
             
         });
     </script>
-    <style> 
+    <style> .right{
+        text-align: right
+    }
             .center {
                 margin: auto;
                 width: 90%;
@@ -103,13 +103,13 @@
       @csrf
     <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     ชื่อบริษัท:
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="firstname" required >
+                    <input type="text" class="form-control" name="name" required >
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     ที่อยู่:
                 </div>
                 <div class="col-4">
@@ -119,11 +119,11 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                    เบอร์โทร:
                 </div>
                 <div class="col-4">
-                    <input type="tel" class="form-control" name="price" required>
+                    <input type="tel" class="form-control" name="phone" required>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
     </div>
 </form> 
 <br><br>
-<br><br>
+
 <div class="panel-body">
     <table id="dataagent" class="table table-striped table-bordered table-responsive-lg">
         <thead class="bg-success ">
@@ -148,13 +148,13 @@
             @foreach ($agent as $key =>$item)
                 <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$item->Pn_name}}</td>
-                <td>{{$item->Pn_address}}</td>
-                <td>{{$item->Pn_phone}}</td>
+                <td>{{$item->pn_name}}</td>
+                <td>{{$item->pn_address}}</td>
+                <td>{{$item->pn_phone}}</td>
                 <td>
-                        <button class='btn btn-warning'>แก้ไข</button>
-                        <button class='btn btn-danger' onclick='confirm_delete("{{$item->Pn_id}}")'>ลบ</button>
-                        <a href =''>รายละเอียด</button>
+                        <a href="{{url('/edit_dataagent')}}/{{$item->pn_id}}" class='btn btn-warning'>แก้ไข</a>
+                        <button class='btn btn-danger' onclick='confirm_delete("{{$item->pn_id}}")'>ลบ</button>
+                        <a href ="{{url('/detailagent')}}/{{$item->pn_id}}" class='btn btn-info'>รายละเอียด</a>
                 </td>
                 </tr>
                 @endforeach

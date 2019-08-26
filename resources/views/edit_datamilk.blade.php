@@ -14,7 +14,9 @@
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
-    <style>
+    <style> .right{
+        text-align: right
+    }
             .center {
                 margin: auto;
                 width: 90%;
@@ -34,13 +36,13 @@
 
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                     เกรดน้ำนมดิบ:
                 </div>
                 <div class="col-4">
                     <input type="text" class="form-control" name="milk_grade" required value="{{$milk[0]->milk_grade}}">
                 </div>
-                <div class="col-2">
+                <div class="col-2 right">
                     จำนวน(กิโลกรัม):
                 </div>
                 <div class="col-4">
@@ -50,13 +52,13 @@
         </div>
         <div class="form-group">
             <div class="row">
-                <div class="col-2">
+                <div class="col-2 right">
                         ราคารับซื้อ:
                 </div>
                 <div class="col-4">
                         <input type="text" class="form-control" name="milk_pricein"  value="{{$milk[0]->milk_pricein}}" required>
-                    </div>
-                <div class="col-2">
+                    </div> 
+                <div class="col-2 right">
                     ราคาขาย:
                 </div>
                 <div class="col-4">
