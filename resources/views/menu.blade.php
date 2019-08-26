@@ -14,12 +14,21 @@
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="{{asset('template/style.css')}}">
   <link rel="stylesheet" href="{{asset('template/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{asset('/font-awesome/css/font-awesome.css')}}">
   <link rel="stylesheet" href="{{asset('/datatables/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{ asset('css/sweetAlert.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
   <script src="{{  asset('js/sweetAlert.min.js') }}"></script>
   <script src="{{asset('/jquery/jquery.min.js')}}"></script>
+
+  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
+  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+
+
 
 
 
@@ -33,6 +42,7 @@
 ?>
 <script>
     $(document).ready(function(){
+        loadLogo();
         var save = "{{ $save }}";
         var delete_s = "{{ $delete }}";
         if(save == 'success'){
@@ -42,6 +52,16 @@
             swal("สำเร็จ!", "ลบข้อมูลสำเร็จ!", "success");
         }
     });
+    function loadLogo(){
+        $.ajax({
+            type : 'GET',
+            url : "{{ url('loadLogo') }}",
+            success:function(data){
+                console.log(data);
+                $('#logo-main').attr('src',"{{ asset('img') }}/"+data);
+            }
+        });
+    }
 </script>
 <body>
   <!-- Preloader -->
@@ -73,23 +93,16 @@
     </div>
 
     <!-- Navbar Area -->
-    <div class="famie-main-menu">
+    <div class="famie-main-menu" >
       <div class="classy-nav-container breakpoint-off">
         <div class="container">
           <!-- Menu -->
           <nav class="classy-navbar justify-content-between" id="famieNav">
             <!-- Nav Brand -->
-            <a href="{{url('home')}}" class="nav-brand"><img src="{{asset('img/coop.jpg')}}"class="fa fa-align-left" aria-hidden="true" alt="" width="200" height="200"  ></a>
-            <!-- Navbar Toggler -->
-            <div class="classy-navbar-toggler">
-              <span class="navbarToggler"><span></span><span></span><span></span></span>
-            </div>
+            <a href="{{url('home')}}" class="nav-brand"><img id="logo-main" class="fa fa-align-left" aria-hidden="true" alt="" style="height:80px"></a>
+
             <!-- Menu -->
             <div class="classy-menu">
-              <!-- Close Button -->
-              <div class="classycloseIcon">
-                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-              </div>
               <!-- Navbar Start -->
               <div class="classynav">
                 <ul>
@@ -107,7 +120,6 @@
 
                   <li><a href="{{url('buymilk')}}">รับซื้อน้ำนมดิบ</a></li>
                   <li><a href="{{url('sellmilk')}}">ขายน้ำนมดิบ</a></li>
-                  <li><a href="{{url('oder')}}">สั่งซื้ออุปกรณ์</a></li>
                   <li><a href="{{url('#')}}">รับอุปกรณ์</a>
                     <ul class="dropdown">
                       <li><a href="{{url('receivedrug')}}">ยารักษาโรค</a></li>
@@ -118,20 +130,10 @@
                   <li><a href="{{url('sellpro')}}">ขายอุปกรณ์</a></li>
                   <li><a href="{{url('paymilk')}}">ชำระเงินนมสมาชิก</a></li>
                   <li><a href="{{url('receivemoney')}}">รับชำระเงินค่าน้ำนมดิบ</a></li>
+                  <li style="margin-left:20px;"><a href="{{url('logout')}}"><i class="fa fa-user" ></i>ออกจากระบบ</a></li>
                 </ul>
-                <div ><i class="fa fa-user" ><a href="{{url('logout')}}">ออกจากระบบ</a></i></div>
-
+            </div>
           </nav>
-
-          <!-- Search Form -->
-          <div class="search-form">
-            <form action="#" method="get">
-              <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
-              <button type="submit" class="d-none"></button>
-            </form>
-            <!-- Close Icon -->
-            <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
-          </div>
         </div>
       </div>
     </div>
@@ -143,9 +145,8 @@
 
   <!-- ##### All Javascript Files ##### -->
   <!-- jquery 2.2.4  -->
-  <script src="{{asset('js/jquery.min.js')}}"></script>
   <!-- Popper js -->
-  <script src="js/popper.min.js"></script>
+  <script src="{{ asset('js/popper.min.js') }}"></script>
   <!-- Bootstrap js -->
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <!-- Owl Carousel js -->
@@ -169,5 +170,5 @@
 
   @yield("head")
 
-  <body  >
+  <body  ><br>
       @yield("body")

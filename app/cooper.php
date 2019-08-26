@@ -19,15 +19,10 @@ class cooper extends Model
             "coop_website"  => $coop_website,
             "coop_logo"     => $coop_logo,
             "coop_status"   => "พร้อมใช้งาน"
+        );
+        DB::table("cooper")->insert($coop );
 
-
-                    );
-
-                    DB::table("cooper")->insert($coop );
-
-
-        }
-
+    }
     public static function coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo){
         $coop_up=array(
             "coop_name"     => $coop_name,
@@ -38,13 +33,12 @@ class cooper extends Model
             "coop_website"  => $coop_website,
             "coop_logo"     => $coop_logo,
             "coop_status"   => "พร้อมใช้งาน"
-            );
-         DB::table("cooper")->where("coop_id","=",$coop_id)->update($coop_up);
+        );
+        DB::table("cooper")->where("coop_id","=",$coop_id)->update($coop_up);
 
-        }
+    }
      public static function loadDatacoop($coop_id){ //โหลดข้อมูลสหกรณ์
         $data=DB::table("cooper")
-       ->where("coop_id","=",$coop_id)
        ->get();
 
         return $data; //ส่งข้อมูลสหกรณ์ให้คอนโทลเลอร์

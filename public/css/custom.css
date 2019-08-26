@@ -1,0 +1,28 @@
+div .form-group{
+    height:50px;
+}
+.right {
+    text-align: right
+}
+.left{
+    text-align: left
+}
+
+.custom-textbox {
+    margin-bottom: -20px;
+}
+.msg {
+    color: red;
+    display: none;
+
+}
+.center {
+    margin: auto;
+    width: 90%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+.btncenter{
+width:20%;margin-left:45%;margin-right:45%;
+margin-top: 30px;
+}

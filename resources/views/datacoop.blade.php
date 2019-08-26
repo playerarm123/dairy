@@ -2,11 +2,28 @@
 
 
 @section('head')
-
+<?php
+    $name = "";
+    $address = "";
+    $phone ="";
+    $fax = "";
+    $logo = "notfound.jpg";
+    $email = "";
+    $website = "";
+    if(count($coop)> 0){
+        $name = $coop[0]->coop_name;
+        $address = $coop[0]->coop_address;
+        $phone =$coop[0]->coop_phone;
+        $fax = $coop[0]->coop_fax;
+        $logo = $coop[0]->coop_logo;
+        $email = $coop[0]->coop_email;
+        $website = $coop[0]->coop_website;
+    }
+?>
 @stop
 
 
-@section('body')<BR><BR><BR>
+@section('body')
          <!-- script  plug in dataTable  -->
   <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
@@ -16,34 +33,37 @@
   <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
         function edit(){
-            $('#name').removeAttr('disabled');
+            $('#name').removeAttr('readonly');
+            $('#address').removeAttr('readonly');
+            $('#phone').removeAttr('readonly');
+            $('#fax').removeAttr('readonly');
+            $('#email').removeAttr('readonly');
+            $('#website').removeAttr('readonly');
+            $('#logo').removeAttr('disabled');
+            $('.btn-warning').hide();
+            $('.btn-danger').show();
+            $('.btn-warning').hide();
+            $('.btn-success').show();
+            $('#save_type').val('update');
 
         }
         function cancel_edit(){
-            $('#name').attr('disabled',"disabled");
+            $('#name').attr('readonly','readonly');
+            $('#address').attr('readonly','readonly');
+            $('#phone').attr('readonly','readonly');
+            $('#fax').attr('readonly','readonly');
+            $('#email').attr('readonly','readonly');
+            $('#website').attr('readonly','readonly');
+            $('#logo').attr('disabled','disabled');
 
+            $('.btn-warning').show();
+            $('.btn-danger').hide();
+            $('.btn-success').hide();
+            $('#save_type').val('insert');
         }
         $(document).ready(function() {
-                // $('#datamem').DataTable(
-                // {
-                //         "oLanguage": {
-                //             "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
-                //             "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                //             "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
-                //             "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                //             "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
-                //             "sSearch": "ค้นหา :",
-                //             "sLoadingRecords": "Please wait - loading...",
-                //             "oPaginate": {
-                //                 "sFirst": "หน้าแรก",
-                //                 "sLast": "หน้าสุดท้าย",
-                //                 "sPrevious": "ก่อน",
-                //                 "sNext":"ถัดไป"
-                //             }
-                //         }
+            var coop = "{{ count($coop) }}";
 
-                //     }
-                // );
         });
     </script>
 <style>
@@ -57,98 +77,89 @@
         padding: 10px;
     }
     .btncenter{
-        width:10%;margin-left:45%;margin-right:45%;
+        width:20%;margin-left:45%;margin-right:45%;
     }
 
 </style>
 <div class="center">
     <h1 style="text-align:center">จัดการข้อมูลพื้นฐานสหกรณ์</h1><br>
-
-    <form action="{{ url('/savecooper') }}" method="POST" id='form-submit'>
+    <form action="{{ url('/savecooper') }}" method="POST" id='form-submit' enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="" id="name">
-        <input type="hidden" name="" id="address">
-        <input type="hidden" name="" id="tel">
-        <input type="hidden" name="" id="fax">
-        <input type="hidden" name="" id="website">
+        <input type="hidden" name="id" id="id" value="{{ $coop[0]->coop_id }}">
+        <input type="hidden" name="" id="old_name">
+        <input type="hidden" name="" id="old_address">
+        <input type="hidden" name="" id="old_phone">
+        <input type="hidden" name="" id="old_fax">
+        <input type="hidden" name="" id="old_website">
+        <input type="hidden" name="old_logo" value="{{ $coop[0]->coop_logo }}">
+        <input type="hidden" name="" id="save_type" value="insert">
 
-
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2 right">
-                        ชื่อสหกรณ์:
-                    </div>
-                    <div class="col-4">
-                        <input type="text" class="form-control" name="name"  id="name" disabled="disabled">
-                    </div>
-                    <div class="col-2 right">
-                            ที่อยู่:
-                        </div>
-                        <div class="col-4 ">
-                            <input type="text" class="form-control" name="address" id="address" disabled="disabled">
-                        </div>
-                    </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2 right">
-                        เบอร์โทร:
-                    </div>
-                    <div class="col-4">
-                        <input type="text" class="form-control"id="tel" name="tel" disabled="disabled">
-                    </div>
-                    <div class="col-2 right">
-                            เบอร์แฟกซ์ :
-                    </div>
-                        <div class="col-4">
-                            <input type="tel" class="form-control"id="fax" name="fax" disabled="disabled">
-                        </div>
-                    </div>
+        <div class="form-group " >
+            <div class="row">
+                <div class="col-2 right">
+                    ชื่อสหกรณ์:
                 </div>
-            <div class="form-group">
-                <div class="row">
-                        <div class="col-2 right">
-                                โลโก้:
-                        </div>
-                        <div class="col-4">
-                                <input type="file" class="form-control" name="logo" disabled="disabled">
-                        </div>
-                        <div class="col-2 right">
-                            เว็บไซต์:
-                        </div>
-                        <div class="col-4">
-                        <input type="url" class="form-control" id="website" name="website" disabled="disabled">
-                        </div>
+                <div class="col-3">
+                    <input type="text" class="form-control" name="name" value="{{ $name }}"   id="name" {{ (count($coop)==0)?'required':'readonly' }}>
+                </div>
+                <div class="col-2 right">
+                    ที่อยู่:
+                </div>
+                <div class="col-3 ">
+                    <input type="text" class="form-control" name="address" value="{{ $address }}" id="address" {{ (count($coop)==0)?'required':'readonly' }}>
                 </div>
             </div>
-            <div class="form-group">
-                    <div class="row"> 
-                            <div class="col-2 right">
-                                    อีเมล:
-                            </div>
-                            <div class="col-4">
-                                    <input type="email" class="form-control" id="email" name="email" disabled="disabled">
-                            </div>
-                    </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2 right">เบอร์โทร:</div>
+                <div class="col-3">
+                    <input type="text" class="form-control"id="phone" name="phone" value="{{ $phone }}" {{ (count($coop)==0)?'required':'readonly' }}>
+                </div>
+                <div class="col-2 right"> เบอร์แฟกซ์ :</div>
+                <div class="col-3">
+                    <input type="text" class="form-control"id="fax" name="fax" value="{{ $fax }}" {{ (count($coop)==0)?'required':'readonly' }}>
+                </div>
             </div>
-                <br><br>
-        <br>
-        <div style="width:100% "class=" btncenter" >
-            <button  type="submit" class="btn btn-success " >
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2 right"> เว็บไซต์:</div>
+                <div class="col-3">
+                    <input type="url" class="form-control" id="website" value="{{ $website }}" name="website" {{ (count($coop)==0)?'required':'readonly' }}>
+                </div>
+                <div class="col-2 right">อีเมล:</div>
+                <div class="col-3">
+                    <input type="email" class="form-control" id="email" name="email" value="{{ $email }}" {{ (count($coop)==0)?'required':'readonly' }}>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2 right"> โลโก้:</div>
+                <div class="col-3">
+                    <img src="{{ asset('img/'.$logo.'') }}" style="height:70px;width:100px;border: 1px solid" alt="">
+                    <input type="hidden" name="old_logo" value="{{ $logo }}" id="">
+                    <input type="file" pattern="image" class="form-control" name="logo"id="logo" {{ (count($coop)==0)?'required':'disabled' }}>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class=" btncenter" >
+            <button  type="submit" class="btn btn-success " style="display:{{ (count($coop)>0)?'none':'' }}" >
                 <span class="fa fa-edit" >บันทึก</span>
             </button>
-            <button  type="button" class="btn btn-warning " onclick=edit(); >
+            <button  type="button" class="btn btn-warning " onclick="edit()" style="display:{{ (count($coop)==0)?'none':'' }}">
                 <span class="fa fa-edit" >แก้ไข</span>
             </button>
-            <button  type="button" class="btn btn-danger " onclick="cancle_edit()">
+            <button  type="button" class="btn btn-danger " onclick="cancel_edit()" style="display:none">
                 <span class="fa fa-edit" >ยกเลิก</span>
             </button>
         </div>
     </form>
-
 </div>
-
 
 @stop
 

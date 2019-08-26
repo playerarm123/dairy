@@ -4,19 +4,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Employee;
+use DB;
 class Auth extends Controller
 {
-    public function __construct(){
-        $status=Session::get('username');
-       
-        if($status != 'true'){
-            return redirect ('login');
-        }
-    }
     public  function ShowLoginForm(){
-        
         return view('login_v');
-    }   
+    }
     public function verifyLg(Request $req){
         $user=$req->input('username');
         $password=$req->input('password');
@@ -29,6 +22,11 @@ class Auth extends Controller
             return redirect('login');
         }
 
+    }
+    public function loadLogo(){
+        $data = DB::table('cooper')->select('coop_logo')->get();
+        $logo = $data[0]->coop_logo;
+        return $logo;
     }
     public function ShowHome(){
         return view('home');

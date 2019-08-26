@@ -6,15 +6,8 @@
 @stop
 
 
-@section('body')<BR><BR><BR>
-         <!-- script  plug in dataTable  -->
-  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
-  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
-  <
+@section('body')
+
     <script>
         function confirm_delete(Em_id){
             swal({
@@ -146,188 +139,155 @@
 
         }
     </script>
-    <style>
-            .right {
-                text-align: right
-            }
-            .left{
-                text-align: left
-            }
-
-            .custom-textbox {
-                margin-bottom: -20px;
-            }
-            .msg {
-                color: red;
-                display: none;
-
-            }
-            .center {
-                margin: auto;
-                width: 90%;
-                border: 3px solid #73AD21;
-                padding: 10px;
-            }
-            .btncenter{
-        width:10%;margin-left:45%;margin-right:45%;
-    }
-
-</style>
 <div class="center">
-<h1 style="text-align:center">จัดการข้อมูลพื้นฐานผู้ใช้งาน</h1><br>
-
-<form action="{{ url('/savedataem') }}" method="POST" id='form-submit'>
-      @csrf
-
+    <h1 style="text-align:center">จัดการข้อมูลพื้นฐานผู้ใช้งาน</h1><br>
+    <form action="{{ url('/savedataem') }}" method="POST" id='form-submit'>
+        @csrf
         <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
                     ชื่อ:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="custom-textbox">
-                        <input type="text" class="form-control"id="firstname" name="firstname" value="test" >
+                        <input type="text" class="form-control"id="firstname" name="firstname" value="" >
                     </div>
                     <span id="alert_name" class="msg">ชื่อและนามสกุลนี้ถูกใช้งานแล้ว</span>
                 </div>
                 <div class="col-2 right">
                     นามสกุล:
                 </div>
-                <div class="col-4">
-                    <input type="text" class="form-control"id="lastname" name="lastname" value = "test2" >
+                <div class="col-3">
+                    <input type="text" class="form-control"id="lastname" name="lastname" value = "" >
                 </div>
             </div>
+        </div>
 
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-2 right">
-                    เพศ:
-                </div>
-                <div class="col-4">
-                    <div class="form-check-inline">
-                        <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender" value="ชาย" >ชาย
-                        </label>
-                      </div>
-                      <div class="form-check-inline">
-                        <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender"value="หญิง" >หญิง
-                        </label>
-                    </div>
-                </div>
-                <div class="col-2 right">
-                    อายุ:
-                </div>
-                <div class="col-4">
-                    <input type="number" class="form-control" name="old" >
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-2 right">
-                        ที่อยู่:
-                </div>
-                <div class="col-4">
-                        <textarea class="form-control" name="address" ></textarea>
-                </div>
-                <div class="col-2 right">
-                    เบอร์โทร:
-                </div>
-                <div class="col-4">
-                    <input type="tel" class="form-control" name="number" >
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                    <div class="col-2 right">
-                            ตำแหน่ง:
-                        </div>
-                        <div class="col-4" id="positiion">
-
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="position" value="พนักงาน" >พนักงาน
-                            </label>
-                            </div>
-                            <div class="form-check-inline">
-                            <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="position"value="กรรมการ" >กรรมการ
-                            </label>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <br>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-2 right">
-                    Username:
-                </div>
-                <div class="col-4 right">
-                    <div class="custom-textbox">
-                        <input type="text" class="form-control"id="username" name="username" value="testu" >
-                    </div>
-                    <span id="alert_username" class="msg">Usernameถูกต้อง</span>
-                </div>
-                <div class="col-2">
-                        Password :
-                    </div>
-                    <div class="col-4 right">
-                        <input type="text" id="password" class="form-control" name="password"  >
-                    </div>
-            </div>
-        </div>
-        <div class="form-group">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
-                        ยืนยัน Password :
+                        เพศ:
                     </div>
-                    <div class="col-4">
-                        <input  type="text" id="confirm_password" class="form-control" name="s"  >
+                    <div class="col-3">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="gender" value="ชาย" >ชาย
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="gender"value="หญิง" >หญิง
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-2 right">
+                        อายุ:
+                    </div>
+                    <div class="col-3">
+                        <input type="number" class="form-control" name="old" >
                     </div>
                 </div>
             </div>
-    <div style="width:100%">
-        <button  type="submit" id="save" class="btn btn-success btncenter" >
-            <span class="fa fa-edit"  >บันทึก</span>
-        </button>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-2 right">
+                            ที่อยู่:
+                    </div>
+                    <div class="col-3">
+                            <textarea class="form-control" name="address" ></textarea>
+                    </div>
+                    <div class="col-2 right">
+                        เบอร์โทร:
+                    </div>
+                    <div class="col-3">
+                        <input type="tel" class="form-control" name="number" >
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                        <div class="col-2 right">
+                                ตำแหน่ง:
+                            </div>
+                            <div class="col-3" id="positiion">
+
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="position" value="พนักงาน" >พนักงาน
+                                </label>
+                                </div>
+                                <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="position"value="กรรมการ" >กรรมการ
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-2 right">
+                            Username:
+                        </div>
+                        <div class="col-3 right">
+                            <div class="custom-textbox">
+                                <input type="text" class="form-control"id="username" name="username" value="" >
+                            </div>
+                            <span id="alert_username" class="msg">Usernameถูกต้อง</span>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+
+                    <div class="col-2 right">
+                            Password :
+                        </div>
+                        <div class="col-3 ">
+                            <input type="password" id="password" class="form-control" name="password"  >
+                        </div>
+                        <div class="col-2 right">
+                            ยืนยัน Password :
+                        </div>
+                        <div class="col-3">
+                            <input  type="password" id="confirm_password" class="form-control" name=""  >
+                        </div>
+                </div>
+            </div>
+        <div class="btncenter">
+            <button  type="submit" id="save" class="btn btn-success " >
+                <span class="fa fa-edit"  >บันทึก</span>
+            </button>
+        </div>
+    </form>
+    <div class="panel-body">
+        <table id="dataem" class="table table-striped table-bordered table-responsive-lg">
+            <thead class="bg-success ">
+                <th>ลำดับ</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>ที่อยู่</th>
+                <th>เบอร์โทร</th>
+                <th>ตำแหน่ง</th>
+                <th>หมายเหตุ</th>
+            </thead>
+            <tbody>
+                @foreach ($employee as $key =>$item)
+                <tr>
+                    <td>{{$key+1}}</td>
+                    <td>{{$item->em_name}}</td>
+                    <td>{{$item->em_lastname}}</td>
+                    <td>{{$item->em_address}}</td>
+                    <td>{{$item->em_phone}}</td>
+                    <td>{{$item->em_position}}</td>
+                    <td>
+                            <a href="{{url('/edit_dataem')}}/{{$item->em_id}}" class='btn btn-warning'>แก้ไข</a>
+                            <button class='btn btn-danger' onclick='confirm_delete("{{$item->em_id}}")'>ลบ</button>
+                            <a href ="{{url('/detailuser')}}/{{$item->em_id}}" class='btn btn-info'>รายละเอียด</a>
+                    </td>
+                </tr>
+                @endforeach
+
+            </tbody>
+
+        </table>
     </div>
-</form>
-<br><br>
-<div class="panel-body">
-    <table id="dataem" class="table table-striped table-bordered table-responsive-lg">
-        <thead class="bg-success ">
-            <th>ลำดับ</th>
-            <th>ชื่อ</th>
-            <th>นามสกุล</th>
-            <th>ที่อยู่</th>
-            <th>เบอร์โทร</th>
-            <th>ตำแหน่ง</th>
-            <th>หมายเหตุ</th>
-        </thead>
-        <tbody>
-            @foreach ($employee as $key =>$item)
-            <tr>
-                <td>{{$key+1}}</td>
-                <td>{{$item->em_name}}</td>
-                <td>{{$item->em_lastname}}</td>
-                <td>{{$item->em_address}}</td>
-                <td>{{$item->em_phone}}</td>
-                <td>{{$item->em_position}}</td>
-                <td>
-                        <a href="{{url('/edit_dataem')}}/{{$item->em_id}}" class='btn btn-warning'>แก้ไข</a>
-                        <button class='btn btn-danger' onclick='confirm_delete("{{$item->em_id}}")'>ลบ</button>
-                        <a href ="{{url('/detailuser')}}/{{$item->em_id}}" class='btn btn-info'>รายละเอียด</a>
-                </td>
-            </tr>
-            @endforeach
-
-        </tbody>
-
-    </table>
 </div>
 
 @stop

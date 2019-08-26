@@ -31,7 +31,7 @@ class Employee extends Model
      public static function login($username,$password){
      $Pass=md5($password); //เข้ารหัสข้อมูล
           $data=DB::table("employee") //รับข้อมูลจากdatabase
-          ->where("em_user","=",$username) //ระบุเงื่อนไข ถ้า em_user=username ผลลัพธ์ ถ้าจริงจะหาข้อมูลเจอ ถ้าไม่จริงจะไม่ส่งข้อมูลมา
+          ->where("em_username","=",$username) //ระบุเงื่อนไข ถ้า em_user=username ผลลัพธ์ ถ้าจริงจะหาข้อมูลเจอ ถ้าไม่จริงจะไม่ส่งข้อมูลมา
             ->where("em_password","=",$Pass)
           ->get(); //getคือดึงข้อมูล
 

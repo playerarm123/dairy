@@ -17,10 +17,12 @@ Route::get('/', function () {
 });
 Route::get('login','Auth@ShowLoginForm'); // ไปหน้าล็อกอิน
 Route::post('verifyLg','Auth@verifyLg'); //ตรวจสอบ
-Route::get('home','Auth@ShowHome');//หน้าhome
+Route::get('loadLogo','Auth@loadLogo'); //โหลดไฟล์ logo
 Route::get('logout','Auth@Logout'); //หน้าlogout
 
-
+Route::group(['middleware' => 'checklogin'], function () {
+    Route::get('home','Auth@ShowHome');//หน้าhome
+});
 
 Route::get('searchmem/{id}','Datamg@Searchmem');// ค้นหาสมาชิก
 Route::get('dataem','Datamg@Dataem');//หน้าข้อมูลผู้ใช้งาน

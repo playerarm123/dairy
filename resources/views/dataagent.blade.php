@@ -6,14 +6,14 @@
 @stop
 
 
-@section('body')<BR><BR><BR>
+@section('body')
          <!-- script  plug in dataTable  -->
   <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
   <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
   <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
     <script>
         function confirm_delete(pn_id){
             swal({
@@ -30,12 +30,12 @@
                 function(isConfirm) {
                 if (isConfirm) {
                     // ถ้ากด ใช่
-                    
+
                     $.ajax({
                         type: "GET",
                         url : "{{ url('deleteagent')}}/"+pn_id,
                         success:function(data){
-                            
+
                             location.reload();
                         }
                     });
@@ -44,8 +44,8 @@
                     swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
                 }
             });
-            
-        }  
+
+        }
         $(document).ready(function() {
             var table =$('#dataagent').DataTable({
                         "paging": true,
@@ -56,8 +56,8 @@
                             {"width": "10%"},
                             {"width": "12%"},
                             {"width": "20%"}
-                           
-                        ],  
+
+                        ],
                         "oLanguage": {
                                         "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
                                         "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
@@ -79,7 +79,7 @@
                      }
 
                      );
-            
+
         });
     </script>
     <style> .right{
@@ -94,7 +94,7 @@
             .btncenter{
         width:10%;margin-left:45%;margin-right:45%;
     }
-            
+
 </style>
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานบริษัทคู่ค้า</h1><br>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-4">
                     <textarea class="form-control" name="address" required></textarea>
-                </div> 
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -132,7 +132,7 @@
             <span class="fa fa-edit" >บันทึก</span>
         </button>
     </div>
-</form> 
+</form>
 <br><br>
 
 <div class="panel-body">
@@ -144,7 +144,7 @@
             <th> เบอร์โทร</th>
             <th>หมายเหตุ</th>
         </thead>
-        <tbody>           
+        <tbody>
             @foreach ($agent as $key =>$item)
                 <tr>
                 <td>{{$key+1}}</td>
@@ -159,7 +159,7 @@
                 </tr>
                 @endforeach
         </tbody>
-                
+
     </table>
 </div>
 

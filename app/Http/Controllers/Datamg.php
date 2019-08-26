@@ -11,6 +11,10 @@ use App\cooper;
 use App\partners;
 class Datamg extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checklogin');
+    }
 
     public function Dataem(){ //หน้าข้อมูลผู้ใช้
         $data['employee']=Employee::loadAllEmp();
@@ -34,7 +38,8 @@ class Datamg extends Controller
         return view('dataagent',$data);
     }
     public function Datacoop(){ //หน้าข้อมูลสหกรณ์
-        return view('datacoop');
+        $data['coop']=cooper::loadDatacoop(1);
+        return view('datacoop',$data);
     }
     public function Loaduser(){ //โหลดข้อมูลผู้ใช้
         $alldata=Employee::loadAllData();
@@ -271,35 +276,29 @@ class Datamg extends Controller
         return view('edit_dataagent',$data);
     }
 
-
-    public function Loadcoop(){ //โหลดหน้าสหกรณ์
-        $data['coop']=cooper::loadDatacoop(1);
-        return view ('datacoop',$data);
-    }
     public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
+        $id = $req->input('id');
         $coop_name=$req->input('name');
         $coop_address=$req->input('address');
         $coop_phone=$req->input('phone');
         $coop_fax=$req->input('fax');
         $coop_email=$req->input('email');
-        $coop_logo=$req->input('logo');
-        $coop_website=$req->input('web');
-        cooper::coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
+        $logo = $req->file('logo');
+        $coop_website=$req->input('website');
+        if($req->input('save_type') == 'insert'){
+            $coop_logo=$this->uploadlogo($logo);
+            cooper::coop_insert($coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
+        }else{
+            $coop_logo = $req->input('old_logo');
+            if($logo){
+                $coop_logo = $this->uploadlogo($logo);
+            }
+
+            cooper::coop_update($id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
+        }
+
         Session::put('save','success');
         return redirect('datacoop');
-    }
-
-        public function Updatecoop(Request $req){ //แสดงหน้าอัพเดตสหกรณ์
-        $coop_id=$req->input('id');
-        $coop_name=$req->input('name');
-        $coop_address=$req->input('address');
-        $coop_phone=$req->input('phone');
-        $coop_fax=$req->input('fax');
-        $coop_email=$req->input('email');
-        $coop_website=$req->input('web');
-        $coop_logo=$req->file('');
-        cooper::coop_update($coop_id,$coop_name,$coop_address,$coop_phone,$coop_fax,$coop_email,$coop_website,$coop_logo);
-        return redirect ('datacoop');
     }
 
     public function Editcoop($id){ //แก้ไขข้อมูลคู่ค้า
@@ -307,15 +306,15 @@ class Datamg extends Controller
         return view('edit_datacoop',$data);
     }
 
-    public function uploadlogo($file,$file_name){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
+    public function uploadlogo($file){//ใช้อัพโหลดlogoขึ้นเซริฟเวอร์
         if($file){
             $mimetype = $file->getClientMimeType();
             if($mimetype != "image/jpeg" && $mimetype != "image/png"){ //เช็คชนิดไฟล์ว่าตรงตามเงื่อนไขไหม
-                Session::put("alert","file_mismatch");
-                return false;
+                Session::put("alert_file","file_mismatch");
+                return redirect('datacoop');
             }else{
                 $file_extension = ($mimetype == "image/jpeg") ? ".jpg":".png"; //นามสกุลไฟล์
-                $filename = $file_name.$file_extension;
+                $filename = 'logo'.$file_extension;
                 $file->move("img",$filename);
                 return $filename;
             }
