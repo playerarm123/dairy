@@ -320,6 +320,12 @@ class Datamg extends Controller
         }
     }
 
+    public function Searchmem($id){
+        $data=Member::loadDataMb($id);
+        return $data;
+
+    }
+
 
 
 

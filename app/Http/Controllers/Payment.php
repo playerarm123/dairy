@@ -8,8 +8,8 @@ class Payment extends Controller
 {
 
     public function Payment(){
-        $data['payment']=Payment::loadpayment();
-        return view('payment');
+        // $data['paymilk']=Payment::loadpayment();
+        return view('paymilk');
     }
     // public function Savepayment(Request $req){
     //     $sm_id=$req->input('');

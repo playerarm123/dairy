@@ -20,6 +20,9 @@ Route::post('verifyLg','Auth@verifyLg'); //ตรวจสอบ
 Route::get('home','Auth@ShowHome');//หน้าhome
 Route::get('logout','Auth@Logout'); //หน้าlogout
 
+
+
+Route::get('searchmem/{id}','Datamg@Searchmem');// ค้นหาสมาชิก
 Route::get('dataem','Datamg@Dataem');//หน้าข้อมูลผู้ใช้งาน
 Route::get('loaduser','Datamg@Loaduser');//ใช้โหลดข้อมูลผู้ใช้งานทั้งหมด
 Route::post('checkuser','Datamg@checkuser');//เช็คข้อมูลผู้ใช้
@@ -81,7 +84,6 @@ Route::get('editagent/{id}','Datamg@Editagent');//แก้ไขข้อมู
 
 Route::get('buymilk','Buymilk@Buymilk');//หน้าข้อมูลซื้อน้ำนม
 Route::post('savebuymilk','Buymilk@Savebuymilk');//บันทึกข้อมูลซื้อน้ำนม
-Route::get('search_member/{id}','Buymilk@Searchmem');//ค้นหาสมาชิก
 Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงรายละเอียดซื้อน้ำนม
 
 
@@ -108,18 +110,19 @@ Route::get('sellpro','Selleqm@Selleqm');//หน้าขายอุปกร�
 
 
 
-Route::get('payment','Payment@Payment');//หน้าชำระเงิน
-Route::post('savepayment','Payment@Savepayment');
-Route::get('detailpayment/{id}','Payment@Detailpayment');
-Route::get('search_partners/{id}','Payment@Searchpartners');
+Route::get('paymilk','Payment@Payment');//หน้าชำระเงิน
+Route::post('savepayment','Payment@Savepayment');//บันทึกหน้าชำระเงิน
+Route::get('detailpayment/{id}','Payment@Detailpayment');//รายละเอียดชำระเงิน
+Route::get('search_partners/{id}','Payment@Searchpartners'); //ค้นหาคู่ค้า
 
 
 Route::get('receivemoney','Acceptpm@Receivemoney'); //หน้ารับชำระเงิน
-Route::post('saveacceptpm','Acceptpm@Saveacceptpm');
-Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm');
-Route::get('search_acceptpm/{id}','Acceptpm@Searchacceptpm');
+Route::post('saveacceptpm','Acceptpm@Saveacceptpm'); //บันทึกรับชำระเงิน
+Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm'); //รายละเอียดชำระเงิน
 
 Route::get('testmind','Report@testmind');
+
+
 
 
 

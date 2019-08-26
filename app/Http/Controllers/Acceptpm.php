@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use App\Member;
 class Acceptpm extends Controller
 {
-        public function Acceptpm(){
-            $data['receivemoney']=Acceptpm::loadremoney();
-            return view('receivemoney',$data);
+        public function Receivemoney(){
+            // $data['receivemoney']=Acceptpm::loadremoney();
+            return view('receivemoney');
         }
 
         // public function Savepayment(Request $req){
