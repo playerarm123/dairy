@@ -5,24 +5,24 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Buymilk as buymilks;
 use App\Member;
+use App\Milk;
 class Buymilk extends Controller
 
 {
 
     public function Buymilk(){
         $data['buymilk']=buymilks::loadAllBuymilk();
+        $data['grade']=Milk::loadAllMilk();
         return view('buymilk',$data);
     }
 
     public function Savebuymilk(Request $req){ //บันทึกข้อการซื้อน้ำนมมูลน้ำนม
-        $em_id=$req->input('em_id');
-        $mb_id=$req->input('mb_id');
-        $milk_id=$req->input('milk_id');
+        $mb_id=$req->input('memberid');
+        $bm_grade=$req->input('grade');
         $bm_wiegh=$req->input('wiegh');
-        $bm_pricein=$req->input('price');
-        $bm_date=$req->input('date');
-        $bm_range=$req->input('rang');
-        buymilks::bm_insert($em_id,$mb_id,$milk_id,$bm_wiegh,$bm_pricein,$bm_date,$bm_range);
+        $bm_pricein=$req->input('pricein');
+        $bm_range=$req->input('range');
+        buymilks::bm_insert($mb_id,$bm_grade,$bm_wiegh,$bm_pricein,$bm_range);
         Session::put('save','success');
         return redirect('buymilk');
     }
