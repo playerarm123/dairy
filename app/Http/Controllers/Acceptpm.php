@@ -27,7 +27,7 @@ class Acceptpm extends Controller
         //     $data['']=Salemilk::($id);
         //    return view ('',$data);
         // }
-
+ //เพิ่ม
 
 
         public function Testmild(){
