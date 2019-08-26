@@ -134,13 +134,13 @@
         <br>
         <div style="width:100% "class="" >
             <button  type="submit" class="btn btn-success btncenter" >
+                <span class="fa fa-edit" >บันทึก</span>
+            </button>
+            <button  type="submit" class="btn btn-success btncenter" >
                 <span class="fa fa-edit" >แก้ไข</span>
             </button>
             <button  type="submit" class="btn btn-success btncenter" >
-                <span class="fa fa-edit" >บันทึก</span>
-            </button>
-            <button  type="submit" class="btn btn-success btncenter" >
-                <span class="fa fa-edit" >บันทึก</span>
+                <span class="fa fa-edit" >ยกเลิก</span>
             </button>
         </div>
     </form>
