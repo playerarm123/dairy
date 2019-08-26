@@ -228,7 +228,7 @@ class Datamg extends Controller
     }
     public function Editpro($id){ //แก้ไขข้อมูลอุปกรณ์
         $data['equip']=equip::loadAllEquip($id);
-        return view('editpro',$data);
+        return view('edit_datapro',$data);
     }
 
     public function Loadagent(){ //โหลดหน้าคู่ค้า
@@ -268,7 +268,7 @@ class Datamg extends Controller
     }
     public function Editagent($id){ //แก้ไขข้อมูลคู่ค้า
         $data['agent']=partners::loadAllPartners($id);
-        return view('editagent',$data);
+        return view('edit_dataagent',$data);
     }
 
 
@@ -302,6 +302,10 @@ class Datamg extends Controller
         return redirect ('datacoop');
     }
 
+    public function Editcoop($id){ //แก้ไขข้อมูลคู่ค้า
+        $data['coop']=cooper::loadDatacoop($id);
+        return view('edit_datacoop',$data);
+    }
 
     public function uploadlogo($file,$file_name){//ใช้อัพโหลดรูปขึ้นเซริฟเวอร์
         if($file){
