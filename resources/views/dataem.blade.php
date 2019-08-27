@@ -7,7 +7,6 @@
 
 
 @section('body')
-
     <script>
         function confirm_delete(Em_id){
             swal({
@@ -24,15 +23,24 @@
                 function(isConfirm) {
                 if (isConfirm) {
                     // ถ้ากด ใช่
-
                     $.ajax({
-                        type: "GET",
-                        url : "{{ url('deleteuser')}}/"+Em_id,
-                        success:function(data){
-
-                            location.reload();
+                        type:"GET",
+                        url: " {{ url('') }}/"+Em_id,
+                        success:function(result){
+                            if(result == "yes"){
+                                $.ajax({
+                                    type: "GET",
+                                    url : "{{ url('deleteuser')}}/"+Em_id,
+                                    success:function(data){
+                                        location.reload();
+                                    }
+                                });
+                            }else{
+                                swal('แจ้งเตือน','ไม่สามารถลบข้อมูลได้','warning');
+                            }
                         }
                     });
+
                 } else {
                     // ถ้ากด ไม่ใช่
                     swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
@@ -85,46 +93,39 @@
                          }
                     }
                 });
-
-
             });
 
             // ตารางข้อมูล
             var table =$('#dataem').DataTable({
-                        "paging": true,
-                        "autoWidth": false,
-                        "columns": [
-                            { "width": "5%" },
-                            null,
-                            null,
-                            {"width": "20%"},
-                            {"width": "10%"},
-                            {"width": "12%"},
-                            {"width": "25%"}
+                "paging": true,
+                "autoWidth": false,
+                "columns": [
+                    { "width": "5%" },
+                    null,
+                    null,
+                    {"width": "10%"},
+                    {"width": "12%"},
+                    {"width": "22%"}
 
-                        ],
-                        "oLanguage": {
-                                        "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
-                                        "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                                        "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
-                                        "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                                        "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
-                                        "sSearch": "ค้นหา :",
-                                        "sLoadingRecords": "Please wait - loading...",
-                                        "oPaginate": {
-                                            "sFirst": "หน้าแรก",
-                                            "sLast": "หน้าสุดท้าย",
-                                            "sPrevious": "ก่อน",
-                                            "sNext":"ถัดไป"
-                                        }
-                        },
-                        "pageLength": 10 ,
-                         searching:true,
-
-                     }
-
-                     );
-
+                ],
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                    "sSearch": "ค้นหา :",
+                    "sLoadingRecords": "Please wait - loading...",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sPrevious": "ก่อน",
+                        "sNext":"ถัดไป"
+                    }
+                },
+                "pageLength": 10 ,
+                searching:true,
+            });
         });
         function check_password (){
             var password1 =$('#password').val();
@@ -135,34 +136,31 @@
             } else {
                 alert ("passwordถูกต้อง");
             }
-
-
         }
     </script>
-<div class="center">
-    <h1 style="text-align:center">จัดการข้อมูลพื้นฐานผู้ใช้งาน</h1><br>
-    <form action="{{ url('/savedataem') }}" method="POST" id='form-submit'>
-        @csrf
-        <div class="form-group">
-            <div class="row">
-                <div class="col-2 right">
-                    ชื่อ:
-                </div>
-                <div class="col-3">
-                    <div class="custom-textbox">
-                        <input type="text" class="form-control"id="firstname" name="firstname" value="" >
+    <div class="center">
+        <h1 style="text-align:center">จัดการข้อมูลพื้นฐานผู้ใช้งาน</h1><br>
+        <form action="{{ url('/savedataem') }}" method="POST" id='form-submit'>
+            @csrf
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-2 right">
+                        ชื่อ:
                     </div>
-                    <span id="alert_name" class="msg">ชื่อและนามสกุลนี้ถูกใช้งานแล้ว</span>
-                </div>
-                <div class="col-2 right">
-                    นามสกุล:
-                </div>
-                <div class="col-3">
-                    <input type="text" class="form-control"id="lastname" name="lastname" value = "" >
+                    <div class="col-3">
+                        <div class="custom-textbox">
+                            <input type="text" class="form-control"id="firstname" name="firstname" value="" >
+                        </div>
+                        <span id="alert_name" class="msg">ชื่อและนามสกุลนี้ถูกใช้งานแล้ว</span>
+                    </div>
+                    <div class="col-2 right">
+                        นามสกุล:
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control"id="lastname" name="lastname" value = "" >
+                    </div>
                 </div>
             </div>
-        </div>
-
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
@@ -191,10 +189,10 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
-                            ที่อยู่:
+                        ที่อยู่:
                     </div>
                     <div class="col-3">
-                            <textarea class="form-control" name="address" ></textarea>
+                        <textarea class="form-control" name="address" ></textarea>
                     </div>
                     <div class="col-2 right">
                         เบอร์โทร:
@@ -206,90 +204,83 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                        <div class="col-2 right">
-                                ตำแหน่ง:
-                            </div>
-                            <div class="col-3" id="positiion">
-
-                                <div class="form-check-inline">
-                                    <label class="form-check-label">
+                    <div class="col-2 right">
+                        ตำแหน่ง:
+                    </div>
+                    <div class="col-3" id="positiion">
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="position" value="พนักงาน" >พนักงาน
-                                </label>
-                                </div>
-                                <div class="form-check-inline">
-                                <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="position"value="กรรมการ" >กรรมการ
-                                </label>
-                            </div>
+                            </label>
                         </div>
-                        <div class="col-2 right">
-                            Username:
+                        <div class="form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="position"value="กรรมการ" >กรรมการ
+                            </label>
                         </div>
-                        <div class="col-3 right">
-                            <div class="custom-textbox">
-                                <input type="text" class="form-control"id="username" name="username" value="" >
-                            </div>
-                            <span id="alert_username" class="msg">Usernameถูกต้อง</span>
+                    </div>
+                    <div class="col-2 right">
+                        Username:
+                    </div>
+                    <div class="col-3 right">
+                        <div class="custom-textbox">
+                            <input type="text" class="form-control"id="username" name="username" value="" >
                         </div>
+                        <span id="alert_username" class="msg">Usernameถูกต้อง</span>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-
                     <div class="col-2 right">
-                            Password :
-                        </div>
-                        <div class="col-3 ">
-                            <input type="password" id="password" class="form-control" name="password"  >
-                        </div>
-                        <div class="col-2 right">
-                            ยืนยัน Password :
-                        </div>
-                        <div class="col-3">
-                            <input  type="password" id="confirm_password" class="form-control" name=""  >
-                        </div>
+                        Password :
+                    </div>
+                    <div class="col-3 ">
+                        <input type="password" id="password" class="form-control" name="password"  >
+                    </div>
+                    <div class="col-2 right">
+                        ยืนยัน Password :
+                    </div>
+                    <div class="col-3">
+                        <input  type="password" id="confirm_password" class="form-control" name=""  >
+                    </div>
                 </div>
             </div>
-        <div class="btncenter">
-            <button  type="submit" id="save" class="btn btn-success " >
-                <span class="fa fa-edit"  >บันทึก</span>
-            </button>
+            <div class="btncenter">
+                <button  type="submit" id="save" class="btn btn-success " >
+                    <span class="fa fa-edit"  >บันทึก</span>
+                </button>
+            </div>
+        </form>
+        <div class="panel-body">
+            <table id="dataem" class="table table-striped table-bordered table-responsive-lg">
+                <thead class="bg-success ">
+                    <th>ลำดับ</th>
+                    <th>ชื่อ</th>
+                    <th>นามสกุล</th>
+                    <th>เบอร์โทร</th>
+                    <th>ตำแหน่ง</th>
+                    <th>หมายเหตุ</th>
+                </thead>
+                <tbody>
+                    @foreach ($employee as $key =>$item)
+                        <tr>
+                            <td>{{$key+1}}</td>
+                            <td>{{$item->em_name}}</td>
+                            <td>{{$item->em_lastname}}</td>
+                            <td>{{$item->em_phone}}</td>
+                            <td>{{$item->em_position}}</td>
+                            <td>
+                                <a href ="{{url('/detailuser')}}/{{$item->em_id}}" class='btn btn-info'>รายละเอียด</a>
+                                <a href="{{url('/edit_dataem')}}/{{$item->em_id}}" class='btn btn-warning'>แก้ไข</a>
+                                <button class='btn btn-danger' onclick='confirm_delete("{{$item->em_id}}")'>ลบ</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-    </form>
-    <div class="panel-body">
-        <table id="dataem" class="table table-striped table-bordered table-responsive-lg">
-            <thead class="bg-success ">
-                <th>ลำดับ</th>
-                <th>ชื่อ</th>
-                <th>นามสกุล</th>
-                <th>ที่อยู่</th>
-                <th>เบอร์โทร</th>
-                <th>ตำแหน่ง</th>
-                <th>หมายเหตุ</th>
-            </thead>
-            <tbody>
-                @foreach ($employee as $key =>$item)
-                <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$item->em_name}}</td>
-                    <td>{{$item->em_lastname}}</td>
-                    <td>{{$item->em_address}}</td>
-                    <td>{{$item->em_phone}}</td>
-                    <td>{{$item->em_position}}</td>
-                    <td>
-                            <a href="{{url('/edit_dataem')}}/{{$item->em_id}}" class='btn btn-warning'>แก้ไข</a>
-                            <button class='btn btn-danger' onclick='confirm_delete("{{$item->em_id}}")'>ลบ</button>
-                            <a href ="{{url('/detailuser')}}/{{$item->em_id}}" class='btn btn-info'>รายละเอียด</a>
-                    </td>
-                </tr>
-                @endforeach
-
-            </tbody>
-
-        </table>
     </div>
-</div>
-
 @stop
 
 

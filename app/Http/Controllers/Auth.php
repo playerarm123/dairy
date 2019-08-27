@@ -15,6 +15,10 @@ class Auth extends Controller
         $password=$req->input('password');
         $result=Employee::login($user,$password);
         if($result==1){
+            $user = Employee::where('em_username','=',$user)->get();
+            Session::put('em_id',$user[0]->em_id);
+            Session::put('fname',$user[0]->em_name);
+            Session::put('lname',$user[0]->em_lastname);
             Session::put('username',$user);
             Session::put('Statuslogin','true');
             return redirect('home');
