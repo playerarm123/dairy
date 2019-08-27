@@ -35,13 +35,11 @@ class partners extends Model
 
 
                      $update_pn=array(
-                    "pn_id"=>$pn_id,
                     "pn_name"=> $pn_name,
                     "pn_address"=> $pn_address,
                     "pn_phone"=> $pn_phone,
                     "pn_status"=>"พร้อมใช้งาน"
                             );
-
 
                       DB::table("Partners")->where("Pn_id","=",$pn_id)->update($update_pn);
 

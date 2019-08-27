@@ -7,7 +7,7 @@
 
 
 @section('body')
-       
+
     <script>
 
        function confirm_delete(milk_id){
@@ -51,7 +51,7 @@
                             null,
                             null,
                             null,
-                            {"width": "20%"},
+                            {"width": "22%"},
 
 
                         ],
@@ -80,7 +80,7 @@
         });
     </script>
 <style>
-   
+
 
 </style>
 <div class="center">
@@ -132,7 +132,7 @@
             <span class="fa fa-edit" >บันทึก</span>
         </button>
     </div>
-        
+
 </form>
 <br><br>
 <div class="panel-body">

@@ -7,7 +7,7 @@
 
 
 @section('body')
-      
+
 
     <script>
         function confirm_delete(pn_id){
@@ -30,8 +30,6 @@
                         type: "GET",
                         url : "{{ url('deleteagent')}}/"+pn_id,
                         success:function(data){
-
-                            location.reload();
                         }
                     });
                 } else {
@@ -48,9 +46,8 @@
                         "columns": [
                             { "width": "5%" },
                             null,
-                            {"width": "10%"},
                             {"width": "12%"},
-                            {"width": "20%"}
+                            {"width": "22%"}
 
                         ],
                         "oLanguage": {
@@ -77,7 +74,7 @@
 
         });
     </script>
-   
+
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานบริษัทคู่ค้า</h1><br>
 
@@ -122,7 +119,6 @@
         <thead class="bg-success ">
             <th>ลำดับ</th>
             <th> ชื่อบริษัท</th>
-            <th> ที่อยู่ </th>
             <th> เบอร์โทร</th>
             <th>หมายเหตุ</th>
         </thead>
@@ -131,10 +127,9 @@
                 <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$item->pn_name}}</td>
-                <td>{{$item->pn_address}}</td>
                 <td>{{$item->pn_phone}}</td>
                 <td>
-                        <a href="{{url('/edit_dataagent')}}/{{$item->pn_id}}" class='btn btn-warning'>แก้ไข</a>
+                        <a href="{{url('/editagent')}}/{{$item->pn_id}}" class='btn btn-warning'>แก้ไข</a>
                         <button class='btn btn-danger' onclick='confirm_delete("{{$item->pn_id}}")'>ลบ</button>
                         <a href ="{{url('/detailagent')}}/{{$item->pn_id}}" class='btn btn-info'>รายละเอียด</a>
                 </td>

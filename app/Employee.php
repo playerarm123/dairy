@@ -111,9 +111,6 @@ class Employee extends Model
      $receive_money= DB::table("receive_money") ->where("em_id","=",$em_id) ->count();
         if($buy_milk != 0 || $sale_milk !=0 || $receive_equip !=0 || $sale_equip !=0 || $pay_milk !=0 || $receive_money !=0){
             $checkDelete = "no";
-
-
-
         }
         else{
             $checkDelete = "yes";
