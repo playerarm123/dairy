@@ -119,7 +119,7 @@
                   </li>
 
                   <li><a href="{{url('buymilk')}}">รับซื้อน้ำนมดิบ</a></li>
-                  <li><a href="{{url('sellmilk')}}">ขายน้ำนมดิบ</a></li>
+                  <li><a href="{{url('salemilk')}}">ขายน้ำนมดิบ</a></li>
                   <li><a href="{{url('#')}}">รับอุปกรณ์</a>
                     <ul class="dropdown">
                       <li><a href="{{url('receivedrug')}}">ยารักษาโรค</a></li>

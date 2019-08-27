@@ -90,9 +90,9 @@ Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงราย
 
 
 
-Route::get('sellmilk','Sellmilk@Sellmilk');//หน้าข้อมูลขายน้ำนม
-Route::post('savesellmilk','Sellmilk@Savesellmilk');
-Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk');
+Route::get('salemilk','Salemilk@Salemilk');//หน้าข้อมูลขายน้ำนม
+Route::post('savesalemilk','Salelmilk@Savesalemilk');
+Route::get('detailsalemilk/{id}','Salemilk@Detailsalemilk');
 Route::get('search_partners/{id}','Sellmilk@Searchpartners');
 
 
