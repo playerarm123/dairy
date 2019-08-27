@@ -94,7 +94,7 @@
         <input type="hidden" name="" id="old_fax">
         <input type="hidden" name="" id="old_website">
         <input type="hidden" name="old_logo" value="{{ $logo }}">
-        <input type="hidden" name="" id="save_type" value="insert">
+        <input type="hidden" name="save_type" id="save_type" value="insert">
 
         <div class="form-group " >
             <div class="row">
