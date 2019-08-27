@@ -6,14 +6,8 @@
 @stop
 
 
-@section('body')<BR><BR><BR>
-         <!-- script  plug in dataTable  -->
-  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
-  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+@section('body')
+         
     <script>
            function confirm_delete(eq_id){
             swal({
@@ -85,18 +79,7 @@
         });
     </script>
 <style>
-    .right{
-        text-align: right
-    }
-    .center {
-        margin: auto;
-        width: 90%;
-        border: 3px solid #73AD21;
-        padding: 10px;
-    }
-    .btncenter{
-        width:10%;margin-left:45%;margin-right:45%;
-    }
+ 
 
 </style>
 <div class="center">
@@ -111,13 +94,13 @@
                 <div class="col-2 right">
                     ชื่ออุปกรณ์:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <input type="text" class="form-control" name="name" required >
                 </div>
                 <div class="col-2 right">
                     ประเภท:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                         <select name="cate" class="form-control" >
                                 <option value="อาหารสัตว์">อาหารสัตว์</option>
                                 <option value="ยารักษาโรค">ยารักษาโรค</option>
@@ -131,19 +114,19 @@
                 <div class="col-2 right">
                    จำนวน:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <input type="number" class="form-control" name="unit" required>
                 </div>
                 <div class="col-2 right">
                         ราคา:
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <input type="text" class="form-control" name="price" required >
                     </div>
             </div>
         </div>
-    <div style="width:100%">
-        <button  type="submit" class="btn btn-success btncenter" >
+    <div class="btncenter">
+        <button  type="submit" class="btn btn-success" >
             <span class="fa fa-edit" >บันทึก</span>
         </button>
     </div>

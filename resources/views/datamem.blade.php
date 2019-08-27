@@ -87,7 +87,7 @@
                 <div class="col-2 right">
                     ชื่อ:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <input type="text" class="form-control" name="firstname" required >
                 </div>
                 <div class="col-2 right">
@@ -103,7 +103,7 @@
                 <div class="col-2 right">
                     เพศ:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-check-inline">
                         <label class="form-check-label">
                           <input type="radio" class="form-check-input" name="gender" value="male" required>ชาย
@@ -118,7 +118,7 @@
                 <div class="col-2 right">
                         อายุ:
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <input type="number" class="form-control" name=old required>
                     </div>
 
@@ -130,13 +130,13 @@
                     <div class="col-2 right">
                             ที่อยู่:
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                             <textarea class="form-control" name="address" required></textarea>
                     </div>
                 <div class="col-2 right">
                         เบอร์โทร:
         </div>
-        <div class="col-4">
+        <div class="col-3">
             <input type="text" class="form-control" name="number" required>
         </div>
 
@@ -145,8 +145,8 @@
 
             <br>
     <br>
-    <div style="width:100% "class="" >
-        <button  type="submit" class="btn btn-success btncenter" >
+    <div class="btncenter" >
+        <button  type="submit" class="btn btn-success " >
             <span class="fa fa-edit" >บันทึก</span>
         </button>
     </div>

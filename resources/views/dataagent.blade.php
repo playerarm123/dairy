@@ -7,13 +7,8 @@
 
 
 @section('body')
-         <!-- script  plug in dataTable  -->
-  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
-  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+      
+
     <script>
         function confirm_delete(pn_id){
             swal({
@@ -82,20 +77,7 @@
 
         });
     </script>
-    <style> .right{
-        text-align: right
-    }
-            .center {
-                margin: auto;
-                width: 90%;
-                border: 3px solid #73AD21;
-                padding: 10px;
-            }
-            .btncenter{
-        width:10%;margin-left:45%;margin-right:45%;
-    }
-
-</style>
+   
 <div class="center">
 <h1 style="text-align:center">จัดการข้อมูลพื้นฐานบริษัทคู่ค้า</h1><br>
 
@@ -106,13 +88,13 @@
                 <div class="col-2 right">
                     ชื่อบริษัท:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <input type="text" class="form-control" name="name" required >
                 </div>
                 <div class="col-2 right">
                     ที่อยู่:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <textarea class="form-control" name="address" required></textarea>
                 </div>
             </div>
@@ -122,13 +104,13 @@
                 <div class="col-2 right">
                    เบอร์โทร:
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <input type="tel" class="form-control" name="phone" required>
                 </div>
             </div>
         </div>
-    <div style="width:100%">
-        <button  type="submit" class="btn btn-success btncenter" >
+    <div class="btncenter">
+        <button  type="submit" class="btn btn-success " >
             <span class="fa fa-edit" >บันทึก</span>
         </button>
     </div>
