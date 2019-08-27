@@ -10,6 +10,11 @@ class Buymilk extends Controller
 
 {
 
+    public function __construct()
+    {
+        $this->middleware('checklogin');
+    }
+
     public function Buymilk(){
         $data['buymilk']=buymilks::loadAllBuymilk();
         $data['grade']=Milk::loadAllMilk();

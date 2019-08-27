@@ -8,6 +8,11 @@ use App\equip;
 class Receive extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('checklogin');
+    }
+
     public function Drug(){
         $data['receivedrug']=equip::loaddatadrug();
         return view('receivedrug',$data);

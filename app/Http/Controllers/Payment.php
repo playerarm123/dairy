@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Member;
 class Payment extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checklogin');
+    }
 
     public function Payment(){
         // $data['paymilk']=Payment::loadpayment();

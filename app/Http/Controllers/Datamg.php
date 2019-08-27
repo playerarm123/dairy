@@ -18,7 +18,6 @@ class Datamg extends Controller
 
     public function Dataem(){ //หน้าข้อมูลผู้ใช้
         $data['employee']=Employee::loadAllEmp();
-
         return view('dataem',$data);
     }
     public function Datamem(){ //หน้าข้อมูลสมาชิก
@@ -98,6 +97,11 @@ class Datamg extends Controller
         return view('edit_dataem',$data);
     }
 
+    // public function Checkdluser($id){
+    //     $data['']=Employee::($id);
+    //     return view('',$data);
+    // }
+
 
 
     public function Loadmem(){ //โหลดข้อมูลสมาชิก
@@ -127,7 +131,7 @@ class Datamg extends Controller
         return redirect('datamem');
     }
     public function Detailmem($id){ //แสดงรายละเอียดข้อมูลสมาชิก
-        $data['member']=Member::loadAllmb($id);
+        $data['member']=Member::loadDataMb($id);
        return view ('show_datamem',$data);
     }
     public function Updatemem(Request $req){ //แสดงหน้าอัพเดตสมาชิก
@@ -143,9 +147,14 @@ class Datamg extends Controller
         return redirect ('detailmem/'.$mb_id);
     }
     public function Editdatamem($id){ //แก้ไขข้อมูลสมาชิก
-        $data['member']=Member::loadAllmb($id);
+        $data['member']=Member::loadDataMb($id);
         return view('edit_datamem',$data);
     }
+
+    // public function Checkdlmember($id){
+    //     $data['']=Member::($id);
+    //     return view('',$data);
+    // }
 
 
 
@@ -173,7 +182,7 @@ class Datamg extends Controller
         return redirect('datamilk');
     }
     public function Detailmilk($id){ //แสดงรายละเอียดข้อมูลน้ำนม
-        $data['milk']=Milk::loadAllMilk($id);
+        $data['milk']=Milk::loadDataMilk($id);
        return view ('show_datamilk',$data);
     }
     public function Updatemilk(Request $req){ //แสดงหน้าอัพเดตน้ำนม
@@ -188,10 +197,13 @@ class Datamg extends Controller
         return redirect ('detailmilk/'.$milk_id);
     }
     public function Editmilk($id){ //แก้ไขข้อมูลน้ำนม
-        $data['milk']=Milk::loadAllMilk($id);
+        $data['milk']=Milk::loadDataMilk($id);
         return view('edit_datamilk',$data);
     }
-
+    // public function Checkdlmilk($id){
+    //     $data['']=Milk::($id);
+    //     return view('',$data);
+    // }
 
 
     public function Loadpro(){ //โหลดอุปกรณ์
@@ -218,7 +230,7 @@ class Datamg extends Controller
         return redirect('datapro');
     }
     public function Detailpro($id){ //แสดงรายละเอียดข้อมูลอุปกรณ์
-        $data['equip']=equip::loadAllEquip($id);
+        $data['equip']=equip::loadDataEquip($id);
        return view ('show_datapro',$data);
     }
     public function Updatepro(Request $req){ //แสดงหน้าอัพเดตอุปกรณ์
@@ -232,9 +244,13 @@ class Datamg extends Controller
         return redirect ('datapro');
     }
     public function Editpro($id){ //แก้ไขข้อมูลอุปกรณ์
-        $data['equip']=equip::loadAllEquip($id);
+        $data['equip']=equip::loadDataEquip($id);
         return view('edit_datapro',$data);
     }
+    // public function Checkdlpro($id){
+    //     $data['']=equip::($id);
+    //     return view('',$data);
+    // }
 
     public function Loadagent(){ //โหลดหน้าคู่ค้า
         $Allagent=partners::loadAllPartners();
@@ -259,7 +275,7 @@ class Datamg extends Controller
         return redirect('dataagent');
     }
     public function Detailagent($id){ //แสดงรายละเอียดข้อมูลคู่ค้า
-        $data['agent']=partners::loadAllPartners($id);
+        $data['agent']=partners::loadDatapartner($id);
        return view ('show_agent',$data);
     }
     public function Updateagent(Request $req){ //แสดงหน้าอัพเดตคู่ค้า
@@ -272,9 +288,14 @@ class Datamg extends Controller
         return redirect ('dataagent');
     }
     public function Editagent($id){ //แก้ไขข้อมูลคู่ค้า
-        $data['agent']=partners::loadAllPartners($id);
+        $data['agent']=partners::loadDatapartner($id);
         return view('edit_dataagent',$data);
     }
+     // public function Checkdlagent($id){
+    //     $data['']=partners::($id);
+    //     return view('',$data);
+    // }
+
 
     public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
         $id = $req->input('id');
@@ -301,7 +322,7 @@ class Datamg extends Controller
         return redirect('datacoop');
     }
 
-    public function Editcoop($id){ //แก้ไขข้อมูลคู่ค้า
+    public function Editcoop($id){ //แก้ไขข้อมูลสหกรณ์
         $data['coop']=cooper::loadDatacoop($id);
         return view('edit_datacoop',$data);
     }

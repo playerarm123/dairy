@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 use App\Member;
 class Acceptpm extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checklogin');
+    }
+
+
         public function Receivemoney(){
             // $data['receivemoney']=Acceptpm::loadremoney();
             return view('receivemoney');

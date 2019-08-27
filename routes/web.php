@@ -23,7 +23,7 @@ Route::get('logout','Auth@Logout'); //หน้าlogout
 Route::group(['middleware' => 'checklogin'], function () {
     Route::get('home','Auth@ShowHome');//หน้าhome
 });
-
+Route::get('searchpartners/{id}','Datamg@Searchpartners');//ค้นหาคู่ค้า
 Route::get('searchmem/{id}','Datamg@Searchmem');// ค้นหาสมาชิก
 Route::get('dataem','Datamg@Dataem');//หน้าข้อมูลผู้ใช้งาน
 Route::get('loaduser','Datamg@Loaduser');//ใช้โหลดข้อมูลผู้ใช้งานทั้งหมด
@@ -33,7 +33,7 @@ Route::get('deleteuser/{id}','Datamg@Deleteuser');//ลบผู้ใช้
 Route::get('detailuser/{id}','Datamg@Detailuser');//แสดงรายละเอียดข้อมูลผู้ใช้
 Route::post('updateuser','Datamg@Updateuser');//อัพเดตข้อมูลผู้ใช้
 Route::get('edit_dataem/{id}','Datamg@Editdataem');//แก้ไขข้อมูลผู้ใช้
-
+Route::get('checkdluser/{id}','Datamg@Checkdluser');//เช็คก่อนลบ
 
 Route::get('datamem','Datamg@Datamem');//หน้าข้อมูลสมาชิก
 Route::get('loadmem','Datamg@Loadmem');//ใช้โหลดข้อมูลสมาชิก
@@ -43,7 +43,7 @@ Route::get('deletemem/{id}','Datamg@Deletemem');//ลบสมาชิก
 Route::get('detailmem/{id}','Datamg@Detailmem');//แสดงรายละเอียดสมาชิก
 Route::post('updatemem','Datamg@Updatemem');//อัพเดตข้อมูลสมาชิก
 Route::get('edit_datamem/{id}','Datamg@Editdatamem');//แก้ไขข้อมูลสมาชิก
-
+Route::get('checkdlmember/{id}','Datamg@Checkdlmember');//เช็คก่อนลบ
 
 
 Route::get('datamilk','Datamg@Datamilk');//หน้าข้อมูลนม
@@ -54,6 +54,7 @@ Route::get('deletemilk/{id}','Datamg@Deletemilk');//ลบน้ำนม
 Route::get('detailmilk/{id}','Datamg@Detailmilk');//แสดงรายละเอียดน้ำนม
 Route::post('updatemilk','Datamg@Updatemilk');//อัพเดตข้อมูลน้ำนม
 Route::get('edit_datamilk/{id}','Datamg@Editmilk');//แก้ไขข้อมูลน้ำนม
+Route::get('checkdlmilk/{id}','Datamg@Checkdlmilk');//เช็คก่อนลบ
 
 
 
@@ -65,6 +66,7 @@ Route::get('deletepro/{id}','Datamg@Deletepro');//ลบอุปกรณ์
 Route::get('detailpro/{id}','Datamg@Detailpro');//แสดงรายละเอียดอุปกรณ์
 Route::post('updatepro','Datamg@Updatepro');//อัพเดตข้อมูลอุปกรณ์
 Route::get('editpro/{id}','Datamg@Editpro');//แก้ไขข้อมูลอุปกรณ์
+Route::get('checkdlpro/{id}','Datamg@Checkdlpro');//เช็คก่อนลบ
 
 
 Route::get('datacoop','Datamg@Datacoop');//หน้าข้อมูลสหกรณ์
@@ -82,6 +84,7 @@ Route::get('deleteagent/{id}','Datamg@Deleteagent');//ลบคู่ค้า
 Route::get('detailagent/{id}','Datamg@Detailagent');//แสดงรายละเอียดคู่ค้า
 Route::post('updateagent','Datamg@Updateagent');//อัพเดตข้อมูลคู่ค้า
 Route::get('editagent/{id}','Datamg@Editagent');//แก้ไขข้อมูลคู่ค้า
+Route::get('checkdlagent/{id}','Datamg@Checkdlagent');//เช็คก่อนลบ
 
 
 Route::get('buymilk','Buymilk@Buymilk');//หน้าข้อมูลซื้อน้ำนม
@@ -93,7 +96,7 @@ Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงราย
 Route::get('sellmilk','Sellmilk@Sellmilk');//หน้าข้อมูลขายน้ำนม
 Route::post('savesellmilk','Sellmilk@Savesellmilk');
 Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk');
-Route::get('search_partners/{id}','Sellmilk@Searchpartners');
+
 
 
 Route::get('receivedrug','Receive@Drug');//หน้ารับอุปกรณ์ยา
