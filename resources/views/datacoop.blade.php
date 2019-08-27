@@ -3,6 +3,7 @@
 
 @section('head')
 <?php
+    $id = "";
     $name = "";
     $address = "";
     $phone ="";
@@ -11,6 +12,7 @@
     $email = "";
     $website = "";
     if(count($coop)> 0){
+        $id = $coop[0]->coop_id;
         $name = $coop[0]->coop_name;
         $address = $coop[0]->coop_address;
         $phone =$coop[0]->coop_phone;
@@ -85,14 +87,14 @@
     <h1 style="text-align:center">จัดการข้อมูลพื้นฐานสหกรณ์</h1><br>
     <form action="{{ url('/savecooper') }}" method="POST" id='form-submit' enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="id" id="id" value="{{ $coop[0]->coop_id }}">
+        <input type="hidden" name="id" id="id" value="{{ $id }}">
         <input type="hidden" name="" id="old_name">
         <input type="hidden" name="" id="old_address">
         <input type="hidden" name="" id="old_phone">
         <input type="hidden" name="" id="old_fax">
         <input type="hidden" name="" id="old_website">
-        <input type="hidden" name="old_logo" value="{{ $coop[0]->coop_logo }}">
-        <input type="hidden" name="" id="save_type" value="insert">
+        <input type="hidden" name="old_logo" value="{{ $logo }}">
+        <input type="hidden" name="save_type" id="save_type" value="insert">
 
         <div class="form-group " >
             <div class="row">
