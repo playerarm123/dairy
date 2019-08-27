@@ -72,4 +72,23 @@ class Sale_milk extends Model
     }
 
 
+    public static function checkDelete($sm_id){
+        $receive_money= DB::table("receive_money")    ->where("sm_id","=",$sm_id) ->count();
+
+           if($receive_money != 0 ){
+               $checkDelete = "no";
+
+
+
+           }
+           else{
+               $checkDelete = "yes";
+
+           }
+        dd($checkDelete);
+           return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
+       }
+
+
+
 }

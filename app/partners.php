@@ -79,4 +79,23 @@ class partners extends Model
 
               }
 
+            public static function checkDelete($pn_id){
+                    $sale_milk= DB::table("sale_milk")                 ->where("pn_id","=",$pn_id) ->count();
+                    $receive_equip= DB::table("receive_equip")         ->where("pn_id","=",$pn_id) ->count();
+                    $receive_money= DB::table("receive_money")         ->where("pn_id","=",$pn_id) ->count();
+
+                   if($sale_milk !=0 || $receive_equip !=0 || $receive_money ){
+                       $checkDelete = "no";
+
+
+
+                   }
+                   else{
+                       $checkDelete = "yes";
+
+                   }
+                   dd($checkDelete);
+                   return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
+               }
+
 }

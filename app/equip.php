@@ -85,4 +85,23 @@ class equip extends Model
 
     }
 
+
+    public static function checkDelete($eq_id){
+        $list_receive_equip= DB::table("list_receive_equip")  ->where("eq_id","=",$eq_id) ->count();
+        $list_sale_equip= DB::table("list_sale_equip")            ->where("eq_id","=",$eq_id) ->count();
+
+           if($list_receive_equip !=0 || $list_sale_equip !=0  ){
+               $checkDelete = "no";
+
+
+
+           }
+           else{
+               $checkDelete = "yes";
+
+           }
+           dd($checkDelete);
+           return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
+       }
+
 }

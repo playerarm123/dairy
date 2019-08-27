@@ -75,7 +75,7 @@ class Milk extends Model
 
 
 
-            public static function loadDataMilk($milk_grade){ //โหลดข้อมูล
+                 public static function loadDataMilk($milk_grade){ //โหลดข้อมูล
                 $data=DB::table("milk")
                 ->where("milk_grade","=",$milk_grade)
                 ->get();
@@ -84,12 +84,30 @@ class Milk extends Model
 
                 }
 
-            public static function Canclemilk($milk_id){
+                 public static function Canclemilk($milk_id){
                 $milk_Cancel =array(
                     "milk_status"=> "ยกเลิก");
                     DB::table('cooper')->where("milk_id","=",$milk_id)->update($milk_Cancel);
 
                 }
+
+                 public static function checkDelete($milk_id){
+                    $buy_milk= DB::table("buy_milk")              ->where("milk_id","=",$milk_id) ->count();
+                    $sale_milk= DB::table("sale_milk")          ->where("milk_id","=",$milk_id) ->count();
+
+                       if($buy_milk !=0 || $sale_milk !=0  ){
+                           $checkDelete = "no";
+
+
+
+                       }
+                       else{
+                           $checkDelete = "yes";
+
+                       }
+                       dd($buy_milk,$sale_milk);
+                       return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
+                   }
 
 
 

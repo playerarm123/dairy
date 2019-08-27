@@ -89,6 +89,24 @@ class Member extends Model
 
 
      }
+     public static function checkDelete($mb_id){
+        $buy_milk= DB::table("buy_milk")              ->where("mb_id","=",$mb_id) ->count();
+        $sale_equip= DB::table("sale_equip")          ->where("mb_id","=",$mb_id) ->count();
+        $pay_milk= DB::table("pay_milk")             ->where("mb_id","=",$mb_id) ->count();
+
+           if($buy_milk != 0 || $sale_equip !=0 || $pay_milk !=0 ){
+               $checkDelete = "no";
+
+
+
+           }
+           else{
+               $checkDelete = "yes";
+
+           }
+
+           return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
+       }
 
 
 }
