@@ -107,11 +107,11 @@
                             <input type="text" class="form-control" name="name" id="name" disabled="disabled">
                     </div>
                     <div class="col-2 right">
-                            นามสกุล:
-                            </div>
-                            <div class="col-3">
-                                    <input type="text" class="form-control" name="lastname" id="lastname" disabled="disabled">
-                            </div>
+                    นามสกุล:
+                    </div>
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="lastname" id="lastname" disabled="disabled">
+                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -173,7 +173,7 @@
                             </div>
                     </div>
     <br>
-<div class="btncenter" >
+    <div class="btncenter" >
         <button  type="submit" id = "save"class="btn btn-success " >
             <span class="fa fa-edit">บันทึก</span>
         </button>
