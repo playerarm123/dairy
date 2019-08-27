@@ -11,6 +11,7 @@ use App\Partners;
 use App\payMilk;
 use App\Buymilk;
 use App\Sale_milk;
+
 class Report extends Controller
 {
     public static function testmind (){
