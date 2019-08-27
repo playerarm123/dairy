@@ -52,6 +52,9 @@ cursor: pointer;
 .card-header h3{
 color: white;
 }
+.card-header h2{
+color: white;
+}
 
 .social_icon{
 position: absolute;
@@ -111,7 +114,8 @@ margin-left: 4px;
 <div class="container">
 <div class="d-flex justify-content-center h-100">
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="text-align:center ">
+            <h2>Dairy cooperative</h2>
             <h3>Sign In</h3>
            
         </div>
