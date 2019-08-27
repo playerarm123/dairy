@@ -6,14 +6,8 @@
 @stop
 
 
-@section('body')<BR><BR><BR>
-         <!-- script  plug in dataTable  -->
-  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
-  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
+@section('body')
+   
     <script>
 
         function search_member(){
@@ -75,30 +69,12 @@
                         "pageLength": 10 ,
                          searching:true,
 
-                     }
-
-                     );
+                     });
 
     </script>
-<style>
 
-    .center {
-        margin: auto;
-        width: 90%;
-        border: 3px solid #73AD21;
-        padding: 10px;
-    }
-    .btncenter{
-        width:10%;margin-left:45%;margin-right:45%;
-    }
-    .right {
-            text-align: right
-        }
-        .left{
-            text-align: left
-        }
 
-</style>
+
 <div class="center">
 <h1 style="text-align:center">ระบบรับซื้อน้ำนมดิบ</h1><br>
 <input type ="hidden" name="row" id="row" value="0">
@@ -201,8 +177,8 @@
                             </div>
                     </div>
     <br>
-<div style="width:100% "class="" >
-        <button  type="submit" id = "save"class="btn btn-success btncenter" >
+<div class="btncenter" >
+        <button  type="submit" id = "save"class="btn btn-success " >
             <span class="fa fa-edit">บันทึก</span>
         </button>
     </div>
@@ -226,8 +202,8 @@
                         <td>{{$item->bm_wiegh}}</td>
                         <td>{{$item->bm_pricein}}</td>
                         <td>
-                                <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-danger'>แก้ไข</a>
-                                <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
+                                <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-danger'>ยกเลิก</a>
+                                <a href ="{{url('show_buymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
                         </td>
                     </tr>
                     @endforeach

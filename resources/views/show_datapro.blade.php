@@ -22,7 +22,7 @@
         <div class="col-2">{{$equip[0]->eq_price}}</div>
     </div>
     <br>
-    <div class="btncenter" style="width:100%" >
+    <div class="btncenter" >
     <a href={{url('/datapro')}} class="btn btn-danger " >
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>

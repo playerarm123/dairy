@@ -23,7 +23,7 @@
         <div class="col-2">{{$milk[0]->milk_priceout}}</div>
     </div>
     <br>
-    <div class="btncenter" style="width:100%" >
+    <div class="btncenter"  >
     <a href={{url('/datamilk')}} class="btn btn-danger " >
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>

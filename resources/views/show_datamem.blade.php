@@ -30,7 +30,7 @@
         </div>
 
     <br>
-    <div class="btncenter" style="width:100%" >
+    <div class="btncenter" >
     <a href={{url('/datamem')}} class="btn btn-danger " >
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>

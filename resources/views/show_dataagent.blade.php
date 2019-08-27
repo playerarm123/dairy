@@ -21,7 +21,7 @@
         <div class="col-2">{{$agent[0]->pn_phone}}</div>
     </div>
     <br>
-    <div class="btncenter" style="width:100%" >
+    <div class="btncenter"  >
     <a href={{url('/dataagent')}} class="btn btn-danger " >
         <span class="fa fa-edit" >ย้อนกลับ</span>
 </a>
