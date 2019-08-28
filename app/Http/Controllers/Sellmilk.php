@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Sale_milk;
+use App\sale_milk;
 use App\partners;
 use App\Milk;
 class Sellmilk extends Controller
@@ -15,7 +15,11 @@ class Sellmilk extends Controller
 
 
      public function Sellmilk(){
-        $data['sellmilk']=Sale_milk::loadAllSale_milk();
+<<<<<<< HEAD
+        $data['salemilk']=sale_milk::loadAllSale_milk();
+=======
+        $data['salemilk']=Salemilk::loadAllSaleMilk();
+>>>>>>> f14d56a9da38293d559174af4d76ccc30b364d79
         $data['grade']=Milk::loadAllMilk();
            return view('salemilk',$data);
      }
@@ -29,7 +33,7 @@ class Sellmilk extends Controller
         $sm_date=$req->input('');
         Sale_milk::sm_insert($sm_id,$em_id,$pn_id,$sm_wiegh,$sm_price,$sm_date);
         Session ::put('save','success');
-        return redirect('sellmilk');
+        return redirect('salemilk');
     }
 
     public function Detailsellmilk($id){ //แสดงรายละเอียดข้อมูลการขายน้ำนม

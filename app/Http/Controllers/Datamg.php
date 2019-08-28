@@ -198,6 +198,7 @@ class Datamg extends Controller
     }
     public function Editmilk($id){ //แก้ไขข้อมูลน้ำนม
         $data['milk']=Milk::loadDataMilk($id);
+        dd($data,$id);
         return view('edit_datamilk',$data);
     }
     // public function Checkdlmilk($id){
@@ -237,9 +238,10 @@ class Datamg extends Controller
         $eq_id=$req->input('eq_id');
         $eq_name=$req->input('name');
         $eq_cate=$req->input('cate');
+        $eq_amount=$req->input('amount');
         $eq_unit=$req->input('unit');
         $eq_price=$req->input('price');
-        equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_unit,$eq_price);
+        equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_amount,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect ('detailpro/'.$eq_id);
     }

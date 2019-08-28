@@ -201,7 +201,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <a href ="{{url('/detailmilk')}}/{{}}" class='btn btn-info'>รายละเอียด</a>
+                    <a href ="{{url('/')}}/{{}}" class='btn btn-info'>รายละเอียด</a>
                 </td>
             </tr>
                

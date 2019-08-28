@@ -149,7 +149,11 @@
                 <td>{{$key+1}}</td>
                 <td>{{$item->eq_name}}</td>
                 <td>{{$item->eq_cate}}</td>
+<<<<<<< HEAD
                 <td>{{ $item->eq_amount }} {{$item->eq_unit}}</td>//sss
+=======
+                <td>{{$item->eq_unit}}</td>
+>>>>>>> bc8680808b61e532f97f47a1f892bee6df4398cd
                 <td>{{$item->eq_price}}</td>
                 <td>
                     <a href="{{url('/editpro')}}/{{$item->eq_id}}" class='btn btn-warning'>แก้ไข</a>

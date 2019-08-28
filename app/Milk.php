@@ -75,10 +75,14 @@ class Milk extends Model
 
 
 
-                 public static function loadDataMilk($milk_grade){ //โหลดข้อมูล
+                 public static function loadDataMilk($milk_id){ //โหลดข้อมูล
                 $data=DB::table("milk")
-                ->where("milk_grade","=",$milk_grade)
+                ->where("milk_id","=",$milk_id)
                 ->get();
+                    if (count($data) ==0 ){
+                        $data = 0;
+
+                    }
 
                 return $data; //ส่งข้อมูลให้คอนโทลเลอร์
 

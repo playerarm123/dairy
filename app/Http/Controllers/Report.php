@@ -16,7 +16,7 @@ class Report extends Controller
 {
     public static function testmind (){
 
-        Sale_milk::checkDelete("1");
+        Milk::loadDataMilk("18");
 
     }
 }
