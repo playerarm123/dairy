@@ -7,7 +7,7 @@
 
 
 @section('body')
-         
+
     <script>
            function confirm_delete(eq_id){
             swal({
@@ -50,7 +50,7 @@
                             null,
                             {"width": "10%"},
                             {"width": "10%"},
-                            {"width": "20%"},
+                            {"width": "22%"},
 
 
                         ],
@@ -79,7 +79,7 @@
         });
     </script>
 <style>
- 
+
 
 </style>
 <div class="center">
@@ -112,13 +112,13 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
-                   จำนวน:
+                   หน่วยนับ
                 </div>
                 <div class="col-3">
-                    <input type="number" class="form-control" name="unit" required>
+                    <input type="text" class="form-control" name="unit" required>
                 </div>
                 <div class="col-2 right">
-                        ราคา:
+                        ราคาต่อหน่วย:
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control" name="price" required >
@@ -139,7 +139,7 @@
             <th>ลำดับ</th>
             <th> ชื่ออุปกรณ์</th>
             <th>ประเภท</th>
-            <th> หน่วยนับ </th>
+            <th> จำนวน </th>
             <th> ราคา</th>
             <th>หมายเหตุ</th>
         </thead>
@@ -149,7 +149,7 @@
                 <td>{{$key+1}}</td>
                 <td>{{$item->eq_name}}</td>
                 <td>{{$item->eq_cate}}</td>
-                <td>{{$item->eq_unit}}</td>
+                <td>{{ $item->eq_amount }} {{$item->eq_unit}}</td>
                 <td>{{$item->eq_price}}</td>
                 <td>
                     <a href="{{url('/editpro')}}/{{$item->eq_id}}" class='btn btn-warning'>แก้ไข</a>

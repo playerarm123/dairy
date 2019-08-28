@@ -93,11 +93,18 @@ Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงราย
 
 
 
+<<<<<<< HEAD
 Route::get('salem-ilk','Sellmilk@Sellmilk');//หน้าข้อมูลขายน้ำนม
 Route::post('savesellmilk','Sellmilk@Savesellmilk');
 Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk');
 
 
+=======
+Route::get('salemilk','Sellmilk@Sellmilk');//หน้าข้อมูลขายน้ำนม
+Route::post('savesellmilk','Sellmilk@Savesellmilk');
+Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk');
+
+>>>>>>> f76915b16de29e180b67a06bca95d546b2de6af6
 
 Route::get('receivedrug','Receive@Drug');//หน้ารับอุปกรณ์ยา
 Route::post('savedrug','Receive@Savedrug');//บันทึกข้อมูลยา

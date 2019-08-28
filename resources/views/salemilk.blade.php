@@ -7,7 +7,7 @@
 
 
 @section('body')
-   
+
     <script>
 
         function search_partners(){
@@ -20,7 +20,7 @@
                 }
 
             })
-            
+
         }
         $(document).ready(function(){
             $('#price').on('keyup',function(){
@@ -35,8 +35,8 @@
 
 
         });
-       
-        
+
+
             // ตารางข้อมูล
             var table =$('#sale_milk').DataTable({
                         "paging": true,
@@ -130,8 +130,8 @@
                                           <input type="radio" class="form-check-input" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
                                         </label>
                                     </div>
-                                    
-                                @endforeach          
+
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -170,22 +170,10 @@
                     <th>หมายเหตุ</th>
                 </thead>
                 <tbody>
-                    @foreach ($buymilk as $key =>$item)
-                    <tr>
-                        <td>{{$key+1}}</td>
-                        <td>{{$item->bm_id}}</td>
-                        <td>{{$item->milk_id}}</td>
-                        <td>{{$item->bm_wiegh}}</td>
-                        <td>{{$item->bm_pricein}}</td>
-                        <td>
-                                <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-danger'>ยกเลิก</a>
-                                <a href ="{{url('show_salemilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
-                        </td>
-                    </tr>
-                    @endforeach
-        
+
+
                 </tbody>
-        
+
             </table>
         </div>
 </form>

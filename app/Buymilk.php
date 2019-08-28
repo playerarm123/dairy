@@ -44,4 +44,25 @@ class Buymilk extends Model
             DB::table('buy_milk')->where("bm_id","=",$bm_id)->update($bm_Cancel);
     }
 
+
+    public static function checkDelete($bm_id){
+        $pay_milk= DB::table("pay_milk")    ->where("bm_id","=",$bm_id) ->count();
+
+           if($pay_milk != 0 ){
+               $checkDelete = "no";
+
+
+
+           }
+           else{
+               $checkDelete = "yes";
+
+           }
+        dd($checkDelete);
+           return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
+       }
+
+
 }
+
+
