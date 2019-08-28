@@ -16,7 +16,7 @@ class Report extends Controller
 {
     public static function testmind (){
 
-        Milk::loadDataMilk("18");
+        equip::loaddrug("ยา");
 
     }
 }
