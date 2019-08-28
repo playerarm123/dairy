@@ -111,6 +111,7 @@ Route::post('savetool','Receive@Savetool');//บันทึกข้อมู�
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
 
 Route::get('saleeq','Selleqm@Saleeq');//หน้าขายอุปกรณ์
+Route::post('saveeq','Sellqm@Saveeq'); //บันทึกขายอุปกรณ์
 
 
 
