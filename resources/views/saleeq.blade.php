@@ -168,7 +168,7 @@
         </thead>
         <tbody>
             <tr>
-                <td></td>
+                <td>1</td>
                 <td>1</td>
                 <td>1</td>
                 <td>1</td>
