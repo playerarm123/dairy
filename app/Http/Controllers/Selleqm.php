@@ -13,9 +13,9 @@ class Selleqm extends Controller
     }
 
     public function Selleqm(){
-       // $data['sellpro']=Selleqm::loadselleqm();
+        $data['sellpro']=Selleqm::loadselleqm();
 
-        return view('salepro');
+        return view('sellpro');
     }
 
 }
