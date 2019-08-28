@@ -110,14 +110,15 @@ Route::get('receivetool','Receive@Tool');//หน้ารับอุปกร�
 Route::post('savetool','Receive@Savetool');//บันทึกข้อมูลอุปกรณ์
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
 
-Route::get('sellpro','Selleqm@Selleqm');//หน้าขายอุปกรณ์
+Route::get('saleeq','Selleqm@Saleeq');//หน้าขายอุปกรณ์
+Route::post('saveeq','Sellqm@Saveeq'); //บันทึกขายอุปกรณ์
 
 
 
 Route::get('paymilk','Payment@Payment');//หน้าชำระเงิน
 Route::post('savepayment','Payment@Savepayment');//บันทึกหน้าชำระเงิน
 Route::get('detailpayment/{id}','Payment@Detailpayment');//รายละเอียดชำระเงิน
-Route::get('search_partners/{id}','Payment@Searchpartners'); //ค้นหาคู่ค้า
+
 
 
 Route::get('receivemoney','Acceptpm@Receivemoney'); //หน้ารับชำระเงิน

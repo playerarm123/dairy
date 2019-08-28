@@ -14,15 +14,15 @@ class Receive extends Controller
     }
 
     public function Drug(){
-        $data['receivedrug']=equip::loaddatadrug();
+        $data['receivedrug']=equip::loaddrug();
         return view('receivedrug',$data);
     }
     public function Food(){
-        $data['receivefood']=equip::loaddatafood();
+        $data['receivefood']=equip::loadfood();
         return view('receivefood',$data);
     }
     public function Tool(){
-        $data['receivetool']=equip::loaddatatool();
+        $data['receivetool']=equip::loadtool();
         return view('receivetool',$data);
     }
 

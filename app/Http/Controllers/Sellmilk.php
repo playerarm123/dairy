@@ -36,9 +36,6 @@ class Sellmilk extends Controller
         $data['salemilk']=Sale_milk::loadAllSaleMilk($id);
        return view ('show_datasellmilk',$data);
     }
-    public function Searchpartners($id){ //ค้นหาสมาชิก
-        $data=partners::Searchpartners($id);
-       return $data;
-    }
+
 
 }
