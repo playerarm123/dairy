@@ -9,10 +9,35 @@
 @section('body')
 
     <script>
+        function set_perPrice(key){
+            var price = $('#per_price'+key).val();
+            $('#priceout').val(price);
+            caculate();
+        }
+        
+        //คำนวณราคารับซื้อ  ต่อ ขีด
+        function caculate(){
+            var k = 0;
+            var kl = 0;
+            var weight = 0;
+            var total = 0;
+            var keed = 0;
+            var priceout = 0;
+            if($('#k').val() != ""){ k = parseInt($('#k').val());}
+            if($('#kl').val() != ""){ kl = parseInt($('#kl').val());}
+            if($('#weight').val() != ""){ weight = parseInt($('#weight').val());}
+            if($('#priceout').val() != ""){ priceout = parseFloat($('#priceout').val());}
+            kl = kl * 1000;
+            weight = k + kl;
+            keed = weight / 100;
+            total = parseInt(keed) * priceout;
+            $('#weight').val(weight);
+            $('#total').val(total);
+        }
 
         function search_partners(){
             $.ajax({
-                url:"{{url('searchpartners')}}/"+$('#partnersid').val(),
+                url:"{{url('search_partners')}}/"+$('#partnersid').val(),
                 type:"get",
                 success:function(data){
                     console.log(data);
@@ -30,11 +55,6 @@
                 total=rate*$(this).val();
                 $('#cost').val(total);
             });
-
-
-
-
-        });
 
 
             // ตารางข้อมูล
@@ -69,6 +89,7 @@
                          searching:true,
 
                      });
+                    });
 
     </script>
 
@@ -93,7 +114,7 @@
                 </div>
                 <div class="col-4">
                         <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="รหัสสมาชิกบริษัทคู่ค้า" id="partnersid" name="partnersid">
+                                <input type="text" class="form-control" placeholder="บริษัทคู่ค้า" id="partnersid" name="partnersid">
                                 <div class="input-group-append">
                                   <a class="input-group-text btn" onclick="search_partners()">ค้นหา</a>
                                 </div>
@@ -113,45 +134,70 @@
             </div>
             <div class="form-group">
                     <div class="row">
-                        <div class="col-2 right">
-                       <h3> ข้อมูลน้ำนมดิบ</h3>
+                        <div class="col-8 ">
+                        <h3> รายละเอียดการขาย</h3>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                        <div class="row">
-                            <div class="col-2 right">
-                           เกรดน้ำนมดิบ:
-                            </div>
-                            <div class="col-3">
-                                @foreach ($grade as $item)
-                                    <div class="form-check-inline">
-                                        <label class="form-check-label">
-                                          <input type="radio" class="form-check-input" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
-                                        </label>
-                                    </div>
-
-                                @endforeach
+                    <div class="row">
+                        <div class="col-2 right">
+                            เกรด:
+                        </div>
+                        <div class="col-3">
+                            @foreach ($grade as $key => $item)
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                    <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_priceout }}">
+                                    <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="col-2 right">
+                            ราคาต่อหน่วย :
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group mb-3">
+                                <input type="text" name="" id="priceout" class="form-control" readonly value=0>
+                                <div class="input-group-append">
+                                    <span class="input-group-text " o>บาท</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <div class="form-group">
-                            <div class="row">
-                                <div class="col-2 right">
-                                        น้ำหนักขาย(ตัน):
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2 right">
+                            น้ำหนักทีี่ขาย :
+                        </div>
+                        <div class="col-3">
+                            <input type="hidden" name="weight" id="weight">
+                            <div class="input-group mb-3">
+                                <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control">
+                                <div class="input-group-append">
+                                    <span class="input-group-text " o>กิโลกรัม</span>
                                 </div>
-                                <div class="col-3">
-                                        <input type="number" class="form-control" name="memid" required>
+                                <input type="text" name="" maxlength="3" min="1" onkeyup="caculate()" max="999" id="k" class="form-control">
+                                <div class="input-group-append">
+                                    <span class="input-group-text " o>กรัม</span>
                                 </div>
-                                <div class="col-2 right">
-                                        ราคาขายสุทธิ:
-                                </div>
-                                        <div class="col-3 ">
-                                                <input type="number" class="form-control" name="memid" required>
-                                        </div>
                             </div>
+                        </div>
+                        <div class="col-2 right">
+                            ราคาขายสุทธิ :
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group mb-3">
+                                <input type="text" name="total" id="total" class="form-control" readonly>
+                                <div class="input-group-append">
+                                    <span class="input-group-text " o>บาท</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
     <br>
 <div class="btncenter" >
         <button  type="submit" id = "save"class="btn btn-success " >
@@ -160,7 +206,7 @@
     </div>
     <br>
     <div class="panel-body">
-            <table id="buymilk" class="table table-striped table-bordered table-responsive-lg">
+            <table id="sale_milk" class="table table-striped table-bordered table-responsive-lg">
                 <thead class="bg-success ">
                     <th>ลำดับ</th>
                     <th>รหัสขายน้ำนมดิบ</th>

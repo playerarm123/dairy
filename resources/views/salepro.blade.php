@@ -9,18 +9,23 @@
 @section('body')
 <script>
             
-            
-            function member(){
-            $('#memberid').show();
-            $('#search').show();
-           
-            }
 
-            function no_member(){
-            $('#memberid').hide();
-            $('#search').hide();
-            $('#name').removeAttr('readonly');
-            $('#lastname').removeAttr('readonly');
+            function swich(){
+                var memnber = $('#member').prop('checked');
+                var nomember = $('#nomember').prop('chacked');
+                if( memnber == true){
+                    $('#memberid').show();
+                    $('#search').show();
+                }else{
+                    $('#memberid').hide();
+                    $('#search').hide();
+                    $('#name').removeAttr('readonly');
+                    $('#lastname').removeAttr('readonly');
+                }
+                    
+                    
+                
+               
             } 
             function search_member(){
             $.ajax({
@@ -94,12 +99,12 @@
             <div class="col-3">
                 <div class="form-check-inline">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="status" id="member"value="สมาชิก" onclick="member()">สมาชิก
+                        <input type="radio" class="form-check-input" name="status" id="member"value="สมาชิก" onchange="swich()">สมาชิก
                     </label>
                 </div>
                 <div class="form-check-inline">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="status" id="nomember" value="ไม่เป็นสมาชิก" onclick="no_member()">ไม่เป็นสมาชิก
+                        <input type="radio" class="form-check-input" name="status" id="nomember" value="ไม่เป็นสมาชิก" onchange="swich()">ไม่เป็นสมาชิก
                     </label>
                 </div>
             </div>
@@ -139,7 +144,7 @@
             </div>
             <div class="col-3">
                <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="รหัสอุปกรณ์" id="equip" name="memberid">
+                                <input type="text" class="form-control" placeholder="ประเภทอุปกรณ์" id="equip" name="eq_cate">
                     <div class="input-group-append">
                         <a class="input-group-text btn" onclick="search_equip()">ค้นหา</a>
                     </div>
@@ -163,7 +168,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
+                <td></td>
                 <td>1</td>
                 <td>1</td>
                 <td>1</td>
@@ -195,11 +200,11 @@
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
                 <td>
                     <a href ="{{url('/')}}/{{}}" class='btn btn-info'>รายละเอียด</a>
                 </td>
