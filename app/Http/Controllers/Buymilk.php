@@ -23,17 +23,17 @@ class Buymilk extends Controller
 
     public function Savebuymilk(Request $req){ //บันทึกข้อการซื้อน้ำนมมูลน้ำนม
         $mb_id=$req->input('memberid');
-        $bm_grade=$req->input('grade');
+        $milk_id=$req->input('grade');
         $bm_weight=$req->input('weight');
         $bm_pricein=$req->input('total');
         $bm_range=$req->input('range');
-        buymilks::bm_insert($mb_id,$bm_grade,$bm_weight,$bm_pricein,$bm_range);
+        buymilks::bm_insert($mb_id,$milk_id,$bm_weight,$bm_pricein,$bm_range);
         Session::put('save','success');
         return redirect('buymilk');
     }
 
     public function Detailbuymilk($id){ //แสดงรายละเอียดข้อมูลการซื้อน้ำนม
-        $data['buymilk']=buymilks::loadAllBuymilk($id);
+        $data['buymilk']=buymilks::loadDataBuymilk($id);
        return view ('show_buymilk',$data);
     }
 
