@@ -39,6 +39,18 @@
 
             })
             
+        }   
+        function search_equip(){
+            $.ajax({
+                url:"{{url('searchequip')}}/"+$('#equipcate').val(),
+                type:"get",
+                success:function(data){
+                    console.log(data);
+                    $('#cate').val(data['cate']);
+                }
+
+            })
+            
         }
 
     
@@ -127,7 +139,7 @@
                 ชื่อ:
             </div>
             <div class="col-3">
-                <input type="text" class="form-control" name="name" id="name"   readonly>
+                <input type="text" class="form-control" name="name" id="name"   readonly >
             </div>
             <div class="col-2 right">
                 นามสกุล:
@@ -144,7 +156,7 @@
             </div>
             <div class="col-3">
                <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="ประเภทอุปกรณ์" id="equip" name="eq_cate">
+                                <input type="text" class="form-control" placeholder="ประเภทอุปกรณ์" id="equipcate" name="equipcate">
                     <div class="input-group-append">
                         <a class="input-group-text btn" onclick="search_equip()">ค้นหา</a>
                     </div>
@@ -156,7 +168,7 @@
 <br><br>
 <div class="panel-body">
     <table  class="table table-striped table-bordered table-responsive-lg">
-        <thead class="bg-success">
+        <thead class="bg-info">
             <th>ลำดับ</th>
             <th>ชื่อ</th>
             <th>นามสกุล</th>
@@ -176,7 +188,7 @@
                 <td>1</td>
             </tr>
             <tr>
-                <th colspan="5" class="bg-success" text-align="center">ราคารวมสุทธิ</th>
+                <th colspan="5" class="bg-info" >ราคารวมสุทธิ</th>
                 <td  class="bg-warning">pp</td>
             </tr>
         </tbody>

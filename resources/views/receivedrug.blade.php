@@ -6,35 +6,8 @@
 @stop
 
 
-@section('body')<BR><BR><BR>
-         <!-- script  plug in dataTable  -->
-  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
-  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+@section('body')
     <script>
-        function load_datacoop(){
-            $.ajax({
-                type:'get',
-                url:'{{url("/showdatacoop")}}',
-                success:function(data){
-                    var table =$('#datacoop').DataTable();
-                    data.forEach(item=>{
-                        table.rows.add([{
-                            0:[''],
-                            1:[''],
-                            2:[''],
-                            3:[''],
-                            4:[''],
-                            5:[''],
-                            6:[''],
-                        }]);
-                    });
-                }
-            });
-        }
         $(document).ready(function() {
             load_datacoop();
                 // $('#datamem').DataTable(
@@ -59,29 +32,35 @@
                 // ); 
         });
     </script>
-<style> 
-    .center {
-        margin: auto;
-        width: 90%;
-        border: 3px solid #73AD21;
-        padding: 10px;
-    }
-    .btncenter{
-        width:10%;margin-left:45%;margin-right:45%;
-    }
-            
+<style>      
 </style>
 <div class="center">
-<h1 style="text-align:center">ระบบรับอุปกรณ์(ยา)</h1><br>
-
-<form action="/action_page.php">
-    <div class="form-group">
+<h1 style="text-align:center">ระบบรับอุปกรณ์(ยารักษาโรค)</h1><br>
+<form action="{{ url('/savereceivedrung') }}" method="POST" id='form-submit'>
+    @csrf
+             <div class="form-group">
             <div class="row">
-                <div class="col-2">
-                    วันที่:
+                <div class="col-2 right">
+                    รหัสบริษัทคู่ค้า:
                 </div>
                 <div class="col-4">
-                    <input type="datetime-local" class="form-control" name="buymilk_date" required>
+                        <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="บริษัทคู่ค้า" id="partnersid" name="partnersid">
+                                <div class="input-group-append">
+                                  <a class="input-group-text btn" onclick="search_partners()">ค้นหา</a>
+                                </div>
+                              </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+                <div class="row">
+                    <div class="col-2 right">
+                    ชื่อบริษัท:
+                    </div>
+                    <div class="col-3">
+                            <input type="text" class="form-control" name="name" id="name" disabled="disabled">
+                    </div>
                 </div>
             </div>
         </div> 
