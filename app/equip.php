@@ -67,10 +67,10 @@ class equip extends Model
 
     }
 
-    public static function loadDataEquip($eq_name){ //โหลดข้อมูล
+    public static function loadDataEquip($eq_id){ //โหลดข้อมูล
 
         $data=DB::table("equip")
-        ->where("eq_name","=", $eq_name)
+        ->where("eq_id","=", $eq_id)
         ->get();
 
          return $data; //ส่งข้อมูลให้คอนโทลเลอร์

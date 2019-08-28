@@ -25,14 +25,13 @@
                     // ถ้ากด ใช่
                     $.ajax({
                         type:"GET",
-                        url: " {{ url('') }}/"+Em_id,
+                        url: " {{ url('checkdluser') }}/"+Em_id,
                         success:function(result){
                             if(result == "yes"){
                                 $.ajax({
                                     type: "GET",
                                     url : "{{ url('deleteuser')}}/"+Em_id,
                                     success:function(data){
-                                        location.reload();
                                     }
                                 });
                             }else{

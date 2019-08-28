@@ -9,7 +9,7 @@
 @section('body')
 <div class="center">
 <h1 style="text-align:center"> แก้ไขข้อมูลพื้นฐานอุปกรณ์</h1><br>
-<form action="{{url('/updateequip')}}" method="POST">
+<form action="{{url('/updatepro')}}" method="POST">
       @csrf
       <input type = "hidden" name="eq_id" value="{{$equip[0]->eq_id}}">
 
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-3">
                         <input type="text" class="form-control" name="unit"  value="{{$equip[0]->eq_unit}}" required>
-                    </div> 
+                    </div>
                 <div class="col-2 right">
                     ราคาขาย:
                 </div>
