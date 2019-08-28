@@ -156,28 +156,10 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
-                        เกรด:
+                    นามสกุล:
                     </div>
                     <div class="col-3">
-                        @foreach ($grade as $key => $item)
-                            <div class="form-check-inline">
-                                <label class="form-check-label">
-                                <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_pricein }}">
-                                <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
-                                </label>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="col-2 right">
-                        ราคาต่อหน่วย :
-                    </div>
-                    <div class="col-3">
-                        <div class="input-group mb-3">
-                            <input type="text" name="" id="pricein" class="form-control" readonly value=0>
-                            <div class="input-group-append">
-                                <span class="input-group-text " o>บาท</span>
-                            </div>
-                        </div>
+                        <input type="text" class="form-control" name="lastname" id="lastname" disabled="disabled">
                     </div>
                 </div>
             </div>
@@ -210,45 +192,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <br>
-        <div class="btncenter" >
-                <button  type="submit" id = "save"class="btn btn-success " >
-                    <span class="fa fa-edit">บันทึก</span>
-                </button>
-            </div>
-            <br>
-            <div class="panel-body">
-                    <table id="Buymilk" class="table table-striped table-bordered table-responsive-lg">
-                        <thead class="bg-success ">
-                            <th>ลำดับ</th>
-                            <th>เลขที่รับซื้อ</th>
-                            <th>ผู้ขายน้ำนม</th>
-                            <th>เกรดน้ำนม</th>
-                            <th>วันที่รับซื้อ</th>
-                            <th>หมายเหตุ</th>
-                        </thead>
-                        <tbody>
-                            @foreach ($buymilk as $key =>$item)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$item->bm_id}}</td>
-                                <td>{{$item->milk_id}}</td>
-                                <td>{{$item->bm_wiegh}}</td>
-                                <td>{{$item->bm_pricein}}</td>
-                                <td>
-                                        <a href ="{{url('show_buymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
-                                        <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-danger'>ยกเลิก</a>
-                                </td>
-                            </tr>
-                            @endforeach
-
-                        </tbody>
-
-                    </table>
-                </div>
-        </form>
+    <br>
+    <div class="btncenter" >
+        <button  type="submit" id = "save"class="btn btn-success " >
+            <span class="fa fa-edit">บันทึก</span>
+        </button>
     </div>
 @stop
 
