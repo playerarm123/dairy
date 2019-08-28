@@ -27,6 +27,8 @@ class Employee extends Model
 
 
         DB::table("employee")->insert($emp);
+
+
     }
      public static function login($username,$password){
      $Pass=md5($password); //เข้ารหัสข้อมูล

@@ -12,7 +12,7 @@ class Buymilk extends Controller
 
     public function __construct()
     {
-        $this->middleware('checklogin');
+        $this->middleware('checklogin'); //การเรียกใช้ฟังชั่นในคลาสเดียวกัน
     }
 
     public function Buymilk(){

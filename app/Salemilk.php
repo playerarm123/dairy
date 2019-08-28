@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
-class Salemilk extends Model
+class Sale_milk extends Model
 {
     protected $table='salemilk';
     public static function sm_insert($em_id,$pn_id,$sm_wiegh,$sm_price,$sm_date,$sm_pricetotal){

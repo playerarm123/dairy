@@ -15,9 +15,9 @@ class Sellmilk extends Controller
 
 
      public function Sellmilk(){
-        $data['sellmilk']=Salemilk::loadAllSale_milk();
+        $data['salemilk']=Salemilk::loadAllSaleMilk();
         $data['grade']=Milk::loadAllMilk();
-           return view('sellmilk',$data);
+           return view('salemilk',$data);
      }
 
     public function Savesellmilk(Request $req){ //บันทึกข้อการขายน้ำนม
@@ -29,7 +29,7 @@ class Sellmilk extends Controller
         $sm_date=$req->input('');
         Salemilk::sm_insert($sm_id,$em_id,$pn_id,$sm_wiegh,$sm_price,$sm_date);
         Session ::put('save','success');
-        return redirect('sellmilk');
+        return redirect('salemilk');
     }
 
     public function Detailsellmilk($id){ //แสดงรายละเอียดข้อมูลการขายน้ำนม
