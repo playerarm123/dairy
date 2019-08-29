@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
-use App\Sale_milk;
+use App\sale_milk;
 use App\partners;
 use App\Milk;
 class Sellmilk extends Controller
@@ -15,11 +15,7 @@ class Sellmilk extends Controller
 
 
      public function Sellmilk(){
-<<<<<<< HEAD
-        $data['salemilk']=Salemilk::loadAllSaleMilk();
-=======
-        $data['sellmilk']=Sale_milk::loadAllSale_milk();
->>>>>>> f76915b16de29e180b67a06bca95d546b2de6af6
+        $data['salemilk']=sale_milk::loadAllSale_milk();
         $data['grade']=Milk::loadAllMilk();
            return view('salemilk',$data);
      }

@@ -149,7 +149,7 @@
                 <td>{{$key+1}}</td>
                 <td>{{$item->eq_name}}</td>
                 <td>{{$item->eq_cate}}</td>
-                <td>{{ $item->eq_amount }} {{$item->eq_unit}}</td>
+                <td>{{$item->eq_unit}}</td>
                 <td>{{$item->eq_price}}</td>
                 <td>
                     <a href="{{url('/editpro')}}/{{$item->eq_id}}" class='btn btn-warning'>แก้ไข</a>
