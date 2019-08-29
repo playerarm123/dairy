@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Employee;
+use App\sale_equip;
 class Selleqm extends Controller
 {
 
@@ -13,7 +14,7 @@ class Selleqm extends Controller
     }
 
     public function Saleeq(){
-        $data['saleeq']=Selleqm::loadDataSale_equip();
+        $data['saleeq']=sale_equip::loadAllSale_equip();
 
         return view('saleeq');
     }
