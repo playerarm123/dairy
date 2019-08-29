@@ -28,10 +28,10 @@ class Report extends Controller
         return $result;
     }
     public function calculate(){
-        $a = 10;
+        $a = 30;
         $b = 20;
         $c = 0;
-        $fomular = "บวก";
+        $fomular = "คูณ";
         if($fomular == "บวก"){
 
             $c = $this->plus($a,$b);
