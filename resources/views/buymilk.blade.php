@@ -9,6 +9,45 @@
 @section('body')
 
     <script>
+        function confirm_delete(bm_id){
+            swal({
+                title: "ลบข้อมูล?",
+                text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "ใช่, ลบข้อมูล",
+                cancelButtonText: "ไม่, ยกเลิกการลบ",
+                closeOnConfirm: false,
+                closeOnCancel: false
+                },
+                function(isConfirm) {
+                if (isConfirm) {
+                    // ถ้ากด ใช่
+                    $.ajax({
+                        type:"GET",
+                        url: " {{ url('checkdlbuymilk') }}/"+bm_id,
+                        success:function(result){
+                            if(result == "yes"){
+                                $.ajax({
+                                    type: "GET",
+                                    url : "{{ url('deleteuser')}}/"+bm_id,
+                                    success:function(data){
+                                    }
+                                });
+                            }else{
+                                swal('แจ้งเตือน','ไม่สามารถลบข้อมูลได้','warning');
+                            }
+                        }
+                    });
+
+                } else {
+                    // ถ้ากด ไม่ใช่
+                    swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
+                }
+            });
+
+        }
 
         function search_member(){
             $.ajax({
@@ -224,8 +263,9 @@
                     <table id="Buymilk" class="table table-striped table-bordered table-responsive-lg">
                         <thead class="bg-success ">
                             <th>ลำดับ</th>
-                            <th>รหัสสมาชิก</th>
+                            <th>ชื่อสมาชิก</th>
                             <th>ช่วงเวลารับซื้อ</th>
+                            <th>เกรด</th>
                             <th>น้ำหนักรับซื้อ</th>
                             <th>ราคารับซื้อสุทธิ</th>
                             <th>หมายเหตุ</th>
@@ -234,13 +274,14 @@
                             @foreach ($buymilk as $key =>$item)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$item->mb_id}}</td>
+                                <td>{{$item->mb_name}}</td>
                                 <td>{{$item->bm_range}}</td>
+                                <td>{{$item->bm_grade}}</td>
                                 <td>{{$item->bm_weight}}</td>
                                 <td>{{$item->bm_pricein}}</td>
                                 <td>
                                         <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
-                                        <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-danger'>ยกเลิก</a>
+                                        <button class='btn btn-danger' onclick='confirm_cencle("{{$item->em_id}}")'>ยกเลิก</button>
                                 </td>
                             </tr>
                             @endforeach
