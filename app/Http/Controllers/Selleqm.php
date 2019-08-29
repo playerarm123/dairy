@@ -12,10 +12,10 @@ class Selleqm extends Controller
         $this->middleware('checklogin');
     }
 
-    public function Selleqm(){
-        $data['sellpro']=Selleqm::loadselleqm();
+    public function Saleeq(){
+        $data['saleeq']=Selleqm::loadDataSale_equip();
 
-        return view('sellpro');
+        return view('saleeq');
     }
 
 }

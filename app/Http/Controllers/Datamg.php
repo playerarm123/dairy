@@ -198,7 +198,6 @@ class Datamg extends Controller
     }
     public function Editmilk($id){ //แก้ไขข้อมูลน้ำนม
         $data['milk']=Milk::loadDataMilk($id);
-        dd($data,$id);
         return view('edit_datamilk',$data);
     }
     // public function Checkdlmilk($id){
@@ -356,7 +355,27 @@ class Datamg extends Controller
         }
         return $member;
 
+
+
+
     }
+
+    public function Searchpartners($id){
+        $data=partners::loadDatapartner($id);
+        if(count($data)==0){
+            $partners = 0;
+        }else{
+            foreach($data as $item){
+                $partners=array(
+                    'id'=>$item->pn_id,
+                    'name'=>$item->pn_name,
+
+                );
+            }
+        }
+        return $partners;
+    }
+
 
 
 
