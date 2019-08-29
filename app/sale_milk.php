@@ -40,7 +40,8 @@ class Sale_milk extends Model
         $AllSaleMilk=DB::table("sale_milk")
         ->join('partners','partners.pn_id','=','sale_milk.pn_id')
         ->join('milk','milk.milk_id','=','sale_milk.milk_id')
-        ->orderBy("sale_milk.created_at","DESC")->select('partners.*','sale_milk.*','Milk.*')->get();
+        ->join('member','member.mb_id','=','sale_milk.mb_id')
+        ->orderBy("sale_milk.created_at","DESC")->select('partners.*','sale_milk.*','Milk.*','member.*')->get();
 
         return $AllSaleMilk; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
 
