@@ -74,7 +74,6 @@ class Datamg extends Controller
     public function Deleteuser($id){ //ลบข้อมูลผู้ใช้
         Employee::emp_Delete($id);
         Session::put('delete','success');
-        return redirect('dataem');
     }
     public function Detailuser($id){ //แสดงรายละเอียดผู้ใช้
         $data['user']=Employee::loadDataEmp($id);

@@ -95,11 +95,13 @@
                 "autoWidth": false,
                 "columns": [
                     { "width": "5%" },
-                    { "width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"},
                     {"width": "15%"},
                     {"width": "15%"},
                     {"width": "15%"},
                     {"width": "15%"}
+
                 ],
                 "oLanguage": {
                     "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
