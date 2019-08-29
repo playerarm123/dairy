@@ -16,7 +16,7 @@ class Selleqm extends Controller
     public function Saleeq(){
         $data['saleeq']=sale_equip::loadAllSale_equip();
 
-        return view('saleeq');
+        return view('saleeq',$data);
     }
 
 }

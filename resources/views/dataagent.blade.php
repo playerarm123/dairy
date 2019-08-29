@@ -67,10 +67,7 @@
                         },
                         "pageLength": 10 ,
                          searching:true,
-
-                     }
-
-                     );
+                     });
 
         });
     </script>

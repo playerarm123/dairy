@@ -37,7 +37,7 @@
 
         function search_partners(){
             $.ajax({
-                url:"{{url('search_partners')}}/"+$('#partnersid').val(),
+                url:"{{url('searchpartners')}}/"+$('#partnersid').val(),
                 type:"get",
                 success:function(data){
                     console.log(data);
@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-4">
                         <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="บริษัทคู่ค้า" id="partnersid" name="partnersid">
+                                <input type="text" class="form-control" placeholder="บริษัทคู่ค้า" id="partnersid" name="partnersid" required>
                                 <div class="input-group-append">
                                   <a class="input-group-text btn" onclick="search_partners()">ค้นหา</a>
                                 </div>
@@ -148,7 +148,7 @@
                             @foreach ($grade as $key => $item)
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
-                                    <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_priceout }}">
+                                    <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_priceout }}" required>
                                     <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
                                     </label>
                                 </div>
@@ -175,7 +175,7 @@
                         <div class="col-3">
                             <input type="hidden" name="weight" id="weight">
                             <div class="input-group mb-3">
-                                <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control">
+                                <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control" required>
                                 <div class="input-group-append">
                                     <span class="input-group-text " o>กิโลกรัม</span>
                                 </div>
@@ -209,13 +209,26 @@
             <table id="sale_milk" class="table table-striped table-bordered table-responsive-lg">
                 <thead class="bg-success ">
                     <th>ลำดับ</th>
-                    <th>รหัสขายน้ำนมดิบ</th>
-                    <th>เกรดน้ำนมดิบ</th>
-                    <th>น้ำหนักขาย(ตัน)</th>
-                    <th>ราคาขายซื้อสุทธิ</th>
+                    <th>รหัสบริษัทคู่ค้า</th>
+                    <th>รหัสน้ำนมดิบ</th>
+                    <th>น้ำหนักขาย</th>
+                    <th>ราคาขายสุทธิ</th>
                     <th>หมายเหตุ</th>
                 </thead>
                 <tbody>
+                    @foreach ($salemilk as $key =>$item)
+                    <tr>
+                        <td>{{$key+1}}</td>
+                        <td>{{$item->pn_id}}</td>
+                        <td>{{$item->milk_id}}</td>
+                        <td>{{$item->sm_weight}}</td>
+                        <td>{{$item->sm_pricetotal}}</td>
+                        <td>
+                        <a href ="{{url('/detailsellmilk')}}/{{$item->sm_id}}" class='btn btn-info'>รายละเอียด</a>
+                         <a href="{{url('/')}}/{{$item->sm_id}}" class='btn btn-danger'>ยกเลิก</a>
+                        </td>
+                    </tr>
+                    @endforeach
 
 
                 </tbody>

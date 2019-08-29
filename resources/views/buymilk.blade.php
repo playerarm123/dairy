@@ -88,7 +88,8 @@
         <h1 style="text-align:center">ระบบรับซื้อน้ำนมดิบ</h1><br>
         <input type ="hidden" name="row" id="row" value="0">
 
-        <form action="/action_page.php">
+        <form action="{{ url('/savebuymilk') }}"  method="POST"  id='form-submit'>
+            @csrf
             <div class="form-group">
                     <div class="row">
                         <div class="col-8 ">
@@ -103,7 +104,7 @@
                     </div>
                     <div class="col-3">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid">
+                            <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid" required>
                             <div class="input-group-append">
                             <a class="input-group-text btn" onclick="search_member()">ค้นหา</a>
                             </div>
@@ -142,12 +143,12 @@
                     <div class="col-3">
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="range" value="ช่วงเช้า" >ช่วงเช้า
+                            <input type="radio" class="form-check-input" name="range" value="ช่วงเช้า" required>ช่วงเช้า
                             </label>
                         </div>
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="range"value="ช่วงเย็น" >ช่วงเย็น
+                            <input type="radio" class="form-check-input" name="range"value="ช่วงเย็น" required>ช่วงเย็น
                             </label>
                         </div>
                     </div>
@@ -163,7 +164,7 @@
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                 <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_pricein }}">
-                                <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
+                                <input type="radio" required class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
                                 </label>
                             </div>
                         @endforeach
@@ -173,7 +174,7 @@
                     </div>
                     <div class="col-3">
                         <div class="input-group mb-3">
-                            <input type="text" name="" id="pricein" class="form-control" readonly value=0>
+                            <input type="text" name="pricein" id="pricein" class="form-control" readonly value=0>
                             <div class="input-group-append">
                                 <span class="input-group-text " o>บาท</span>
                             </div>
@@ -189,7 +190,7 @@
                     <div class="col-3">
                         <input type="hidden" name="weight" id="weight">
                         <div class="input-group mb-3">
-                            <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control">
+                            <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control" required>
                             <div class="input-group-append">
                                 <span class="input-group-text " o>กิโลกรัม</span>
                             </div>
@@ -223,22 +224,22 @@
                     <table id="Buymilk" class="table table-striped table-bordered table-responsive-lg">
                         <thead class="bg-success ">
                             <th>ลำดับ</th>
-                            <th>เลขที่รับซื้อ</th>
-                            <th>ผู้ขายน้ำนม</th>
-                            <th>เกรดน้ำนม</th>
-                            <th>วันที่รับซื้อ</th>
+                            <th>รหัสสมาชิก</th>
+                            <th>ช่วงเวลารับซื้อ</th>
+                            <th>น้ำหนักรับซื้อ</th>
+                            <th>ราคารับซื้อสุทธิ</th>
                             <th>หมายเหตุ</th>
                         </thead>
                         <tbody>
                             @foreach ($buymilk as $key =>$item)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$item->bm_id}}</td>
-                                <td>{{$item->milk_id}}</td>
-                                <td>{{$item->bm_wiegh}}</td>
+                                <td>{{$item->mb_id}}</td>
+                                <td>{{$item->bm_range}}</td>
+                                <td>{{$item->bm_weight}}</td>
                                 <td>{{$item->bm_pricein}}</td>
                                 <td>
-                                        <a href ="{{url('show_buymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
+                                        <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
                                         <a href="{{url('/')}}/{{$item->bm_id}}" class='btn btn-danger'>ยกเลิก</a>
                                 </td>
                             </tr>

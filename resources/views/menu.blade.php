@@ -127,7 +127,7 @@
                       <li><a href="{{url('receivetool')}}">อุปกรณ์รีดนม</a></li>
                     </ul>
                   </li>
-                  <li><a href="{{url('sellpro')}}">ขายอุปกรณ์</a></li>
+                  <li><a href="{{url('saleeq')}}">ขายอุปกรณ์</a></li>
                   <li><a href="{{url('paymilk')}}">ชำระเงินนมสมาชิก</a></li>
                   <li><a href="{{url('receivemoney')}}">รับชำระเงินค่าน้ำนมดิบ</a></li>
                   <li style="margin-left:20px;"><a href="{{url('logout')}}"><i class="fa fa-user" ></i>ออกจากระบบ</a></li>

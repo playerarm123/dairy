@@ -7,14 +7,14 @@ use Illuminate\Support\facades\DB;
 class Sale_milk extends Model
 {
     protected $table='sale_milk';
-    public static function insert_sm($pn_id,$sm_wiegh,$sm_price,$sm_date,$sm_pricetotal){
+    public static function insert_sm($em_id,$pn_id,$sm_pricetotal,$sm_date,$sm_wiegh,$milk_id){
     $sm_insert=array (
-
+    "em_id"=> $em_id,
     "pn_id"=> $pn_id,
-    "sm_wiegh"=> $sm_wiegh,
-    "sm_price"=> $sm_price,
-    "sm_date"=> $sm_date,
     "sm_pricetotal"=> $sm_pricetotal,
+    "sm_date"=> $sm_date,
+    "sm_wiegh"=> $sm_wiegh,
+    "milk_id"=>$milk_id,
     "sm_status"=>"พร้อมใช้งาน"
     );
 
@@ -25,15 +25,16 @@ class Sale_milk extends Model
 
     }
 
-    public static function Update_sm($sm_id,$pn_id,$sm_wiegh,$sm_price,$sm_date,$sm_pricetotal){
+    public static function Update_sm($sm_id,$em_id,$pn_id,$sm_pricetotal,$sm_date,$sm_wiegh,$milk_id){
         $update_sm=array(
 
     "sm_id" => $sm_id,
+    "em_id"=> $em_id,
     "pn_id"=> $pn_id,
-    "sm_wiegh"=> $sm_wiegh,
-    "sm_price"=> $sm_price,
-    "sm_date"=> $sm_date,
     "sm_pricetotal"=> $sm_pricetotal,
+    "sm_date"=> $sm_date,
+    "sm_wiegh"=> $sm_wiegh,
+    "milk_id"=>$milk_id,
     "sm_status"=>"พร้อมใช้งาน"
     );
 
