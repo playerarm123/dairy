@@ -276,7 +276,7 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
                                 <td>{{$item->bm_range}}</td>
-                                <td></td>
+                                <td>{{$item->milk_grade}}</td>
                                 <td>{{number_format($item->bm_weight/1000)}}</td>
                                 <td>{{number_format($item->bm_pricein,2)}}</td>
                                 <td>
