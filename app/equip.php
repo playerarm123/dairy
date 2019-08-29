@@ -108,7 +108,7 @@ class equip extends Model
         ->where("eq_cate","=", "ยารักษาโรค")
         ->get();
              if (count($data) ==0 ){
-              $data = 0;
+              $data = array();
 
              }
          return $data;
@@ -120,7 +120,7 @@ class equip extends Model
         ->where("eq_cate","=", "อาหารสัตว์")
         ->get();
              if (count($data) ==0 ){
-              $data = 0;
+              $data = array();
 
              }
 
@@ -134,7 +134,7 @@ class equip extends Model
         ->where("eq_cate","=", "อุปกรณ์รีดนม")
         ->get();
              if (count($data) ==0 ){
-              $data = 0;
+              $data = array();
 
              }
 
