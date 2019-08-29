@@ -8,13 +8,13 @@ use Illuminate\Support\facades\Session;
 class Sale_milk extends Model
 {
     protected $table='sale_milk';
-    public static function insert_sm($pn_id,$milk_id,$sm_wiegh,$sm_pricetotal){
+    public static function insert_sm($pn_id,$milk_id,$sm_weight,$sm_pricetotal){
     $sm_insert=array (
     "em_id"=> Session::get('em_id'),
     "pn_id"=> $pn_id,
     "sm_pricetotal"=> $sm_pricetotal,
     "sm_date"=> date('Y-m-d'),
-    "sm_wiegh"=> $sm_wiegh,
+    "sm_weight"=> $sm_weight,
     "milk_id"=>$milk_id,
     "sm_status"=>"พร้อมใช้งาน"
     );
