@@ -236,7 +236,7 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->mb_id}}</td>
                                 <td>{{$item->bm_range}}</td>
-                                <td>{{$item->bm_weight}}</td>
+                                <td>{{$item->bm_weigh}}</td>
                                 <td>{{$item->bm_pricein}}</td>
                                 <td>
                                         <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>

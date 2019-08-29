@@ -4,17 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\facades\Session;
 class Sale_milk extends Model
 {
     protected $table='sale_milk';
-    public static function insert_sm($pn_id,$sm_wiegh,$sm_price,$sm_date,$sm_pricetotal){
+    public static function insert_sm($pn_id,$milk_id,$sm_wiegh,$sm_pricetotal){
     $sm_insert=array (
-
+    "em_id"=> Session::get("em_id"),
     "pn_id"=> $pn_id,
+    "milk_id"=>$milk_id,
     "sm_wiegh"=> $sm_wiegh,
-    "sm_price"=> $sm_price,
-    "sm_date"=> $sm_date,
     "sm_pricetotal"=> $sm_pricetotal,
+    "sm_date"=> date("Y-m-d"),
     "sm_status"=>"พร้อมใช้งาน"
     );
 

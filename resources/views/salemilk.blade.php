@@ -14,7 +14,7 @@
             $('#priceout').val(price);
             caculate();
         }
-        
+
         //คำนวณราคารับซื้อ  ต่อ ขีด
         function caculate(){
             var k = 0;
@@ -37,7 +37,7 @@
 
         function search_partners(){
             $.ajax({
-                url:"{{url('search_partners')}}/"+$('#partnersid').val(),
+                url:"{{url('searchpartners')}}/"+$('#partnersid').val(),
                 type:"get",
                 success:function(data){
                     console.log(data);
@@ -99,7 +99,8 @@
 <h1 style="text-align:center">ระบบขายน้ำนมดิบ</h1><br>
 <input type ="hidden" name="row" id="row" value="0">
 
-<form action="/action_page.php">
+<form action="{{ url('/savesalemilk') }}"  method="POST"  id='form-submit'>
+    @csrf
     <div class="form-group">
             <div class="row">
                 <div class="col-2 right">
@@ -209,14 +210,26 @@
             <table id="sale_milk" class="table table-striped table-bordered table-responsive-lg">
                 <thead class="bg-success ">
                     <th>ลำดับ</th>
-                    <th>รหัสขายน้ำนมดิบ</th>
+                    <th>รหัสบริษัทคู่ค้า</th>
                     <th>เกรดน้ำนมดิบ</th>
-                    <th>น้ำหนักขาย(ตัน)</th>
-                    <th>ราคาขายซื้อสุทธิ</th>
+                    <th>น้ำหนักขาย</th>
+                    <th>ราคาขายสุทธิ</th>
                     <th>หมายเหตุ</th>
                 </thead>
                 <tbody>
-
+                    @foreach ($salemilk as $key =>$item)
+                            <tr>
+                                <td>{{$key+1}}</td>
+                                <td>{{$item->pn_id}}</td>
+                                <td>{{$item->milk_id}}</td>
+                                <td>{{$item->sm_wiegh}}</td>
+                                <td>{{$item->sm_pricetotal}}</td>
+                                <td>
+                                        <a href ="{{url('/detailsalemilk')}}/{{$item->sm_id}}" class='btn btn-info'>รายละเอียด</a>
+                                        <a href="{{url('/')}}/{{$item->sm_id}}" class='btn btn-danger'>ยกเลิก</a>
+                                </td>
+                            </tr>
+                            @endforeach
 
                 </tbody>
 
