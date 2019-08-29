@@ -117,8 +117,7 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @if($tool != 0)
-                            @foreach ($tool as $key => $item)
+                             @foreach ($tool as $key => $item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->eq_id }}</td>
@@ -126,7 +125,6 @@
                                     <td><button class="btn btn-success" onclick="store_table({{ $item->eq_id }},'{{ $item->eq_name }}',{{ $item->eq_amount }},'{{ $item->eq_unit }}')">เลือก</button></td>
                                 </tr>
                             @endforeach
-                        @endif
                     </tbody>
                 </table>
             </div>
