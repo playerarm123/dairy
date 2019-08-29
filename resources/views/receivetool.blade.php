@@ -97,7 +97,7 @@
             $('#tool').modal('hide');
         }
     </script>
-    <div class="modal fade" id="food">
+    <div class="modal fade" id="tool">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
@@ -109,7 +109,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <table class="table table-striped table-bordered table-responsive-lg" id="food-table">
+                <table class="table table-striped table-bordered table-responsive-lg" id="tool-table">
                     <thead>
                         <th>ลำดับ</th>
                         <th>รหัสรายการ</th>
@@ -117,14 +117,16 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @foreach ($tool as $key => $item)
-                            {{-- <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $item->eq_id }}</td>
-                                <td>{{ $item->eq_name }}</td>
-                                <td><button class="btn btn-success" onclick="store_table({{ $item->eq_id }},'{{ $item->eq_name }}',{{ $item->eq_amount }},'{{ $item->eq_unit }}')">เลือก</button></td>
-                            </tr> --}}
-                        @endforeach
+                        @if($tool != 0)
+                            @foreach ($tool as $key => $item)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $item->eq_id }}</td>
+                                    <td>{{ $item->eq_name }}</td>
+                                    <td><button class="btn btn-success" onclick="store_table({{ $item->eq_id }},'{{ $item->eq_name }}',{{ $item->eq_amount }},'{{ $item->eq_unit }}')">เลือก</button></td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

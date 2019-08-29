@@ -9,20 +9,48 @@
 @section('body')
     <script>
         $(document).ready(function(){
-            $('#drug-table').DataTable();
+            var table =$('#receive-table').DataTable({
+                "paging": false,
+                "autoWidth": false,
+                "columnDefs": [ {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 0
+                } ],
+                "columns": [
+                    { "width": "5%" },
+                    null,
+                    {"width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"},
+
+                ],
+                "order": [[ 1, 'asc' ]],
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                    "sZeroRecords": "กรุณาคลิกปุ่ม 'เพิ่มรายการ' เพื่อเพิ่มรายการรับ",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                    "sSearch": "ค้นหา :",
+                    "sLoadingRecords": "Please wait - loading...",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sPrevious": "ก่อน",
+                        "sNext":"ถัดไป"
+                    }
+                },
+                "pageLength": 10 ,
+                searching:false,
+            });
+            table.on( 'order.dt search.dt', function () {
+                table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    cell.innerHTML = i+1;
+                } );
+            } ).draw();
         });
-        function store_table(id,name,amount,unit){
-            var table = $('#receive-table').DataTable();
-            table.row.add([
-                "",
-                "<input type='hidden' name='eq_id[]'>"+name,
-                "<input type='hidden' name='eq_amount' id='"+id+"'>"+amount,
-                "<input type='number' name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'",
-                "<input type='number' name='total[]' id='total"+id+"'>",
-                "<button class='btn btn-danger' onclick='delete_row("+id+")'>ลบ</button>"
-            ]).draw();
-            $('#drug').modal('hide');
-        }
     </script>
     <div class="center">
         <h1 style="text-align:center">ระบบรับอุปกรณ์(ยา)</h1><br>
@@ -90,13 +118,13 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @foreach ($tool as $key => $item)
-                            {{-- <tr>
+                        @foreach ($drug as $key => $item)
+                            <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $item->eq_id }}</td>
                                 <td>{{ $item->eq_name }}</td>
                                 <td><button class="btn btn-success" onclick="store_table({{ $item->eq_id }},'{{ $item->eq_name }}',{{ $item->eq_amount }},'{{ $item->eq_unit }}')">เลือก</button></td>
-                            </tr> --}}
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
