@@ -6,154 +6,137 @@
 @stop
 
 
-@section('body')<BR><BR><BR>
-         <!-- script  plug in dataTable  -->
-  <script src="{{ asset('/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('/datatables/dataTables.buttons.min.js') }}"></script>
-  <link href="{{ asset('/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/jquery.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('/datatables/buttons.dataTables.min.css') }}" rel="stylesheet"> 
+@section('body')
     <script>
-        function load_datacoop(){
-            $.ajax({
-                type:'get',
-                url:'{{url("/showdatacoop")}}',
-                success:function(data){
-                    var table =$('#datacoop').DataTable();
-                    data.forEach(item=>{
-                        table.rows.add([{
-                            0:[''],
-                            1:[''],
-                            2:[''],
-                            3:[''],
-                            4:[''],
-                            5:[''],
-                            6:[''],
-                        }]);
-                    });
-                }
-            });
-        }
         $(document).ready(function() {
-            load_datacoop();
-                // $('#datamem').DataTable(
-                // {
-                //         "oLanguage": {
-                //             "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
-                //             "sZeroRecords": "ไม่เจอข้อมูลที่ค้นหา",
-                //             "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
-                //             "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
-                //             "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
-                //             "sSearch": "ค้นหา :",
-                //             "sLoadingRecords": "Please wait - loading...",
-                //             "oPaginate": {
-                //                 "sFirst": "หน้าแรก",
-                //                 "sLast": "หน้าสุดท้าย",
-                //                 "sPrevious": "ก่อน",
-                //                 "sNext":"ถัดไป"
-                //             }
-                //         }
-                        
-                //     }
-                // ); 
+            var table =$('#receive-table').DataTable({
+                "paging": false,
+                "autoWidth": false,
+                "columnDefs": [ {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 0
+                } ],
+                "columns": [
+                    { "width": "5%" },
+                    null,
+                    {"width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"},
+
+                ],
+                "order": [[ 1, 'asc' ]],
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
+                    "sZeroRecords": "กรุณาคลิกปุ่ม 'เพิ่มรายการ' เพื่อเพิ่มรายการรับ",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ เร็คคอร์ด",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากเร็คคอร์ดทั้งหมด _MAX_ เร็คคอร์ด)",
+                    "sSearch": "ค้นหา :",
+                    "sLoadingRecords": "Please wait - loading...",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sPrevious": "ก่อน",
+                        "sNext":"ถัดไป"
+                    }
+                },
+                "pageLength": 10 ,
+                searching:false,
+            });
+            table.on( 'order.dt search.dt', function () {
+                table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    cell.innerHTML = i+1;
+                } );
+            } ).draw();
         });
     </script>
-<style> 
-    .center {
-        margin: auto;
-        width: 90%;
-        border: 3px solid #73AD21;
-        padding: 10px;
-    }
-    .btncenter{
-        width:10%;margin-left:45%;margin-right:45%;
-    }
-            
-</style>
-<div class="center">
-<h1 style="text-align:center">ระบบรับอุปกรณ์(ยา)</h1><br>
+    <div class="center">
+        <h1 style="text-align:center">ระบบรับอุปกรณ์(ยา)</h1><br>
+        <div class="row-search">
+            <button class="btn btn-success btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
+        </div>
+        <form action="">
+            <input type="hidden" name="" id="all-row">
+            <div class="panel-body">
+                <table id="receive-table" class="table table-striped table-bordered table-responsive-lg">
+                    <thead class="bg-success">
+                        <th>ลำดับ</th>
+                        <th>รายการ</th>
+                        <th>จำนวนคงเหลือ</th>
+                        <th>รับเพิ่ม</th>
+                        <th>รวมทั้งสิ้น</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
 
-<form action="/action_page.php">
-    <div class="form-group">
-            <div class="row">
-                <div class="col-2">
-                    วันที่:
-                </div>
-                <div class="col-4">
-                    <input type="datetime-local" class="form-control" name="buymilk_date" required>
-                </div>
+                    </tbody>
+
+                </table>
             </div>
-        </div> 
-    <div class="form-group">
-            <div class="row">
-                <div class="col-2">
-                    รหัสสั่งซื้ออุปกรณ์:
-                </div>
-                <div class="col-4">
-                        <input type="text" class="form-control" name="memid" required>
-                </div>
-                <div class="col-2">
-                    รหัสผู้ใช้งาน:
-                    </div>
-                    <div class="col-4">
-                        <input type="text" class="form-control" name="useid" required>
-                </div>
+        </form>
+    </div>
+
+
+    <!-- The Modal  ################################################################################### -->
+    <script>
+        $(document).ready(function(){
+            $('#drug-table').DataTable();
+        });
+        function store_table(id,name,amount,unit){
+            var table = $('#receive-table').DataTable();
+            table.row.add([
+                "",
+                "<input type='hidden' name='eq_id[]'>"+name,
+                "<input type='hidden' name='eq_amount' id='"+id+"'>"+amount,
+                "<input type='number' name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'",
+                "<input type='number' name='total[]' id='total"+id+"'>",
+                "<button class='btn btn-danger' onclick='delete_row("+id+")'>ลบ</button>"
+            ]).draw();
+            $('#drug').modal('hide');
+        }
+    </script>
+    <div class="modal fade" id="drug">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">รายการยารักษาโรค</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <table class="table table-striped table-bordered table-responsive-lg" id="drug-table">
+                    <thead>
+                        <th>ลำดับ</th>
+                        <th>รหัสรายการ</th>
+                        <th>รายการ</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @foreach ($drug as $key => $item)
+                            <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $item->eq_id }}</td>
+                                <td>{{ $item->eq_name }}</td>
+                                <td><button class="btn btn-success" onclick="store_table({{ $item->eq_id }},'{{ $item->eq_name }}',{{ $item->eq_amount }},'{{ $item->eq_unit }}')">เลือก</button></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
             </div>
         </div>
-        <div class="form-group">
-                <div class="row">
-                    <div class="col-2">
-                        รหัสอุปกรณ์:
-                    </div>
-                    <div class="col-4">
-                            <input type="text" class="form-control" name="milkid" required>
-                    </div>
-                    <div class="col-2">
-                        จำนวน(ชิ้น):
-                        </div>
-                        <div class="col-4">
-                            <input type="number" class="form-control" name="bm_milk_amount" required>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2">
-                        ราคาต่อชิ้น:
-                    </div>
-                    <div class="col-4">
-                            <input type="text" class="form-control" name="milkid" required>
-                    </div>
-                </div>
-            </div>
-    <br>
-    <div style="width:100% "class="" >
-        <button  type="submit" class="btn btn-success btncenter" >
-            <span class="fa fa-edit" ></span>
-        </button>
     </div>
-</form> 
-<br><br>
-<div class="panel-body">
-    <table id="datamilk" class="table table-striped table-bordered table-responsive-lg">
-        <thead class="bg-success">
-            <th>วันที่</th>
-            <th>รหัสสั่งซื้ออุปกรณ์</th>
-            <th>รหัสผู้ใช้งาน</th>
-            <th>รหัสอุปกรณ์</th>
-            <th>จำนวน(ชิ้น)</th>
-            <th>ราคาต่อชิ้น</th>
-            
-        </thead>
-        <tbody>
-            
-        </tbody>
-                
-    </table>
-</div>
-</div>
-
 
 @stop
 

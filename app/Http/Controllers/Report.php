@@ -19,6 +19,32 @@ class Report extends Controller
         equip::loaddrug("ยา");
 
     }
+    public function plus($v1,$v2){
+        $result = $v1+$v2;
+        return $result;
+    }
+    public function minus($v1,$v2){
+        $result = $v1-$v2;
+        return $result;
+    }
+    public function calculate(){
+        $a = 10;
+        $b = 20;
+        $c = 0;
+        $fomular = "บวก";
+        if($fomular == "บวก"){
+
+            $c = $this->plus($a,$b);
+
+        }else if($fomular == "ลบ"){
+            $c = $this->minus($a,$b);
+        }
+        else{
+            return view('test');
+        }
+
+        dd($c);
+    }
 }
 
 
