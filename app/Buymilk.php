@@ -30,7 +30,8 @@ class Buymilk extends Model
         ->join('employee','employee.em_id','=','buy_milk.em_id')
 
         ->orderBy("buy_milk.created_at","DESC")->select('member.*','buy_milk.*','milk.*','employee.*')->get();
-        dd($AllBuymilk);
+
+
         return $AllBuymilk; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
     }
 
