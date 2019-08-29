@@ -4,15 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\facades\Session;
 class Sale_milk extends Model
 {
     protected $table='sale_milk';
-    public static function insert_sm($em_id,$pn_id,$sm_pricetotal,$sm_date,$sm_wiegh,$milk_id){
+    public static function insert_sm($pn_id,$milk_id,$sm_wiegh,$sm_pricetotal){
     $sm_insert=array (
-    "em_id"=> $em_id,
+    "em_id"=> Session::get('em_id'),
     "pn_id"=> $pn_id,
     "sm_pricetotal"=> $sm_pricetotal,
-    "sm_date"=> $sm_date,
+    "sm_date"=> date('Y-m-d'),
     "sm_wiegh"=> $sm_wiegh,
     "milk_id"=>$milk_id,
     "sm_status"=>"พร้อมใช้งาน"
@@ -24,28 +25,6 @@ class Sale_milk extends Model
 
 
     }
-
-    public static function Update_sm($sm_id,$em_id,$pn_id,$sm_pricetotal,$sm_date,$sm_wiegh,$milk_id){
-        $update_sm=array(
-
-    "sm_id" => $sm_id,
-    "em_id"=> $em_id,
-    "pn_id"=> $pn_id,
-    "sm_pricetotal"=> $sm_pricetotal,
-    "sm_date"=> $sm_date,
-    "sm_wiegh"=> $sm_wiegh,
-    "milk_id"=>$milk_id,
-    "sm_status"=>"พร้อมใช้งาน"
-    );
-
-
-
-        DB::table("sale_milk")->where("sm_id","=",$sm_id)->update($update_sm);
-
-
-
-
-     }
      public static function Delete_sm($sm_id){
 
         DB::table("sale_milk")
