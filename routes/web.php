@@ -93,9 +93,9 @@ Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงราย
 
 
 
-Route::get('salemilk','Sellmilk@Sellmilk');//หน้าข้อมูลขายน้ำนม
-Route::post('savesellmilk','Sellmilk@Savesellmilk');
-Route::get('detailsellmilk/{id}','Sellmilk@Detailsellmilk');
+Route::get('salemilk','Sellmilk@Salemilk');//หน้าข้อมูลขายน้ำนม
+Route::post('savesalemilk','Sellmilk@Savesalemilk');//บันทึกการขายน้ำนม
+Route::get('detailsalemilk/{id}','Sellmilk@Detailsalemilk'); //รายละเอียดการขายน้ำนม
 
 
 Route::get('receivedrug','Receive@Drug');//หน้ารับอุปกรณ์ยา

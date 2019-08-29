@@ -14,7 +14,7 @@ class Receive extends Controller
     }
 
     public function Drug(){
-        $data['drug']=equip::loaddrug();
+        $data['receivedrug']=equip::loaddrug();
         return view('receivedrug',$data);
     }
     public function Food(){

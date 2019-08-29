@@ -16,7 +16,7 @@ class Report extends Controller
 {
     public static function testmind (){
 
-        Sale_milk::insert_sm("77","99","890","1977/12/12","80","123");
+        equip::loaddrug("ยา");
 
     }
     public function plus($v1,$v2){

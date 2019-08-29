@@ -14,27 +14,25 @@ class Sellmilk extends Controller
     }
 
 
-     public function Sellmilk(){
+     public function Salemilk(){
         $data['salemilk']=sale_milk::loadAllSale_milk();
         $data['grade']=Milk::loadAllMilk();
            return view('salemilk',$data);
      }
 
-    public function Savesellmilk(Request $req){ //บันทึกข้อการขายน้ำนม
-        $sm_id=$req->input('');
-        $em_id=$req->input('');
-        $pn_id=$req->input('');
-        $sm_wiegh=$req->input('');
-        $sm_price=$req->input('');
-        $sm_date=$req->input('');
-        Sale_milk::sm_insert($sm_id,$em_id,$pn_id,$sm_wiegh,$sm_price,$sm_date);
+    public function Savesalemilk(Request $req){ //บันทึกข้อการขายน้ำนม
+        $pn_id=$req->input('partnersid');
+        $milk_id=$req->input('grade');
+        $sm_wiegh=$req->input('weight');
+        $sm_pricetotal=$req->input('total');
+        Sale_milk::insert_sm($pn_id,$milk_id,$sm_wiegh,$sm_pricetotal);
         Session ::put('save','success');
         return redirect('salemilk');
     }
 
-    public function Detailsellmilk($id){ //แสดงรายละเอียดข้อมูลการขายน้ำนม
-        $data['salemilk']=Sale_milk::loadAllSaleMilk($id);
-       return view ('show_datasellmilk',$data);
+    public function Detailsalemilk($id){ //แสดงรายละเอียดข้อมูลการขายน้ำนม
+        $data['salemilk']=Sale_milk::loadDataSale_milk($id);
+       return view ('show_datasalemilk',$data);
     }
 
 

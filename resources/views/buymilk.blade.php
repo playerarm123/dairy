@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-3">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid" required>
+                            <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid">
                             <div class="input-group-append">
                             <a class="input-group-text btn" onclick="search_member()">ค้นหา</a>
                             </div>
@@ -143,12 +143,12 @@
                     <div class="col-3">
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="range" value="ช่วงเช้า" required>ช่วงเช้า
+                            <input type="radio" class="form-check-input" name="range" value="ช่วงเช้า" >ช่วงเช้า
                             </label>
                         </div>
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="range"value="ช่วงเย็น" required>ช่วงเย็น
+                            <input type="radio" class="form-check-input" name="range"value="ช่วงเย็น" >ช่วงเย็น
                             </label>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                 <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_pricein }}">
-                                <input type="radio" required class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
+                                <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
                                 </label>
                             </div>
                         @endforeach
@@ -190,7 +190,7 @@
                     <div class="col-3">
                         <input type="hidden" name="weight" id="weight">
                         <div class="input-group mb-3">
-                            <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control" required>
+                            <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control">
                             <div class="input-group-append">
                                 <span class="input-group-text " o>กิโลกรัม</span>
                             </div>
@@ -236,7 +236,7 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->mb_id}}</td>
                                 <td>{{$item->bm_range}}</td>
-                                <td>{{$item->bm_weight}}</td>
+                                <td>{{$item->bm_weigh}}</td>
                                 <td>{{$item->bm_pricein}}</td>
                                 <td>
                                         <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
