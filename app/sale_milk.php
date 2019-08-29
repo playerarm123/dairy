@@ -49,7 +49,12 @@ class Sale_milk extends Model
 
     public static function loadDataSale_milk($sm_id){ //โหลดข้อมูล
         $data=DB::table("sale_milk")
-    ->where("sm_id","=",$sm_id)
+        ->join('partners','partners.pn_id','=','sale_milk.pn_id')
+        ->join('milk','milk.milk_id','=','sale_milk.milk_id')
+        ->join('employee','employee.em_id','=','sale_milk.em_id')
+
+    ->where("sale_milk.sm_id","=",$sm_id)
+    ->select('partners.*','sale_milk.*','Milk.*','employee.*')
     ->get();
 
     return $data; //ส่งข้อมูลให้คอนโทลเลอร์

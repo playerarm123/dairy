@@ -36,10 +36,14 @@ class Buymilk extends Model
     }
 
     public static function loadDataBuymilk($bm_id){ //โหลดข้อมูล
-        $data=DB::table("buy_milk")
-    ->where("bm_id","=",$bm_id)
-    ->get();
-
+        $data=DB::table("buy_milk as bm")
+        ->join('member','member.mb_id','=','bm.mb_id')
+        ->join('milk','milk.milk_id','=','bm.milk_id')
+        ->join('employee','employee.em_id','=','bm.em_id')
+        ->where("bm.bm_id","=",$bm_id)
+        ->select('member.*','bm.*','milk.*','employee.*')
+        ->get();
+        dd($data);
     return $data; //ส่งข้อมูลให้คอนโทลเลอร์
     }
 
