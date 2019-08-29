@@ -19,8 +19,6 @@ class Report extends Controller
         equip::loaddrug("ยา");
 
     }
-<<<<<<< HEAD
-=======
     public function plus($v1,$v2){
         $result = $v1+$v2;
         return $result;
@@ -47,7 +45,6 @@ class Report extends Controller
 
         dd($c);
     }
->>>>>>> 2ba0f44e9cf32cb8481184a7f2551b30ae054e60
 }
 
 
