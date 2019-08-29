@@ -18,11 +18,13 @@ class Receive extends Controller
         return view('receivedrug',$data);
     }
     public function Food(){
-        $data['receivefood']=equip::loadfood();
+        // $data['receivefood']=equip::loadfoo;
+        $data['food']=array();
         return view('receivefood',$data);
     }
     public function Tool(){
-        $data['receivetool']=equip::loadtool();
+        //$data['receivetool']=equip::loadtool();
+        $data['tool']=array();
         return view('receivetool',$data);
     }
 
