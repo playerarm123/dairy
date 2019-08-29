@@ -56,11 +56,11 @@
                 "autoWidth": false,
                 "columns": [
                     { "width": "5%" },
-                    { "width": "10%"},
-                    {"width": "20%"},
-                    {"width": "10%"},
-                    {"width": "12%"},
-                    {"width": "25%"}
+                    { "width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"},
+                    {"width": "15%"}
                 ],
                 "oLanguage": {
                     "sLengthMenu": "แสดง _MENU_ เร็คคอร์ด ต่อหน้า",
