@@ -26,8 +26,9 @@ class Buymilk extends Model
     public static function loadAllBuymilk(){
         $AllBuymilk=DB::table("buy_milk")
         ->join('member','member.mb_id','=','buy_milk.mb_id')
-        ->orderBy("buy_milk.created_at","DESC")->select('member.*','buy_milk.*')->get();
-
+        ->join('milk','milk.milk_id','=','buy_milk.milk_id')
+        ->orderBy("buy_milk.created_at","DESC")->select('member.*','buy_milk.*','milk.*')->get();
+        dd($AllBuymilk);
         return $AllBuymilk; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
     }
 
