@@ -104,14 +104,15 @@ class equip extends Model
            return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
        }
 
-        public static function loaddrug(){ //โหลดข้อมูลยารักษาโรค
+        public static function loaddrug($eq_cate){
         $data=DB::table("equip")
-        ->where("eq_cate","=", "ยารักษาโรค")
+        ->where("eq_cate","=", $eq_cate)
         ->get();
              if (count($data) ==0 ){
               $data = 0;
 
              }
+          
          return $data;
 
 
