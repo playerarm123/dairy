@@ -20,7 +20,7 @@
         <div class="col-3 right" >ชื่อบริษัทคู่ค้า</div>
         <div class="col-2">{{$salemilk[0]->pn_name}}</div>
         <div class="col-3 right" >วันที่ขาย</div>
-        <div class="col-2">{{$salemilk[0]->bm_date}}</div>
+        <div class="col-2">{{$salemilk[0]->sm_date}}</div>
     </div>
     <div class="row">
         <div class="col-3 right" > เกรดน้ำนมดิบ</div>
@@ -30,7 +30,7 @@
     </div>
     <div class="row">
         <div class="col-3 right" > ราคาขายสุทธิ</div>
-        <div class="col-2">{{$salemilk[0]->bm_pricein}}</div>
+        <div class="col-2">{{$salemilk[0]->sm_pricetotal}}</div>
     </div>
     <br>
     <div class="btncenter"  >
