@@ -12,7 +12,7 @@
 <h2 style="text-align:center">แสดงรายละเอียดขายน้ำนมดิบ</h2>
     <div class="row">
         <div class="col-3 right" > รหัสขายน้ำนมดิบ</div>
-        <div class="col-2">{{$salemilk[0]->bm_id}}</div>
+        <div class="col-2">{{$salemilk[0]->sm_id}}</div>
         <div class="col-3 right" > ชื่อพนักงาน</div>
         <div class="col-2">{{$salemilk[0]->em_name}}</div>
     </div>
