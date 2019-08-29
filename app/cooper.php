@@ -42,7 +42,10 @@ class cooper extends Model
        ->get();
 
         return $data; //ส่งข้อมูลสหกรณ์ให้คอนโทลเลอร์
-    }
+       }
+
+
+
 
 
 
