@@ -37,7 +37,10 @@ class Sale_milk extends Model
 
 
     public static function loadAllSale_milk(){
-        $AllSaleMilk=DB::table("sale_milk")->orderBy("created_at","DESC")->get();
+        $AllSaleMilk=DB::table("sale_milk")
+        ->join('partners','partners.pn_id','=','sale_milk.pn_id')
+        ->join('milk','milk.milk_id','=','sale_milk.milk_id')
+        ->orderBy("sale_milk.created_at","DESC")->select('partners.*','sale_milk.*','Milk.*')->get();
 
         return $AllSaleMilk; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
 
