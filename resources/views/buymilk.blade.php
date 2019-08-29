@@ -274,11 +274,11 @@
                             @foreach ($buymilk as $key =>$item)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$item->mb_name}}</td>
+                                <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
                                 <td>{{$item->bm_range}}</td>
-                                <td>{{$item->bm_grade}}</td>
-                                <td>{{$item->bm_weight}}</td>
-                                <td>{{$item->bm_pricein}}</td>
+                                <td></td>
+                                <td>{{number_format($item->bm_weight/1000)}}</td>
+                                <td>{{number_format($item->bm_pricein,2)}}</td>
                                 <td>
                                         <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
                                         <button class='btn btn-danger' onclick='confirm_cencle("{{$item->em_id}}")'>ยกเลิก</button>
