@@ -116,9 +116,9 @@ class equip extends Model
 
 
        }
-       public static function loadfood($eq_cate){
+       public static function loadfood(){
         $data=DB::table("equip")
-        ->where("eq_cate","=", $eq_cate)
+        ->where("eq_cate","=", "อาหารสัตว์")
         ->get();
              if (count($data) ==0 ){
               $data = 0;
@@ -130,9 +130,9 @@ class equip extends Model
 
        }
 
-       public static function loadtool($eq_cate){
+       public static function loadtool(){
         $data=DB::table("equip")
-        ->where("eq_cate","=", $eq_cate)
+        ->where("eq_cate","=", "อุปกรณ์รีดนม")
         ->get();
              if (count($data) ==0 ){
               $data = 0;
