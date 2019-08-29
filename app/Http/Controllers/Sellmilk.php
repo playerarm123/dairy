@@ -15,7 +15,11 @@ class Sellmilk extends Controller
 
 
      public function Sellmilk(){
+<<<<<<< HEAD
         $data['salemilk']=sale_milk::loadAllSale_milk();
+=======
+        $data['salemilk']=Salemilk::loadAllSaleMilk();
+>>>>>>> f14d56a9da38293d559174af4d76ccc30b364d79
         $data['grade']=Milk::loadAllMilk();
            return view('salemilk',$data);
      }
