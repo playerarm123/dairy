@@ -68,7 +68,6 @@ class Buymilk extends Model
                $checkDelete = "yes";
 
            }
-        dd($checkDelete);
            return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
        }
 
