@@ -27,10 +27,10 @@ class Buymilk extends Model
         $AllBuymilk=DB::table("buy_milk")
         ->join('member','member.mb_id','=','buy_milk.mb_id')
         ->join('milk','milk.milk_id','=','buy_milk.milk_id')
-        ->join('Employee','employee.em_id','=','buy_milk.em_id')
+        ->join('employee','employee.em_id','=','buy_milk.em_id')
 
-        ->orderBy("buy_milk.created_at","DESC")->select('member.*','buy_milk.*','milk.*','Employee.*')->get();
-
+        ->orderBy("buy_milk.created_at","DESC")->select('member.*','buy_milk.*','milk.*','employee.*')->get();
+        dd($AllBuymilk);
         return $AllBuymilk; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
     }
 
