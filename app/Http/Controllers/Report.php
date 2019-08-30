@@ -15,36 +15,15 @@ use App\Sale_milk;
 class Report extends Controller
 {
     public static function testmind (){
+        $eq_id=array("8","6");
+        $eq_total=array(20,30);
+        $eq_receive=array(10,20);
 
-        equip::loaddrug("ยา");
+
+        equip::receive_drug($eq_id,$eq_receive,$eq_total);
 
     }
-    public function plus($v1,$v2){
-        $result = $v1+$v2;
-        return $result;
-    }
-    public function minus($v1,$v2){
-        $result = $v1-$v2;
-        return $result;
-    }
-    public function calculate(){
-        $a = 30;
-        $b = 20;
-        $c = 0;
-        $fomular = "คูณ";
-        if($fomular == "บวก"){
 
-            $c = $this->plus($a,$b);
-
-        }else if($fomular == "ลบ"){
-            $c = $this->minus($a,$b);
-        }
-        else{
-            return view('test');
-        }
-
-        dd($c);
-    }
 }
 
 
