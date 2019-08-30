@@ -144,4 +144,13 @@ class equip extends Model
        }
 
 
+     public static function Canceleq($eq_id){
+        $eq_Cancel =array(
+            "eq_status"=> "ยกเลิก"
+        );
+            DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
+    }
+
+
+
 }
