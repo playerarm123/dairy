@@ -75,7 +75,7 @@
     <div class="center">
         <h1 style="text-align:center">ระบบรับอุปกรณ์(ยา)</h1><br>
         <div class="row-search">
-            <button class="btn btn-success btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
+            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
         </div>
         <form action="" method="POST" id="form-submit">
             @csrf
@@ -93,9 +93,15 @@
                     </thead>
                     <tbody>
 
+
                     </tbody>
 
                 </table>
+                <div class="btncenter">
+                        <button  type="submit" id="save" class="btn btn-success " >
+                            <span class="fa fa-edit"  >บันทึก</span>
+                        </button>
+                </div>
             </div>
         </form>
     </div>
@@ -132,7 +138,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">รายการอุปกรณ์รีดนม</h4>
+                <h4 class="modal-title">รายการยา</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -155,6 +161,7 @@
                             </tr>
                         @endforeach
                     </tbody>
+
                 </table>
             </div>
 
