@@ -80,4 +80,11 @@ class Sale_milk extends Model
 
 
 
+       public static function Canclesm($sm_id){
+        $sm_Cancel =array(
+            "sm_status"=> "ยกเลิก"
+        );
+            DB::table('sale_milk')->where("sm_id","=",$sm_id)->update($sm_Cancel);
+    }
+
 }
