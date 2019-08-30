@@ -123,11 +123,18 @@
                 "<input type='hidden' name='eq_id[]' value="+id+">"+name,
                 "<input type='text' class='form-control'name='eq_amount' id='amount"+id+"'value="+amount+" readonly>",
                 "<input type='number'class='form-control'name='eq_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
-                "<input type='number' name='total[]' class='form-control' id='total"+id+"'readonly>",
+                "<input type='number' name='eq_total[]' class='form-control' id='total"+id+"'readonly>",
                 "<a class='btn btn-danger' >ลบ</a>"
             ]).draw();
             $('#drug').modal('hide');
             $('#all-row').val(parseInt(all_row+1));
+        }
+        // รวมจำนวนล่าสุด
+        function cal_total(id){
+            var eq_amount = $('#amount'+id).val();
+            var get_amount = $('#get_amount'+id).val();
+            var total = parseInt(eq_amount) + parseInt(get_amount);
+            $('#total'+id).val(total);
         }
     </script>
 <div class="modal fade" id="drug">
