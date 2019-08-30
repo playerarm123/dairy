@@ -50,7 +50,6 @@
                             null,
                             null,
                             null,
-                            null,
                             {"width": "22%"},
 
 
@@ -100,12 +99,6 @@
                 <div class="col-3">
                                 <input type="text" class="form-control" name="milk_grade" required>
                         </div>
-                <div class="col-2 right">
-                        จำนวน(กิโลกรัม):
-                    </div>
-                    <div class="col-3">
-                        <input type="double" class="form-control" name="milk_weight" required>
-                </div>
             </div>
         </div>
         <div class="form-group">
@@ -140,7 +133,6 @@
         <thead class="bg-success">
             <th>ลำดับ</th>
             <th> เกรดน้ำนมดิบ</th>
-            <th> จำนวน(กิโลกรัม)</th>
             <th> ราคารับซื้อ</th>
             <th>ราคาขาย</th>
             <th>หมายเหตุ</th>
@@ -151,9 +143,8 @@
                 <tr>
                 <td>{{$key+1}}</td>
                 <td>{{$item->milk_grade}}</td>
-                <td>{{$item->milk_weight}}</td>
-                <td>{{$item->milk_pricein}}</td>
-                <td>{{$item->milk_priceout}}</td>
+                <td>{{$item->milk_pricein}}&ensp;บาท</td>
+                <td>{{$item->milk_priceout}}&ensp;บาท</td>
                 <td>
                     <a href="{{url('/edit_datamilk')}}/{{$item->milk_id}}" class='btn btn-warning'>แก้ไข</a>
                     <button class='btn btn-danger' onclick='confirm_delete("{{$item->milk_id}}")'>ลบ</button>

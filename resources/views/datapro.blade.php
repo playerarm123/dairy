@@ -149,8 +149,8 @@
                 <td>{{$key+1}}</td>
                 <td>{{$item->eq_name}}</td>
                 <td>{{$item->eq_cate}}</td>
-                <td>{{ $item->eq_amount }} {{$item->eq_unit}}</td>
-                <td>{{$item->eq_price}}</td>
+                <td>{{$item->eq_amount }} {{$item->eq_unit}}</td>
+                <td>{{number_format($item->eq_price,2)}}&ensp;บาท</td>
                 <td>
                     <a href="{{url('/editpro')}}/{{$item->eq_id}}" class='btn btn-warning'>แก้ไข</a>
                     <button class='btn btn-danger' onclick='confirm_delete("{{$item->eq_id}}")'>ลบ</button>

@@ -13,7 +13,6 @@ class Milk extends Model
 
                      $milk=array(
                     "milk_grade"=> $milk_grade,
-                    "milk_weight"=> $milk_weight,
                     "milk_pricein"=> $milk_pricein,
                     "milk_priceout"=> $milk_priceout,
                     "milk_status"=> "พร้อมใช้งาน" );
@@ -43,10 +42,9 @@ class Milk extends Model
 
                 }
 
-            public static function Update_milk($milk_id,$milk_grade,$milk_weight,$milk_pricein,$milk_priceout){
+            public static function Update_milk($milk_id,$milk_grade,$milk_pricein,$milk_priceout){
                     $update_milk=array(
                     "milk_grade"=>   $milk_grade,
-                    "milk_weight"=>  $milk_weight,
                     "milk_pricein"=>   $milk_pricein,
                     "milk_priceout"=>   $milk_priceout,
                     "milk_status"=> "พร้อมใช้งาน"

@@ -106,12 +106,12 @@
                 <div class="col-3">
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender" value="male" required>ชาย
+                          <input type="radio" class="form-check-input" name="gender" value="ชาย" required>ชาย
                         </label>
                       </div>
                       <div class="form-check-inline">
                         <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="gender" value="female" required>หญิง
+                          <input type="radio" class="form-check-input" name="gender" value="หญิง" required>หญิง
                         </label>
                     </div>
                 </div>

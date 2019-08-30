@@ -21,12 +21,6 @@
                 <div class="col-3">
                     <input type="text" class="form-control" name="milk_grade" required value="{{$milk[0]->milk_grade}}">
                 </div>
-                <div class="col-2 right">
-                    จำนวน(กิโลกรัม):
-                </div>
-                <div class="col-3">
-                    <input type="text" class="form-control" name="milk_weight" value="{{$milk[0]->milk_weight}}" required>
-                </div>
             </div>
         </div>
         <div class="form-group">
