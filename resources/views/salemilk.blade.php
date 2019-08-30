@@ -222,7 +222,7 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->pn_id}}</td>
                                 <td>{{$item->milk_id}}</td>
-                                <td>{{$item->sm_wiegh}}</td>
+                                <td>{{$item->sm_weight}}</td>
                                 <td>{{$item->sm_pricetotal}}</td>
                                 <td>
                                         <a href ="{{url('/detailsalemilk')}}/{{$item->sm_id}}" class='btn btn-info'>รายละเอียด</a>

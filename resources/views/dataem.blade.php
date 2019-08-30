@@ -8,7 +8,7 @@
 
 @section('body')
     <script>
-        function confirm_delete(Em_id){
+        function confirm_delete(em_id){
             swal({
                 title: "ลบข้อมูล?",
                 text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
@@ -25,13 +25,14 @@
                     // ถ้ากด ใช่
                     $.ajax({
                         type:"GET",
-                        url: " {{ url('checkdluser') }}/"+Em_id,
+                        url: " {{ url('checkdluser') }}/"+em_id,
                         success:function(result){
                             if(result == "yes"){
                                 $.ajax({
                                     type: "GET",
-                                    url : "{{ url('deleteuser')}}/"+Em_id,
+                                    url : "{{ url('deleteuser')}}/"+em_id,
                                     success:function(data){
+                                        location.reload();  //รีโหลดหน้าเมื่อลบแล้ว
                                     }
                                 });
                             }else{
@@ -52,46 +53,53 @@
             $('#form-submit').on('submit',function (e) {
                 // หยุดการทำงานชั่วคราว
                 e.preventDefault();
+                var chk_pass = check_password();
 
-                //ใช้ในการส่งข้อมูลไปตรวจสอบที่ controller
-                $.ajax({
-                    type: "POST",
-                    url: "{{ url('checkuser')}}",
-                    data: {
-                        fname: $('#firstname').val(),
-                        lname: $('#lastname').val(),
-                        username: $('#username').val(),
-                        _token: "{{ csrf_token() }}"
-                    },asyn:true,
-                    success:function(data){
-                        console.log(data);
-                        if(data['resultname'] == 0 && data['resultusername'] == 0) {
-                             //สั่งให้ทำการบันทึกข้อมูลต่อไป
-                            $('#form-submit').unbind('submit').submit();
-                         }
-                         // ถ้า ชื่อ หรือ username ซ้ำกัน ให้ทำงานใน else
-                         else{
-                            // ถ้าชื่อ มากกว่า 0 ให้ทำงานใน if
-                            if(data['resultname'] > 0){
+                if(chk_pass==true){
+                    $('#alert_password').hide();
 
-                                // สั่งให้ข้อความแจ้งเตือนแสง
-                                $('#alert_name').show();
+                    //ใช้ในการส่งข้อมูลไปตรวจสอบที่ controller
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('checkuser')}}",
+                        data: {
+                            fname: $('#firstname').val(),
+                            lname: $('#lastname').val(),
+                            username: $('#username').val(),
+                            _token: "{{ csrf_token() }}"
+                        },asyn:true,
+                        success:function(data){
+                            console.log(data);
+                            if(data['resultname'] == 0 && data['resultusername'] == 0) {
+                                //สั่งให้ทำการบันทึกข้อมูลต่อไป
+                                $('#form-submit').unbind('submit').submit();
                             }
-                            // ถ้า ไม่มากกว่า 0 ให้ทำงานใน else
+                            // ถ้า ชื่อ หรือ username ซ้ำกัน ให้ทำงานใน else
                             else{
-                                // สั่งให้ซ่อนข้อความ
-                                $('#alert_name').hide();
-                            }
-                            //username
-                            if(data['resultusername']>0){
-                                $('#alert_username').show();
-                            }
+                                // ถ้าชื่อ มากกว่า 0 ให้ทำงานใน if
+                                if(data['resultname'] > 0){
+
+                                    // สั่งให้ข้อความแจ้งเตือนแสง
+                                    $('#alert_name').show();
+                                }
+                                // ถ้า ไม่มากกว่า 0 ให้ทำงานใน else
                                 else{
-                                    $('#alert_username').hide();
+                                    // สั่งให้ซ่อนข้อความ
+                                    $('#alert_name').hide();
+                                }
+                                //username
+                                if(data['resultusername']>0){
+                                    $('#alert_username').show();
+                                }
+                                    else{
+                                        $('#alert_username').hide();
+                                }
                             }
-                         }
-                    }
-                });
+                        }
+                    });
+                }else{
+                    $('#alert_password').show();
+                }
             });
 
             // ตารางข้อมูล
@@ -130,11 +138,11 @@
             var password1 =$('#password').val();
             var confirm_password=$('#confirm_password').val();
             if (password1 !=confirm_password){
-                alert("passwordไม่ตรงกัน");
-                $('#save').show();
+                var result = false;
             } else {
-                alert ("passwordถูกต้อง");
+                var result = true
             }
+            return result;
         }
     </script>
     <div class="center">
@@ -148,7 +156,7 @@
                     </div>
                     <div class="col-3">
                         <div class="custom-textbox">
-                            <input type="text" class="form-control"id="firstname" name="firstname" value="" >
+                            <input type="text" class="form-control"id="firstname" name="firstname" value="" required >
                         </div>
                         <span id="alert_name" class="msg">ชื่อและนามสกุลนี้ถูกใช้งานแล้ว</span>
                     </div>
@@ -156,7 +164,7 @@
                         นามสกุล:
                     </div>
                     <div class="col-3">
-                        <input type="text" class="form-control"id="lastname" name="lastname" value = "" >
+                        <input type="text" class="form-control"id="lastname" name="lastname" value = "" required >
                     </div>
                 </div>
             </div>
@@ -168,12 +176,12 @@
                     <div class="col-3">
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="gender" value="ชาย" >ชาย
+                            <input type="radio" class="form-check-input" name="gender" value="ชาย" required >ชาย
                             </label>
                         </div>
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="gender"value="หญิง" >หญิง
+                            <input type="radio" class="form-check-input" name="gender"value="หญิง"  required>หญิง
                             </label>
                         </div>
                     </div>
@@ -181,7 +189,7 @@
                         อายุ:
                     </div>
                     <div class="col-3">
-                        <input type="number" class="form-control" name="old" >
+                        <input type="number" class="form-control" name="old" required>
                     </div>
                 </div>
             </div>
@@ -191,13 +199,13 @@
                         ที่อยู่:
                     </div>
                     <div class="col-3">
-                        <textarea class="form-control" name="address" ></textarea>
+                        <textarea class="form-control" name="address" required></textarea>
                     </div>
                     <div class="col-2 right">
                         เบอร์โทร:
                     </div>
                     <div class="col-3">
-                        <input type="tel" class="form-control" name="number" >
+                        <input type="tel" class="form-control" name="number" required >
                     </div>
                 </div>
             </div>
@@ -209,12 +217,12 @@
                     <div class="col-3" id="positiion">
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="position" value="พนักงาน" >พนักงาน
+                                <input type="radio" class="form-check-input" name="position" value="พนักงาน" required>พนักงาน
                             </label>
                         </div>
                         <div class="form-check-inline">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="position"value="กรรมการ" >กรรมการ
+                                <input type="radio" class="form-check-input" name="position"value="กรรมการ" required >กรรมการ
                             </label>
                         </div>
                     </div>
@@ -223,9 +231,9 @@
                     </div>
                     <div class="col-3 right">
                         <div class="custom-textbox">
-                            <input type="text" class="form-control"id="username" name="username" value="" >
+                            <input type="text" class="form-control"id="username" name="username" value="" required maxlength="10">
                         </div>
-                        <span id="alert_username" class="msg">Usernameถูกต้อง</span>
+                        <span id="alert_username" class="msg">Usernameไม่ถูกต้อง</span>
                     </div>
                 </div>
             </div>
@@ -235,13 +243,14 @@
                         Password :
                     </div>
                     <div class="col-3 ">
-                        <input type="password" id="password" class="form-control" name="password"  >
+                        <input type="password" id="password" class="form-control" name="password" required minlength="8" >
                     </div>
                     <div class="col-2 right">
                         ยืนยัน Password :
                     </div>
                     <div class="col-3">
-                        <input  type="password" id="confirm_password" class="form-control" name=""  >
+                        <input  type="password" id="confirm_password" class="form-control" name="" required minlength="8" >
+                        <span id="alert_password" class="msg">Passwordไม่ตรงกัน</span>
                     </div>
                 </div>
             </div>
