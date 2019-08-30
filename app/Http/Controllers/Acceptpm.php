@@ -13,7 +13,7 @@ class Acceptpm extends Controller
     }
 
 
-        public function Receivemoney(){
+        public function Receivemoney(){ //หน้ารับชำระเงิน
             // $data['receivemoney']=Acceptpm::loadremoney();
             return view('receivemoney');
         }

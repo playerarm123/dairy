@@ -13,15 +13,15 @@ class Receive extends Controller
         $this->middleware('checklogin');
     }
 
-    public function Drug(){
+    public function Drug(){ //หน้ายา
         $data['drug']=equip::loaddrug();
         return view('receivedrug',$data);
     }
-    public function Food(){
+    public function Food(){ //หน้าอาหารสัตว์
         $data['food']=equip::loadfood();
         return view('receivefood',$data);
     }
-    public function Tool(){
+    public function Tool(){ //หน้าอุปกรณ์
         $data['tool']=equip::loadtool();
         return view('receivetool',$data);
     }
@@ -29,44 +29,39 @@ class Receive extends Controller
     public function Savedrug(Request $req){ //บันทึกข้อมูลยา
         $eq_id=$req->input('eq_id');
         $eq_amount=$req->input('eq_amount');
-
-        equip::dr_insert($dr_buyid, $dr_id, $dr_price, $dr_amout);
+        $eq_total=$req->input('eq_total');
+        equip::receive_drug($eq_id,$eq_amount,$eq_total);
         Session::put('save','success');
         return redirect('receivedrug');
     }
-    public function Detaildrug($id){ //แสดงรายละเอียดยา
-        $data['drug']=Drug::loaddatadrug($id);
-       return view ('show_drug',$data);
+    // public function Detaildrug($id){ //แสดงรายละเอียดยา
+    //     $data['drug']=Drug::loaddatadrug($id);
+    //    return view ('show_drug',$data);
+    // }
+
+
+    public function Savefood(Request $req){ //บันทึกข้อมูลอาหารสัตว์
+        $eq_id=$req->input('eq_id');
+        $eq_amount=$req->input('eq_amount');
+        $eq_total=$req->input('eq_total');
+        equip::receive_food($eq_id,$eq_amount,$eq_total);
+        Session::put('save','success');
+        return redirect('receivefood');
     }
 
-
-
-
-
-
-    // public function Savefood(Request $req){ //บันทึกข้อมูลอาหารสัตว์
-    //     $f_buyid=$req->input('');
-    //     $f_id=$req->input('');
-    //     $f_price=$req->input('');
-    //     $f_amout=$req->input('');
-    //     Food::food_insert($f_buyid, $f_id,$f_price,$f_amout);
-    //     Session::put('save','success');
-    //     return redirect('receivedrug');
-    // }
-    // public function Detailfood($id){ //แสดงรายละเอียดยา
+    // public function Detailfood($id){ //แสดงรายละเอียดอาหาร
     //     $data['food']=Food::loaddatafood($id);
     //    return view ('show_food',$data);
     // }
 
-    // public function Savetool(Request $req){ //บันทึกข้อมูลอุปกรณ์
-    //     $t_buyid=$req->input('');
-    //     $t_id=$req->input('');
-    //     $t_price=$req->input('');
-    //     $t_amout=$req->input('');
-    //     Tool::tool_insert($t_buyid, $t_id,$t_price,$t_amout);
-    //     Session::put('save','success');
-    //     return redirect('receivedrug');
-    // }
+    public function Savetool(Request $req){ //บันทึกข้อมูลอุปกรณ์
+        $eq_id=$req->input('eq_id');
+        $eq_amount=$req->input('eq_amount');
+        $eq_total=$req->input('eq_total');
+        equip::receive_tool($eq_id,$eq_amount,$eq_total);
+        Session::put('save','success');
+        return redirect('receivetool');
+    }
     // public function Detailtool($id){ //แสดงรายละเอียดอุปกรณ์
     //     $data['tool']=Tool::loaddatatool($id);
     //    return view ('show_tool',$data);

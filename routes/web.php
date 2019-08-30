@@ -25,6 +25,9 @@ Route::group(['middleware' => 'checklogin'], function () {
 });
 Route::get('searchpartners/{id}','Datamg@Searchpartners');//ค้นหาคู่ค้า
 Route::get('searchmem/{id}','Datamg@Searchmem');// ค้นหาสมาชิก
+
+
+//จัดการข้อมูลพื้นฐานผู้ใช้งาน
 Route::get('dataem','Datamg@Dataem');//หน้าข้อมูลผู้ใช้งาน
 Route::get('loaduser','Datamg@Loaduser');//ใช้โหลดข้อมูลผู้ใช้งานทั้งหมด
 Route::post('checkuser','Datamg@checkuser');//เช็คข้อมูลผู้ใช้
@@ -35,6 +38,8 @@ Route::post('updateuser','Datamg@Updateuser');//อัพเดตข้อม�
 Route::get('edit_dataem/{id}','Datamg@Editdataem');//แก้ไขข้อมูลผู้ใช้
 Route::get('checkdluser/{id}','Datamg@Checkdluser');//เช็คก่อนลบ
 
+
+//จัดการข้อมูลพื้นฐานสมาชิก
 Route::get('datamem','Datamg@Datamem');//หน้าข้อมูลสมาชิก
 Route::get('loadmem','Datamg@Loadmem');//ใช้โหลดข้อมูลสมาชิก
 Route::post('checkmember','Datamg@Checkmember');//เช็คข้อมูลสมาชิก
@@ -46,6 +51,8 @@ Route::get('edit_datamem/{id}','Datamg@Editdatamem');//แก้ไขข้อ�
 Route::get('checkdlmember/{id}','Datamg@Checkdlmember');//เช็คก่อนลบ
 
 
+
+//จัดการข้อมูลพื้นฐานน้ำนม
 Route::get('datamilk','Datamg@Datamilk');//หน้าข้อมูลนม
 Route::get('loadmilk','Datamg@Loadmilk');//โหลดข้อมูลน้ำนม
 Route::post('checkmilk','Datamg@Checkmilk');//เช็คข้อมูลน้ำนม
@@ -58,6 +65,7 @@ Route::get('checkdlmilk/{id}','Datamg@Checkdlmilk');//เช็คก่อน�
 
 
 
+//จัดการข้อมูลพื้นฐานอุปกรณ์
 Route::get('datapro','Datamg@Datapro');//หน้าข้อมูลอุปกรณ์
 Route::get('loadpro','Datamg@Loadpro');//โหลดข้อมูลอุปกรณ์
 Route::post('checkpro','Datamg@Checkpro');//เช็คข้อมูลอุปกรณ์
@@ -69,13 +77,8 @@ Route::get('editpro/{id}','Datamg@Editpro');//แก้ไขข้อมูล�
 Route::get('checkdlpro/{id}','Datamg@Checkdlpro');//เช็คก่อนลบ
 
 
-Route::get('datacoop','Datamg@Datacoop');//หน้าข้อมูลสหกรณ์
-Route::get('loadcoop','Datamg@Loadcoop');//โหลดหน้าสหกรณ์
-Route::post('savecooper','Datamg@Savecooper');//บันทึกข้อมูลสหกรณ์
-Route::get('detailcoop/{id}','Datamg@Detailcoop');//แสดงรายละเอียดสหกรณ์
-Route::post('updatecoop','Datamg@Updatecoop');//อัพเดตข้อมูลสหกรณ์
-Route::get('editcoop/{id}','Datamg@Editcoop');//แก้ไขข้อมูลสหกรณ์
 
+//จัดการข้อมูลพื้นฐานคู่ค้า
 Route::get('dataagent','Datamg@Dataagent');//หน้าข้อมูลคู่ค้า
 Route::get('loadagent','Datamg@Loadagent');//โหลดหน้าคู่ค้า
 Route::post('checkagent','Datamg@Checkagent');//เช็คข้อมูลคู่ค้า
@@ -87,21 +90,35 @@ Route::get('editagent/{id}','Datamg@Editagent');//แก้ไขข้อมู
 Route::get('checkdlagent/{id}','Datamg@Checkdlagent');//เช็คก่อนลบ
 
 
+
+//จัดการข้อมูลพื้นฐานสหกรณ์
+Route::get('datacoop','Datamg@Datacoop');//หน้าข้อมูลสหกรณ์
+Route::get('loadcoop','Datamg@Loadcoop');//โหลดหน้าสหกรณ์
+Route::post('savecooper','Datamg@Savecooper');//บันทึกข้อมูลสหกรณ์
+Route::get('detailcoop/{id}','Datamg@Detailcoop');//แสดงรายละเอียดสหกรณ์
+Route::post('updatecoop','Datamg@Updatecoop');//อัพเดตข้อมูลสหกรณ์
+Route::get('editcoop/{id}','Datamg@Editcoop');//แก้ไขข้อมูลสหกรณ์
+
+
+
+
+//รับซื้อน้ำนม
 Route::get('buymilk','Buymilk@Buymilk');//หน้าข้อมูลซื้อน้ำนม
 Route::post('savebuymilk','Buymilk@Savebuymilk');//บันทึกข้อมูลซื้อน้ำนม
 Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงรายละเอียดซื้อน้ำนม
 Route::get('cancelbuymilk/{id}','Buymilk@Cancelbuymilk');//ยกเลิกการซื้อน้ำนม
 
 
-
+//ขายน้ำนม
 Route::get('salemilk','Sellmilk@Salemilk');//หน้าข้อมูลขายน้ำนม
 Route::post('savesalemilk','Sellmilk@Savesalemilk');//บันทึกการขายน้ำนม
 Route::get('detailsalemilk/{id}','Sellmilk@Detailsalemilk'); //รายละเอียดการขายน้ำนม
 Route::get('cancelsalemilk/{id}','Sellmilk@Cancelsalemilk');//ยกเลิกการขายน้ำนม
 
+
+//รับอุปกรณ์
 Route::get('receivedrug','Receive@Drug');//หน้ารับอุปกรณ์ยา
 Route::post('savedrug','Receive@Savedrug');//บันทึกรายการข้อมูลยา
-
 Route::get('detaildrug/{id}','Receive@Detaildrug');//แสดงรายละเอียดยา
 
 Route::get('receivefood','Receive@Food');//หน้ารับอุปกรณ์อาหาร
@@ -112,21 +129,38 @@ Route::get('receivetool','Receive@Tool');//หน้ารับอุปกร�
 Route::post('savetool','Receive@Savetool');//บันทึกข้อมูลอุปกรณ์
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
 
+
+
+
+
+
+//ขายอุปกรณ์
 Route::get('saleeq','Selleqm@Saleeq');//หน้าขายอุปกรณ์
 Route::post('saveeq','Selleqm@Saveeq'); //บันทึกขายอุปกรณ์
 Route::get('canceleq/{id}','Selleqm@Canceleq');//ยกเลิกการขายอุปกรณ์
 
 
+
+
+
+//ชำระเงินนมสมาชิก
 Route::get('paymilk','Payment@Payment');//หน้าชำระเงิน
 Route::post('savepayment','Payment@Savepayment');//บันทึกหน้าชำระเงิน
 Route::get('detailpayment/{id}','Payment@Detailpayment');//รายละเอียดชำระเงิน
 
 
 
+
+
+//รับชำระเงินนม
 Route::get('receivemoney','Acceptpm@Receivemoney'); //หน้ารับชำระเงิน
 Route::post('saveacceptpm','Acceptpm@Saveacceptpm'); //บันทึกรับชำระเงิน
 Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm'); //รายละเอียดชำระเงิน
 
+
+
+
+//ไว้ให้มายด์เทส
 Route::get('testmind','Report@testmind');
 
 

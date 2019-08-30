@@ -13,7 +13,7 @@ class Selleqm extends Controller
         $this->middleware('checklogin');
     }
 
-    public function Saleeq(){
+    public function Saleeq(){ //หน้าขายอุปกรณ์
         $data['saleeq']=sale_equip::loadAllSale_equip();
 
         return view('saleeq',$data);

@@ -77,7 +77,7 @@
         <div class="row-search">
             <button class="btn btn-info btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
         </div>
-        <form action="" method="POST" id="form-submit">
+        <form action="{{ url('savedrug')}}" method="POST" id="form-submit">
             @csrf
 
             <input type="hidden" name="" id="all-row" value=0>

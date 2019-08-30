@@ -40,6 +40,12 @@ class Datamg extends Controller
         $data['coop']=cooper::loadDatacoop(1);
         return view('datacoop',$data);
     }
+
+
+
+
+
+   //ผู้ใช้งาน
     public function Loaduser(){ //โหลดข้อมูลผู้ใช้
         $alldata=Employee::loadAllData();
         return $alldata;
@@ -55,7 +61,6 @@ class Datamg extends Controller
             'resultusername'=>$resultusername
         );
         return $data;
-
     }
     public function Savedataem(Request $req){ //บันทึกข้อมูลผุ้ใช้
         $name=$req->input('firstname');
@@ -95,14 +100,16 @@ class Datamg extends Controller
         $data['user']=Employee::loadDataEmp($id);
         return view('edit_dataem',$data);
     }
-
-    public function Checkdluser($id){
+    public function Checkdluser($id){//เช็คก่อนลบuser
         $data = Employee::checkDelete($id);
         return $data;
     }
 
 
 
+
+
+    //สมาชิก
     public function Loadmem(){ //โหลดข้อมูลสมาชิก
         $member=Member::loadAllMember();
         return $member;
@@ -150,14 +157,17 @@ class Datamg extends Controller
         return view('edit_datamem',$data);
     }
 
-    public function Checkdlmember($id){
+    public function Checkdlmember($id){//เช็คก่อนลบสมาชิก
         $data=Member::checkDelete($id);
        return $data;
      }
 
 
 
-    public function Loadmilk(){ //โหลดน้ำนม
+
+
+    //น้ำนม
+     public function Loadmilk(){ //โหลดน้ำนม
         $AllMilk=Milk::loadAllMilk();
         return $AllMilk;
     }
@@ -199,12 +209,17 @@ class Datamg extends Controller
         $data['milk']=Milk::loadDataMilk($id);
         return view('edit_datamilk',$data);
     }
-    public function Checkdlmilk($id){
+    public function Checkdlmilk($id){//เช็คก่อนลบน้ำนม
         $data=Milk::checkDelete($id);
         return $data;
     }
 
 
+
+
+
+
+    //อุปกรณ์
     public function Loadpro(){ //โหลดอุปกรณ์
         $Allpro=equip::loadAllEquip();
         return $Allpro;
@@ -247,11 +262,16 @@ class Datamg extends Controller
         $data['equip']=equip::loadDataEquip($id);
         return view('edit_datapro',$data);
     }
-    public function Checkdlpro($id){
+    public function Checkdlpro($id){//เช็คก่อนลบอุปกรณ์
         $data=equip::checkDelete($id);
         return $data;
     }
 
+
+
+
+
+   //คู่ค้า
     public function Loadagent(){ //โหลดหน้าคู่ค้า
         $Allagent=partners::loadAllPartners();
         return $Allagent;
@@ -291,12 +311,16 @@ class Datamg extends Controller
         $data['agent']=partners::loadDatapartner($id);
         return view('edit_dataagent',$data);
     }
-    public function Checkdlagent($id){
+    public function Checkdlagent($id){//เช็คก่อนลบคู่ค้า
         $data=partners::checkDelete($id);
         return $data;
     }
 
 
+
+
+
+    //สหกรณ์
     public function Savecooper(Request $req){ //บันทึกข้อมูลสหกรณ์
         $id = $req->input('id');
         $coop_name=$req->input('name');
@@ -321,12 +345,10 @@ class Datamg extends Controller
         Session::put('save','success');
         return redirect('datacoop');
     }
-
     public function Editcoop($id){ //แก้ไขข้อมูลสหกรณ์
         $data['coop']=cooper::loadDatacoop($id);
         return view('edit_datacoop',$data);
     }
-
     public function uploadlogo($file){//ใช้อัพโหลดlogoขึ้นเซริฟเวอร์
         if($file){
             $mimetype = $file->getClientMimeType();
@@ -344,7 +366,10 @@ class Datamg extends Controller
         }
     }
 
-    public function Searchmem($id){
+
+
+
+    public function Searchmem($id){//ค้นหาสมาชิก
         $data=Member::loadDataMb($id);
         foreach($data as $item){
             $member=array(
@@ -353,13 +378,9 @@ class Datamg extends Controller
             );
         }
         return $member;
-
-
-
-
     }
 
-    public function Searchpartners($id){
+    public function Searchpartners($id){//ค้นหาคู่ค้า
         $data=partners::loadDatapartner($id);
         if(count($data)==0){
             $partners = 0;

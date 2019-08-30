@@ -13,12 +13,11 @@ class Sellmilk extends Controller
         $this->middleware('checklogin');
     }
 
-
-     public function Salemilk(){
+    public function Salemilk(){
         $data['salemilk']=sale_milk::loadAllSale_milk();
         $data['grade']=Milk::loadAllMilk();
            return view('salemilk',$data);
-     }
+    }
 
     public function Savesalemilk(Request $req){ //บันทึกข้อการขายน้ำนม
         $pn_id=$req->input('partnersid');
@@ -35,7 +34,7 @@ class Sellmilk extends Controller
        return view ('show_salemilk',$data);
     }
 
-    public function Cancelsalemilk($id){
+    public function Cancelsalemilk($id){ //ยกเลิก
         sale_milks::Canclebm($id);
         Session::put('cancel','success');
     }

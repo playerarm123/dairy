@@ -11,7 +11,7 @@ class Payment extends Controller
         $this->middleware('checklogin');
     }
 
-    public function Payment(){
+    public function Payment(){ //ชำระเงินนม
         // $data['paymilk']=Payment::loadpayment();
         return view('paymilk');
     }
