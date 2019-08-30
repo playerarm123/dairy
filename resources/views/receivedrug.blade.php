@@ -50,15 +50,37 @@
                     cell.innerHTML = i+1;
                 } );
             } ).draw();
+
+            // ลบแถวในตาราง
+            $('#receive-table tbody').on( 'click', '.btn-danger', function () {
+                var row_index = table.row($(this).parents('tr')).index();
+                var all_row = $('#all-row').val();
+                table.row( $(this).parents('tr') ).remove().draw();
+                $('#all-row').val(parseInt(all_row-1));
+            } );
+
+            // เช็คความเรียบร้อยก่อน บันทึก
+            $('#form-submit').on('submit',function(e){
+                var all_row = parseInt($('#all-row').val()); //จำนวนแถวรายการรับ
+                e.preventDefault();  //หยุดการบันทึกชั่วคราว
+                if(all_row > 0){  //ถ้าแถวมากกว่า 0 ถึงจะทำการบันทึกต่อไป
+                    $('#form-submit').unbind('submit').submit();
+                }else{  // ถ้าไม่ใช่ ให้แจ้งเตือน
+                    swal("กรุณาเพิ่มรายการรับอุปกรณ์");
+                }
+            });
+
         });
     </script>
     <div class="center">
         <h1 style="text-align:center">ระบบรับอุปกรณ์(ยา)</h1><br>
         <div class="row-search">
-            <button class="btn btn-success btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
+            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
         </div>
-        <form action="">
-            <input type="hidden" name="" id="all-row">
+        <form action="" method="POST" id="form-submit">
+            @csrf
+
+            <input type="hidden" name="" id="all-row" value=0>
             <div class="panel-body">
                 <table id="receive-table" class="table table-striped table-bordered table-responsive-lg">
                     <thead class="bg-success">
@@ -71,9 +93,15 @@
                     </thead>
                     <tbody>
 
+
                     </tbody>
 
                 </table>
+                <div class="btncenter">
+                        <button  type="submit" id="save" class="btn btn-success" >
+                            <span class="fa fa-edit"  >บันทึก</span>
+                        </button>
+                </div>
             </div>
         </form>
     </div>
@@ -83,19 +111,25 @@
     <script>
         $(document).ready(function(){
             $('#drug-table').DataTable();
+
+
         });
+        // เพิ่มรายการรับ
         function store_table(id,name,amount,unit){
             var table = $('#receive-table').DataTable();
+            var all_row = $('#all-row').val();
             table.row.add([
                 "",
                 "<input type='hidden' name='eq_id[]'>"+name,
-                "<input type='hidden' name='eq_amount' id='"+id+"'>"+amount,
-                "<input type='number' name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'",
-                "<input type='number' name='total[]' id='total"+id+"'>",
-                "<button class='btn btn-danger' onclick='delete_row("+id+")'>ลบ</button>"
+                "<input type='text' class='form-control'name='eq_amount' id='"+id+"+amount+' readonly>",
+                "<input type='number'class='form-control'name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'>",
+                "<input type='number' name='total[]' class='form-control' id='total"+id+"'>",
+                "<a class='btn btn-danger' >ลบ</a>"
             ]).draw();
             $('#drug').modal('hide');
+            $('#all-row').val(parseInt(all_row+1));
         }
+
 
     </script>
 <div class="modal fade" id="drug">
@@ -104,7 +138,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">รายการอุปกรณ์รีดนม</h4>
+                <h4 class="modal-title">รายการยา</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -127,6 +161,7 @@
                             </tr>
                         @endforeach
                     </tbody>
+
                 </table>
             </div>
 

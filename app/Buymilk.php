@@ -43,7 +43,6 @@ class Buymilk extends Model
         ->where("bm.bm_id","=",$bm_id)
         ->select('member.*','bm.*','milk.*','employee.*')
         ->get();
-
     return $data; //ส่งข้อมูลให้คอนโทลเลอร์
     }
 
@@ -69,7 +68,6 @@ class Buymilk extends Model
                $checkDelete = "yes";
 
            }
-        dd($checkDelete);
            return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
        }
 
