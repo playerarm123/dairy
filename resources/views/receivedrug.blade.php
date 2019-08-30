@@ -120,9 +120,9 @@
             var all_row = $('#all-row').val();
             table.row.add([
                 "",
-                "<input type='hidden' name='eq_id[]'>"+name,
+                "<input type='hidden' name='eq_id[]' value="+id+">"+name,
                 "<input type='text' class='form-control'name='eq_amount' id='amount"+id+"'value="+amount+" readonly>",
-                "<input type='number'class='form-control'name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
+                "<input type='number'class='form-control'name='eq_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
                 "<input type='number' name='total[]' class='form-control' id='total"+id+"'readonly>",
                 "<a class='btn btn-danger' >ลบ</a>"
             ]).draw();
