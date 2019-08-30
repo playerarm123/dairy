@@ -42,4 +42,9 @@ class Buymilk extends Controller
         $data=Member::searchMem($id);
        return $data;
     }
+
+    public function Cancelbuymilk($id){
+        buymilks::Canclebm($id);
+        Session::put('cancel','success');
+    }
 }

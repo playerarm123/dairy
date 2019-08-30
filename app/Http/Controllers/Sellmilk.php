@@ -35,5 +35,10 @@ class Sellmilk extends Controller
        return view ('show_salemilk',$data);
     }
 
+    public function Cancelsalemilk($id){
+        sale_milks::Canclebm($id);
+        Session::put('cancel','success');
+    }
+
 
 }

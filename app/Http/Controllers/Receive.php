@@ -26,19 +26,18 @@ class Receive extends Controller
         return view('receivetool',$data);
     }
 
-    // public function Savedrug(Request $req){ //บันทึกข้อมูลยา
-    //     $dr_buyid=$req->input('');
-    //     $dr_id=$req->input('');
-    //     $dr_price=$req->input('');
-    //     $dr_amout=$req->input('');
-    //     Drug::dr_insert($dr_buyid, $dr_id, $dr_price, $dr_amout);
-    //     Session::put('save','success');
-    //     return redirect('receivedrug');
-    // }
-    // public function Detaildrug($id){ //แสดงรายละเอียดยา
-    //     $data['drug']=Drug::loaddatadrug($id);
-    //    return view ('show_drug',$data);
-    // }
+    public function Savedrug(Request $req){ //บันทึกข้อมูลยา
+        $eq_id=$req->input('eq_id');
+        $eq_amount=$req->input('eq_amount');
+
+        equip::dr_insert($dr_buyid, $dr_id, $dr_price, $dr_amout);
+        Session::put('save','success');
+        return redirect('receivedrug');
+    }
+    public function Detaildrug($id){ //แสดงรายละเอียดยา
+        $data['drug']=Drug::loaddatadrug($id);
+       return view ('show_drug',$data);
+    }
 
 
 

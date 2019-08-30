@@ -37,19 +37,25 @@
 <?php
     $save = Session::get('save');
     $delete = Session::get('delete');
+    $cancel = Session::get('cancel');
     Session::forget('save');
     Session::forget('delete');
+    Session::forget('cancel');
 ?>
 <script>
     $(document).ready(function(){
         loadLogo();
         var save = "{{ $save }}";
         var delete_s = "{{ $delete }}";
+        var cancel="{{$cancel}}";
         if(save == 'success'){
             swal("สำเร็จ!", "บันทึกข้อมูลสำเร็จ!", "success");
         }
         if(delete_s == 'success'){
             swal("สำเร็จ!", "ลบข้อมูลสำเร็จ!", "success");
+        }
+        if(cancel == 'success'){
+            swal("สำเร็จ!","ยกเลิกสำเร็จ!","success");
         }
     });
     function loadLogo(){

@@ -90,16 +90,18 @@ Route::get('checkdlagent/{id}','Datamg@Checkdlagent');//เช็คก่อน
 Route::get('buymilk','Buymilk@Buymilk');//หน้าข้อมูลซื้อน้ำนม
 Route::post('savebuymilk','Buymilk@Savebuymilk');//บันทึกข้อมูลซื้อน้ำนม
 Route::get('detailbuymilk/{id}','Buymilk@Detailbuymilk');//แสดงรายละเอียดซื้อน้ำนม
+Route::get('cancelbuymilk/{id}','Buymilk@Cancelbuymilk');//ยกเลิกการซื้อน้ำนม
 
 
 
 Route::get('salemilk','Sellmilk@Salemilk');//หน้าข้อมูลขายน้ำนม
 Route::post('savesalemilk','Sellmilk@Savesalemilk');//บันทึกการขายน้ำนม
 Route::get('detailsalemilk/{id}','Sellmilk@Detailsalemilk'); //รายละเอียดการขายน้ำนม
-
+Route::get('cancelsalemilk/{id}','Sellmilk@Cancelsalemilk');//ยกเลิกการขายน้ำนม
 
 Route::get('receivedrug','Receive@Drug');//หน้ารับอุปกรณ์ยา
-Route::post('savedrug','Receive@Savedrug');//บันทึกข้อมูลยา
+Route::post('savedrug','Receive@Savedrug');//บันทึกรายการข้อมูลยา
+
 Route::get('detaildrug/{id}','Receive@Detaildrug');//แสดงรายละเอียดยา
 
 Route::get('receivefood','Receive@Food');//หน้ารับอุปกรณ์อาหาร
@@ -111,8 +113,8 @@ Route::post('savetool','Receive@Savetool');//บันทึกข้อมู�
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
 
 Route::get('saleeq','Selleqm@Saleeq');//หน้าขายอุปกรณ์
-Route::post('saveeq','Sellqm@Saveeq'); //บันทึกขายอุปกรณ์
-
+Route::post('saveeq','Selleqm@Saveeq'); //บันทึกขายอุปกรณ์
+Route::get('canceleq/{id}','Selleqm@Canceleq');//ยกเลิกการขายอุปกรณ์
 
 
 Route::get('paymilk','Payment@Payment');//หน้าชำระเงิน

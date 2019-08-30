@@ -19,4 +19,8 @@ class Selleqm extends Controller
         return view('saleeq',$data);
     }
 
+    public function Canceleq($id){
+        sale_equip::Canceleq($id);
+        Session::put('cancel','success');
+    }
 }
