@@ -73,7 +73,7 @@
         });
     </script>
     <div class="center">
-        <h1 style="text-align:center">ระบบรับอุปกรณ์(ยา)</h1><br>
+        <h1 style="text-align:center">ระบบรับยารักษาโรค</h1><br>
         <div class="row-search">
             <button class="btn btn-info btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
         </div>
@@ -121,16 +121,14 @@
             table.row.add([
                 "",
                 "<input type='hidden' name='eq_id[]'>"+name,
-                "<input type='text' class='form-control'name='eq_amount' id='"+id+"+amount+' readonly>",
-                "<input type='number'class='form-control'name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'>",
-                "<input type='number' name='total[]' class='form-control' id='total"+id+"'>",
+                "<input type='text' class='form-control'name='eq_amount' id='amount"+id+"'value="+amount+" readonly>",
+                "<input type='number'class='form-control'name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
+                "<input type='number' name='total[]' class='form-control' id='total"+id+"'readonly>",
                 "<a class='btn btn-danger' >ลบ</a>"
             ]).draw();
             $('#drug').modal('hide');
             $('#all-row').val(parseInt(all_row+1));
         }
-
-
     </script>
 <div class="modal fade" id="drug">
         <div class="modal-dialog modal-lg">
