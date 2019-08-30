@@ -187,10 +187,9 @@ class Datamg extends Controller
     public function Updatemilk(Request $req){ //แสดงหน้าอัพเดตน้ำนม
         $milk_id=$req->input('Milk_id');
         $milk_grade=$req->input('milk_grade');
-        $milk_weight=$req->input('milk_weight');
         $milk_pricein=$req->input('milk_pricein');
         $milk_priceout=$req->input('milk_priceout');
-        Milk::Update_milk($milk_id,$milk_grade,$milk_weight,$milk_pricein,$milk_priceout);
+        Milk::Update_milk($milk_id,$milk_grade,$milk_pricein,$milk_priceout);
         Session::put('save','success');
 
         return redirect ('detailmilk/'.$milk_id);
@@ -236,10 +235,9 @@ class Datamg extends Controller
         $eq_id=$req->input('eq_id');
         $eq_name=$req->input('name');
         $eq_cate=$req->input('cate');
-        $eq_amount=$req->input('amount');
         $eq_unit=$req->input('unit');
         $eq_price=$req->input('price');
-        equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_amount,$eq_unit,$eq_price);
+        equip::Update_eq($eq_id,$eq_name,$eq_cate,$eq_unit,$eq_price);
         Session::put('save','success');
         return redirect ('detailpro/'.$eq_id);
     }
