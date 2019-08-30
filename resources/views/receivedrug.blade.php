@@ -76,7 +76,7 @@
 
                 </table>
                 <div class="btncenter">
-                        <button  type="submit" id="save" class="btn btn-success " >
+                        <button  type="submit" id="save" class="btn btn-success" >
                             <span class="fa fa-edit"  >บันทึก</span>
                         </button>
                 </div>
@@ -95,7 +95,7 @@
             table.row.add([
                 "",
                 "<input type='hidden' name='eq_id[]'>"+name,
-                "<input type='hidden' name='eq_amount' id='"+id+"'>"+amount,
+                "<input type='text' name='eq_amount' class='form-control' id='eq_amount"+id+"' value="+amount+" readonly>",
                 "<input type='number' name='get_amount[]'  class= 'form-control' id='get_amount"+id+"' onkeyup='cal_total("+id+")'>",
                 "<input type='number' name='total[]' id='total"+id+"' class= 'form-control' readonly>",
                 "<button class='btn btn-danger' onclick='delete_row("+id+")'>ลบ</button>"
