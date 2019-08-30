@@ -210,7 +210,7 @@
             <table id="sale_milk" class="table table-striped table-bordered table-responsive-lg">
                 <thead class="bg-success ">
                     <th>ลำดับ</th>
-                    <th>รหัสบริษัทคู่ค้า</th>
+                    <th>ชื่อบริษัทคู่ค้า</th>
                     <th>เกรดน้ำนมดิบ</th>
                     <th>น้ำหนักขาย</th>
                     <th>ราคาขายสุทธิ</th>
@@ -220,10 +220,10 @@
                     @foreach ($salemilk as $key =>$item)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$item->pn_id}}</td>
-                                <td>{{$item->milk_id}}</td>
-                                <td>{{$item->sm_weight}}</td>
-                                <td>{{$item->sm_pricetotal}}</td>
+                                <td>{{$item->pn_name}}</td>
+                                <td>{{$item->milk_grade}}</td>
+                                <td>{{number_format($item->sm_weight/1000)}}</td>
+                                <td>{{number_format($item->sm_pricetotal,2)}}</td>
                                 <td>
                                         <a href ="{{url('/detailsalemilk')}}/{{$item->sm_id}}" class='btn btn-info'>รายละเอียด</a>
                                         <a href="{{url('/')}}/{{$item->sm_id}}" class='btn btn-danger'>ยกเลิก</a>

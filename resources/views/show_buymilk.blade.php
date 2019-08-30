@@ -13,20 +13,20 @@
     <div class="row">
         <div class="col-3 right" > รหัสรับซื้อน้ำนมดิบ</div>
         <div class="col-2">{{$buymilk[0]->bm_id}}</div>
-        <div class="col-3 right" > รหัสพนักงาน</div>
-        <div class="col-2">{{$buymilk[0]->em_id}}</div>
+        <div class="col-3 right" > ชื่อพนักงาน</div>
+        <div class="col-2">{{$buymilk[0]->em_name}}</div>
     </div>
     <div class="row">
-        <div class="col-3 right" >รหัสสมาชิก</div>
-        <div class="col-2">{{$buymilk[0]->mb_id}}</div>
-        <div class="col-3 right" > รหัสน้ำนมดิบ</div>
-        <div class="col-2">{{$buymilk[0]->milk_id}}</div>
-    </div>
-    <div class="row">
+        <div class="col-3 right" >ชื่อสมาชิก</div>
+        <div class="col-2">{{$buymilk[0]->mb_name}}</div>
         <div class="col-3 right" >วันที่รับซื้อ</div>
         <div class="col-2">{{$buymilk[0]->bm_date}}</div>
-        <div class="col-3 right" >ช่วงเวลา</div>
+    </div>
+    <div class="row">
+        <div class="col-3 right" > ช่วงเวลา</div>
         <div class="col-2">{{$buymilk[0]->bm_range}}</div>
+        <div class="col-3 right" > เกรดน้ำนมดิบ</div>
+        <div class="col-2">{{$buymilk[0]->milk_id}}</div>
     </div>
     <div class="row">
         <div class="col-3 right" > น้ำหนักรับซื้อ</div>
