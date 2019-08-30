@@ -144,11 +144,28 @@ class equip extends Model
        }
 
 
-     public static function Canceleq($eq_id){
+    public static function Canceleq($eq_id){
         $eq_Cancel =array(
             "eq_status"=> "ยกเลิก"
         );
             DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
+    }
+
+    public static function receive_eq($eq_id,$req_amount,$eq_total){
+        foreach($eq_id as $key=> $item){
+            $listeq=array(
+                "eq_id"=>$eq_id[$key],
+                "req_amount"=>$req_amount[$key],
+                "listreq_status"=>"รับแล้ว"
+            );
+            $eq=array(
+                "eq_amount"=>$eq_total[$key]
+
+            );
+            DB::table('list_receive_equip')->insert($listeq);
+            DB::table('equip')->where("eq_id","=",$eq_id[$key])->update($eq);
+        }
+
     }
 
 
