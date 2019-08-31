@@ -134,6 +134,7 @@ Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละ
 
 
 
+
 //ขายอุปกรณ์
 Route::get('saleeq','Selleqm@Saleeq');//หน้าขายอุปกรณ์
 Route::post('saveeq','Selleqm@Saveeq'); //บันทึกขายอุปกรณ์

@@ -64,4 +64,6 @@ class sale_equip extends Model
 
 
 
+
+
 }
