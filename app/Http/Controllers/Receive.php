@@ -44,7 +44,7 @@ class Receive extends Controller
         $eq_id=$req->input('eq_id');
         $eq_amount=$req->input('eq_amount');
         $eq_total=$req->input('eq_total');
-        equip::receive_food($eq_id,$eq_amount,$eq_total);
+        equip::receive_eq($eq_id,$eq_amount,$eq_total);
         Session::put('save','success');
         return redirect('receivefood');
     }
@@ -58,7 +58,7 @@ class Receive extends Controller
         $eq_id=$req->input('eq_id');
         $eq_amount=$req->input('eq_amount');
         $eq_total=$req->input('eq_total');
-        equip::receive_tool($eq_id,$eq_amount,$eq_total);
+        equip::receive_eq($eq_id,$eq_amount,$eq_total);
         Session::put('save','success');
         return redirect('receivetool');
     }

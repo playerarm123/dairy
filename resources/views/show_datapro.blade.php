@@ -21,6 +21,11 @@
         <div class="col-3 right" >ราคาขาย</div>
         <div class="col-2">{{$equip[0]->eq_price}}</div>
     </div>
+    <div class="row">
+        <div class="col-3 right" >จำนวน</div>
+        <div class="col-2">{{$equip[0]->eq_amount}}</div>
+
+    </div>
     <br>
     <div class="btncenter" >
     <a href={{url('/datapro')}} class="btn btn-danger " >

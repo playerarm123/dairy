@@ -76,8 +76,9 @@
         <div class="row-search">
             <button class="btn btn-info btn-search" data-toggle="modal" data-target="#tool">เพิ่มรายการ</button>
         </div>
-        <form action="">
-            <input type="hidden" name="" id="all-row">
+        <form action="{{ url('savetool')}}" method="POST" id="form-submit">
+            @csrf
+            <input type="hidden" name="" id="all-row" value=0>
             <div class="panel-body">
                 <table id="receive-tool" class="table table-striped table-bordered table-responsive-lg">
                     <thead class="bg-success">
@@ -107,18 +108,30 @@
     <script>
         $(document).ready(function(){
             $('#tool-table').DataTable();
+
+
         });
+        // เพิ่มรายการรับ
         function store_table(id,name,amount,unit){
             var table = $('#receive-tool').DataTable();
+            var all_row = parseInt($('#all-row').val());
             table.row.add([
                 "",
-                "<input type='hidden' name='eq_id[]'>"+name,
+                "<input type='hidden' name='eq_id[]' value="+id+">"+name,
                 "<input type='text' class='form-control'name='eq_amount' id='amount"+id+"'value="+amount+" readonly>",
-                "<input type='number'class='form-control'name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
-                "<input type='number' name='total[]' class='form-control' id='total"+id+"'readonly>",
+                "<input type='number'class='form-control'name='eq_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
+                "<input type='number' name='eq_total[]' class='form-control' id='total"+id+"'readonly>",
                 "<a class='btn btn-danger' >ลบ</a>"
             ]).draw();
             $('#tool').modal('hide');
+            $('#all-row').val(parseInt(all_row+1));
+        }
+        // รวมจำนวนล่าสุด
+        function cal_total(id){
+            var eq_amount = $('#amount'+id).val();
+            var get_amount = $('#get_amount'+id).val();
+            var total = parseInt(eq_amount) + parseInt(get_amount);
+            $('#total'+id).val(total);
         }
     </script>
     <div class="modal fade" id="tool">

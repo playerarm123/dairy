@@ -49,7 +49,7 @@
                     cell.innerHTML = i+1;
                 } );
             } ).draw();
-        
+
             // ลบแถวในตาราง
             $('#receive-table tbody').on( 'click', '.btn-danger', function () {
                 var row_index = table.row($(this).parents('tr')).index();
@@ -76,7 +76,8 @@
         <div class="row-search">
             <button class="btn btn-info btn-search" data-toggle="modal" data-target="#food">เพิ่มรายการ</button>
         </div>
-        <form action="">
+        <form action="{{ url('savefood')}}" method="POST" id="form-submit">
+            @csrf
             <input type="hidden" name="" id="all-row">
             <div class="panel-body">
                 <table id="receive-food" class="table table-striped table-bordered table-responsive-lg">
@@ -91,7 +92,7 @@
                     <tbody>
 
                     </tbody>
-                    
+
 
                 </table>
                 <div class="btncenter">
@@ -108,18 +109,30 @@
     <script>
         $(document).ready(function(){
             $('#food-table').DataTable();
+
+
         });
+        // เพิ่มรายการรับ
         function store_table(id,name,amount,unit){
             var table = $('#receive-food').DataTable();
+            var all_row = $('#all-row').val();
             table.row.add([
                 "",
-                "<input type='hidden' name='eq_id[]'>"+name,
+                "<input type='hidden' name='eq_id[]' value="+id+">"+name,
                 "<input type='text' class='form-control'name='eq_amount' id='amount"+id+"'value="+amount+" readonly>",
-                "<input type='number'class='form-control'name='get_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
-                "<input type='number' name='total[]' class='form-control' id='total"+id+"'readonly>",
+                "<input type='number'class='form-control'name='eq_amount[]' id='get_amount"+id+"' onkeyup='cal_total("+id+")'required>",
+                "<input type='number' name='eq_total[]' class='form-control' id='total"+id+"'readonly>",
                 "<a class='btn btn-danger' >ลบ</a>"
             ]).draw();
             $('#food').modal('hide');
+            $('#all-row').val(parseInt(all_row+1));
+        }
+        // รวมจำนวนล่าสุด
+        function cal_total(id){
+            var eq_amount = $('#amount'+id).val();
+            var get_amount = $('#get_amount'+id).val();
+            var total = parseInt(eq_amount) + parseInt(get_amount);
+            $('#total'+id).val(total);
         }
     </script>
     <div class="modal fade" id="food">
@@ -143,12 +156,12 @@
                     </thead>
                     <tbody>
                         @foreach ($food as $key => $item)
-                            {{-- <tr>
+                            <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $item->eq_id }}</td>
                                 <td>{{ $item->eq_name }}</td>
                                 <td><button class="btn btn-success" onclick="store_table({{ $item->eq_id }},'{{ $item->eq_name }}',{{ $item->eq_amount }},'{{ $item->eq_unit }}')">เลือก</button></td>
-                            </tr> --}}
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
