@@ -2,7 +2,9 @@
 
 
 @section('head')
+<script>
 
+    </script>
 @stop
 
 
@@ -19,7 +21,7 @@
                         ชื่อ:
                     </div>
                     <div class="col-4">
-                        <input type="text" class="form-control" name="firstname" required value="{{$user[0]->em_name}}">
+                        <input type="text" class="form-control" name="firstname" required value="{{$user[0]->em_name}}"  >
                     </div>
                     <div class="col-2 right">
                         นามสกุล:
