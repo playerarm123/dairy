@@ -110,7 +110,8 @@
 <div class="center">
 <h1 style="text-align:center">รายการขายอุปกรณ์</h1><br>
 
-<form action="{{ url('/saveeq') }}" method="POST" id='form-submit'>
+<form action="{{ url('/saveeq') }}" method="POST" id='saveeq'>
+    @csrf
     <input type="hidden" id="all-row">
     <div class="form-group">
          <div class="row">
