@@ -110,7 +110,7 @@
 <div class="center">
 <h1 style="text-align:center">รายการขายอุปกรณ์</h1><br>
 
-<form action="{{ url('/saveeq') }}" method="POST" id='saveeq'>
+<form action="{{ url('/savesaleeq') }}" method="POST" id='savesaleeq'>
     @csrf
     <input type="hidden" id="all-row">
     <div class="form-group">
@@ -186,13 +186,13 @@
            
                 <th colspan="5" class="bg-success" style="text-align:center">ราคารวมสุทธิ</th>
                 <th class="bg-warning">
-                    <input type="text" class="form-control" id="all_price" name="all_price" value=0.0 readonly>
+                    <input type="text" class="form-control" id="all_price" name="price_total" value=0.0 readonly>
                 </th>
            
         </tfoot>
     </table>
     <div class="btncenter" >
-        <button  type="submit" id = "saveeq" class="btn btn-success " >
+        <button  type="submit" id = "savesaleeq" class="btn btn-success " >
             <span class="fa fa-save">บันทึก</span>
         </button>
     </div>
