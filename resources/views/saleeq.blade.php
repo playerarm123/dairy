@@ -25,7 +25,6 @@
                     {"width": "15%"},
                     {"width": "15%"},
                     {"width": "15%"},
-                    {"width": "15%"},
 
                 ],
                 "order": [[ 1, 'asc' ]],
@@ -90,14 +89,21 @@
                 <table id="saleequip" class="table table-striped table-bordered table-responsive-lg">
                     <thead class="bg-success">
                         <th>ลำดับ</th>
-                        <th>รายการขาย</th>
+                        <th>ผู้ซื้อ</th>
                         <th>วันที่</th>
-                        <th>จำนวน</th>
-                        <th>ราคาขายสุทธิ</th>
+                        <th>ยอดขาย</th>
                         <th></th>
                     </thead>
                     <tbody>
-
+                        @foreach ($saleeq as $item)
+                            <tr>
+                                <td></td>
+                                <td>{{ $item->mb_name }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
 
                     </tbody>
 

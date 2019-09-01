@@ -8,14 +8,12 @@ use Illuminate\Support\facades\Session;
 class sale_equip extends Model
 {
     protected $table='sale_equip';
-    public static function insert_se($mb_id,$price_total,$name,$lastname){
+    public static function insert_se($mb_id,$price_total){
     $insert_se=array (
 
-    "pn_id" =>  $mb_id,
+    "mb_id" =>  $mb_id,
     "price_total" =>  $price_total,
     "em_id"=>Session::get('em_id'),
-    "name"=>$name,
-    "lastname"=>$lastname,
     "seq_status"=>"พร้อมใช้งาน"
     );
 
@@ -53,7 +51,10 @@ class sale_equip extends Model
     }
 
     public static function loadAllSale_equip(){
-        $AllSale_equip=DB::table("sale_equip")->orderBy("created_at","DESC")->get();
+        $AllSale_equip=DB::table("sale_equip as sa")
+        ->join('member as m','m.mb_id','=','sa.mb_id')
+        ->select('sa.*','m.*')
+        ->orderBy("sa.created_at","DESC")->get();
 
         return $AllSale_equip; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
 
