@@ -32,7 +32,8 @@ class Milk extends Model
                     $msb = "ข้อมูลไม่ถูกต้อง";
                     return $msb;
                 } // ถ้านับแถวได้1จะคำนวนน และส่งราคา ถ้าไม่ใช่1จะส่งข้อความส่งกลับ
-             }
+            }
+
              public static function checkmilk_grade($milk_grade){
                 $data=DB::table("milk")
                 ->where("milk_grade","=",$milk_grade)
@@ -40,7 +41,7 @@ class Milk extends Model
                 $row=count($data);
                  return $data;  //สร้างเพื่อเช็คข้อมูลว่าซ้ำในดาต้าเบสไหม ขั้นตอนการสมัคร
 
-                }
+            }
 
             public static function Update_milk($milk_id,$milk_grade,$milk_pricein,$milk_priceout){
                     $update_milk=array(
@@ -55,7 +56,8 @@ class Milk extends Model
 
 
 
-                }
+            }
+
             public static function Delete_milk($milk_id){
 
                 DB::table("milk")
@@ -68,12 +70,12 @@ class Milk extends Model
 
                     return $AllMilk; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
 
-                }
+            }
 
 
 
 
-                 public static function loadDataMilk($milk_id){ //โหลดข้อมูล
+            public static function loadDataMilk($milk_id){ //โหลดข้อมูล
                 $data=DB::table("milk")
                 ->where("milk_id","=",$milk_id)
                 ->get();
@@ -84,16 +86,17 @@ class Milk extends Model
 
                 return $data; //ส่งข้อมูลให้คอนโทลเลอร์
 
-                }
+            }
 
-                 public static function Canclemilk($milk_id){
-                $milk_Cancel =array(
+            public static function Canclemilk($milk_id){
+                     $milk_Cancel =array(
                     "milk_status"=> "ยกเลิก");
-                    DB::table('cooper')->where("milk_id","=",$milk_id)->update($milk_Cancel);
+                     DB::table('cooper')->where("milk_id","=",$milk_id)->update($milk_Cancel);
 
-                }
+            }
 
-                 public static function checkDelete($milk_id){
+
+            public static function checkDelete($milk_id){
                     $buy_milk= DB::table("buy_milk")              ->where("milk_id","=",$milk_id) ->count();
                     $sale_milk= DB::table("sale_milk")          ->where("milk_id","=",$milk_id) ->count();
 
@@ -109,7 +112,7 @@ class Milk extends Model
                        }
                        dd($buy_milk,$sale_milk);
                        return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
-                   }
+            }
 
 
 

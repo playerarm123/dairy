@@ -30,7 +30,7 @@ class Employee extends Model
 
 
     }
-     public static function login($username,$password){
+    public static function login($username,$password){
      $Pass=md5($password); //เข้ารหัสข้อมูล
           $data=DB::table("employee") //รับข้อมูลจากdatabase
           ->where("em_username","=",$username) //ระบุเงื่อนไข ถ้า em_user=username ผลลัพธ์ ถ้าจริงจะหาข้อมูลเจอ ถ้าไม่จริงจะไม่ส่งข้อมูลมา
@@ -45,7 +45,7 @@ class Employee extends Model
 
     }
 
-     public static function checkName($em_name,$em_lastname){
+    public static function checkName($em_name,$em_lastname){
          $data=DB::table("employee")
          ->where("em_name","=",$em_name)
          ->where('em_lastname','=',$em_lastname)
@@ -55,11 +55,11 @@ class Employee extends Model
 
     }
     public static function checkUser($em_username){
-        $data=DB::table("employee")
-        ->where("em_username","=",$em_username)
-        ->get(); //getคือดึงข้อมูล
-        $row=count($data);
-       return $row;
+         $data=DB::table("employee")
+         ->where("em_username","=",$em_username)
+         ->get(); //getคือดึงข้อมูล
+         $row=count($data);
+         return $row;
 
     }
 
@@ -105,12 +105,12 @@ class Employee extends Model
     }
 
     public static function checkDelete($em_id){
-     $buy_milk= DB::table("buy_milk")            ->where("em_id","=",$em_id) ->count();
-     $sale_milk= DB::table("sale_milk")          ->where("em_id","=",$em_id) ->count();
-     $receive_equip= DB::table("receive_equip") ->where("em_id","=",$em_id) ->count();
-     $sale_equip= DB::table("sale_equip")       ->where("em_id","=",$em_id) ->count();
-     $pay_milk= DB::table("pay_milk")           ->where("em_id","=",$em_id) ->count();
-     $receive_money= DB::table("receive_money") ->where("em_id","=",$em_id) ->count();
+        $buy_milk= DB::table("buy_milk")            ->where("em_id","=",$em_id) ->count();
+        $sale_milk= DB::table("sale_milk")          ->where("em_id","=",$em_id) ->count();
+        $receive_equip= DB::table("receive_equip") ->where("em_id","=",$em_id) ->count();
+        $sale_equip= DB::table("sale_equip")       ->where("em_id","=",$em_id) ->count();
+        $pay_milk= DB::table("pay_milk")           ->where("em_id","=",$em_id) ->count();
+        $receive_money= DB::table("receive_money") ->where("em_id","=",$em_id) ->count();
         if($buy_milk != 0 || $sale_milk !=0 || $receive_equip !=0 || $sale_equip !=0 || $pay_milk !=0 || $receive_money !=0){
             $checkDelete = "no";
         }

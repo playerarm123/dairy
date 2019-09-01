@@ -40,8 +40,9 @@ class sale_equip extends Model
 
 
 
-     }
-     public static function Delete_se($seq_id){
+    }
+
+    public static function Delete_se($seq_id){
 
         DB::table("sale_equip")
         ->where("seq_id","=",$seq_id)
@@ -57,12 +58,13 @@ class sale_equip extends Model
         return $AllSale_equip; //รีเทินข้อมูลน้ำนมทั้งหมดกลับ
 
     }
+
     public static function loadDataSale_equip($seq_id){ //โหลดข้อมูล
         $data=DB::table("sale_equip")
-    ->where("seq_id","=",$seq_id)
-    ->get();
+        ->where("seq_id","=",$seq_id)
+        ->get();
 
-    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+       return $data; //ส่งข้อมูลให้คอนโทลเลอร์
     }
 
 

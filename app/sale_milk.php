@@ -9,23 +9,24 @@ class Sale_milk extends Model
 {
     protected $table='sale_milk';
     public static function insert_sm($pn_id,$milk_id,$sm_weight,$sm_pricetotal){
-    $sm_insert=array (
-    "em_id"=> Session::get('em_id'),
-    "pn_id"=> $pn_id,
-    "sm_pricetotal"=> $sm_pricetotal,
-    "sm_date"=> date('Y-m-d'),
-    "sm_weight"=> $sm_weight,
-    "milk_id"=>$milk_id,
-    "sm_status"=>"พร้อมใช้งาน"
-    );
+        $sm_insert=array (
+        "em_id"=> Session::get('em_id'),
+        "pn_id"=> $pn_id,
+        "sm_pricetotal"=> $sm_pricetotal,
+        "sm_date"=> date('Y-m-d'),
+        "sm_weight"=> $sm_weight,
+        "milk_id"=>$milk_id,
+        "sm_status"=>"พร้อมใช้งาน"
+        );
 
 
 
-    DB::table("sale_milk")->insert($sm_insert );
+        DB::table("sale_milk")->insert($sm_insert );
 
 
     }
-     public static function Delete_sm($sm_id){
+
+    public static function Delete_sm($sm_id){
 
         DB::table("sale_milk")
         ->where("sm_id","=",$sm_id)
@@ -53,11 +54,11 @@ class Sale_milk extends Model
         ->join('milk','milk.milk_id','=','sale_milk.milk_id')
         ->join('employee','employee.em_id','=','sale_milk.em_id')
 
-    ->where("sale_milk.sm_id","=",$sm_id)
-    ->select('partners.*','sale_milk.*','Milk.*','employee.*')
-    ->get();
+        ->where("sale_milk.sm_id","=",$sm_id)
+        ->select('partners.*','sale_milk.*','Milk.*','employee.*')
+        ->get();
 
-    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+           return $data; //ส่งข้อมูลให้คอนโทลเลอร์
     }
 
 

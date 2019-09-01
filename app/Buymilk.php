@@ -43,7 +43,7 @@ class Buymilk extends Model
         ->where("bm.bm_id","=",$bm_id)
         ->select('member.*','bm.*','milk.*','employee.*')
         ->get();
-    return $data; //ส่งข้อมูลให้คอนโทลเลอร์
+        return $data; //ส่งข้อมูลให้คอนโทลเลอร์
     }
 
 

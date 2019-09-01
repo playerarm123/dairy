@@ -23,7 +23,7 @@ class payMilk extends Model
               );
 
         DB::table("pay_milk")->insert($pm);
-            }
+    }
 
 
 }

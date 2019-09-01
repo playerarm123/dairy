@@ -37,12 +37,12 @@ class cooper extends Model
         DB::table("cooper")->where("coop_id","=",$coop_id)->update($coop_up);
 
     }
-     public static function loadDatacoop($coop_id){ //โหลดข้อมูลสหกรณ์
+    public static function loadDatacoop($coop_id){ //โหลดข้อมูลสหกรณ์
         $data=DB::table("cooper")
        ->get();
 
         return $data; //ส่งข้อมูลสหกรณ์ให้คอนโทลเลอร์
-       }
+    }
 
 
 
