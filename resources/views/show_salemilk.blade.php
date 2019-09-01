@@ -9,7 +9,7 @@
 @section('body')
 
 <div class="center">
-<h2 style="text-align:center">แสดงรายละเอียดขายน้ำนมดิบ</h2>
+<h2 style="text-align:center">แสดงรายละเอียดขายน้ำนมดิบจ</h2>
     <div class="row">
         <div class="col-3 right" > รหัสขายน้ำนมดิบ</div>
         <div class="col-2">{{$salemilk[0]->sm_id}}</div>
