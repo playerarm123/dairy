@@ -135,7 +135,7 @@
             </div>
             <div class="col-3">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid"  required >
+                    <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid"  >
                     <div class="input-group-append">
                         <a class="input-group-text btn" onclick="search_member()" id="search">ค้นหา</a>
                     </div>
@@ -149,13 +149,13 @@
                 ชื่อ:
             </div>
             <div class="col-3">
-                <input type="text" class="form-control" name="name" id="name"  required readonly>
+                <input type="text" class="form-control" name="name" id="name" readonly>
             </div>
             <div class="col-2 right">
                 นามสกุล:
             </div>
             <div class="col-3">
-                <input type="text" class="form-control" name="lastname" id="lastname"   readonly>
+                <input type="text" class="form-control" name="lastname" id="lastname" readonly>
             </div>
          </div>
     </div>
@@ -215,7 +215,7 @@
             table.row.add([
                 "",
                 "<input type='hidden' name='eq_id[]' value="+id+">"+name,
-                "<input type='text' class='form-control'name='seq_amount' id='seq_amount"+id+"'onkeyup='cal_total("+id+")' required>",
+                "<input type='text' class='form-control'name='seq_amount[]' id='seq_amount"+id+"'onkeyup='cal_total("+id+")' required>",
                 "<input type='number'class='form-control'name='price[]' id='price"+id+"' readonly value="+price+">",
                 "<input type='number' name='seq_pricetotal[]' class='form-control' id='seq_pricetotal"+id+"'readonly>",
                 "<a class='btn btn-danger' >ลบ</a>"

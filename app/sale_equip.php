@@ -24,6 +24,8 @@ class sale_equip extends Model
 
     }
 
+
+
     public static function Update_se($seq_id,$em_id,$mb_id,$seq_date){
         $update_se=array(
             "seq_id"=>   $seq_id,
