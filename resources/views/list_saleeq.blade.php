@@ -6,7 +6,7 @@
 
 @section('body')
 <script>
-            
+
 
             function swich(){
                 var memnber = $('#member').prop('checked');
@@ -27,11 +27,11 @@
                     $('#memberid').val("");
 
                 }
-                    
-                    
-                
-               
-            } 
+
+
+
+
+            }
             function search_member(){
             $.ajax({
                 url:"{{url('searchmem')}}/"+$('#memberid').val(),
@@ -43,13 +43,13 @@
                 }
 
             })
-            
+
         }
 
-    
-        
-       
-        
+
+
+
+
             // ตารางข้อมูล
             $(document).ready(function() {
                 var table =$('#list_saleeq').DataTable({
@@ -105,12 +105,13 @@
         });
 </script>
 
-<style>        
+<style>
 </style>
 <div class="center">
 <h1 style="text-align:center">รายการขายอุปกรณ์</h1><br>
 
-<form action="{{ url('/saveeq') }}" method="POST" id='form-submit'>
+<form action="{{ url('/savesaleeq') }}" method="POST" id='form-submit'>
+    @csrf
     <input type="hidden" id="all-row">
     <div class="form-group">
          <div class="row">
@@ -154,13 +155,13 @@
                 นามสกุล:
             </div>
             <div class="col-3">
-                <input type="text" class="form-control" name="lastname" id="lastname"   readonly>   
+                <input type="text" class="form-control" name="lastname" id="lastname"   readonly>
             </div>
          </div>
     </div>
     <a id = "save"class="btn btn-warning right"  data-toggle="modal" data-target="#equip" >
             <span class="fa fa-edit">เลือกอุปกรณ์</span>
-    </a> 
+    </a>
 <br><br>
 <div class="panel-body">
     <table id="list_saleeq" class="table table-striped table-bordered table-responsive-lg">
@@ -171,23 +172,23 @@
             <th>ราคาต่อหน่วย</th>
             <th>ราคารวมสุทธิ</th>
             <th></th>
-            
-            
-            
+
+
+
         </thead>
         <tbody>
-            
-               
-          
+
+
+
         </tbody>
         <tfoot>
-              
-           
+
+
                 <th colspan="5" class="bg-success" style="text-align:center">ราคารวมสุทธิ</th>
                 <th class="bg-warning">
-                    <input type="text" class="form-control" id="all_price" name="all_price" value=0.0 readonly>
+                    <input type="text" class="form-control" id="all_price" name="price_total" value=0.0 readonly>
                 </th>
-           
+
         </tfoot>
     </table>
     <div class="btncenter" >
@@ -196,7 +197,7 @@
         </button>
     </div>
     <br>
-    
+
 </div>
 </form>
 </div>
@@ -210,7 +211,7 @@
         // เพิ่มรายการรับ
         function add_saleeq(id,name,amount,unit,price){
             var table = $('#list_saleeq').DataTable();
-            var all_row = $('#all-row').val(); 
+            var all_row = $('#all-row').val();
             table.row.add([
                 "",
                 "<input type='hidden' name='eq_id[]' value="+id+">"+name,
@@ -231,9 +232,9 @@
             all_price = parseFloat(all_price)+parseFloat(seq_pricetotal);
             $('#all_price').val(parseFloat(all_price));
             $('#seq_pricetotal'+id).val(seq_pricetotal);
-            
+
         }
-      
+
     </script>
 <div class="modal fade" id="equip">
         <div class="modal-dialog modal-lg">
@@ -260,7 +261,7 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $item->eq_id }}</td>
-                                <td>{{ $item->eq_name }}</td> 
+                                <td>{{ $item->eq_name }}</td>
                                 <td>{{$item->eq_amount}} {{$item->eq_unit}}</td>
                                 <td><button class="btn btn-success" onclick="add_saleeq({{ $item->eq_id }},'{{ $item->eq_name }}',{{$item->eq_amount}},'{{ $item->eq_unit }}',{{$item->eq_price}})" {{ ( $item->eq_amount==0)?"disabled":""}}>เลือก</button></td>
                             </tr>

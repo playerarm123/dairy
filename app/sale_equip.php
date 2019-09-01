@@ -11,7 +11,7 @@ class sale_equip extends Model
     public static function insert_se($mb_id,$price_total,$name,$lastname){
     $insert_se=array (
 
-    "pn_id" =>  $mb_id,
+    "mb_id" =>  $mb_id,
     "price_total" =>  $price_total,
     "em_id"=>Session::get('em_id'),
     "name"=>$name,

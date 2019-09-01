@@ -30,7 +30,7 @@ class Selleqm extends Controller
         Sale_equip::insert_se($mb_id,$price_total,$name,$lastname);
         list_receive_equip::listeq_insert($eq_id,$seq_amount,$seq_pricetotal);
         Session ::put('save','success');
-        return redirect('');
+        return redirect('saleeq');
     }
     public function Detailsalemilk($id){ //แสดงรายละเอียดข้อมูลการขายอุปกรณ์
         $data['saleeq']=sale_equip::loadDataSale_equip($id);
