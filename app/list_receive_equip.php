@@ -17,9 +17,9 @@ class list_receive_equip extends Model
           "seq_status"=> "พร้อมใช้งาน"
 
 
-                    );
+            );
 
-                    DB::table("list_receive_equip")->insert($listeq );
+         DB::table("list_receive_equip")->insert($listeq );
 
 
     }
@@ -35,12 +35,12 @@ class list_receive_equip extends Model
 
 
 
-        );
+         );
          DB::table("list_receive_equip")->where("listreq_id","=",$listreq_id)->update($listreceive_up);
 
-     }
+    }
 
-     public static function Canclecp($coop_id){
+    public static function Canclecp($coop_id){
         $cp_Cancel =array(
             "bm_status"=> "ยกเลิก"
         );
