@@ -7,10 +7,6 @@ use Illuminate\Support\facades\DB;
 class list_receive_equip extends Model
 {
     protected $table ='list_receive_equip';
-<<<<<<< HEAD
-=======
-
->>>>>>> 49f5591c3dd8d3219e38b45ff97e7f3dcd7f937f
     public static function listreceive_update($listreq_id,$eq_id,$seq_id,$seq_amount,$seq_pricetotal){
         $listreceive_up=array(
             "listreceive"=>"$listreq_id",
