@@ -7,14 +7,17 @@ use Illuminate\Support\facades\DB;
 class list_receive_equip extends Model
 {
     protected $table ='list_receive_equip';
-    public static function listeq_insert($eq_id,$seq_id,$seq_amount,$seq_pricetotal){
+    public static function listeq_insert($eq_id,$seq_amount,$seq_pricetotal){
+        foreach ($eq_id as $key => $item){
+            $list=array(
+                'eq_id'=>$item,
+                'seq_amount'=>$seq_amount[$key],
+                'seq_pricetotal'=>$seq_pricetotal[$key],
+                'listequ_status'=>"พร้อมใช้งาน"
+            );
+            DB::table("list_receive_equip")->insert($list);
+        }
 
-        $listeq=array(
-          "eq_id"=>$eq_id,
-          "seq_id"=>$seq_id,
-          "seq_amont"=>$seq_amount,
-          "seq_pricetotal"=>$seq_pricetotal,
-          "seq_status"=> "พร้อมใช้งาน"
 
 
             );

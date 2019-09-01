@@ -76,9 +76,12 @@
     </script>
     <div class="center">
         <h1 style="text-align:center">ระบบขายอุปกรณ์</h1><br>
-        <div class="row-search">
-            <a href ="{{url('/list_saleeq')}}" class='btn btn-info'>เพิ่มรายการ</a>
+        <div class="row-search right">
+<br><br>
+<br><br>
+            <a href ="{{url('/uplist')}}" class='btn btn-info'><span class="fa fa-edit">เพิ่มรายการ</span></a>
         </div>
+            <br>
         
             @csrf
 

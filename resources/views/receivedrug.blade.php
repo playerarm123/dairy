@@ -75,7 +75,7 @@
     <div class="center">
         <h1 style="text-align:center">ระบบรับยารักษาโรค</h1><br>
         <div class="row-search">
-            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#drug">เพิ่มรายการ</button>
+            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#drug"><span class="fa fa-edit">เพิ่มรายการ</span></button>
         </div>
         <form action="{{ url('savedrug')}}" method="POST" id="form-submit">
             @csrf
