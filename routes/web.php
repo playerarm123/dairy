@@ -137,9 +137,10 @@ Route::get('uplist','Receive@Uplist');
 
 //ขายอุปกรณ์
 Route::get('saleeq','Selleqm@Saleeq');//หน้าขายอุปกรณ์
-Route::post('saveeq','Selleqm@Saveeq'); //บันทึกขายอุปกรณ์
+Route::post('savesaleeq','Selleqm@Savesaleeq'); //บันทึกขายอุปกรณ์
 Route::get('canceleq/{id}','Selleqm@Canceleq');//ยกเลิกการขายอุปกรณ์
-Route::get('uplist','Selleqm@Uplist');
+Route::get('uplist','Selleqm@Uplist');//เพิ่มรายการ
+Route::get('detailsaleeq/{id}','Selleqm@Detailsaleeq');//แสดงรายละเอียดการขาย
 
 
 
