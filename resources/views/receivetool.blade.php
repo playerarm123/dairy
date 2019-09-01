@@ -74,7 +74,7 @@
     <div class="center">
         <h1 style="text-align:center">ระบบรับอุปกรณ์รีดนม</h1><br>
         <div class="row-search">
-            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#tool">เพิ่มรายการ</button>
+            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#tool"><span class="fa fa-edit">เพิ่มรายการ</span></button>
         </div>
         <form action="{{ url('savetool')}}" method="POST" id="form-submit">
             @csrf

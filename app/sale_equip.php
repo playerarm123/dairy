@@ -4,19 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\facades\DB;
+use Illuminate\Support\facades\Session;
 class sale_equip extends Model
 {
     protected $table='sale_equip';
-    public static function insert_se($em_id,$mb_id,$seq_date){
+    public static function insert_se($mb_id,$price_total,$name,$lastname){
     $insert_se=array (
 
-    "em_id" =>  $em_id,
-    "mb_id" =>  $mb_id,
-    "seq_date"=>  $seq_date,
+    "pn_id" =>  $mb_id,
+    "price_total" =>  $price_total,
+    "em_id"=>Session::get('em_id'),
+    "name"=>$name,
+    "lastname"=>$lastname,
     "seq_status"=>"พร้อมใช้งาน"
     );
-
-
 
     DB::table("sale_equip")->insert($insert_se );
 
