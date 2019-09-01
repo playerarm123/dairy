@@ -155,7 +155,11 @@
                 นามสกุล:
             </div>
             <div class="col-3">
+<<<<<<< HEAD
                 <input type="text" class="form-control" name="lastname" id="lastname"   readonly>   
+=======
+                <input type="text" class="form-control" name="lastname" id="lastname" readonly>
+>>>>>>> 49f5591c3dd8d3219e38b45ff97e7f3dcd7f937f
             </div>
          </div>
     </div>
