@@ -38,6 +38,7 @@
     $save = Session::get('save');
     $delete = Session::get('delete');
     $cancel = Session::get('cancel');
+    $position = Session::get('position');
     Session::forget('save');
     Session::forget('delete');
     Session::forget('cancel');
@@ -112,32 +113,39 @@
               <!-- Navbar Start -->
               <div class="classynav">
                 <ul>
-                  <li><a href="{{url('#')}}">จัดการข้อมูลพื้นฐาน</a>
-                    <ul class="dropdown">
-                      <li><a href="{{url('dataem')}}">ข้อมูลผู้ใช้งาน</a></li>
-                      <li><a href="{{url('datamem')}}">ข้อมูลสมาชิก</a></li>
-                      <li><a href="{{url('datamilk')}}">ข้อมูลน้ำนมดิบ</a></li>
-                      <li><a href="{{url('datapro')}}">ข้อมูลอุปกรณ์</a></li>
-                      <li><a href="{{url('dataagent')}}">ข้อมูลบริษัทคู่ค้า</a></li>
-                      <li><a href="{{url('datacoop')}}">ข้อมูลสหกรณ์</a></li>
+                    @if($position == 'พนักงาน')
+                    <li><a href="{{url('#')}}">จัดการข้อมูลพื้นฐาน</a>
+                        <ul class="dropdown">
+                        <li><a href="{{url('dataem')}}">ข้อมูลผู้ใช้งาน</a></li>
+                        <li><a href="{{url('datamem')}}">ข้อมูลสมาชิก</a></li>
+                        <li><a href="{{url('datamilk')}}">ข้อมูลน้ำนมดิบ</a></li>
+                        <li><a href="{{url('datapro')}}">ข้อมูลอุปกรณ์</a></li>
+                        <li><a href="{{url('dataagent')}}">ข้อมูลบริษัทคู่ค้า</a></li>
+                        <li><a href="{{url('datacoop')}}">ข้อมูลสหกรณ์</a></li>
 
-                    </ul>
-                  </li>
+                        </ul>
+                    </li>
 
-                  <li><a href="{{url('buymilk')}}">รับซื้อน้ำนมดิบ</a></li>
-                  <li><a href="{{url('salemilk')}}">ขายน้ำนมดิบ</a></li>
-                  <li><a href="{{url('#')}}">รับอุปกรณ์</a>
-                    <ul class="dropdown">
-                      <li><a href="{{url('receivedrug')}}">ยารักษาโรค</a></li>
-                      <li><a href="{{url('receivefood')}}">อาหารสัตว์</a></li>
-                      <li><a href="{{url('receivetool')}}">อุปกรณ์รีดนม</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="{{url('saleeq')}}">ขายอุปกรณ์</a></li>
-                  <li><a href="{{url('paymilk')}}">ชำระเงินนมสมาชิก</a></li>
-                  <li><a href="{{url('receivemoney')}}">รับชำระเงินค่าน้ำนมดิบ</a></li>
+                    <li><a href="{{url('buymilk')}}">รับซื้อน้ำนมดิบ</a></li>
+                    <li><a href="{{url('salemilk')}}">ขายน้ำนมดิบ</a></li>
+                    <li><a href="{{url('#')}}">รับอุปกรณ์</a>
+                        <ul class="dropdown">
+                        <li><a href="{{url('receivedrug')}}">ยารักษาโรค</a></li>
+                        <li><a href="{{url('receivefood')}}">อาหารสัตว์</a></li>
+                        <li><a href="{{url('receivetool')}}">อุปกรณ์รีดนม</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{url('saleeq')}}">ขายอุปกรณ์</a></li>
+                    <li><a href="{{url('paymilk')}}">ชำระเงินนมสมาชิก</a></li>
+                    <li><a href="{{url('receivemoney')}}">รับชำระเงินค่าน้ำนมดิบ</a></li>
+                    @elseif($position == 'กรรมการ')
+                        <li><a href="">รายงานการรับซื้อน้ำนม</a></li>
+                    @endif
+
+
                   <li style="margin-left:20px;"><a href="{{url('logout')}}"><i class="fa fa-user" ></i>ออกจากระบบ</a></li>
                 </ul>
+
             </div>
           </nav>
         </div>
