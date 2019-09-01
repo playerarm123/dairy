@@ -19,8 +19,8 @@ class partners extends Model
                     DB::table("partners")->insert($pn);
 
 
-                }
-                public static function checkPn_name($pn_name){
+            }
+            public static function checkPn_name($pn_name){
                     $data=DB::table("partners")
                     ->where("pn_name","=",$pn_name)
                     ->get();
@@ -28,10 +28,10 @@ class partners extends Model
 
                      return $data;  //สร้างเพื่อเช็คข้อมูลว่าซ้ำในดาต้าเบสไหม ขั้นตอนการสมัคร
 
-                }
+            }
 
 
-             public static function Update_Pn($pn_id,$pn_name,$pn_address,$pn_phone){
+            public static function Update_Pn($pn_id,$pn_name,$pn_address,$pn_phone){
 
 
                      $update_pn=array(
@@ -44,7 +44,7 @@ class partners extends Model
                       DB::table("Partners")->where("Pn_id","=",$pn_id)->update($update_pn);
 
 
-                 }
+            }
 
             public static function Delete_pn($pn_id){
 
@@ -54,13 +54,13 @@ class partners extends Model
 
 
 
-              }
+            }
             public static function loadAllPartners(){
                 $AllPartners=DB::table("Partners")->orderBy("created_at","DESC")->get();
 
                 return $AllPartners; //รีเทินข้อมูลสมาชิกทั้งหมดกลับ
 
-             }
+            }
 
             public static function loadDatapartner($pn_id){ //โหลดข้อมูล
                     $data=DB::table("Partners")
@@ -68,14 +68,14 @@ class partners extends Model
                     ->get();
 
                     return $data; //ส่งข้อมูลให้คอนโทลเลอร์
-             }
+            }
 
             public static function Canclepn($pn_id){
                     $pn_Cancel =array(
                     "pn_status"=> "ยกเลิก");
                      DB::table('Partners')->where("pn_id","=",$pn_id)->update($pn_Cancel);
 
-              }
+            }
 
             public static function checkDelete($pn_id){
                     $sale_milk= DB::table("sale_milk")                 ->where("pn_id","=",$pn_id) ->count();
@@ -94,6 +94,6 @@ class partners extends Model
                    }
                    dd($checkDelete);
                    return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
-               }
+            }
 
 }

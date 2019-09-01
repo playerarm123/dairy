@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Employee;
 use App\sale_equip;
 use App\equip;
-use App\list_receive_equip;
+use App\list_sale_equip;
 class Selleqm extends Controller
 {
 
@@ -28,7 +28,7 @@ class Selleqm extends Controller
         $seq_amount=$req->input('seq_amount');
         $seq_pricetotal=$req->input('seq_pricetotal');
         Sale_equip::insert_se($mb_id,$price_total,$name,$lastname);
-        list_receive_equip::listeq_insert($eq_id,$seq_amount,$seq_pricetotal);
+        list_sale_equip::listeq_insert($eq_id,$seq_amount,$seq_pricetotal);
         Session ::put('save','success');
         return redirect('');
     }

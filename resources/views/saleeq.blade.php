@@ -82,7 +82,7 @@
             <a href ="{{url('/uplist')}}" class='btn btn-info'><span class="fa fa-edit">เพิ่มรายการ</span></a>
         </div>
             <br>
-        
+
             @csrf
 
             <input type="hidden" name="" id="all-row" value=0>
@@ -103,11 +103,11 @@
 
                 </table>
             </div>
-        
+
     </div>
 
 
-   
+
 @stop
 
 

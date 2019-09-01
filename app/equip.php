@@ -10,12 +10,12 @@ class equip extends Model
     protected $table ='equip';
     public static function insert_eq($eq_name,$eq_cate,$eq_unit,$eq_price){
 
-   $eq=array(
-    "eq_name"=> $eq_name,
-    "eq_cate"=> $eq_cate,
-    "eq_unit"=> $eq_unit,
-    "eq_price"=> $eq_price,
-    "eq_status"=> "พร้อมใช้งาน"
+        $eq=array(
+            "eq_name"=> $eq_name,
+            "eq_cate"=> $eq_cate,
+            "eq_unit"=> $eq_unit,
+            "eq_price"=> $eq_price,
+            "eq_status"=> "พร้อมใช้งาน"
 
           );
 
@@ -78,7 +78,7 @@ class equip extends Model
     }
 
        public static function Cancleeq($eq_id){
-        $eq_Cancel =array(
+            $eq_Cancel =array(
             "eq_status"=> "ยกเลิก"
         );
             DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
@@ -102,8 +102,8 @@ class equip extends Model
            }
            dd($checkDelete);
            return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
-       }
-       public static function loaddrug(){ //โหลดข้อมูลยารักษาโรค
+    }
+    public static function loaddrug(){ //โหลดข้อมูลยารักษาโรค
         $data=DB::table("equip")
         ->where("eq_cate","=", "ยารักษาโรค")
         ->get();
@@ -111,11 +111,11 @@ class equip extends Model
               $data = array();
 
              }
-         return $data;
+            return $data;
 
 
-       }
-       public static function loadfood(){
+    }
+    public static function loadfood(){
         $data=DB::table("equip")
         ->where("eq_cate","=", "อาหารสัตว์")
         ->get();
@@ -127,9 +127,9 @@ class equip extends Model
          return $data;
 
 
-       }
+    }
 
-       public static function loadtool(){
+    public static function loadtool(){
         $data=DB::table("equip")
         ->where("eq_cate","=", "อุปกรณ์รีดนม")
         ->get();
@@ -141,13 +141,13 @@ class equip extends Model
          return $data;
 
 
-       }
+    }
 
 
     public static function Canceleq($eq_id){
-        $eq_Cancel =array(
+             $eq_Cancel =array(
             "eq_status"=> "ยกเลิก"
-        );
+            );
             DB::table('equip')->where("eq_id","=",$eq_id)->update($eq_Cancel);
     }
 

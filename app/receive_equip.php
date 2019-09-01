@@ -31,10 +31,9 @@ class receive_equip extends Model
          DB::table("receive_equip")->where("req_id","=",$req_id)->update($req_up);
 
 
+    }
 
-
-     }
-     public static function Delete_req($req_id){
+    public static function Delete_req($req_id){
 
         DB::table("receive_equip")
         ->where("req_id","=",$req_id)
@@ -46,7 +45,7 @@ class receive_equip extends Model
 
         return $AllBuy_equip; //รีเทินข้อมูลซื้ออุปกรณ์ทั้งหมดกลับ
 
-       }
+    }
 
 
 
