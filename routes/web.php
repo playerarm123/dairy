@@ -128,7 +128,7 @@ Route::get('detailfood/{id}','Receive@Detailfood');//แสดงรายละ
 Route::get('receivetool','Receive@Tool');//หน้ารับอุปกรณ์
 Route::post('savetool','Receive@Savetool');//บันทึกข้อมูลอุปกรณ์
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
-
+Route::get('uplist','Receive@Uplist');
 
 
 
@@ -139,7 +139,7 @@ Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละ
 Route::get('saleeq','Selleqm@Saleeq');//หน้าขายอุปกรณ์
 Route::post('saveeq','Selleqm@Saveeq'); //บันทึกขายอุปกรณ์
 Route::get('canceleq/{id}','Selleqm@Canceleq');//ยกเลิกการขายอุปกรณ์
-
+Route::get('uplist','Selleqm@Uplist');
 
 
 
