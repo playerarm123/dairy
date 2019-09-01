@@ -74,7 +74,7 @@
     <div class="center">
         <h1 style="text-align:center">ระบบรับอาหารสัตว์</h1><br>
         <div class="row-search">
-            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#food">เพิ่มรายการ</button>
+            <button class="btn btn-info btn-search" data-toggle="modal" data-target="#food"><span class="fa fa-edit">เพิ่มรายการ</span></button>
         </div>
         <form action="{{ url('savefood')}}" method="POST" id="form-submit">
             @csrf
