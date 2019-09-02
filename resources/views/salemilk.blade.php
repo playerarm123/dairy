@@ -222,11 +222,11 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->pn_name}}</td>
                                 <td>{{$item->milk_grade}}</td>
-                                <td>{{number_format($item->sm_weight/1000)}}&ensp;กิโลกรัม</td>
+                                <td>{{number_format($item->sm_weight/1000,2)}}&ensp;กิโลกรัม</td>
                                 <td>{{number_format($item->sm_pricetotal,2)}}&ensp;บาท</td>
                                 <td>
                                         <a href ="{{url('/detailsalemilk')}}/{{$item->sm_id}}" class='btn btn-info'>รายละเอียด</a>
-                                        <a href="{{url('/')}}/{{$item->sm_id}}" class='btn btn-danger'>ยกเลิก</a>
+                                        <a href="{{url('/cancelsalemilk')}}/{{$item->sm_id}}" class='btn btn-danger'>ยกเลิก</a>
                                 </td>
                             </tr>
                             @endforeach

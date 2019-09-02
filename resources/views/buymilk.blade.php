@@ -279,11 +279,11 @@
                                 <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
                                 <td>{{$item->bm_range}}</td>
                                 <td>{{$item->milk_grade}}</td>
-                                <td>{{number_format($item->bm_weight/1000)}}&ensp;กิโลกรัม</td>
+                                <td>{{number_format($item->bm_weight/1000,2)}}&ensp;กิโลกรัม</td>
                                 <td>{{number_format($item->bm_pricein,2)}}&ensp;บาท</td>
                                 <td>
                                         <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
-                                        <button class='btn btn-danger' onclick='confirm_cencle("{{$item->em_id}}")'>ยกเลิก</button>
+                                        <button class='btn btn-danger' onclick='confirm_cencle("{{$item->bm_id}}")'>ยกเลิก</button>
                                 </td>
                             </tr>
                             @endforeach
