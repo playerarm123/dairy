@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Employee;
 use App\Member;
 use App\Milk;
 use App\equip;
 use App\Partners;
 use App\payMilk;
-use App\Buymilk;
+use App\Buymilk as buymilks;
 use App\Sale_milk;
 
 class Report extends Controller
@@ -21,8 +22,6 @@ class Report extends Controller
 
 
     public function Searchbuymilk(Request $req){
-        $year=$req->input('year');
-        $mount=$req->input('mount');
         $startdate=$req->input('startdate');
         $enddate=$req->input('enddate');
         $mb_id=$req->input('mb_id');
@@ -30,7 +29,7 @@ class Report extends Controller
         $lastname=$req->input('lastname');
         $grade=$req->input('grade');
         $rang=$req->input('rang');
-        $data=Buymilk::Search($year,$mount,$startdate,$enddate,$mb_id,$name, $lastname,$grade,$rang);
+        $data=Buymilk::Search($startdate,$enddate,$mb_id,$name,$lastname,$grade,$rang);
         Session::put('buymilk',$data);
         return redirect('loadreportbuymilk');
     }
@@ -50,9 +49,6 @@ class Report extends Controller
         $pdf = PDF::loadView('test',$data);
         return @$pdf->stream();
     }
-
-
-
 
 
 
