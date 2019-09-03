@@ -16,9 +16,9 @@
 </div>
 <div class="row">
         <div class="col-3 right" > ราคารับซื้อ</div>
-        <div class="col-2">{{$milk[0]->milk_pricein}}</div>
+        <div class="col-2">{{number_format($milk[0]->milk_pricein,2)}}&ensp;บาท/กรัม</div>
         <div class="col-3 right" > ราคาขาย</div>
-        <div class="col-2">{{$milk[0]->milk_priceout}}</div>
+        <div class="col-2">{{number_format($milk[0]->milk_priceout,2)}}&ensp;บาท/กรัม</div>
     </div>
     <br>
     <div class="btncenter"  >

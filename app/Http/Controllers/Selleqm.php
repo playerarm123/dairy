@@ -30,7 +30,7 @@ class Selleqm extends Controller
         Session ::put('save','success');
         return redirect('saleeq');
     }
-    public function Detailsalemilk($id){ //แสดงรายละเอียดข้อมูลการขายอุปกรณ์
+    public function Detailsaleeq($id){ //แสดงรายละเอียดข้อมูลการขายอุปกรณ์
         $data['saleeq']=sale_equip::loadDataSale_equip($id);
        return view ('show_saleeq',$data);
     }
