@@ -165,6 +165,7 @@ Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm'); //รายละ�
 Route::get('loadreportbuymilk','Report@Loadreportbuymilk');
 Route::get('searchbuymilk/{}','Report@Searchbuymilk');
 Route::get('exportbuymilk','PDFController@Exportbuymilk');
+Route::get('resetbuymilk','Report@Resetbuymilk');
 
 
 //ไว้ให้มายด์เทส
