@@ -100,7 +100,7 @@
                     {"width": "15%"},
                     {"width": "15%"},
                     {"width": "15%"},
-                    {"width": "15%"}
+                   
 
                 ],
                 "oLanguage": {
@@ -226,37 +226,28 @@
                     <table id="report_buymilk" class="table table-striped table-bordered table-responsive-lg">
                         <thead class="bg-success ">
                             <th>ลำดับ</th>
-                            <th>วันที่เริ่มต้น</th>
-                            <th>วันที่สิ้นสุด</th>
-                            <th>รหัสสมาชิก</th>
-                            <th>ชื่อ</th>
-                            <th>นามสกุล</th>
+                            <th>วันที่เริ่มต้น-วันที่สิ้นสุด</th>
+                            <th>ชื่อ-นามสกุลสมาชิก</th>
                             <th>ช่วงเวลา</th>
                             <th>เกรด</th>
                             <th>หมายเหตุ</th>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @foreach ($buymilk as $key =>$item)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$item->bm_date}}</td>
+                                <td>{{$item->bm_date}}&ensp;ถึง{{$item->bm_date}}</td>
                                 <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
                                 <td>{{$item->bm_range}}</td>
                                 <td>{{$item->milk_grade}}</td>
-                                <td>{{number_format($item->bm_weight/1000,2)}}&ensp;กิโลกรัม</td>
-                                <td>{{number_format($item->bm_pricein,2)}}&ensp;บาท</td>
-                                <td></td>
                                 <td>
-                                        <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
+                                    <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
                                 </td>
                             </tr>
-                          
-
-                        </tbody> --}}
-
+                            @endforeach
+                        </tbody>
                     </table> 
                 </div>
-           
         </form>
     </div>
 @stop
