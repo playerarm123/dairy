@@ -90,7 +90,7 @@
         $(document).ready(function(){
 
             // ตารางข้อมูล
-            var table =$('#Buymilk').DataTable({
+            var table =$('#report_buymilk').DataTable({
                 "paging": true,
                 "autoWidth": false,
                 "columns": [
@@ -223,7 +223,7 @@
             </div>
             <br>
             <div class="panel-body">
-                    <table id="Buymilk" class="table table-striped table-bordered table-responsive-lg">
+                    <table id="report_buymilk" class="table table-striped table-bordered table-responsive-lg">
                         <thead class="bg-success ">
                             <th>ลำดับ</th>
                             <th>วันที่เริ่มต้น</th>
@@ -235,7 +235,7 @@
                             <th>เกรด</th>
                             <th>หมายเหตุ</th>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @foreach ($buymilk as $key =>$item)
                             <tr>
                                 <td>{{$key+1}}</td>
@@ -245,16 +245,16 @@
                                 <td>{{$item->milk_grade}}</td>
                                 <td>{{number_format($item->bm_weight/1000,2)}}&ensp;กิโลกรัม</td>
                                 <td>{{number_format($item->bm_pricein,2)}}&ensp;บาท</td>
+                                <td></td>
                                 <td>
                                         <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
-                                        <button class='btn btn-danger' onclick='confirm_cencle("{{$item->bm_id}}")'>ยกเลิก</button>
                                 </td>
                             </tr>
-                            @endforeach
+                          
 
-                        </tbody>
+                        </tbody> --}}
 
-                    </table>
+                    </table> 
                 </div>
            
         </form>
