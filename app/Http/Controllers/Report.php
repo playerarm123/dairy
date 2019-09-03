@@ -14,6 +14,30 @@ use App\Sale_milk;
 
 class Report extends Controller
 {
+    public function Loadreportbuymilk(){
+        return view('reportbuymilk');
+    }
+
+
+    public function Searchbuymilk(){
+        $data['']=::();
+        return view('Reportbuymilk',$data);
+    }
+
+    public function Exportbuymilk(){
+        $data['test'] = array(
+            "name"=> "arm",
+            "lastname"=>"anuwat"
+        );
+        $pdf = PDF::loadView('test',$data);
+        return @$pdf->stream();
+    }
+
+
+
+
+
+
     public static function testmind (){
         $eq_id=array("8","6");
         $eq_total=array(20,30);
