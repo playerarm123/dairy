@@ -11,7 +11,7 @@
 <div class="center">
 <h1 style="text-align:center">แสดงรายละเอียดข้อมูลบริษัทคู่ค้า</h1><br>
 <div class="row">
-    <div class="col-3 right" >ชื่อ</div>
+    <div class="col-3 right" >ชื่อบริษัท</div>
     <div class="col-2">{{$agent[0]->pn_name}}</div>
     <div class="col-3 right" > ที่อยู่</div>
     <div class="col-2">{{$agent[0]->pn_address}}</div>

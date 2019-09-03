@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Member;
+use App\payMilk;
 class Payment extends Controller
 {
     public function __construct()
@@ -12,7 +13,7 @@ class Payment extends Controller
     }
 
     public function Payment(){ //ชำระเงินนม
-        // $data['paymilk']=Payment::loadpayment();
+        // $data['paymilk']=PayMilk::loadallpaymilk();
         return view('paymilk');
     }
     // public function Savepayment(Request $req){

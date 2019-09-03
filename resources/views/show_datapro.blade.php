@@ -19,11 +19,11 @@
         <div class="col-3 right" >หน่วยนับ</div>
         <div class="col-2">{{$equip[0]->eq_unit}}</div>
         <div class="col-3 right" >ราคาขาย</div>
-        <div class="col-2">{{$equip[0]->eq_price}}</div>
+        <div class="col-2">{{number_format($equip[0]->eq_price,2)}}&ensp;บาท</div>
     </div>
     <div class="row">
         <div class="col-3 right" >จำนวน</div>
-        <div class="col-2">{{$equip[0]->eq_amount}}</div>
+        <div class="col-2">{{$equip[0]->eq_amount}}&ensp;{{$equip[0]->eq_unit}}</div>
 
     </div>
     <br>
