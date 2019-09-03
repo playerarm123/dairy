@@ -19,13 +19,22 @@ class Report extends Controller
     }
 
 
-    public function Searchbuymilk(){
-        $data['']=::();
+    public function Searchbuymilk(Request $req){
+        $year=$req->input('year');
+        $mount=$req->input('mount');
+        $startdate=$req->input('startdate');
+        $enddate=$req->input('enddate');
+        $mb_id=$req->input('mb_id');
+        $name=$req->input('name');
+        $lastname=$req->input('lastname');
+        $grade=$req->input('grade');
+        $rang=$req->input('rang');
+        $data['buymilk']=Buymilk::Search($year,$mount,$startdate,$enddate,$mb_id,$name, $lastname,$grade,$rang);
         return view('Reportbuymilk',$data);
     }
 
     public function Exportbuymilk(){
-        $data['test'] = array(
+        $data['buymilk'] = array(
             "name"=> "arm",
             "lastname"=>"anuwat"
         );
