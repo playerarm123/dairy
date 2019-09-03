@@ -163,7 +163,7 @@ Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm'); //รายละ�
 
 
 //ไว้ให้มายด์เทส
-Route::get('testmind','Report@testmind');
+Route::get('testmind','PDFController@pdf');
 
 
 
