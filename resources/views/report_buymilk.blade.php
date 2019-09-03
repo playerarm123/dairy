@@ -2,7 +2,6 @@
 
 
 @section('head')
-
 @stop
 
 
@@ -153,34 +152,30 @@
                         <input type="date" class="form-control" name="enddate" id="enddate">
                     </div>
                 </div>
-            </div><div class="form-group">
+            </div>
+            <div class="form-group">
                     <div class="row">
                         <div class="col-2 right">
                             รหัสสมาชิก:
                         </div>
                         <div class="col-3">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid">
-                                <div class="input-group-append">
-                                <a class="input-group-text btn" onclick="search_member()">ค้นหา</a>
-                                </div>
-                            </div>
+                            <input type="text" class="form-control" name="mb_id" id="mb_id" >
                         </div>
                     </div>
-                </div>
+            </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-2 right">
                             ชื่อ:
                         </div>
                         <div class="col-3">
-                            <input type="text" class="form-control" name="name" id="name" disabled="disabled">
+                            <input type="text" class="form-control" name="name" id="name" >
                         </div>
                         <div class="col-2 right">
                             นามสกุล:
                         </div>
                         <div class="col-3">
-                            <input type="text" class="form-control" name="lastname" id="lastname" disabled="disabled">
+                            <input type="text" class="form-control" name="lastname" id="lastname" >
                         </div>
                     </div>
                 </div>
@@ -233,18 +228,20 @@
                             <th>หมายเหตุ</th>
                         </thead>
                         <tbody>
-                            @foreach ($buymilk as $key =>$item)
-                            <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$item->bm_date}}&ensp;ถึง{{$item->bm_date}}</td>
-                                <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
-                                <td>{{$item->bm_range}}</td>
-                                <td>{{$item->milk_grade}}</td>
-                                <td>
-                                    <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
-                                </td>
-                            </tr>
-                            @endforeach
+                            @if(Session::get('buymilk'))
+                                @foreach (Session::get('buymilk') as $key =>$item)
+                                <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$item->bm_date}}&ensp;ถึง{{$item->bm_date}}</td>
+                                    <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
+                                    <td>{{$item->bm_range}}</td>
+                                    <td>{{$item->milk_grade}}</td>
+                                    <td>
+                                        <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table> 
                 </div>
