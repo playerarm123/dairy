@@ -26,14 +26,14 @@ class Selleqm extends Controller
         $seq_amount=$req->input('seq_amount');
         $seq_pricetotal=$req->input('seq_pricetotal');
         Sale_equip::insert_se($mb_id,$price_total);
-        list_sale_equip::listeq_insert($eq_id,$seq_amount,$seq_pricetotal);
+        list_sale_equip::listeq_insert($mb_id,$eq_id,$seq_amount,$seq_pricetotal);
         Session ::put('save','success');
         return redirect('saleeq');
     }
     public function Detailsaleeq($id){ //แสดงรายละเอียดข้อมูลการขายอุปกรณ์
         $data['saleeq']=sale_equip::loadDataSale_equip($id);
-        // $data['listsaleeq']=list_sale_equip::
-       return view ('show_saleeq',$data);
+        $data['listsaleeq']=list_sale_equip::load_lse($id);
+        return view ('show_saleeq',$data);
     }
 
     public function Canceleq($id){
