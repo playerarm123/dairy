@@ -69,7 +69,93 @@ class Buymilk extends Model
 
            }
            return $checkDelete; //ถ้าค่า=no ลบไม่ได้  =yes ลบได้
-       }
+    }
+//ส่วนรายงาน---------------------------------------------------------------------------------------------
+
+    public static function Search_year($mb_id,$milk_id,$bm_range,$name,$lastname,$month,$year){
+
+        if ($month!=""){
+            $where="YEAR(bm.created_at)=$year AND MONTH(bm.created_at)=$month";
+        }
+        else {
+            $where="YEAR(bm.created_at)=$year";
+        }
+
+        //เช็ครหัสสมาชิก
+        if ($mb_id!=""){
+            $where .= " AND bm.mb_id=$mb_id";
+        }
+
+        else {
+            if($name!="" && $lastname!=""){
+                $where .= " AND member.mb_name='$name' AND member.mb_lastname='$lastname'";
+            }
+
+        }
+
+        //เช็คเกรกน้ำนม
+        if($milk_id!=""){
+            $where .= " AND member.milk_id=$milk_id";
+        }
+
+        //ช่วงเวลา
+        if($bm_range!=""){
+            $where .= " AND bm.bm_range='$bm_range'";
+        }
+        $data=DB::table('Buy_milk as bm')
+        ->join('member','member.mb_id','=','bm.mb_id')
+        ->join('milk','milk.milk_id','=','bm.milk_id')
+        ->join('employee','employee.em_id','=','bm.em_id')
+        ->whereRaw($where)
+        ->select('member.*','bm.*','milk.*','employee.*')
+        ->get();
+
+        return $data;
+    }
+
+    public static function Search_day($mb_id,$milk_id,$bm_range,$name,$lastname,$start_date,$end_date){
+        if($start_date !== $end_date){
+            $where="DATE(bm.created_at)>='$start_date' AND DATE(bm.created_at)<='$end_date'";
+        }
+        else{
+            $where ="DATE(bm.created_at)='$start_date'";
+        }
+
+
+
+          //เช็ครหัสสมาชิก
+          if ($mb_id!=""){
+            $where .= " AND bm.mb_id=$mb_id";
+        }
+
+        else {
+            if($name!="" && $lastname!=""){
+                $where .= " AND member.mb_name='$name' AND member.mb_lastname='$lastname'";
+            }
+
+        }
+
+        //เช็คเกรกน้ำนม
+        if($milk_id!=""){
+            $where .= " AND member.milk_id=$milk_id";
+        }
+
+        //ช่วงเวลา
+        if($bm_range!=""){
+            $where .= " AND bm.bm_range='$bm_range'";
+        }
+
+        $data=DB::table('Buy_milk as bm')
+        ->join('member','member.mb_id','=','bm.mb_id')
+        ->join('milk','milk.milk_id','=','bm.milk_id')
+        ->join('employee','employee.em_id','=','bm.em_id')
+        ->whereRaw($where)
+        ->select('member.*','bm.*','milk.*','employee.*')
+        ->get();
+
+        return $data;
+    }
+
 
 
 }
