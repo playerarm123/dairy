@@ -8,84 +8,8 @@
 @section('body')
 
     <script>
-        function confirm_delete(bm_id){
-            swal({
-                title: "ลบข้อมูล?",
-                text: "คุณจะไม่สามารถเรียกใช้ข้อมูลได้อีก",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "ใช่, ลบข้อมูล",
-                cancelButtonText: "ไม่, ยกเลิกการลบ",
-                closeOnConfirm: false,
-                closeOnCancel: false
-                },
-                function(isConfirm) {
-                if (isConfirm) {
-                    // ถ้ากด ใช่
-                    $.ajax({
-                        type:"GET",
-                        url: " {{ url('checkdlbuymilk') }}/"+bm_id,
-                        success:function(result){
-                            if(result == "yes"){
-                                $.ajax({
-                                    type: "GET",
-                                    url : "{{ url('deleteuser')}}/"+bm_id,
-                                    success:function(data){
-                                    }
-                                });
-                            }else{
-                                swal('แจ้งเตือน','ไม่สามารถลบข้อมูลได้','warning');
-                            }
-                        }
-                    });
-
-                } else {
-                    // ถ้ากด ไม่ใช่
-                    swal("ยกเลิก", "ยกเลิกการลบข้อมูลเรียบร้อยแล้ว :)", "error");
-                }
-            });
-
-        }
-
-        function search_member(){
-            $.ajax({
-                url:"{{url('searchmem')}}/"+$('#memberid').val(),
-                type:"get",
-                success:function(data){
-                    console.log(data);
-                    $('#name').val(data['name']);
-                    $('#lastname').val(data['lastname']);
-                }
-
-            })
-
-        }
-        function set_perPrice(key){
-            var price = $('#per_price'+key).val();
-            $('#pricein').val(price);
-            caculate();
-        }
-
-        //คำนวณราคารับซื้อ  ต่อ ขีด
-        function caculate(){
-            var k = 0;
-            var kl = 0;
-            var weight = 0;
-            var total = 0;
-            var keed = 0;
-            var pricein = 0;
-            if($('#k').val() != ""){ k = parseInt($('#k').val());}
-            if($('#kl').val() != ""){ kl = parseInt($('#kl').val());}
-            if($('#weight').val() != ""){ weight = parseInt($('#weight').val());}
-            if($('#pricein').val() != ""){ pricein = parseFloat($('#pricein').val());}
-            kl = kl * 1000;
-            weight = k + kl;
-            keed = weight / 100;
-            total = parseInt(keed) * pricein;
-            $('#weight').val(weight);
-            $('#total').val(total);
-        }
+       
+       
         $(document).ready(function(){
 
             // ตารางข้อมูล
@@ -133,23 +57,66 @@
             <div class="form-group">
                     <div class="row">
                         <div class="col-2 right">
-                    <h3> ช่วงเวลา</h3>
+                    <h3> ตั้งแต่</h3>
                         </div>
                     </div>
                 </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
-                      ตั้งแต่ :
+                      วัน :
                     </div>
                     <div class="col-3">
                             <input type="date" class="form-control" name="startdate" id="startdate">
                     </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
                     <div class="col-2 right">
-                        ถึง :
+                      เดือน :
                     </div>
                     <div class="col-3">
-                        <input type="date" class="form-control" name="enddate" id="enddate">
+                            <input type="month" class="form-control" name="startmonth" id="startdate" placeholder="mm">
+                    </div>
+                    <div class="col-2 right">
+                        ปี :
+                    </div>
+                    <div class="col-3">
+                        <input type="number"class="form-control"  name="startyear"  id="startyear" placeholder="yyyy" min="2017" max="2100" >
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-2 right">
+                <h3> ถึงวันที่</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-2 right">
+                      วัน :
+                    </div>
+                    <div class="col-3">
+                            <input type="date" class="form-control" name="enddate" id="startdate">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-2 right">
+                      เดือน :
+                    </div>
+                    <div class="col-3">
+                            <input type="month" class="form-control" name="endmonth" id="startdate" placeholder="mm">
+                    </div>
+                    <div class="col-2 right">
+                        ปี :
+                    </div>
+                    <div class="col-3">
+                        <input type="number"class="form-control"  name="endyear"  id="endyear" placeholder="yyyy" min="2017" max="2100" >
                     </div>
                 </div>
             </div>
@@ -213,15 +180,16 @@
             </div>
         <div class="btncenter" >
                 <button  type="submit" id = "save" class="btn btn-info " ><span class="fa fa-search">ค้นหา</span></button>
-                <button  type="submit" id = "save" class="btn btn-success " ><span class="fa fa-save">PDF</span></button>
-                <button  type="submit" id = "save" class="btn btn-warning " ><span class="fa fa-edit">Reset</span></button>
+                <a href="{{url('/searchbuymilk')}}"  type="submit" id = "save" class="btn btn-success " ><span class="fa fa-save">PDF</span></a>
+                    <a href="{{url('/resetbuymilk')}}" type="submit" id = "save" class="btn btn-warning " ><span class="fa fa-edit">Reset</span></a>
             </div>
             <br>
             <div class="panel-body">
                     <table id="report_buymilk" class="table table-striped table-bordered table-responsive-lg">
                         <thead class="bg-success ">
                             <th>ลำดับ</th>
-                            <th>วันที่เริ่มต้น-วันที่สิ้นสุด</th>
+                            <th>วันที่เริ่มต้น</th>
+                            <th>วันที่สิ้นสุด</th>
                             <th>ชื่อ-นามสกุลสมาชิก</th>
                             <th>ช่วงเวลา</th>
                             <th>เกรด</th>
@@ -232,7 +200,8 @@
                                 @foreach (Session::get('buymilk') as $key =>$item)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>{{$item->bm_date}}&ensp;ถึง{{$item->bm_date}}</td>
+                                    <td>{{$item->bm_date}}</td>
+                                    <td>{{$item->bm_date}}</td>
                                     <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
                                     <td>{{$item->bm_range}}</td>
                                     <td>{{$item->milk_grade}}</td>

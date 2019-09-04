@@ -36,9 +36,9 @@
     </div>
     <br>
     <div class="btncenter"  >
-        <a href='{{url('buymilk')}}' class="btn btn-danger " ><span class="fa fa-search" >ค้นหา</span></a>
-        <a href='{{url('buymilk')}}' class="btn btn-danger " ><span class="fa fa-note" >PDF</span></a>
-        <a href='{{url('buymilk')}}' class="btn btn-danger " ><span class="fa fa-reset" >Reset</span></a>
+        <a href='{{url('buymilk')}}' class="btn btn-danger " >
+            <span class="fa fa-edit" >ย้อนกลับ</span>
+    </a>
     </div>
 </div>
 @stop
