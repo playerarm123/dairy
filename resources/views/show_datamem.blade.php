@@ -20,7 +20,7 @@
         <div class="col-3 right" > เพศ</div>
         <div class="col-2">{{$member[0]->mb_gender}}</div>
         <div class="col-3 right" > อายุ</div>
-        <div class="col-2">{{$member[0]->mb_age}}</div>
+        <div class="col-2">{{$member[0]->mb_age}}&ensp;ปี</div>
     </div>
     <div class="row">
             <div class="col-3 right" > ที่อยู่</div>

@@ -35,8 +35,9 @@ class Sellmilk extends Controller
     }
 
     public function Cancelsalemilk($id){ //ยกเลิก
-        sale_milks::Canclebm($id);
+        sale_milk::Canclesm($id);
         Session::put('cancel','success');
+        return redirect('salemilk');
     }
 
 

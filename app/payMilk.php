@@ -8,21 +8,21 @@ class payMilk extends Model
 {
 
     protected $table = 'pay_milk';
-    public static function pm_insert($pm_id,$em_id,$mb_id,$bm_id,$pm_date,$pm_pricetotal)
+    public static function pay_milk($em_id,$mb_id,$bm_id,$pm_pricetotal)
     {
 
         $pm=array(
-        "pm_id"=> $pm_id,
+
         "em_id"=> $em_id,
         "mb_id"=> $mb_id,
         "bm_id"=> $bm_id,
-        "pm_date"=> $pm_date,
         "pm_pricetotal"=> $pm_pricetotal,
-        "pm_status"=>'พร้อมใช้งาน'
+        "pm_status"=>'ชำระเงินแล้ว'
 
               );
 
         DB::table("pay_milk")->insert($pm);
+        DB::table("buy_milk")->where("bm_id","=",$bm_id)->update(["bm_status"=>"ชำระเงินแล้ว"]);
     }
 
 

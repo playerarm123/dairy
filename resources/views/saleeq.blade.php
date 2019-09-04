@@ -21,11 +21,10 @@
                 } ],
                 "columns": [
                     { "width": "5%" },
-                    null,
-                    {"width": "15%"},
-                    {"width": "15%"},
-                    {"width": "15%"},
-                    {"width": "15%"},
+                    {"width": "20%"},
+                    {"width": "20%"},
+                    {"width": "20%"},
+                    {"width": "20%"},
 
                 ],
                 "order": [[ 1, 'asc' ]],
@@ -77,8 +76,6 @@
     <div class="center">
         <h1 style="text-align:center">ระบบขายอุปกรณ์</h1><br>
         <div class="row-search right">
-<br><br>
-<br><br>
             <a href ="{{url('/uplist')}}" class='btn btn-info'><span class="fa fa-edit">เพิ่มรายการ</span></a>
         </div>
             <br>
@@ -90,14 +87,22 @@
                 <table id="saleequip" class="table table-striped table-bordered table-responsive-lg">
                     <thead class="bg-success">
                         <th>ลำดับ</th>
-                        <th>รายการขาย</th>
-                        <th>วันที่</th>
-                        <th>จำนวน</th>
-                        <th>ราคาขายสุทธิ</th>
+                        <th>ชื่อพนักงาน</th>
+                        <th>ชื่อผู้ซื้อ</th>
+                        <th>ยอดขายสุทธิ</th>
                         <th></th>
                     </thead>
                     <tbody>
-
+                        @foreach ($saleeq as $item)
+                            <tr>
+                                <td></td>
+                                <td>{{ $item->em_id }} </td>
+                                <td>{{ $item->mb_name }} {{ $item->mb_lastname }}</td>
+                                <td>{{ $item->price_total }}</td>
+                                <td><a href ="{{url('/detailsaleeq')}}/{{$item->seq_id}}" class='btn btn-info'>รายละเอียด</a>
+                                    <button class='btn btn-danger' onclick='confirm_cencle("{{$item->seq_id}}")'>ยกเลิก</button></td>
+                            </tr>
+                        @endforeach
 
                     </tbody>
 

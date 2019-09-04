@@ -22,17 +22,15 @@ class Selleqm extends Controller
     public function Savesaleeq(Request $req){ //บันทึกข้อการขาย
         $mb_id=$req->input('mb_id');
         $price_total=$req->input('price_total');
-        $name=$req->input('name');
-        $lastname=$req->input('lastname');
         $eq_id=$req->input('eq_id');
         $seq_amount=$req->input('seq_amount');
         $seq_pricetotal=$req->input('seq_pricetotal');
-        Sale_equip::insert_se($mb_id,$price_total,$name,$lastname);
+        Sale_equip::insert_se($mb_id,$price_total);
         list_sale_equip::listeq_insert($eq_id,$seq_amount,$seq_pricetotal);
         Session ::put('save','success');
-        return redirect('');
+        return redirect('saleeq');
     }
-    public function Detailsalemilk($id){ //แสดงรายละเอียดข้อมูลการขายอุปกรณ์
+    public function Detailsaleeq($id){ //แสดงรายละเอียดข้อมูลการขายอุปกรณ์
         $data['saleeq']=sale_equip::loadDataSale_equip($id);
        return view ('show_saleeq',$data);
     }

@@ -115,7 +115,7 @@
                 </div>
                 <div class="col-4">
                         <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="บริษัทคู่ค้า" id="partnersid" name="partnersid">
+                                <input type="text" class="form-control" placeholder="บริษัทคู่ค้า" id="partnersid" name="partnersid" required>
                                 <div class="input-group-append">
                                   <a class="input-group-text btn" onclick="search_partners()">ค้นหา</a>
                                 </div>
@@ -150,7 +150,7 @@
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
                                     <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_priceout }}">
-                                    <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
+                                    <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" required>{{$item->milk_grade}}
                                     </label>
                                 </div>
                             @endforeach
@@ -174,9 +174,9 @@
                             น้ำหนักทีี่ขาย :
                         </div>
                         <div class="col-3">
-                            <input type="hidden" name="weight" id="weight">
+                            <input type="hidden" name="weight" id="weight" required>
                             <div class="input-group mb-3">
-                                <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control">
+                                <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control" required>
                                 <div class="input-group-append">
                                     <span class="input-group-text " o>กิโลกรัม</span>
                                 </div>
@@ -222,11 +222,11 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->pn_name}}</td>
                                 <td>{{$item->milk_grade}}</td>
-                                <td>{{number_format($item->sm_weight/1000)}}</td>
-                                <td>{{number_format($item->sm_pricetotal,2)}}</td>
+                                <td>{{number_format($item->sm_weight/1000,2)}}&ensp;กิโลกรัม</td>
+                                <td>{{number_format($item->sm_pricetotal,2)}}&ensp;บาท</td>
                                 <td>
                                         <a href ="{{url('/detailsalemilk')}}/{{$item->sm_id}}" class='btn btn-info'>รายละเอียด</a>
-                                        <a href="{{url('/')}}/{{$item->sm_id}}" class='btn btn-danger'>ยกเลิก</a>
+                                        <a href="{{url('/cancelsalemilk')}}/{{$item->sm_id}}" class='btn btn-danger'>ยกเลิก</a>
                                 </td>
                             </tr>
                             @endforeach
