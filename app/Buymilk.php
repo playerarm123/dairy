@@ -144,7 +144,6 @@ class Buymilk extends Model
         if($bm_range!=""){
             $where .= " AND bm.bm_range='$bm_range'";
         }
-
         $data=DB::table('Buy_milk as bm')
         ->join('member','member.mb_id','=','bm.mb_id')
         ->join('milk','milk.milk_id','=','bm.milk_id')
