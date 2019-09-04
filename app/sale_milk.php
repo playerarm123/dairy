@@ -81,11 +81,100 @@ class Sale_milk extends Model
 
 
 
-       public static function Canclesm($sm_id){
+    public static function Canclesm($sm_id){
         $sm_Cancel =array(
             "sm_status"=> "ยกเลิก"
         );
             DB::table('sale_milk')->where("sm_id","=",$sm_id)->update($sm_Cancel);
     }
+
+
+    //ส่วนรายงาน---------------------------------------------------------------------------------------------
+
+    public static function Search_year($pn_id,$milk_id,$name,$month,$year){
+
+        if ($month!=""){
+            $where="YEAR(sale_milk.created_at)=$year AND MONTH(sale_milk.created_at)=$month";
+        }
+        else {
+            $where="YEAR(bm.created_at)=$year";
+        }
+
+        //เช็ครหัสคู่ค้า
+        if ($pn_id!=""){
+            $where .= " AND sale_milk.pn_id=$pn_id";
+        }
+
+        else {
+            if($name!=""){
+                $where .= " AND sale_milk.pn_name='$name'";
+            }
+
+        }
+
+        //เช็คเกรกน้ำนม
+        if($milk_id!=""){
+            $where .= " AND sale_milk.milk_id=$milk_id";
+        }
+
+
+        $data=DB::table("sale_milk")
+        ->join('partners','partners.pn_id','=','sale_milk.pn_id')
+        ->join('milk','milk.milk_id','=','sale_milk.milk_id')
+        ->join('employee','employee.em_id','=','sale_milk.em_id')
+        ->where("sale_milk.sm_id","=",$sm_id)
+        ->select('partners.*','sale_milk.*','Milk.*','employee.*')
+        ->get();
+
+        return $data;
+    }
+
+    public static function Search_day($pn_id,$milk_id,$name,$start_date,$end_date){
+        if($start_date != $end_date){
+            $where ="DATE(sale_milk.created_at)='$start_date'";
+        }
+        else{
+            $where="DATE(sale_milk.created_at)>='$start_date' AND DATE(sale_milk.created_at)<='$end_date'";
+        }
+
+          //เช็ครหัสคู่่ค้า
+          if ($pn_id!=""){
+            $where .= " AND sale_milk.pn_id=$pn_id";
+        }
+
+        else {
+            if($name!=""){
+                $where .= " AND sale_milk.mb_name='$name'";
+            }
+
+        }
+
+        //เช็คเกรกน้ำนม
+        if($milk_id!=""){
+            $where .= " AND sale_milk.milk_id=$milk_id";
+        }
+
+        $data=DB::table("sale_milk")
+        ->join('partners','partners.pn_id','=','sale_milk.pn_id')
+        ->join('milk','milk.milk_id','=','sale_milk.milk_id')
+        ->join('employee','employee.em_id','=','sale_milk.em_id')
+        ->where("sale_milk.sm_id","=",$sm_id)
+        ->select('partners.*','sale_milk.*','Milk.*','employee.*')
+        ->get();
+
+        dd($where);
+        return $data;
+    }
+
+
+
+}
+
+
+
+
+
+
+
 
 }

@@ -114,14 +114,12 @@ class Buymilk extends Model
     }
 
     public static function Search_day($mb_id,$milk_id,$bm_range,$name,$lastname,$start_date,$end_date){
-        if($start_date !== $end_date){
-            $where="DATE(bm.created_at)>='$start_date' AND DATE(bm.created_at)<='$end_date'";
-        }
-        else{
+        if($start_date != $end_date){
             $where ="DATE(bm.created_at)='$start_date'";
         }
-
-
+        else{
+            $where="DATE(bm.created_at)>='$start_date' AND DATE(bm.created_at)<='$end_date'";
+        }
 
           //เช็ครหัสสมาชิก
           if ($mb_id!=""){
@@ -151,7 +149,7 @@ class Buymilk extends Model
         ->whereRaw($where)
         ->select('member.*','bm.*','milk.*','employee.*')
         ->get();
-
+        dd($where);
         return $data;
     }
 
