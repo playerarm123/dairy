@@ -21,7 +21,7 @@
         <div class="col-3 right" >ชื่อสมาชิก</div>
         <div class="col-2">{{$saleeq[0]->mb_id}} </div>
         <div class="col-3 right" >รหัสรายการขายอุปกรณ์</div>
-        <div class="col-2">{{$listsaleeq[0]->listseq_id}}</div>
+        <div class="col-2">{{$listsaleeqf[0]->listseq_id}}</div>
     </div>
     <div class="row">
             <div class="col-3 right" >รายการสินค้า</div>
