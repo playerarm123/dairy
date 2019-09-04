@@ -120,24 +120,32 @@
                       <li><a href="{{url('datapro')}}">ข้อมูลอุปกรณ์</a></li>
                       <li><a href="{{url('dataagent')}}">ข้อมูลบริษัทคู่ค้า</a></li>
                       <li><a href="{{url('datacoop')}}">ข้อมูลสหกรณ์</a></li>
-
                     </ul>
                   </li>
-
                   <li><a href="{{url('buymilk')}}">รับซื้อน้ำนมดิบ</a></li>
                   <li><a href="{{url('salemilk')}}">ขายน้ำนมดิบ</a></li>
                   <li><a href="{{url('#')}}">รับอุปกรณ์</a>
-                    <ul class="dropdown">
+                  <ul class="dropdown">
                       <li><a href="{{url('receivedrug')}}">ยารักษาโรค</a></li>
                       <li><a href="{{url('receivefood')}}">อาหารสัตว์</a></li>
                       <li><a href="{{url('receivetool')}}">อุปกรณ์รีดนม</a></li>
-                    </ul>
+                  </ul>
                   </li>
                   <li><a href="{{url('saleeq')}}">ขายอุปกรณ์</a></li>
                   <li><a href="{{url('paymilk')}}">ชำระเงินนมสมาชิก</a></li>
                   <li><a href="{{url('receivemoney')}}">รับชำระเงินค่าน้ำนมดิบ</a></li>
+                  <li><a href="{{url('#')}}">รายงาน</a>
+                  <ul class="dropdown">
+                      <li><a href="{{url('loadreportbuymilk')}}">รายงายรับซื้อน้ำนมดิบ</a></li>
+                      <li><a href="{{url('')}}">รายงานขายน้ำนมดิบ</a></li>
+                      <li><a href="{{url('')}}">รายงานรับอุปกรณ์</a></li>
+                      <li><a href="{{url('')}}">รายงายขายอุปกรณ์ </a></li>
+                      <li><a href="{{url('')}}">รายงานชำระเงินนม </a></li>
+                      <li><a href="{{url('')}}">รายงานรับชำระเงินนม</a></li>
+                  </ul>
+                  </li>
                   <li style="margin-left:20px;"><a href="{{url('logout')}}"><i class="fa fa-user" ></i>ออกจากระบบ</a></li>
-                </ul>
+            </ul>
             </div>
           </nav>
         </div>

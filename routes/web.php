@@ -128,7 +128,7 @@ Route::get('detailfood/{id}','Receive@Detailfood');//แสดงรายละ
 Route::get('receivetool','Receive@Tool');//หน้ารับอุปกรณ์
 Route::post('savetool','Receive@Savetool');//บันทึกข้อมูลอุปกรณ์
 Route::get('detailtool/{id}','Receive@Detailtool');//แสดงรายละเอียดอุปกรณ์
-Route::get('uplist','Receive@Uplist');
+Route::get('uplist','Receive@Uplist');//เพิ่มรายการ
 
 
 
@@ -160,6 +160,12 @@ Route::post('saveacceptpm','Acceptpm@Saveacceptpm'); //บันทึกรั�
 Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm'); //รายละเอียดชำระเงิน
 
 
+
+//รายงาน
+Route::get('loadreportbuymilk','Report@Loadreportbuymilk');
+Route::get('searchbuymilk','Report@Searchbuymilk');
+Route::get('exportbuymilk','PDFController@Exportbuymilk');
+Route::get('resetbuymilk','Report@Resetbuymilk');
 
 
 //ไว้ให้มายด์เทส
