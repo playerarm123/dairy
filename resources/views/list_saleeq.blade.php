@@ -6,7 +6,7 @@
 
 @section('body')
 <script>
-            
+
 
             function swich(){
                 var memnber = $('#member').prop('checked');
@@ -27,11 +27,11 @@
                     $('#memberid').val("");
 
                 }
-                    
-                    
-                
-               
-            } 
+
+
+
+
+            }
             function search_member(){
             $.ajax({
                 url:"{{url('searchmem')}}/"+$('#memberid').val(),
@@ -43,13 +43,13 @@
                 }
 
             })
-            
+
         }
 
-    
-        
-       
-        
+
+
+
+
             // ตารางข้อมูล
             $(document).ready(function() {
                 var table =$('#list_saleeq').DataTable({
@@ -105,37 +105,22 @@
         });
 </script>
 
-<style>        
+<style>
 </style>
 <div class="center">
 <h1 style="text-align:center">รายการขายอุปกรณ์</h1><br>
 
 <form action="{{ url('/savesaleeq') }}" method="POST" id='savesaleeq'>
     @csrf
-    <input type="hidden" id="all-row">
+    <input type="hidden" id="all-row" value=0>
     <div class="form-group">
          <div class="row">
-            <div class="col-2 right">
-                สถานะ :
-            </div>
-            <div class="col-3">
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="status" id="member"value="สมาชิก" onchange="swich()" required>สมาชิก
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="status" id="nomember" value="ไม่เป็นสมาชิก" onchange="swich()" required>ไม่เป็นสมาชิก
-                    </label>
-                </div>
-            </div>
             <div class="col-2 right">
                 รหัสสมาชิก:
             </div>
             <div class="col-3">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid"  >
+                    <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="mb_id"  >
                     <div class="input-group-append">
                         <a class="input-group-text btn" onclick="search_member()" id="search">ค้นหา</a>
                     </div>
@@ -155,13 +140,13 @@
                 นามสกุล:
             </div>
             <div class="col-3">
-                <input type="text" class="form-control" name="lastname" id="lastname"   readonly>   
+                <input type="text" class="form-control" name="lastname" id="lastname"   readonly>
             </div>
          </div>
     </div>
     <a id = "save"class="btn btn-warning right"  data-toggle="modal" data-target="#equip" >
             <span class="fa fa-edit">เลือกอุปกรณ์</span>
-    </a> 
+    </a>
 <br><br>
 <div class="panel-body">
     <table id="list_saleeq" class="table table-striped table-bordered table-responsive-lg">
@@ -172,23 +157,23 @@
             <th>ราคาต่อหน่วย</th>
             <th>ราคารวมสุทธิ</th>
             <th></th>
-            
-            
-            
+
+
+
         </thead>
         <tbody>
-            
-               
-          
+
+
+
         </tbody>
         <tfoot>
-              
-           
+
+
                 <th colspan="5" class="bg-success" style="text-align:center">ราคารวมสุทธิ</th>
                 <th class="bg-warning">
-                    <input type="text" class="form-control" id="all_price" name="price_total" value=0.0 readonly>
+                    <input type="text" class="form-control" id="all_price" name="price_total" value=0 readonly>
                 </th>
-           
+
         </tfoot>
     </table>
     <div class="btncenter" >
@@ -197,7 +182,7 @@
         </button>
     </div>
     <br>
-    
+
 </div>
 </form>
 </div>
@@ -209,32 +194,47 @@
 
         });
         // เพิ่มรายการรับ
-        function add_saleeq(id,name,amount,unit,price){
+        function add_saleeq(key,id,name,amount,unit,price){
             var table = $('#list_saleeq').DataTable();
-            var all_row = $('#all-row').val(); 
+            var all_row = parseInt($('#all-row').val());
             table.row.add([
                 "",
                 "<input type='hidden' name='eq_id[]' value="+id+">"+name,
-                "<input type='text' class='form-control'name='seq_amount[]' id='seq_amount"+id+"'onkeyup='cal_total("+id+")' required>",
-                "<input type='number'class='form-control'name='price[]' id='price"+id+"' readonly value="+price+">",
-                "<input type='number' name='seq_pricetotal[]' class='form-control' id='seq_pricetotal"+id+"'readonly>",
+                "<input type='number' class='form-control'name='seq_amount[]' id='seq_amount"+key+"'onkeyup='cal_total("+key+")' required >",
+                "<input type='number'class='form-control'name='price[]' id='price"+key+"' readonly value="+price+">",
+                "<input type='number' name='seq_pricetotal[]' class='form-control' id='seq_pricetotal"+key+"'readonly>",
                 "<a class='btn btn-danger' >ลบ</a>"
             ]).draw();
             $('#equip').modal('hide');
             $('#all-row').val(parseInt(all_row+1));
         }
         // รวมจำนวนล่าสุด
-        function cal_total(id){
-            var seq_amount = $('#seq_amount'+id).val();
-            var price = $('#price'+id).val();
-            var seq_pricetotal = parseInt(seq_amount) * parseFloat(price);
-            var all_price = parseFloat($('#all_price').val());
-            all_price = parseFloat(all_price)+parseFloat(seq_pricetotal);
+        function cal_total(key){
+            var seq_amount = 0;
+            var seq_pricetotal = 0;
+            var all_row = $('#all-row').val();
+            var price = parseInt($('#price'+key).val());
+            var all_price = 0;
+            if($('#seq_amount'+key).val() != ""){
+                seq_amount = $('#seq_amount'+key).val();
+
+            }
+            seq_pricetotal =seq_amount * price;
+
+            $('#seq_pricetotal'+key).val(seq_pricetotal);
+            for(i=0;i<all_row;i++){
+                if($('#seq_pricetotal'+i).val() == ""){
+                    seq_pricetotal = 0;
+                }
+                else{
+                    seq_pricetotal= parseFloat($('#seq_pricetotal'+i).val());
+                }
+                all_price = parseFloat(all_price) + parseFloat(seq_pricetotal);
+            }
             $('#all_price').val(parseFloat(all_price));
-            $('#seq_pricetotal'+id).val(seq_pricetotal);
-            
+
         }
-      
+
     </script>
 <div class="modal fade" id="equip">
         <div class="modal-dialog modal-lg">
@@ -261,9 +261,9 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $item->eq_id }}</td>
-                                <td>{{ $item->eq_name }}</td> 
+                                <td>{{ $item->eq_name }}</td>
                                 <td>{{$item->eq_amount}} {{$item->eq_unit}}</td>
-                                <td><button class="btn btn-success" onclick="add_saleeq({{ $item->eq_id }},'{{ $item->eq_name }}',{{$item->eq_amount}},'{{ $item->eq_unit }}',{{$item->eq_price}})" {{ ( $item->eq_amount==0)?"disabled":""}}>เลือก</button></td>
+                                <td><button class="btn btn-success" onclick="add_saleeq({{ $key }},{{ $item->eq_id }},'{{ $item->eq_name }}',{{$item->eq_amount}},'{{ $item->eq_unit }}',{{$item->eq_price}})" {{ ( $item->eq_amount==0)?"disabled":""}}>เลือก</button></td>
                             </tr>
                         @endforeach
                     </tbody>
