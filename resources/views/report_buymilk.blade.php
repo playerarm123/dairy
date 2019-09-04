@@ -205,14 +205,14 @@
                         เกรด:
                     </div>
                     <div class="col-3">
-                        {{-- @foreach ($grade as $key => $item)
+                        @foreach ($grade as $key => $item)
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                 <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_pricein }}">
                                 <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
                                 </label>
                             </div>
-                        @endforeach --}}
+                        @endforeach
                     </div>
                 </div>
             </div>
