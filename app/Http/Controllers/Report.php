@@ -33,7 +33,7 @@ class Report extends Controller
         $end_date=$req->input('enddate');
         $month=$req->input('month');
         $year=$req->input('year');
-
+        dd($month,$year);
         if($start_date!="" && $end_date!=""){
             $data=buymilks::Search_day($mb_id,$milk_id,$bm_range,$name,$lastname,$start_date,$end_date);
 
