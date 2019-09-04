@@ -15,8 +15,8 @@ use App\Sale_milk;
 class Report extends Controller
 {
     public function Loadreportbuymilk(){
-        $data['grade']=Milk::loadAllMilk()();
-        return view('reportbuymilk',$data);
+        $data['grade']=Milk::loadAllMilk();
+        return view('report_buymilk',$data);
     }
 
 
@@ -30,8 +30,16 @@ class Report extends Controller
         $lastname=$req->input('lastname');
         $grade=$req->input('grade');
         $rang=$req->input('rang');
-        $data['buymilk']=Buymilk::Search($year,$mount,$startdate,$enddate,$mb_id,$name, $lastname,$grade,$rang);
-        return view('Reportbuymilk',$data);
+        $data=Buymilk::Search($year,$mount,$startdate,$enddate,$mb_id,$name, $lastname,$grade,$rang);
+        Session::put('buymilk',$data);
+        return redirect('loadreportbuymilk');
+    }
+
+
+
+    public function Resetbuynilk(){
+        Session::forget('buymilk');
+        return redirect('loadreportbuymilk');
     }
 
     public function Exportbuymilk(){
