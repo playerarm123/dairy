@@ -52,7 +52,7 @@
         <h1 style="text-align:center">รายงานข้อมูลรับซื้อน้ำนมดิบ</h1><br>
         <input type ="hidden" name="row" id="row" value="0">
 
-        <form action="{{url('/loadreportbuymilk')}}" method="POST"  id='form-submit'>
+        <form action="{{url('/searchbuymilk')}}" method="POST"  id='form-submit'>
             @csrf
             <div class="form-group">
                     <div class="row">
@@ -77,7 +77,20 @@
                       เดือน :
                     </div>
                     <div class="col-3">
-                            <input type="month" class="form-control" name="startmonth" id="startdate" placeholder="mm">
+                            <select class="form-control"  name="startmonth" id="startmonth">
+                                    <option value="มกราคม">มกราคม</option>
+                                    <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+                                    <option value="มีนาคม">มีนาคม</option>
+                                    <option value="เมษายน">เมษายน</option>
+                                    <option value="พฤษภาคม">พฤษภาคม</option>
+                                    <option value="มิถุนายน">มิถุนายน</option>
+                                    <option value="กรกฎาคม">กรกฎาคม</option>
+                                    <option value="สิงหาคม">สิงหาคม</option>
+                                    <option value="กันยายน">กันยายน</option>
+                                    <option value="ตุลาคม">ตุลาคม</option>
+                                    <option value="พฤศจิกายน">พฤศจิกายน</option>
+                                    <option value="ธันวาคม">ธันวาคม</option>
+                            </select>
                     </div>
                     <div class="col-2 right">
                         ปี :
@@ -90,7 +103,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
-                <h3> ถึงวันที่</h3>
+                <h3> ถึงช่วง</h3>
                     </div>
                 </div>
             </div>
@@ -110,7 +123,20 @@
                       เดือน :
                     </div>
                     <div class="col-3">
-                            <input type="month" class="form-control" name="endmonth" id="startdate" placeholder="mm">
+                            <select class="form-control"  name="endmonth" id="endmonth">
+                                    <option value="มกราคม">มกราคม</option>
+                                    <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+                                    <option value="มีนาคม">มีนาคม</option>
+                                    <option value="เมษายน">เมษายน</option>
+                                    <option value="พฤษภาคม">พฤษภาคม</option>
+                                    <option value="มิถุนายน">มิถุนายน</option>
+                                    <option value="กรกฎาคม">กรกฎาคม</option>
+                                    <option value="สิงหาคม">สิงหาคม</option>
+                                    <option value="กันยายน">กันยายน</option>
+                                    <option value="ตุลาคม">ตุลาคม</option>
+                                    <option value="พฤศจิกายน">พฤศจิกายน</option>
+                                    <option value="ธันวาคม">ธันวาคม</option>
+                            </select>
                     </div>
                     <div class="col-2 right">
                         ปี :

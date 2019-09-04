@@ -120,7 +120,7 @@
             </div>
             <div class="col-3">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="mb_id"  >
+                    <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="mb_id" required >
                     <div class="input-group-append">
                         <a class="input-group-text btn" onclick="search_member()" id="search">ค้นหา</a>
                     </div>
