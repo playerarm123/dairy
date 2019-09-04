@@ -161,11 +161,24 @@ Route::get('detailacceptpm/{id}','Acceptpm@Detailacceptpm'); //รายละ�
 
 
 
-//รายงาน
+//รายงานซื้อน้ำนม
 Route::get('loadreportbuymilk','Report@Loadreportbuymilk');
 Route::post('searchbuymilk','Report@Searchbuymilk');
-Route::get('exportbuymilk','PDFController@Exportbuymilk');
 Route::get('resetbuymilk','Report@Resetbuymilk');
+//รายงานขายน้ำนม
+Route::get('loadreportsalemilk','Report@Loadreportsalemilk');
+Route::post('searchsalemilk','Report@Searchsalemilk');
+Route::get('resetsalemilk','Report@Resetsalemilk');
+//รายงานรับอุปกรณ์
+Route::get('loadreportreceive','Report@Loadreportreceive');
+Route::post('searchreceive','Report@Searchreceive');
+Route::get('resetreceive','Report@Resetreceive');
+
+
+
+
+
+
 
 
 //ไว้ให้มายด์เทส

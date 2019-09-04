@@ -32,6 +32,7 @@ class Selleqm extends Controller
     }
     public function Detailsaleeq($id){ //แสดงรายละเอียดข้อมูลการขายอุปกรณ์
         $data['saleeq']=sale_equip::loadDataSale_equip($id);
+        // $data['listsaleeq']=list_sale_equip::
        return view ('show_saleeq',$data);
     }
 
