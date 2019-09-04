@@ -90,7 +90,7 @@
         $(document).ready(function(){
 
             // ตารางข้อมูล
-            var table =$('#Buymilk').DataTable({
+            var table =$('#report_buymilk').DataTable({
                 "paging": true,
                 "autoWidth": false,
                 "columns": [
@@ -129,53 +129,61 @@
         <h1 style="text-align:center">รายงานข้อมูลรับซื้อน้ำนมดิบ</h1><br>
         <input type ="hidden" name="row" id="row" value="0">
 
-        <form action="{{ url('/savebuymilk') }}"  method="POST"  id='form-submit'>
+        <form action="{{url('/loadreportbuymilk')}}" method="POST"  id='form-submit'>
             @csrf
             <div class="form-group">
                     <div class="row">
-                        <div class="col-8 ">
-                    <h3> ข้อมูลผู้ขายน้ำนม</h3>
+                        <div class="col-2 right">
+                    <h3> ช่วงเวลา</h3>
                         </div>
                     </div>
                 </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
-                        รหัสสมาชิก:
+                      ตั้งแต่ :
                     </div>
                     <div class="col-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid">
-                            <div class="input-group-append">
-                            <a class="input-group-text btn" onclick="search_member()">ค้นหา</a>
+                            <input type="date" class="form-control" name="startdate" id="startdate">
+                    </div>
+                    <div class="col-2 right">
+                        ถึง :
+                    </div>
+                    <div class="col-3">
+                        <input type="date" class="form-control" name="enddate" id="enddate">
+                    </div>
+                </div>
+            </div><div class="form-group">
+                    <div class="row">
+                        <div class="col-2 right">
+                            รหัสสมาชิก:
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="รหัสสมาชิก" id="memberid" name="memberid">
+                                <div class="input-group-append">
+                                <a class="input-group-text btn" onclick="search_member()">ค้นหา</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2 right">
-                        ชื่อ:
-                    </div>
-                    <div class="col-3">
-                        <input type="text" class="form-control" name="name" id="name" disabled="disabled">
-                    </div>
-                    <div class="col-2 right">
-                        นามสกุล:
-                    </div>
-                    <div class="col-3">
-                        <input type="text" class="form-control" name="lastname" id="lastname" disabled="disabled">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-8 ">
-                    <h3> รายละเอียดการขาย</h3>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2 right">
+                            ชื่อ:
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="name" id="name" disabled="disabled">
+                        </div>
+                        <div class="col-2 right">
+                            นามสกุล:
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" name="lastname" id="lastname" disabled="disabled">
+                        </div>
                     </div>
                 </div>
-            </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
@@ -193,74 +201,61 @@
                             </label>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
                     <div class="col-2 right">
                         เกรด:
                     </div>
                     <div class="col-3">
-                        @foreach ($grade as $key => $item)
+                        {{-- @foreach ($grade as $key => $item)
                             <div class="form-check-inline">
                                 <label class="form-check-label">
                                 <input type="hidden" name="" id="per_price{{ $key }}" value="{{ $item->milk_pricein }}">
                                 <input type="radio" class="form-check-input" onchange="set_perPrice({{ $key }})" id="grade{{ $key }}" name="grade" value="{{$item->milk_id}}" >{{$item->milk_grade}}
                                 </label>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="col-2 right">
-                        ราคาต่อหน่วย :
-                    </div>
-                    <div class="col-3">
-                        <div class="input-group mb-3">
-                            <input type="text" name="pricein" id="pricein" class="form-control" readonly value=0>
-                            <div class="input-group-append">
-                                <span class="input-group-text " o>บาท</span>
-                            </div>
-                        </div>
+                        @endforeach --}}
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2 right">
-                        น้ำหนักรับซื้อ :
-                    </div>
-                    <div class="col-3">
-                        <input type="hidden" name="weight" id="weight">
-                        <div class="input-group mb-3">
-                            <input type="number" name="" id="kl" onkeyup="caculate()" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text " o>กิโลกรัม</span>
-                            </div>
-                            <input type="text" name="" maxlength="3" min="1" onkeyup="caculate()" max="999" id="k" class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text " o>กรัม</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-2 right">
-                        ราคารับซื้อสุทธิ :
-                    </div>
-                    <div class="col-3">
-                        <div class="input-group mb-3">
-                            <input type="text" name="total" id="total" class="form-control" readonly>
-                            <div class="input-group-append">
-                                <span class="input-group-text " o>บาท</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
         <div class="btncenter" >
-                <button  type="submit" id = "save"class="btn btn-success " >
-                    <span class="fa fa-edit">ค้นหา</span>
-                </button>
+                <button  type="submit" id = "save" class="btn btn-info " ><span class="fa fa-search">ค้นหา</span></button>
+                <button  type="submit" id = "save" class="btn btn-success " ><span class="fa fa-save">PDF</span></button>
+                <button  type="submit" id = "save" class="btn btn-warning " ><span class="fa fa-edit">Reset</span></button>
             </div>
             <br>
+            <div class="panel-body">
+                    <table id="report_buymilk" class="table table-striped table-bordered table-responsive-lg">
+                        <thead class="bg-success ">
+                            <th>ลำดับ</th>
+                            <th>วันที่เริ่มต้น</th>
+                            <th>วันที่สิ้นสุด</th>
+                            <th>รหัสสมาชิก</th>
+                            <th>ชื่อ</th>
+                            <th>นามสกุล</th>
+                            <th>ช่วงเวลา</th>
+                            <th>เกรด</th>
+                            <th>หมายเหตุ</th>
+                        </thead>
+                        {{-- <tbody>
+                            @foreach ($buymilk as $key =>$item)
+                            <tr>
+                                <td>{{$key+1}}</td>
+                                <td>{{$item->bm_date}}</td>
+                                <td>{{$item->mb_name}}&ensp;&ensp;{{$item->mb_lastname}}</td>
+                                <td>{{$item->bm_range}}</td>
+                                <td>{{$item->milk_grade}}</td>
+                                <td>{{number_format($item->bm_weight/1000,2)}}&ensp;กิโลกรัม</td>
+                                <td>{{number_format($item->bm_pricein,2)}}&ensp;บาท</td>
+                                <td></td>
+                                <td>
+                                        <a href ="{{url('/detailbuymilk')}}/{{$item->bm_id}}" class='btn btn-info'>รายละเอียด</a>
+                                </td>
+                            </tr>
+                          
+
+                        </tbody> --}}
+
+                    </table> 
+                </div>
            
         </form>
     </div>
