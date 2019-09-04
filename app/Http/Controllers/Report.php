@@ -15,7 +15,8 @@ use App\Sale_milk;
 class Report extends Controller
 {
     public function Loadreportbuymilk(){
-        return view('reportbuymilk');
+        $data['grade']=Milk::loadAllMilk()();
+        return view('reportbuymilk',$data);
     }
 
 
