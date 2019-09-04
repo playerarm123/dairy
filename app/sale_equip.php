@@ -8,12 +8,13 @@ use Illuminate\Support\facades\Session;
 class sale_equip extends Model
 {
     protected $table='sale_equip';
-    public static function insert_se($mb_id,$price_total){
+    public static function insert_se($seq_id,$mb_id,$price_total){
     $insert_se=array (
-
+    "seq_id"=> $seq_id,
     "mb_id" =>  $mb_id,
     "price_total" =>  $price_total,
     "em_id"=>Session::get('em_id'),
+
     "seq_status"=>"พร้อมใช้งาน"
     );
 
