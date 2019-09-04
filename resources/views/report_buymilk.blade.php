@@ -55,95 +55,49 @@
         <form action="{{url('/searchbuymilk')}}" method="POST"  id='form-submit'>
             @csrf
             <div class="form-group">
-                    <div class="row">
-                        <div class="col-2 right">
-                    <h3> ตั้งแต่</h3>
-                        </div>
+                <div class="row">
+                    <div class="col-2 right">
+                      ปี:
                     </div>
+                    <div class="col-3">
+                            <input type="number"class="form-control"  name="startyear"  id="startyear" placeholder="yyyy" min="2017" max="2100" >
+                           
+                    </div>
+                    <div class="col-2 right">
+                            เดือน :
+                          </div>
+                          <div class="col-3">
+                                  <select class="form-control"  name="startmonth" id="startmonth" >
+                                          <option value="มกราคม">มกราคม</option>
+                                          <option value="กุมภาพันธ์">กุมภาพันธ์</option>
+                                          <option value="มีนาคม">มีนาคม</option>
+                                          <option value="เมษายน">เมษายน</option>
+                                          <option value="พฤษภาคม">พฤษภาคม</option>
+                                          <option value="มิถุนายน">มิถุนายน</option>
+                                          <option value="กรกฎาคม">กรกฎาคม</option>
+                                          <option value="สิงหาคม">สิงหาคม</option>
+                                          <option value="กันยายน">กันยายน</option>
+                                          <option value="ตุลาคม">ตุลาคม</option>
+                                          <option value="พฤศจิกายน">พฤศจิกายน</option>
+                                          <option value="ธันวาคม">ธันวาคม</option>
+                                  </select>
+                          </div>
                 </div>
+            </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-2 right">
-                      วัน :
+                        วันที่ :
                     </div>
                     <div class="col-3">
                             <input type="date" class="form-control" name="startdate" id="startdate">
                     </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
                     <div class="col-2 right">
-                      เดือน :
-                    </div>
-                    <div class="col-3">
-                            <select class="form-control"  name="startmonth" id="startmonth">
-                                    <option value="มกราคม">มกราคม</option>
-                                    <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-                                    <option value="มีนาคม">มีนาคม</option>
-                                    <option value="เมษายน">เมษายน</option>
-                                    <option value="พฤษภาคม">พฤษภาคม</option>
-                                    <option value="มิถุนายน">มิถุนายน</option>
-                                    <option value="กรกฎาคม">กรกฎาคม</option>
-                                    <option value="สิงหาคม">สิงหาคม</option>
-                                    <option value="กันยายน">กันยายน</option>
-                                    <option value="ตุลาคม">ตุลาคม</option>
-                                    <option value="พฤศจิกายน">พฤศจิกายน</option>
-                                    <option value="ธันวาคม">ธันวาคม</option>
-                            </select>
-                    </div>
-                    <div class="col-2 right">
-                        ปี :
-                    </div>
-                    <div class="col-3">
-                        <input type="number"class="form-control"  name="startyear"  id="startyear" placeholder="yyyy" min="2017" max="2100" >
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2 right">
-                <h3> ถึงช่วง</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2 right">
-                      วัน :
-                    </div>
-                    <div class="col-3">
-                            <input type="date" class="form-control" name="enddate" id="startdate">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-2 right">
-                      เดือน :
-                    </div>
-                    <div class="col-3">
-                            <select class="form-control"  name="endmonth" id="endmonth">
-                                    <option value="มกราคม">มกราคม</option>
-                                    <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-                                    <option value="มีนาคม">มีนาคม</option>
-                                    <option value="เมษายน">เมษายน</option>
-                                    <option value="พฤษภาคม">พฤษภาคม</option>
-                                    <option value="มิถุนายน">มิถุนายน</option>
-                                    <option value="กรกฎาคม">กรกฎาคม</option>
-                                    <option value="สิงหาคม">สิงหาคม</option>
-                                    <option value="กันยายน">กันยายน</option>
-                                    <option value="ตุลาคม">ตุลาคม</option>
-                                    <option value="พฤศจิกายน">พฤศจิกายน</option>
-                                    <option value="ธันวาคม">ธันวาคม</option>
-                            </select>
-                    </div>
-                    <div class="col-2 right">
-                        ปี :
-                    </div>
-                    <div class="col-3">
-                        <input type="number"class="form-control"  name="endyear"  id="endyear" placeholder="yyyy" min="2017" max="2100" >
-                    </div>
+                              ถึง :
+                            </div>
+                            <div class="col-3">
+                                    <input type="date" class="form-control" name="enddate" id="enddate">
+                            </div>
                 </div>
             </div>
             <div class="form-group">
