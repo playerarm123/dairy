@@ -15,6 +15,8 @@ use App\Sale_milk;
 
 class Report extends Controller
 {
+
+    //รายงานซื้อน้ำนม
     public function Loadreportbuymilk(){
         $data['grade']=Milk::loadAllMilk();
         return view('report_buymilk',$data);
@@ -31,7 +33,7 @@ class Report extends Controller
         $end_date=$req->input('enddate');
         $month=$req->input('month');
         $year=$req->input('year');
-
+        dd($month,$year);
         if($start_date!="" && $end_date!=""){
             $data=buymilks::Search_day($mb_id,$milk_id,$bm_range,$name,$lastname,$start_date,$end_date);
 
@@ -44,22 +46,57 @@ class Report extends Controller
         return redirect('loadreportbuymilk');
     }
 
-
-
-
     public function Resetbuymilk(){
         Session::forget('buymilk');
         return redirect('loadreportbuymilk');
     }
 
-    public function Exportbuymilk(){
-        $data['buymilk'] = array(
-            "name"=> "arm",
-            "lastname"=>"anuwat"
-        );
-        $pdf = PDF::loadView('test',$data);
-        return @$pdf->stream();
+
+
+
+
+    //รายงานขายน้ำนม
+    public function Loadreportsalemilk(){
+        $data['grade']=Milk::loadAllMilk();
+        return view('report_salemilk',$data);
     }
+
+    public function Searchsalemilk(Request $req){
+        $pn_id=$req->input('pn_id');
+        $milk_id=$req->input('grade');
+        $name=$req->input('name');
+        $start_date=$req->input('startdate');
+        $end_date=$req->input('enddate');
+        $month=$req->input('month');
+        $year=$req->input('year');
+
+        if($start_date!="" && $end_date!=""){
+            $data=Sale_milk::Search_day($pn_id,$milk_id,$name,$start_date,$end_date);
+
+        }
+        else{
+            $data=Sale_milk::Search_year($pn_id,$milk_id,$name,$month,$year);
+        }
+
+        Session::put('salemilk',$data);
+        return redirect('loadreportsalemilk');
+    }
+
+
+    public function Resetsalemilk(){
+        Session::forget('salemilk');
+        return redirect('loadreportsalemilk');
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
