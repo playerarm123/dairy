@@ -40,6 +40,8 @@
 
         }
         $(document).ready(function() {
+
+
             var table =$('#member').DataTable({
                         "paging": true,
                         "autoWidth": false,
@@ -74,6 +76,9 @@
                      }
 
                      );
+
+
+
 
         });
     </script>

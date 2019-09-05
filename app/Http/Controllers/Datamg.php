@@ -115,8 +115,8 @@ class Datamg extends Controller
         return $member;
     }
     public function Checkmember(Request $req){//เช็คข้อมูลสมาชิก
-        $mb_name=$req->input('firstname');
-        $mb_lastname=$req->input('lastname');
+        $mb_name=$req->input('fname');
+        $mb_lastname=$req->input('lname');
         $resultname=Member::checkMb_name($mb_name,$mb_lastname);
         return $resultname;
     }
