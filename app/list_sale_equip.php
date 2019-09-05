@@ -25,7 +25,7 @@ class list_sale_equip extends Model
         }
     }
     public static function load_lse($seq_id){    //โหลดข้อมูลรายการขายอุปกรณ์จาก ตารางวขายอุปกรณ์
-        $data=DB::table('list_sale_equiq')
+        $data=DB::table('list_sale_equip')
         ->where("seq_id","=",$seq_id)
         ->get();
      return $data;

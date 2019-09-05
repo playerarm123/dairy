@@ -40,8 +40,33 @@
 
         }
         $(document).ready(function() {
+            $('#form-submit').on('submit',function (e) {
+                e.preventDefault();
+                  $.ajax({
+                        type: "POST",
+                        url: "{{ url('checkmember')}}",
+                        data: {
+                            fname: $('#firstname').val(),
+                            lname: $('#lastname').val(),
+                            _token: "{{ csrf_token() }}"
+                        },asyn:true,
+                        success:function(data){
+                            console.log(data);
+                            if(data == 0 ) {
+                                //สั่งให้ทำการบันทึกข้อมูลต่อไป
+                                $('#form-submit').unbind('submit').submit();
+                            }
+                            // ถ้า ชื่อ หรือ username ซ้ำกัน ให้ทำงานใน else
+                            else{
+                                $('#alert_name').show();
 
 
+                            }
+                        }
+                    });
+
+
+            });
             var table =$('#member').DataTable({
                         "paging": true,
                         "autoWidth": false,
@@ -102,6 +127,7 @@
                         <input type="text" class="form-control" name="lastname" required>
                     </div>
                 </div>
+                <span id="alert_name" class="msg">ชื่อและนามสกุลนี้ถูกใช้งานแล้ว</span>
         </div>
         <div class="form-group">
             <div class="row">
